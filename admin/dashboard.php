@@ -1,9 +1,6 @@
 <?php include('../function/myfunction.php');
 include 'sidebar.php'
 ?>
-
-<?php session_start(); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 

@@ -2,15 +2,13 @@
 include('sidebar_user.php');
 include('mysql_connect.php');
 
-function getAll($table)
+function getAll($table) //function to call the tables from the dabatabase
 {
     global $con;
     $query = "SELECT * FROM $table";
     return $query_run = mysqli_query($con, $query);
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,15 +25,14 @@ function getAll($table)
 <style>
     h2 {
         font-family: "Arial", sans-serif;
-        /* Change the font family here */
+        /*font */
         font-style: italic;
-        /* Example of additional font style */
+        /* font style */
     }
 </style>
 
 <body style="margin-left: 100px">
     <div style="background:#7a7a7a; padding-top:20px;">
-        <!-- Add modal button -->
         <h2 style="margin-left: 10px; color:#e7e7e7;">Hello User, Welcome!</h2>
     </div>
 
@@ -56,6 +53,7 @@ function getAll($table)
             }
         </style>
 
+        <!-- button for modal  -->
         <button type="button" class="btn btn-primary custom-btn" data-toggle="modal" data-target="#myModal" style="position: absolute; top: 10px; right: 20px;">Create Ticket</button>
         <h3>
             <center>Overall Ticket List</center>
@@ -63,78 +61,32 @@ function getAll($table)
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>Company ID</th>
-                    <th>Company Name</th>
-                    <th>Contact</th>
-                    <th>Email</th>
-                    <th>Action</th>
+                    <th>Ticket ID</th>
+                    <th>Requester</th>
+                    <th>Assigned</th>
+                    <th>Concern</th>
+                    <th>Status</th>
+                    <th>Date Created</th>
+                    <th>Date Updated</th>
                 </tr>
             </thead>
 
             <tbody>
                 <?php
-                $company = getAll("company");
+                $ticket = getAll("ticket"); //get the table from the function
 
-                if (mysqli_num_rows($company) > 0) {
-                    foreach ($company as $item) {
+                if (mysqli_num_rows($ticket) > 0) {
+                    foreach ($ticket as $item) { //loop each ticket per item
                 ?>
                         <tr>
-                            <td><?= $item['id']; ?></td>
-                            <td><?= $item['company_name']; ?></td>
-                            <td><?= $item['contact']; ?></td>
-                            <td><?= $item['email']; ?></td>
-                            <td>
-                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCompanyModal<?= $item['id']; ?>">Edit</a>
-                                <button type="button" class="btn btn-sm btn-danger delete_category_btn" value="<?= $item['id']; ?>">Delete</button>
-                            </td>
+                            <td><?= $item['ticket_id']; ?></td>
+                            <td><?= $item['requester']; ?></td>
+                            <td><?= $item['assigned']; ?></td>
+                            <td><?= $item['concern']; ?></td>
+                            <td><?= $item['status']; ?></td>
+                            <td><?= $item['date_created']; ?></td>
+                            <td><?= $item['date_updated']; ?></td>
                         </tr>
-
-                        <!-- Edit Company Modal -->
-                        <div class="modal fade" id="editCompanyModal<?= $item['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Edit Company</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <!-- Your edit form content goes here -->
-                                        <form action="code.php" method="POST">
-                                            <input type="hidden" name="company_id" value="<?= $item['id']; ?>">
-
-                                            <div class="col-md-12 mt-3">
-                                                <label for=""><i class="fas fa-building"></i> Company Name</label>
-                                                <input type="text" name="company_name" value="<?= $item['company_name']; ?>" class="form-control">
-                                            </div>
-
-                                            <div class="col-md-12 mt-3">
-                                                <label for=""><i class="fa-solid fa-location-dot"></i> Company Address</label>
-                                                <input type="text" name="company_address" value="<?= $item['company_address']; ?>" class="form-control">
-                                            </div>
-
-                                            <div class="col-md-12 mt-3">
-                                                <label for=""><i class="fa-solid fa-phone"></i> Contact</label>
-                                                <input type="text" name="contact" value="<?= $item['contact']; ?>" maxlength="11" class="form-control">
-                                            </div>
-
-                                            <div class="col-md-12 mt-3">
-                                                <label for=""><i class="fas fa-envelope"></i> Email</label>
-                                                <input type="text" name="email" value="<?= $item['email']; ?>" class="form-control">
-                                            </div>
-
-                                            <!-- Add other form fields for editing as needed -->
-                                            <hr>
-                                            <div class="form-group pull-right">
-                                                <button class="btn btn-primary float-end" type="submit" name="edit_user">Save
-                                                    Changes</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Edit Company Modal -->
-
                 <?php
                     }
                 } else {
@@ -178,7 +130,7 @@ function getAll($table)
                             <select class="form-control" id="company" name="company">
                                 <option value="">Select Company:</option>
                                 <?php
-                                $company = getAll("company");
+                                $company = getAll("company"); //get the table from the function
                                 if (mysqli_num_rows($company) > 0) {
                                     foreach ($company as $company) {
                                 ?>
@@ -197,16 +149,19 @@ function getAll($table)
                                 </span>
                                 <label for="branch" class="sr-only">Branch:</label>
                                 <select class="form-control" id="branch" name="branch">
-                                    <option value="branch1">Select Branch:</option>
-                                    <disabled>
-                                        <option value="branch1">Mandaluyong City</option>
-                                        <option value="branch1">Makati City</option>
-                                        <option value="branch1">Cabuyao Laguna</option>
-                                        <option value="branch1">General Santos</option>
-                                        <option value="branch1">Cebu City</option>
-                                        <option value="branch1">Cagayan De Oro</option>
-                                        <option value="branch1">Davao City</option>
-
+                                    <option value="">Select Branch:</option>
+                                    <?php
+                                    $branch = getAll("branch");
+                                    if (mysqli_num_rows($branch) > 0) {
+                                        foreach ($branch as $branch) {
+                                    ?>
+                                            <option value="<?= $branch['branch_name']; ?>"><?= $branch['branch_name']; ?></option>
+                                    <?php
+                                        }
+                                    } else {
+                                        echo "<option value=''>No branch available</option>";
+                                    }
+                                    ?>
                                 </select>
                             </div>
                         </div>
@@ -218,18 +173,19 @@ function getAll($table)
                                 </span>
                                 <label for="department" class="sr-only">Department:</label>
                                 <select class="form-control" id="department" name="department">
-                                    <option value="department1">Select Department:</option>
-                                    <disabled>
-                                        <option value="department1">HR</option>
-                                        <option value="department2">Accounting</option>
-                                        <option value="department2">Management Info</option>
-                                        <option value="department2">Purchasing</option>
-                                        <option value="department2">System Installation</option>
-                                        <option value="department2">MIS</option>
-                                        <option value="department2">Building Management System(BMS)</option>
-                                        <option value="department2">Systems Mechanical</option>
-                                        <option value="department2">Building Management System(BMS)</option>
-                                        <option value="department2">Field Service</option>
+                                    <option value="">Select Department:</option>
+                                    <?php
+                                    $department = getAll("department");
+                                    if (mysqli_num_rows($department) > 0) {
+                                        foreach ($department as $department) {
+                                    ?>
+                                            <option value="<?= $department['department_name']; ?>"><?= $department['department_name']; ?></option>
+                                    <?php
+                                        }
+                                    } else {
+                                        echo "<option value=''>No department available</option>";
+                                    }
+                                    ?>
                                 </select>
                             </div>
                         </div>
@@ -253,7 +209,6 @@ function getAll($table)
                             </div>
                         </div>
                     </form>
-
 
                     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
                     <script>
@@ -281,7 +236,7 @@ function getAll($table)
 
                 <!-- Modal Footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+                    <button type="button" name="submit" class="btn btn-success" data-dismiss="modal">Submit</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
