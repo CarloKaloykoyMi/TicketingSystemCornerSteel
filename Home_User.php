@@ -1,6 +1,8 @@
 <?php
 include('sidebar_user.php');
 include('mysql_connect.php');
+include('crud.php');
+
 
 function getAll($table) //function to call the tables from the dabatabase
 {
@@ -63,11 +65,11 @@ function getAll($table) //function to call the tables from the dabatabase
                 <tr>
                     <th>Ticket ID</th>
                     <th>Requester</th>
-                    <th>Assigned</th>
+                    <!-- <th>Assigned</th> -->
                     <th>Concern</th>
                     <th>Status</th>
                     <th>Date Created</th>
-                    <th>Date Updated</th>
+                    <!-- <th>Date Updated</th> -->
                 </tr>
             </thead>
 
@@ -81,11 +83,9 @@ function getAll($table) //function to call the tables from the dabatabase
                         <tr>
                             <td><?= $item['ticket_id']; ?></td>
                             <td><?= $item['requester']; ?></td>
-                            <td><?= $item['assigned']; ?></td>
                             <td><?= $item['concern']; ?></td>
                             <td><?= $item['status']; ?></td>
                             <td><?= $item['date_created']; ?></td>
-                            <td><?= $item['date_updated']; ?></td>
                         </tr>
                 <?php
                     }
@@ -107,12 +107,9 @@ function getAll($table) //function to call the tables from the dabatabase
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
-                <!-- Include jQuery -->
-                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <form id="ticketForm">
+                    <form action="crud.php" method="POST" id="ticketForm">
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-prepend">
@@ -196,7 +193,7 @@ function getAll($table) //function to call the tables from the dabatabase
                                     <i class="fa-solid fa-comment-alt input-group-text"></i>
                                 </span>
                                 <label for="concerns" class="sr-only">Concerns/Questions/Inquiries:</label>
-                                <textarea class="form-control" id="concerns" name="concerns" rows="4"></textarea>
+                                <textarea class="form-control" id="concern" name="concern" rows="4"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -207,6 +204,11 @@ function getAll($table) //function to call the tables from the dabatabase
                                 <label for="file" class="sr-only">Attach File:</label>
                                 <input type="file" class="form-control-file" id="file" name="file">
                             </div>
+                        </div>
+                        <!-- Modal Footer -->
+                        <div class="modal-footer">
+                        <button type="submit" name="add_ticket" class="btn btn-success">Submit</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
                     </form>
 
@@ -232,12 +234,6 @@ function getAll($table) //function to call the tables from the dabatabase
                             });
                         });
                     </script>
-                </div>
-
-                <!-- Modal Footer -->
-                <div class="modal-footer">
-                    <button type="button" name="submit" class="btn btn-success" data-dismiss="modal">Submit</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

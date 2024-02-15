@@ -19,8 +19,6 @@ if (isset($_POST['register'])) {
         $password = $_POST['password'];
         $confirm = $_POST['confirm'];
     
-    
-    
     // Check if password and confirm password match
     if ($password !== $confirm) {
                 echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -182,7 +180,7 @@ else if(isset($_POST['emp_login_btn']))
                 }
                 elseif($role == 1)
                 {
-                    header("Location: Home_User.php");
+                    header("Location: home_user.php");
                 }
                 else
                 {

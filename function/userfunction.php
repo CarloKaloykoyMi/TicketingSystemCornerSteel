@@ -1,5 +1,5 @@
 <?php
-include('../mysql_connect.php');
+include('mysql_connect.php');
 
 function getAll($table)
 {
