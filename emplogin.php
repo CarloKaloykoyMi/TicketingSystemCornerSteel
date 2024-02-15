@@ -1,3 +1,5 @@
+emplogin.php
+
 <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -92,7 +94,7 @@
             <div class="form login">
                 <div class="form-content">
                     <header>Employee Login</header>
-                    <form action="#">
+                    <form action="code.php" method="POST">
                         <div class="field input-field">
                             <input type="email" placeholder="Email" class="input">
                         </div>
@@ -107,7 +109,7 @@
                         </div>
 
                         <div class="field button-field">
-                            <button>Sign In</button>
+                            <button type="submit" name="login_btn">Sign In</button>
                         </div>                        
                     </form>
  
