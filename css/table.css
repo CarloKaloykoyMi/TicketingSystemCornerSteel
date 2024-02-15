@@ -1,0 +1,52 @@
+.card-header h4 {
+        background-color: #5AA8D4;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+    }
+    
+    #myTable th {
+        background-color: #343a40;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+
+    #myTable tr {
+        transition: background-color 0.3s;
+    }
+
+    #myTable tr:hover {
+        background-color: #f8f9fa;
+    }
+
+    #myTable td:last-child {
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    #myTable th:nth-child(14) {
+        background-color: #343a40;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+
+    #myTable td:nth-child(14) {
+        text-align: center;
+    }
+
+    .status-active {
+        background-color: #28a745;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .status-inactive {
+        background-color: #dc3545;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }

@@ -1,0 +1,34 @@
+#header {
+  padding: 0px 0; /* Add padding for spacing */
+  background-color: #817e7e; /* Add a background color if desired */
+  height: px;
+}
+
+#header .container {
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+#header .logo {
+  flex: 1;
+}
+
+#header .links ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 1;
+}
+
+#header .links ul li {
+  margin: 0 15px;
+}
+
+.container {
+  position: relative;
+  z-index: 5;
+  max-width: 92rem;
+  padding: 0 4rem;
+  margin: 0 auto;
+  }
