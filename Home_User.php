@@ -145,10 +145,6 @@ function getAll($table)
         </table>
     </div>
 
-
-
-
-
     <!-- Modal -->
     <div class="modal fade" id="myModal">
         <div class="modal-dialog modal-lg">
@@ -195,102 +191,101 @@ function getAll($table)
                                 ?>
                             </select>
                         </div>
-                </div>
-                <div class="form-group" style="display: none;" id="branchGroup">
-                    <div class="input-group">
-                        <i class="fa-solid fa-location-dot input-group-text"></i>
-                        </span>
-                        <label for="branch" class="sr-only">Branch:</label>
-                        <select class="form-control" id="branch" name="branch">
-                            <option value="branch1">Select Branch:</option>
-                            <disabled>
-                                <option value="branch1">Mandaluyong City</option>
-                                <option value="branch1">Makati City</option>
-                                <option value="branch1">Cabuyao Laguna</option>
-                                <option value="branch1">General Santos</option>
-                                <option value="branch1">Cebu City</option>
-                                <option value="branch1">Cagayan De Oro</option>
-                                <option value="branch1">Davao City</option>
+                        <div class="form-group" style="display: none;" id="branchGroup">
+                            <div class="input-group">
+                                <i class="fa-solid fa-location-dot input-group-text"></i>
+                                </span>
+                                <label for="branch" class="sr-only">Branch:</label>
+                                <select class="form-control" id="branch" name="branch">
+                                    <option value="branch1">Select Branch:</option>
+                                    <disabled>
+                                        <option value="branch1">Mandaluyong City</option>
+                                        <option value="branch1">Makati City</option>
+                                        <option value="branch1">Cabuyao Laguna</option>
+                                        <option value="branch1">General Santos</option>
+                                        <option value="branch1">Cebu City</option>
+                                        <option value="branch1">Cagayan De Oro</option>
+                                        <option value="branch1">Davao City</option>
 
-                        </select>
-                    </div>
-                </div>
+                                </select>
+                            </div>
+                        </div>
 
-                <div class="form-group" style="display: none;" id="departmentGroup">
-                    <div class="input-group">
-                        <span class="input-group-prepend">
-                            <i class="fa-solid fa-users input-group-text"></i>
-                        </span>
-                        <label for="department" class="sr-only">Department:</label>
-                        <select class="form-control" id="department" name="department">
-                            <option value="department1">Select Department:</option>
-                            <disabled>
-                                <option value="department1">HR</option>
-                                <option value="department2">Accounting</option>
-                                <option value="department2">Management Info</option>
-                                <option value="department2">Purchasing</option>
-                                <option value="department2">System Installation</option>
-                                <option value="department2">MIS</option>
-                                <option value="department2">Building Management System(BMS)</option>
-                                <option value="department2">Systems Mechanical</option>
-                                <option value="department2">Building Management System(BMS)</option>
-                                <option value="department2">Field Service</option>
-                        </select>
-                    </div>
-                </div>
+                        <div class="form-group" style="display: none;" id="departmentGroup">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <i class="fa-solid fa-users input-group-text"></i>
+                                </span>
+                                <label for="department" class="sr-only">Department:</label>
+                                <select class="form-control" id="department" name="department">
+                                    <option value="department1">Select Department:</option>
+                                    <disabled>
+                                        <option value="department1">HR</option>
+                                        <option value="department2">Accounting</option>
+                                        <option value="department2">Management Info</option>
+                                        <option value="department2">Purchasing</option>
+                                        <option value="department2">System Installation</option>
+                                        <option value="department2">MIS</option>
+                                        <option value="department2">Building Management System(BMS)</option>
+                                        <option value="department2">Systems Mechanical</option>
+                                        <option value="department2">Building Management System(BMS)</option>
+                                        <option value="department2">Field Service</option>
+                                </select>
+                            </div>
+                        </div>
 
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-prepend">
-                            <i class="fa-solid fa-comment-alt input-group-text"></i>
-                        </span>
-                        <label for="concerns" class="sr-only">Concerns/Questions/Inquiries:</label>
-                        <textarea class="form-control" id="concerns" name="concerns" rows="4"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-prepend">
-                            <i class="fa-solid fa-paperclip input-group-text"></i>
-                        </span>
-                        <label for="file" class="sr-only">Attach File:</label>
-                        <input type="file" class="form-control-file" id="file" name="file">
-                    </div>
-                </div>
-                </form>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <i class="fa-solid fa-comment-alt input-group-text"></i>
+                                </span>
+                                <label for="concerns" class="sr-only">Concerns/Questions/Inquiries:</label>
+                                <textarea class="form-control" id="concerns" name="concerns" rows="4"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <i class="fa-solid fa-paperclip input-group-text"></i>
+                                </span>
+                                <label for="file" class="sr-only">Attach File:</label>
+                                <input type="file" class="form-control-file" id="file" name="file">
+                            </div>
+                        </div>
+                    </form>
 
 
-                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-                <script>
-                    // jQuery script to handle the visibility of branch and department fields
-                    $(document).ready(function() {
-                        $('#company').change(function() {
-                            if ($(this).val() !== '') {
-                                $('#branchGroup').show();
-                            } else {
-                                $('#branchGroup').hide();
-                                $('#departmentGroup').hide();
-                            }
+                    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                    <script>
+                        // jQuery script to handle the visibility of branch and department fields
+                        $(document).ready(function() {
+                            $('#company').change(function() {
+                                if ($(this).val() !== '') {
+                                    $('#branchGroup').show();
+                                } else {
+                                    $('#branchGroup').hide();
+                                    $('#departmentGroup').hide();
+                                }
+                            });
+
+                            $('#branch').change(function() {
+                                if ($('#branch').val() !== '') {
+                                    $('#departmentGroup').show();
+                                } else {
+                                    $('#departmentGroup').hide();
+                                }
+                            });
                         });
+                    </script>
+                </div>
 
-                        $('#branch').change(function() {
-                            if ($('#branch').val() !== '') {
-                                $('#departmentGroup').show();
-                            } else {
-                                $('#departmentGroup').hide();
-                            }
-                        });
-                    });
-                </script>
-            </div>
-
-            <!-- Modal Footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 
     <!-- Add Bootstrap JS script -->
