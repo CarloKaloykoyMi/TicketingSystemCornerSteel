@@ -160,7 +160,7 @@ else if(isset($_POST['edit_user']))
 
     if ($updateUser_query_run) {
         echo '<script>alert("User status updated successfully.");</script>';
-        echo '<script>window.location.href = "../admin/user.php";</script>';
+        echo '<script>window.location.href = "user.php";</script>';
         exit();
     } else {
         // PHP code failed to execute
