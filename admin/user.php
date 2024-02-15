@@ -70,8 +70,10 @@ include 'sidebar.php'
                                                 <td><?= $item['department']; ?></td>
                                                 <td><?= $item['email']; ?></td>
                                                 <td>
-                                                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editUserModal<?= $item['user_id']; ?>">Edit</a>
-                                                    <button type="button" class="btn btn-sm btn-danger delete_category_btn" value="<?= $item['user_id']; ?>">Delete</button>
+                                                    <div class="btn-group" role="group">
+                                                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editUserModal<?= $item['user_id']; ?>">Edit</a>
+                                                        <button type="button" class="btn btn-sm btn-danger delete_user_btn" data-bs-toggle="modal" data-bs-target="#deleteUserModal<?= $item['user_id']; ?>">Delete</button>
+                                                    </div>
                                                 </td>
                                             </tr>
 
@@ -149,7 +151,6 @@ include 'sidebar.php'
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>

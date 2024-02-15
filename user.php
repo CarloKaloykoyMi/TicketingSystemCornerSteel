@@ -45,17 +45,17 @@
 
 
 
-            <!-- Hidden input to store the selected account type -->
-            <input type="hidden" name="accountType" id="selectedAccountType" value="enterpriseUser">
+<!-- Hidden input to store the selected account type -->
+<input type="hidden" name="accountType" id="selectedAccountType" value="enterpriseUser">
 
-        </form>
-    </div>
+</form>
+</div>
 
-    <script>
-        function selectAccountType(type) {
-            document.getElementById('selectedAccountType').value = type;
-        }
-    </script>
+<script>
+    function selectAccountType(type) {
+        document.getElementById('selectedAccountType').value = type;
+    }
+</script>
 </body>
 
 </html>

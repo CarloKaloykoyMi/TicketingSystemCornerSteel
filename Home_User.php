@@ -207,7 +207,7 @@ function getAll($table) //function to call the tables from the dabatabase
                         </div>
                         <!-- Modal Footer -->
                         <div class="modal-footer">
-                        <button type="submit" name="add_ticket" class="btn btn-success">Submit</button>
+                            <button type="submit" name="add_ticket" class="btn btn-success">Submit</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
                     </form>
