@@ -1,11 +1,4 @@
 <?php
-/*
-------------------------------------------------------------------------------------------------------
-Script Name: mysql_connect.php
-Author:  TEKUNO
-Description: To connect to the MySQL server and database
-------------------------------------------------------------------------------------------------------
-*/
 $username ="root";
 $password="";
 $database="ticketing";

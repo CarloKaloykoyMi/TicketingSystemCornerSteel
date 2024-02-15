@@ -1,3 +1,5 @@
+register.php
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -119,24 +121,66 @@
                     </div>
 
                     <div class="col-md-4 mt-2">
-                        <label for="company" class="form-label"> <i class="fas fa-building"></i> Company</label>
-                        <input class="form-control" type="text" name="company" id="firstNameInput" placeholder="Enter your Company" oninput="restrictToLettersWithSingleSpace(this)" required>
-                        <span class="note" style="display: none; color: red;">Please enter letters only.</span>
-                    </div>
-
-                    <div class="col-md-4 mt-2">
-                        <label for="branch" class="form-label"> <i class="fa-solid fa-location-dot"></i> Branch</label>
-                        <select name="branch" class="form-control" required>
-                            <option value="" disabled selected>Select your Branch</option>
-                            <option value="Mandaluyong">Mandaluyong</option>
-                            <option value="Makati">Makati</option>
+                        <label for="company" class="form-label"> <i class="fa-solid fa-location-dot"></i> Comapany</label>
+                        <select id=company name="company" class="form-control" required>
+                            <option value="" disabled selected>Select your Company</option>
+                            <?php
+                            $company = getAll("company")
+                            if(mysqli_num_rows($company) > 0){
+                                foreach($company as $company){
+                                    ?>
+                                    <option value="<?= $company['branch_name'];?>"><?= $company['branch_name'];?></option>
+                                    <?php
+                                }
+                            }
+                            else 
+                            {
+                                echo "<option value=''>No Company available</option>";
+                            }
+                            ?>
                         </select>
                     </div>
 
                     <div class="col-md-4 mt-2">
-                        <label for="department" class="form-label"> <i class="fa-solid fa-users"></i> Department</label>
-                        <input class="form-control" type="text" name="department" id="firstNameInput" placeholder="Enter your Department" oninput="restrictToLettersWithSingleSpace(this)" required>
-                        <span class="note" style="display: none; color: red;">Please enter letters only.</span>
+                        <label for="branch" class="form-label"> <i class="fa-solid fa-location-dot"></i> Branch</label>
+                        <select id=branch name="branch" class="form-control" required>
+                            <option value="" disabled selected>Select your Branch</option>
+                            <?php
+                            $branch = getAll("branch")
+                            if(mysqli_num_rows($branch) > 0){
+                                foreach($branch as $branch){
+                                    ?>
+                                    <option value="<?= $branch['branch_name'];?>"><?= $branch['branch_name'];?></option>
+                                    <?php
+                                }
+                            }
+                            else 
+                            {
+                                echo "<option value=''>No Branch available</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4 mt-2">
+                        <label for="department" class="form-label"> <i class="fa-solid fa-location-dot"></i> Department</label>
+                        <select id=department name="department" class="form-control" required>
+                            <option value="" disabled selected>Select your Department</option>
+                            <?php
+                            $department = getAll("department")
+                            if(mysqli_num_rows($department) > 0){
+                                foreach($department as $department){
+                                    ?>
+                                    <option value="<?= $department['branch_name'];?>"><?= $department['branch_name'];?></option>
+                                    <?php
+                                }
+                            }
+                            else 
+                            {
+                                echo "<option value=''>No Department available</option>";
+                            }
+                            ?>
+                        </select>
                     </div>
 
                     <div class="col-md-6 mt-2">
@@ -165,7 +209,7 @@
                         </div>
                         <div id="message">
                             <h6>Password must contain:</h6>
-                            <p id="letter" class="invalid">At least one letter</p>
+                            <p id="letter" class="invalid">At least one letter</           p>
                             <p id="capital" class="invalid">At least one capital letter</p>
                             <p id="number" class="invalid">At least one number</p>
                             <p id="special" class="invalid">At least one special character</p>

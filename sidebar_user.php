@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +47,14 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="logout">
+                <a href="logout.php">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="nav-item">Logout</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="logout.php" class="logout">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                     <span class="nav-item">Log out</span>
                 </a>

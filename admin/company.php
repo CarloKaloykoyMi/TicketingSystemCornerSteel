@@ -80,7 +80,7 @@ include 'sidebar.php'
 
                                                                 <div class="col-md-12 mt-3">
                                                                     <label for=""><i class="fa-solid fa-phone"></i> Contact</label>
-                                                                    <input type="text" name="contact" value="<?= $item['contact']; ?>" class="form-control">
+                                                                    <input type="text" name="contact" value="<?= $item['contact']; ?>" maxlength="11" class="form-control">
                                                                 </div>
 
                                                                 <div class="col-md-12 mt-3">
@@ -139,7 +139,7 @@ include 'sidebar.php'
 
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fa-solid fa-phone"></i> Contact</label>
-                            <input type="text" name="contact" placeholder="Enter Contact" class="form-control">
+                            <input type="text" name="contact" placeholder="Enter Contact" maxlength="11" class="form-control">
                         </div>
 
                         <div class="col-md-12 mt-3">
