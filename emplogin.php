@@ -1,5 +1,3 @@
-emplogin.php
-
 <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -96,11 +94,11 @@ emplogin.php
                     <header>Employee Login</header>
                     <form action="code.php" method="POST">
                         <div class="field input-field">
-                            <input type="email" placeholder="Email" class="input">
+                            <input type="email" name="email" placeholder="Email" class="input">
                         </div>
 
                         <div class="field input-field">
-                            <input type="password" placeholder="Password" class="password">
+                            <input type="password" name="password" placeholder="Password" class="password">
                             <i class='bx bx-hide eye-icon'></i>
                         </div>
 
@@ -109,7 +107,7 @@ emplogin.php
                         </div>
 
                         <div class="field button-field">
-                            <button type="submit" name="login_btn">Sign In</button>
+                            <button type="submit" name="emp_login_btn">Sign In</button>
                         </div>                        
                     </form>
  
@@ -120,36 +118,6 @@ emplogin.php
 
             </div>
 
-            <!-- Signup Form -->
-
-            <div class="form signup">
-                <div class="form-content">
-                    <header>Employee Admin</header>
-                    <form action="#">
-                        <div class="field input-field">
-                            <input type="email" placeholder="Email" class="input">
-                        </div>
-
-                        <div class="field input-field">
-                            <input type="password" placeholder="Create password" class="password">
-                        </div>
-
-                        <div class="field input-field">
-                            <input type="password" placeholder="Confirm password" class="password">
-                            <i class='bx bx-hide eye-icon'></i>
-                        </div>
-
-                        <div class="field button-field">
-                            <button>Signup</button> 
-                        </div>
-                    </form>
-
-                    <div class="form-link">
-                        <span>Already have an account? <a href="#" class="link login-link">Login</a></span>
-                    </div>
-                </div>
- 
-            </div>
         </section>
 
         <!-- JavaScript -->
