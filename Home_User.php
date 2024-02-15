@@ -60,7 +60,7 @@ function getAll($table)
         <h3>
             <center>Overall Ticket List</center>
         </h3>
-        <table>
+        <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Company ID</th>
@@ -151,7 +151,7 @@ function getAll($table)
 
     <!-- Modal -->
     <div class="modal fade" id="myModal">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
@@ -161,12 +161,6 @@ function getAll($table)
 
                 <!-- Include jQuery -->
                 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-
-
-
-
-
 
                 <!-- Modal Body -->
                 <div class="modal-body">
@@ -189,15 +183,13 @@ function getAll($table)
                                 <option value="">Select Company:</option>
                                 <?php
                                 $company = getAll("company");
-                                if(mysqli_num_rows($company) > 0){
-                                    foreach($company as $company){
-                                        ?>
-                                        <option value="<?= $company['company_name'];?>"><?= $company['company_name'];?></option>
-                                        <?php
+                                if (mysqli_num_rows($company) > 0) {
+                                    foreach ($company as $company) {
+                                ?>
+                                        <option value="<?= $company['company_name']; ?>"><?= $company['company_name']; ?></option>
+                                <?php
                                     }
-                                }
-                                else 
-                                {
+                                } else {
                                     echo "<option value=''>No Company available</option>";
                                 }
                                 ?>
