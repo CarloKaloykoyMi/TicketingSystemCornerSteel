@@ -23,6 +23,18 @@ function getAll($table) //function to call the tables from the dabatabase
     <!-- Add Bootstrap CSS link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        .btn-custom {
+            background-color: #333333;
+            color: #ffffff;
+            transition: color 0.3s;
+        }
+
+        .btn-custom:hover {
+            color: #ffffff;
+        }
+    </style>
 </head>
 
 <body style="margin-left: 100px">
@@ -33,7 +45,7 @@ function getAll($table) //function to call the tables from the dabatabase
     <div class="continer1">
 
         <!-- button for modal  -->
-        <button type="button" class="btn btn-primary custom-btn" data-toggle="modal" data-target="#myModal" style="position: absolute; top: 10px; right: 20px;">Create Ticket</button>
+        <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#myModal" style="position: absolute; top: 10px; right: 20px;">Create Ticket</button>
         <h3>
             <center>Overall Ticket List</center>
         </h3>
