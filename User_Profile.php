@@ -28,8 +28,10 @@ include('sidebar_user.php')
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            max-width: 800px; /* Increased max-width for better spacing */
-            margin: 0 auto; /* Center the container */
+            max-width: 800px;
+            /* Increased max-width for better spacing */
+            margin: 0 auto;
+            /* Center the container */
         }
 
         label {
@@ -67,12 +69,9 @@ include('sidebar_user.php')
         <h2 style="margin-left: 10px; color:#e7e7e7;">Hello User, Welcome!</h2>
     </div>
 
-
-    
-
     <div class="container mt-4" style="padding: 10px; height: 580px;">
-    <h3 class="text-center">Edit Profile</h3>
-    <form action="#" method="post" enctype="multipart/form-data">
+        <h3 class="text-center">Edit Profile</h3>
+        <form action="#" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -135,7 +134,7 @@ include('sidebar_user.php')
                         <label for="username"><i class="fas fa-user"></i> Username:</label>
                         <input type="text" id="username" name="username" class="form-control" required>
                     </div>
-                    
+
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
@@ -146,13 +145,13 @@ include('sidebar_user.php')
             </div>
 
             <div class="form-group">
-    <label for="profile-picture"><i class="fa-solid fa-paperclip input-group-text"></i></i> Upload Picture:</label>
-    <input type="file" id="profile-picture" name="profile-picture" class="form-control-file">
-</div>
+                <label for="profile-picture"><i class="fa-solid fa-paperclip input-group-text"></i></i> Upload Picture:</label>
+                <input type="file" id="profile-picture" name="profile-picture" class="form-control-file">
+            </div>
 
-<button type="submit" class="btn btn-primary float-right" style="width: 100px; height: 40px; background-color: green;">Save</button>
-</form>
-</div>
+            <button type="submit" class="btn btn-primary float-right" style="width: 100px; height: 40px; background-color: green;">Save</button>
+        </form>
+    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

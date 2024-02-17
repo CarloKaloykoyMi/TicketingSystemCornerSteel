@@ -24,14 +24,6 @@ function getAll($table) //function to call the tables from the dabatabase
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<style>
-    h2 {
-        font-family: "Arial", sans-serif;
-        /*font */
-        font-style: italic;
-        /* font style */
-    }
-</style>
 
 <body style="margin-left: 100px">
     <div style="background:#7a7a7a; padding-top:20px;">
@@ -39,21 +31,6 @@ function getAll($table) //function to call the tables from the dabatabase
     </div>
 
     <div class="continer1">
-        <style>
-            .custom-btn {
-                background-color: #37404a !important;
-                /* !important to override Bootstrap's default styles */
-                border-color: #37404a !important;
-                /* !important to override Bootstrap's default styles */
-            }
-
-            .custom-btn:hover {
-                background-color: #8C8C8C !important;
-                /* !important to override Bootstrap's default styles */
-                border-color: #8C8C8C !important;
-                /* !important to override Bootstrap's default styles */
-            }
-        </style>
 
         <!-- button for modal  -->
         <button type="button" class="btn btn-primary custom-btn" data-toggle="modal" data-target="#myModal" style="position: absolute; top: 10px; right: 20px;">Create Ticket</button>

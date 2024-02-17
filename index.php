@@ -16,91 +16,96 @@
             width: 48%;
             margin: 1%;
         }
+
         @media (max-width: 767px) {
             .grid-item {
                 width: 100%;
                 margin: 0;
             }
         }
-        .grid-item {
-    width: 48%;
-    margin: 1%;
-    float: left; 
-  }
-  @media (max-width: 767px) {
-    .grid-item {
-      width: 100%;
-      margin: 0;
-      float: none; 
-    }
-  }
-  .footer {
-    padding: 10px 0; 
-  }
-  .logo img {
-    width: 100px; 
-    height: auto; 
-  }
-  .copyright {
-        text-align: center;
-    }
-    .copyright p {
-        font-weight: bold;
-        font-size: 16px;
-    }
-    .logo-text {
-    font-size: 24px;
-    margin-left: 10px; 
-    font-weight: bold;
-    color: #fff; 
-}
-.gallery-image img {
-    width: 250px;
-    height:auto;
-    border-radius: 15px;
-  }
 
+        .grid-item {
+            width: 48%;
+            margin: 1%;
+            float: left;
+        }
+
+        @media (max-width: 767px) {
+            .grid-item {
+                width: 100%;
+                margin: 0;
+                float: none;
+            }
+        }
+
+        .footer {
+            padding: 10px 0;
+        }
+
+        .logo img {
+            width: 100px;
+            height: auto;
+        }
+
+        .copyright {
+            text-align: center;
+        }
+
+        .copyright p {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            margin-left: 10px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .gallery-image img {
+            width: 250px;
+            height: auto;
+            border-radius: 15px;
+        }
     </style>
 </head>
 
 <body>
     <main>
-    <header id="header">
-    <div class="overlay overlay-lg"></div>
-    <nav>
-        <div class="container">
-            <div class="logo">
-            <a href="index.php"> 
-                <img src="img/logo2.png" alt=""> 
-            </a>
-                <span class="logo-text">CGG e-Ticketing</span>
-            </div>
-
-            
-            <div class="links">
-            <ul>
-            <li>
-                  <a href="#header">Home</a>
-                </li>
-                <li>
-                  <a href="#aboutus">About</a>
-                </li>
-                <li>
-                  <a href="#contact">Contact</a>
-                </li>
-                    <li><a href="usertype.php" class="active">LOGIN</a></li>
-                </ul>
-            </div>
-
-            <div class="hamburger-menu">
-                <div class="bar"></div>
-            </div>
-        </div>
-    </nav>
-</header>
+        <header id="header">
+            <div class="overlay overlay-lg"></div>
+            <nav>
+                <div class="container">
+                    <div class="logo">
+                        <a href="index.php">
+                            <img src="img/logo2.png" alt="">
+                        </a>
+                        <span class="logo-text">CGG e-Ticketing</span>
+                    </div>
 
 
-   
+                    <div class="links">
+                        <ul>
+                            <li>
+                                <a href="index.php">Home</a>
+                            </li>
+                            <li>
+                                <a href="#aboutus">About</a>
+                            </li>
+                            <li>
+                                <a href="#contact">Contact</a>
+                            </li>
+                            <li><a href="usertype.php" class="active">LOGIN</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="hamburger-menu">
+                        <div class="bar"></div>
+                    </div>
+                </div>
+            </nav>
+        </header>
 
         <section class="portfolio section" id="portfolio">
             <div class="background-bg">
@@ -115,76 +120,84 @@
             </div>
 
             <script>
-    function addToCartBtn(link) {
-        // You can perform any additional actions here before redirecting
-        window.location.href = link;
-    }
-</script>
+                function addToCartBtn(link) {
+                    // You can perform any additional actions here before redirecting
+                    window.location.href = link;
+                }
+            </script>
 
-<div class="container">
-    <div class="section-header">
-        <h3 class="title">COMPANIES</h3>
-    </div>
-
-    <div class="section-body">
-    <div class="grid">
-        <div class="grid-item logo-design">
-            <div class="gallery-image">
-                <img src="./img/portfolio/compf.png" alt="" />
-                <div class="img-overlay">
-                    <div class="img-description">
-                        <center><h3><b>COMFAC CORPORATION</b></h3></center>
-                        <center>Integrating technology solutions for workspace and people.</center>
-                    </div>
-                    <a href="javascript:void(0);" onclick="addToCartBtn('http://comfaccorp.com/')" class="btn">Click</a>
+            <div class="container">
+                <div class="section-header">
+                    <h3 class="title">COMPANIES</h3>
                 </div>
-            </div>
-        </div>
 
-        <div class="grid-item webdev">
-            <div class="gallery-image">
-                <img src="./img/portfolio/cors.png" alt="" />
-                <div class="img-overlay">
-                    <div class="img-description">
-                        <center><h3><b>CORNERSTEEL SYSTEMS CORPORATION</b></h3></center>                  
-                        <center> Marketing and manufacturing modular and custom-made furniture.</center>
+                <div class="section-body">
+                    <div class="grid">
+                        <div class="grid-item logo-design">
+                            <div class="gallery-image">
+                                <img src="./img/portfolio/compf.png" alt="" />
+                                <div class="img-overlay">
+                                    <div class="img-description">
+                                        <center>
+                                            <h3><b>COMFAC CORPORATION</b></h3>
+                                        </center>
+                                        <center>Integrating technology solutions for workspace and people.</center>
+                                    </div>
+                                    <a href="javascript:void(0);" onclick="addToCartBtn('http://comfaccorp.com/')" class="btn">Click</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid-item webdev">
+                            <div class="gallery-image">
+                                <img src="./img/portfolio/cors.png" alt="" />
+                                <div class="img-overlay">
+                                    <div class="img-description">
+                                        <center>
+                                            <h3><b>CORNERSTEEL SYSTEMS CORPORATION</b></h3>
+                                        </center>
+                                        <center> Marketing and manufacturing modular and custom-made furniture.</center>
+                                    </div>
+                                    <a href="javascript:void(0);" onclick="addToCartBtn('http://cornersteelsystems.com/')" class="btn">Click</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid-item ui webdev">
+                            <div class="gallery-image">
+                                <img src="./img/portfolio/esco1.png" alt="" />
+                                <div class="img-overlay">
+                                    <div class="img-description">
+                                        <center>
+                                            <h3><b>ESCO INC.</b></h3>
+                                        </center>
+                                        <center> Facilities maintenance and sustainability solutions.</center>
+                                    </div>
+                                    <a href="javascript:void(0);" onclick="addToCartBtn('http://escoincsolutions.com/')" class="btn">Click</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid-item ui webdev">
+                            <div class="gallery-image">
+                                <img src="./img/portfolio/comft.png" alt="" />
+                                <div class="img-overlay">
+                                    <div class="img-description">
+                                        <center>
+                                            <h3><b>COMFAC TECHNOLOGY OPTIONS</b></h3>
+                                        </center>
+                                        <center> Consulting and information technology services to enterprise. </center>
+                                    </div>
+                                    <a href="javascript:void(0);" onclick="addToCartBtn('https://www.comfactechoptions.com/')" class="btn">Click</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <a href="javascript:void(0);" onclick="addToCartBtn('http://cornersteelsystems.com/')" class="btn">Click</a>
                 </div>
-            </div>
-        </div>
-
-        <div class="grid-item ui webdev">
-            <div class="gallery-image">
-                <img src="./img/portfolio/esco1.png" alt="" />
-                <div class="img-overlay">
-                    <div class="img-description">
-                        <center><h3><b>ESCO INC.</b></h3></center>        
-                        <center> Facilities maintenance and sustainability solutions.</center>
-                    </div>
-                    <a href="javascript:void(0);" onclick="addToCartBtn('http://escoincsolutions.com/')" class="btn">Click</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="grid-item ui webdev">
-            <div class="gallery-image">
-                <img src="./img/portfolio/comft.png" alt="" />
-                <div class="img-overlay">
-                    <div class="img-description">
-                        <center><h3><b>COMFAC TECHNOLOGY OPTIONS</b></h3></center>               
-                       <center> Consulting and information technology services to enterprise. </center>
-                    </div>
-                    <a href="javascript:void(0);" onclick="addToCartBtn('https://www.comfactechoptions.com/')" class="btn">Click</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</section>
+        </section>
 
 
-  <section class="aboutus section" id="aboutus">
+        <section class="aboutus section" id="aboutus">
             <div class="header-content">
                 <div class="container grid-2">
                     <div class="column-1">
@@ -298,47 +311,47 @@
     </main>
 
     <footer class="footer">
-    <div class="container">
-        <div class="bottom-footer">
+        <div class="container">
+            <div class="bottom-footer">
 
-            <div class="copyright">
-                <p class="text">
-                  &copy; 2024 Comfac Global Group.
-                </p>
-            </div>
-
-            <div class="followme-wrap">
-                <div class="followme">
-                    <h3>Follow Us</h3>
-                    <span class="footer-line"></span>
-                    <div class="social-media">
-                        <a href="https://www.facebook.com/ComfacGlobalGroupRecruitment/">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
+                <div class="copyright">
+                    <p class="text">
+                        &copy; 2024 Comfac Global Group.
+                    </p>
                 </div>
 
                 <div class="followme-wrap">
-                <div class="followme">
-                    
-                    <div class="social-media">
-                        <a href="https://www.instagram.com/cornersteelsystemscorp/">
-                            <i class="fa fa-instagram"></i>
-                        </a>
+                    <div class="followme">
+                        <h3>Follow Us</h3>
+                        <span class="footer-line"></span>
+                        <div class="social-media">
+                            <a href="https://www.facebook.com/ComfacGlobalGroupRecruitment/">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="followme-wrap">
+                        <div class="followme">
+
+                            <div class="social-media">
+                                <a href="https://www.instagram.com/cornersteelsystemscorp/">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="back-btn-wrap">
+                            <a href="#" class="back-btn">
+                                <i class="fas fa-chevron-up"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="back-btn-wrap">
-                    <a href="#" class="back-btn">
-                        <i class="fas fa-chevron-up"></i>
-                    </a>
-                </div>
             </div>
-        </div>
-    </div>
-</footer>
+    </footer>
 
-  
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./js/isotope.pkgd.min.js"></script>
