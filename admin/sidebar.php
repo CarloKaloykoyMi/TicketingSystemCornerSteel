@@ -21,6 +21,12 @@
                 </a>
             </li>
             <li class="sidebar-item">
+                <a href="ticket.php" class="sidebar-link">
+                    <i class="lni lni-ticket"></i>
+                    <span>Tickets</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
                 <a href="company.php" class="sidebar-link">
                     <i class="lni lni-apartment"></i>
                     <span>Company</span>
