@@ -49,6 +49,7 @@ img {
 }
 
 #header .container {
+
   justify-content: space-between;
   align-items: center;
 }
@@ -68,8 +69,10 @@ img {
   margin: 0 15px;
 }
 
+/* Add more styling as needed for your specific design */
+
 .acontainer {
-  background-color: #8c8c8c;
+  background-color: #8C8C8C; 
   padding: 20px; /* Add padding for spacing */
   border-radius: 10px; /* Add rounded corners */
 }
@@ -80,8 +83,8 @@ img {
   max-width: 92rem;
   padding: 0 4rem;
   margin: 0 auto;
-}
-
+  }
+  
 .stop-scrolling {
   height: 100%;
   overflow: hidden;
@@ -92,6 +95,12 @@ img {
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
   justify-content: center;
+}
+
+.text {
+  font-size: 1.25rem;
+  color: var(--dark-two);
+  line-height: 1.6;
 }
 
 .column-1 {
@@ -168,7 +177,7 @@ img {
 }
 
 .section-header {
-  text-align: center;
+  text-align: center; 
   padding-top: -10px;
 }
 
@@ -232,7 +241,8 @@ img {
 }
 
 .btn:hover {
-  background-color: #7c7c7c;
+  background-color: #7C7C7C;
+  
 }
 
 .btn.small {
@@ -301,7 +311,7 @@ nav .container {
 
 .links a.active:hover {
   color: var(--light-one);
-  background-color: #5f5f5f;
+  background-color: #5F5F5F;
 }
 
 .hamburger-menu {
@@ -430,9 +440,9 @@ header .wave2 {
 }
 
 .faq-text {
-  font-family: Arial, sans-serif;
-  font-size: 30px;
-  margin-bottom: 10px;
+  font-family: Arial, sans-serif; 
+  font-size: 30px; 
+  margin-bottom: 10px; 
 }
 
 /* Style for FAQ question headers */
@@ -451,6 +461,8 @@ header .circle {
   left: 15px;
   opacity: 0.06;
 }
+
+
 
 /* End header */
 
@@ -472,9 +484,7 @@ header .circle {
 .card {
   position: relative;
   width: 100%;
-  max-width: calc(
-    180% - 5rem
-  ); /* Adjust the max-width to fit 4 cards in one line */
+  max-width: calc(180% - 5rem); /* Adjust the max-width to fit 4 cards in one line */
   min-height: 400px;
   background-color: var(--light-three);
   display: flex;
@@ -516,6 +526,7 @@ header .circle {
 .card-wrap:hover .card:after {
   height: 8px;
 }
+
 
 .icon {
   width: 90px;
@@ -689,12 +700,14 @@ header .circle {
 
 .img-description {
   width: 100%;
+
 }
 
 .img-overlay h3 {
   font-weight: 600;
   text-transform: uppercase;
   font-size: 1.5rem;
+ 
 }
 
 .img-overlay h5 {
@@ -813,6 +826,11 @@ header .circle {
   max-width: 100%; /* Make images responsive */
   border-radius: 5px; /* Optional: Add border-radius for a rounded appearance */
 }
+
+
+
+
+
 
 /* End About */
 
@@ -1339,7 +1357,7 @@ header .circle {
 }
 
 .copyright .text {
-  color: rgba(235, 231, 231, 0.808);
+    color: rgba(235, 231, 231, 0.808);
   font-size: 1.2rem;
   display: inline-block;
   text-align: center;
@@ -1360,7 +1378,7 @@ header .circle {
 }
 
 .followme h3 {
-  color: #f1e7e7da;
+  color: #f1e7e7da;;
   font-weight: 500;
   font-size: 1.3rem;
 }
@@ -1368,7 +1386,7 @@ header .circle {
 .followme .footer-line {
   width: 60px;
   height: 2px;
-  background-color: #f1e7e7da;
+  background-color: #f1e7e7da;;
   margin: 0 1.2rem;
   display: inline-block;
 }
@@ -2185,6 +2203,32 @@ header .circle {
     bottom: 90px;
     right: 40px;
   }
+
+  .testi-content {
+    margin-top: 1rem;
+  }
+
+  .review {
+    padding: 1.5rem 1rem;
+  }
+
+  .review-text {
+    font-size: 0.9rem;
+  }
+
+  .review-nav {
+    bottom: 1.5rem;
+    font-size: 1.3rem;
+  }
+
+  .swiper-button-next {
+    right: 1.3rem;
+  }
+
+  .swiper-button-prev {
+    right: 3rem;
+  }
+
   .contact {
     padding: 8rem 0 5rem 0;
   }
@@ -2212,3 +2256,82 @@ header .circle {
     margin: 0.25rem 0;
   }
 }
+
+.faq-heading {
+  text-align: center; 
+  color: #eea620;; 
+}
+.faqs-container {
+    font-family: "Roboto", sans-serif;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .faqs-container .questions-container {
+    box-shadow: 0 4px 8px -3px rgba(0, 0, 0, 0.3);
+  }
+  
+  .faqs-container h2 {
+    padding: 4px 32px;
+    font-size: 28px;
+  }
+  
+  .faqs-container .faq-header {
+    display: flex;
+    background: #242e3b;
+    color: #e2eede;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    height: 80px;
+  }
+  
+  .faqs-container .faq-header .open,
+  .faqs-container .faq-header .close {
+      position: absolute;
+      padding: 0 40px;
+      font-size: 22px;
+      font-weight: bold;
+      transform: translateY(-8px);
+      opacity: 0;
+      transition: all 500ms;
+  }
+  
+  .faqs-container .faq-header .open.active,
+  .faqs-container .faq-header .close.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .faqs-container .faq-header h3 {
+    font-size: 20px;
+    padding: 0 60px;
+}
+
+  
+  .faqs-container .content {
+    padding: 0 32px;
+    background: #f3fcf0;
+    line-height: 2;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 500ms;
+    font-family: "Poppins", sans-serif;
+
+  }
+  
+  .faqs-container .content.active {
+    max-height: 600px;
+  }
+  .tekuno-link {
+    color: #ce8e17;
+
+}
+.view-more-btn {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 10px; /* Adjust the top margin as needed */
+}
+
+

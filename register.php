@@ -1,5 +1,3 @@
-register.php
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +10,7 @@ register.php
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/regis1.css"> <!-- Your custom CSS -->
-    
+
     <link rel="shortcut icon" href="image/ticket_logo.png">
 
 </head>
@@ -54,35 +52,33 @@ register.php
         left: -35px;
         content: "❌";
     }
-
-    
 </style>
 
 <body>
 
-<!-- Navbar -->
-<header id="header">
+    <!-- Navbar -->
+    <header id="header">
         <nav class="navbar">
-        <div class="navbar-logo">
-            <img src="img/logo2.png">
-            <span class="logo-text">CGG e-Ticketing</span>
-        </div>
-        <div class="links">
-            <ul>
-                <li>
-                  <a href="#header">Home</a>
-                </li>
-                <li>
-                  <a href="#aboutus">About</a>
-                </li>
-                <li>
-                  <a href="#contact">Contact</a>
-                </li>
-                <li><a href="usertype.php" class="active">LOGIN</a></li>
-            </ul>
-        </div>
-    </nav>
-</header>
+            <div class="navbar-logo">
+                <img src="img/logo2.png">
+                <span class="logo-text">CGG e-Ticketing</span>
+            </div>
+            <div class="links">
+                <ul>
+                    <li>
+                        <a href="index.php">Home</a>
+                    </li>
+                    <li>
+                        <a href="index.php#aboutus">About</a>
+                    </li>
+                    <li>
+                        <a href="index.php#contact">Contact</a>
+                    </li>
+                    <li><a href="usertype.php" class="active">LOGIN</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
     <!-- Logo-->
     <div class="container">
@@ -93,7 +89,7 @@ register.php
         </div>
         <div class="text-center w-75 m-auto">
             <h4 class="" style="color: #232836;">Free Sign Up</h4>
-            <p class="" style="color: ;"> Don't have an account yet? Create your account, it takes less than a minute. </p>
+            <p class="" style="color: 232836;"> Don't have an account yet? Create your account, it takes less than a minute. </p>
         </div>
         <br>
         <div class="content">
@@ -117,7 +113,7 @@ register.php
                         <label for="middlename" class="form-label"> <i class="fas fa-user"></i> Middle Initial</label>
                         <input class="form-control" type="text" name="middleinitial" id="middleNameInput" placeholder="Enter your Middle Initial (Optional)" oninput="restrictToLettersWithSingleSpace(this)" maxlength="2">
                         <span class=" note" style="display: none; color: red;">Please enter letters only.</span>
-                        
+
                     </div>
 
                     <div class="col-md-4 mt-2">
@@ -125,16 +121,14 @@ register.php
                         <select id=company name="company" class="form-control" required>
                             <option value="" disabled selected>Select your Company</option>
                             <?php
-                            $company = getAll("company")
-                            if(mysqli_num_rows($company) > 0){
-                                foreach($company as $company){
-                                    ?>
-                                    <option value="<?= $company['branch_name'];?>"><?= $company['branch_name'];?></option>
-                                    <?php
+                            $company = getAll("company");
+                            if (mysqli_num_rows($company) > 0) {
+                                foreach ($company as $company) {
+                            ?>
+                                    <option value="<?= $company['branch_name']; ?>"><?= $company['branch_name']; ?></option>
+                            <?php
                                 }
-                            }
-                            else 
-                            {
+                            } else {
                                 echo "<option value=''>No Company available</option>";
                             }
                             ?>
@@ -146,16 +140,14 @@ register.php
                         <select id=branch name="branch" class="form-control" required>
                             <option value="" disabled selected>Select your Branch</option>
                             <?php
-                            $branch = getAll("branch")
-                            if(mysqli_num_rows($branch) > 0){
-                                foreach($branch as $branch){
-                                    ?>
-                                    <option value="<?= $branch['branch_name'];?>"><?= $branch['branch_name'];?></option>
-                                    <?php
+                            $branch = getAll("branch");
+                            if (mysqli_num_rows($branch) > 0) {
+                                foreach ($branch as $branch) {
+                            ?>
+                                    <option value="<?= $branch['branch_name']; ?>"><?= $branch['branch_name']; ?></option>
+                            <?php
                                 }
-                            }
-                            else 
-                            {
+                            } else {
                                 echo "<option value=''>No Branch available</option>";
                             }
                             ?>
@@ -167,16 +159,14 @@ register.php
                         <select id=department name="department" class="form-control" required>
                             <option value="" disabled selected>Select your Department</option>
                             <?php
-                            $department = getAll("department")
-                            if(mysqli_num_rows($department) > 0){
-                                foreach($department as $department){
-                                    ?>
-                                    <option value="<?= $department['branch_name'];?>"><?= $department['branch_name'];?></option>
-                                    <?php
+                            $department = getAll("department");
+                            if (mysqli_num_rows($department) > 0) {
+                                foreach ($department as $department) {
+                            ?>
+                                    <option value="<?= $department['branch_name']; ?>"><?= $department['branch_name']; ?></option>
+                            <?php
                                 }
-                            }
-                            else 
-                            {
+                            } else {
                                 echo "<option value=''>No Department available</option>";
                             }
                             ?>
@@ -209,7 +199,7 @@ register.php
                         </div>
                         <div id="message">
                             <h6>Password must contain:</h6>
-                            <p id="letter" class="invalid">At least one letter</           p>
+                            <p id="letter" class="invalid">At least one letter</ p>
                             <p id="capital" class="invalid">At least one capital letter</p>
                             <p id="number" class="invalid">At least one number</p>
                             <p id="special" class="invalid">At least one special character</p>
@@ -225,14 +215,14 @@ register.php
                         </div>
                     </div>
 
-              <div>
-    <div class="row justify-content-center">
-        <label class="form-check-label text-center">
-           <br><input class="form-check-input" type="checkbox" value="" id="policyCheckbox" required>
-           I agree to the terms and conditions of the <a href="policy.php" class="text-orange" >Policy</a>
-        </label>
-    </div>
-</div>
+                    <div>
+                        <div class="row justify-content-center">
+                            <label class="form-check-label text-center">
+                                <br><input class="form-check-input" type="checkbox" value="" id="policyCheckbox" required>
+                                I agree to the terms and conditions of the <a href="policy.php" class="text-orange">Policy</a>
+                            </label>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="button-container">
@@ -241,7 +231,7 @@ register.php
 
                 <div class="row mt-3">
                     <div class="col-12 text-center">
-                    <p class="" style="color: #232836;">Already have an account? <a href="emplogin.php" class="text-orange">Login</a>
+                        <p class="" style="color: #232836;">Already have an account? <a href="emplogin.php" class="text-orange">Login</a>
                     </div> <!-- end col-->
                 </div>
 

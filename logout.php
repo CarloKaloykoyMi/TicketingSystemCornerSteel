@@ -6,6 +6,6 @@ if (isset($_SESSION['auth'])) {
     unset($_SESSION['auth_user']);
 }
 
-header('Location: login.php')
+header('Location: emplogin.php')
 
 ?>

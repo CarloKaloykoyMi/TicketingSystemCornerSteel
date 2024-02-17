@@ -31,7 +31,7 @@
             <div class="links">
                 <ul>
                     <li>
-                        <a href="index.php#header">Home</a>
+                        <a href="index.php">Home</a>
                     </li>
                     <li>
                         <a href="index.php#aboutus">About</a>
