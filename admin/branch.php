@@ -1,4 +1,4 @@
-<?php include('../function/myfunction.php'); 
+<?php include('../function/myfunction.php');
 include 'sidebar.php'
 
 ?>
@@ -30,121 +30,104 @@ include 'sidebar.php'
 </head>
 
 <body>
-        <div class="main p-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Branches</h4>
-                                <button class="btn btn-primary float-end" data-bs-toggle="modal"
-                                    data-bs-target="#addBranchModal">Add Branch</button>
-                            </div>
-                            <div class="card-body" id="category_table">
+    <div class="main p-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Branches</h4>
+                            <button class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#addBranchModal">Add Branch</button>
+                        </div>
+                        <div class="card-body" id="category_table">
                             <table id="example" class="table table-striped" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Branch Name</th>
-                                            <th>Contact</th>
-                                            <th>Email</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $branch = getAll("branch");
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Branch Name</th>
+                                        <th>Contact</th>
+                                        <th>Email</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $branch = getAll("branch");
 
-                                        if (mysqli_num_rows($branch) > 0) {
-                                            foreach ($branch as $item) {
-                                                ?>
-                                                <tr>
-                                                    <td><?= $item['id']; ?></td>
-                                                    <td><?= $item['branch_name']; ?></td>
-                                                    <td><?= $item['contact']; ?></td>
-                                                    <td><?= $item['email']; ?></td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-primary" data-bs-toggle="modal"
-                                                            data-bs-target="#editBranchModal<?= $item['id']; ?>">Edit</a>
-                                                        <button type="button"
-                                                            class="btn btn-sm btn-danger delete_category_btn"
-                                                            value="<?= $item['id']; ?>">Delete</button>
-                                                    </td>
-                                                </tr>
+                                    if (mysqli_num_rows($branch) > 0) {
+                                        foreach ($branch as $item) {
+                                    ?>
+                                            <tr>
+                                                <td><?= $item['id']; ?></td>
+                                                <td><?= $item['branch_name']; ?></td>
+                                                <td><?= $item['contact']; ?></td>
+                                                <td><?= $item['email']; ?></td>
+                                                <td>
+                                                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editBranchModal<?= $item['id']; ?>">Edit</a>
+                                                    <button type="button" class="btn btn-sm btn-danger delete_category_btn" value="<?= $item['id']; ?>">Delete</button>
+                                                </td>
+                                            </tr>
 
-                                                <!-- Edit Company Modal -->
-                                                <div class="modal fade" id="editBranchModal<?= $item['id']; ?>" tabindex="-1"
-                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Edit Company</h5>
-                                                                <button type="button" class="btn-close"
-                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <!-- Your edit form content goes here -->
-                                                                <form action="code.php" method="POST">
-                                                                    <input type="hidden" name="branch_id"
-                                                                        value="<?= $item['id']; ?>">
+                                            <!-- Edit Company Modal -->
+                                            <div class="modal fade" id="editBranchModal<?= $item['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Edit Company</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <!-- Your edit form content goes here -->
+                                                            <form action="code.php" method="POST">
+                                                                <input type="hidden" name="branch_id" value="<?= $item['id']; ?>">
 
-                                                                    <div class="col-md-12 mt-3">
-                                                                        <label for=""><i class="fas fa-building"></i> Branch Name</label>
-                                                                        <input type="text" name="branch_name"
-                                                                            value="<?= $item['branch_name']; ?>"
-                                                                            class="form-control">
-                                                                    </div>
+                                                                <div class="col-md-12 mt-3">
+                                                                    <label for=""><i class="fas fa-building"></i> Branch Name</label>
+                                                                    <input type="text" name="branch_name" value="<?= $item['branch_name']; ?>" class="form-control">
+                                                                </div>
 
-                                                                    <div class="col-md-12 mt-3">
-                                                                        <label for=""><i class="fa-solid fa-location-dot"></i> Branch Address</label>
-                                                                        <input type="text" name="branch_address"
-                                                                            value="<?= $item['branch_address']; ?>"
-                                                                            class="form-control">
-                                                                    </div>
+                                                                <div class="col-md-12 mt-3">
+                                                                    <label for=""><i class="fa-solid fa-location-dot"></i> Branch Address</label>
+                                                                    <input type="text" name="branch_address" value="<?= $item['branch_address']; ?>" class="form-control">
+                                                                </div>
 
-                                                                    <div class="col-md-12 mt-3">
-                                                                        <label for=""><i class="fa-solid fa-phone"></i> Contact</label>
-                                                                        <input type="text" name="contact"
-                                                                            value="<?= $item['contact']; ?>"
-                                                                            class="form-control">
-                                                                    </div>
+                                                                <div class="col-md-12 mt-3">
+                                                                    <label for=""><i class="fa-solid fa-phone"></i> Contact</label>
+                                                                    <input type="text" name="contact" value="<?= $item['contact']; ?>" class="form-control">
+                                                                </div>
 
-                                                                    <div class="col-md-12 mt-3">
-                                                                        <label for=""><i class="fas fa-envelope"></i> Email</label>
-                                                                        <input type="text" name="email"
-                                                                            value="<?= $item['email']; ?>"
-                                                                            class="form-control">
-                                                                    </div>
+                                                                <div class="col-md-12 mt-3">
+                                                                    <label for=""><i class="fas fa-envelope"></i> Email</label>
+                                                                    <input type="text" name="email" value="<?= $item['email']; ?>" class="form-control">
+                                                                </div>
 
-                                                                    <!-- Add other form fields for editing as needed -->
-                                                                    <hr>
-                                                                    <div class="form-group pull-right">
-                                                                        <button
-                                                                            class="btn btn-primary float-end"
-                                                                            type="submit" name="edit_branch">Save
-                                                                            Changes</button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
+                                                                <!-- Add other form fields for editing as needed -->
+                                                                <hr>
+                                                                <div class="form-group pull-right">
+                                                                    <button class="btn btn-primary float-end" type="submit" name="edit_branch">Save
+                                                                        Changes</button>
+                                                                </div>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- End Edit Company Modal -->
+                                            </div>
+                                            <!-- End Edit Company Modal -->
 
-                                                <?php
-                                            }
-                                        } else {
-                                            echo "No Records Found!";
+                                    <?php
                                         }
-                                        ?>
-                                    </tbody>
-                                </table>
-                            </div>
+                                    } else {
+                                        echo "No Records Found!";
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
 
     <div class="modal fade" id="addBranchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -152,22 +135,19 @@ include 'sidebar.php'
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Add Company</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form action="code.php" method="POST">
 
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fas fa-building"></i> Branch Name</label>
-                            <input type="text" name="branch_name" placeholder="Enter Branch Name"
-                                class="form-control">
+                            <input type="text" name="branch_name" placeholder="Enter Branch Name" class="form-control">
                         </div>
 
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fa-solid fa-location-dot"></i> Branch Address</label>
-                            <input type="text" name="branch_address" placeholder="Enter Branch Address"
-                                class="form-control">
+                            <input type="text" name="branch_address" placeholder="Enter Branch Address" class="form-control">
                         </div>
 
                         <div class="col-md-12 mt-3">
@@ -194,7 +174,7 @@ include 'sidebar.php'
     <script src="js/sidebar.js"></script>
 
     <script>
-        $(".btn-primary").click(function () {
+        $(".btn-primary").click(function() {
             $("#myModal").modal("show");
         });
     </script>

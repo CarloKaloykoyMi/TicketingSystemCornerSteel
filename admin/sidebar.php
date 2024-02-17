@@ -16,25 +16,25 @@
         <ul class="sidebar-nav">
             <li class="sidebar-item">
                 <a href="dashboard.php" class="sidebar-link">
-                    <i class="lni lni-user"></i>
+                    <i class="lni lni-home"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a href="company.php" class="sidebar-link">
-                    <i class="lni lni-user"></i>
+                    <i class="lni lni-apartment"></i>
                     <span>Company</span>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a href="department.php" class="sidebar-link">
-                    <i class="lni lni-user"></i>
+                    <i class="fa-solid fa-users"></i>
                     <span>Department</span>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a href="branch.php" class="sidebar-link">
-                    <i class="lni lni-user"></i>
+                    <i class="fas fa-building"></i>
                     <span>Branch</span>
                 </a>
             </li>
@@ -47,7 +47,7 @@
             <!-- Add other menu items as needed -->
         </ul>
         <div class="sidebar-footer">
-            <a href="logout.php" class="sidebar-link">
+            <a href="logoutadmin.php" class="sidebar-link">
                 <i class="lni lni-exit"></i>
                 <span>Logout</span>
             </a>
