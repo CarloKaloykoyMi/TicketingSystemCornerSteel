@@ -7,8 +7,11 @@
                 <i class="lni lni-grid-alt"></i>
             </button>
             <div class="sidebar-logo">
-                <a href="dashboard.php"></a>
+                <a href="dashboard.php">
+                    <img src="img/logooo.png" height="75" alt="CGG E-Support Logo"> CGG E-Support
+                </a>
             </div>
+
         </div>
         <ul class="sidebar-nav">
             <li class="sidebar-item">

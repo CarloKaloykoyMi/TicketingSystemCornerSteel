@@ -9,6 +9,7 @@ include 'sidebar.php'
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company</title>
 
     <!-- datatable css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
@@ -39,7 +40,7 @@ include 'sidebar.php'
                             <button class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#addCompanyModal">Add Company</button>
                         </div>
                         <div class="card-body" id="category_table">
-                        <table id="example" class="table table-striped" style="width:100%">
+                            <table id="example" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Company ID</th>
