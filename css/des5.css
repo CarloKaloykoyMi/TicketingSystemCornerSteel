@@ -3,7 +3,7 @@
 :root {
   --dark-one: #fdfdfd;
   --dark-two: #7a7a7a;
-  --main-color: #37404a;
+  --main-color: #333333;
   --light-one: #fff;
   --light-two: #f9fafb;
   --light-three: #f6f7fb;
@@ -43,8 +43,8 @@ img {
 }
 
 #header {
-  padding: 0px 0; /* Add padding for spacing */
-  background-color: #817e7e; /* Add a background color if desired */
+  padding: 0px 0;
+  background-color: #817e7e;
   height: px;
 }
 
@@ -1276,7 +1276,7 @@ header .circle {
 /* Footer */
 
 .footer {
-  background-color: #37404a;
+  background-color: var(--main-color);
   padding: 6rem 0;
 }
 

@@ -116,7 +116,7 @@ h2 {
 }
 
 .links a.active {
-    background-color: #37404a;
+    background-color: #333333;
     color: var(--light-one);
     border-radius: 2rem;
     font-size: 1rem;
