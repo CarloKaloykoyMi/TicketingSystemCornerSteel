@@ -107,7 +107,7 @@
     <div class="container">
         <h2>Select Account Type</h2>
         <div class="button-group">
-            <a href="admin/adminlogin.php" class="btn btn-primary">
+            <a href="adminlogin.php" class="btn btn-primary">
                 <div class="button-option">
                     <img src="img/user1.png" alt="Enterprise User">
                     Admin

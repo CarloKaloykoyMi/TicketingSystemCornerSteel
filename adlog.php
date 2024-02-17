@@ -1,4 +1,7 @@
-<?php session_start();
+code.php
+
+<?php session_start(); ?>
+<?php
 include('mysql_connect.php'); // connection to MySQL
 
 if (isset($_POST['register'])) {
@@ -78,8 +81,7 @@ if (isset($_POST['register'])) {
             }
         }
     }
-} else if (isset($_POST['emp_login_btn'])) {
-    // Employee login
+} else if (isset($_POST['login_btn'])) {
     if (!empty(trim($_POST['email'])) && !empty(trim($_POST['password']))) {
         $email = mysqli_real_escape_string($con, $_POST['email']);
         $password = mysqli_real_escape_string($con, $_POST['password']);
@@ -90,48 +92,43 @@ if (isset($_POST['register'])) {
         if (mysqli_num_rows($login_query_run) > 0) {
             $row = mysqli_fetch_array($login_query_run);
             if ($row['verification_status'] == "1") {
+                $_SESSION['auth'] = true;
                 $role = $row['role'];
+                $_SESSION['auth_user'] = [
+                    'user_id' => $row['id'],
+                    'username' => $row['username'],
+                    'email' => $row['email'],
+                    'role' => $row['role'],
+                ];
+                $_SESSION['role'] = $role;
 
-                // Check if the user is not an admin
-                if ($role != 0) {
-                    $_SESSION['auth'] = true;
-                    $_SESSION['auth_user'] = [
-                        'user_id' => $row['id'],
-                        'username' => $row['username'],
-                        'email' => $row['email'],
-                        'role' => $row['role'],
-                    ];
-                    $_SESSION['role'] = $role;
-
-                    if ($role == 1) {
-                        // Regular user
-                        header("Location: home_user.php");
-                        exit();
-                    } else {
-                        // Handle other roles here
-                        $_SESSION['status'] = "Access Denied!";
-                        header("Location: emplogin.php");
-                        exit();
-                    }
-                } else {
-                    // Admin user, deny login
-                    $_SESSION['status'] = "Admins cannot log in via this form!";
+                if ($role == 0
+                ) {
+                    header("Location: admin/company.php");
+                    exit();
+                } elseif ($role == 1) {
+                    // Deny login for employees
+                    $_SESSION['status'] = "Employees cannot log in via this form!";
                     header("Location: emplogin.php");
+                    exit();
+                } else {
+                    $_SESSION['status'] = "Access Denied!";
+                    header("Location: adminlogin.php");
                     exit();
                 }
             } else {
                 $_SESSION['status'] = "PLEASE VERIFY YOUR EMAIL!";
-                header("Location: emplogin.php");
+                header("Location: adminlogin.php");
                 exit();
             }
         } else {
             $_SESSION['status'] = "EMAIL OR PASSWORD INVALID";
-            header("Location: emplogin.php");
+            header("Location: adminlogin.php");
             exit();
         }
     } else {
         $_SESSION['status'] = "ALL FIELDS MUST BE FILLED";
-        header("Location: emplogin.php");
+        header("Location: adminlogin.php");
         exit();
     }
 }

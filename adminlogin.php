@@ -1,3 +1,6 @@
+<?php session_start();
+include('mysql_connect.php'); // connection to MySQL
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +35,7 @@
         <div class="form login">
             <div class="form-content">
                 <header>Admin Login</header>
-                <form action="code.php" method="POST">
+                <form action="adlog.php" method="POST">
                     <div class="field input-field">
                         <input type="email" name="email" placeholder="Email" class="input">
                     </div>
@@ -122,8 +125,6 @@
                     <i class="fas fa-chevron-up"></i>
                 </a>
             </div>
-        </div>
-        </div>
         </div>
     </footer>
 </body>
