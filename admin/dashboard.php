@@ -22,7 +22,7 @@ include 'sidebar.php'
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Dashboard eyy</h4>
+                            <h4>Dashboard</h4>
                         </div>
                     </div>
                 </div>
