@@ -63,9 +63,9 @@ function getStatusColorClass($status)
                             <table id="example" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>Ticket ID</th>
-                                        <th>Company</th>
-                                        <th>Branch</th>
+                                        <th>Date</th>
+                                        <th>Subject</th>
+                                        <th>Department</th>
                                         <th>Requestor</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -77,19 +77,45 @@ function getStatusColorClass($status)
                                     foreach ($ticket as $item) {
                                 ?>
                                         <tr>
-                                            <td><?= $item['ticket_id']; ?></td>
-                                            <td><?= $item['company']; ?></td>
+                                            <td><?= $item['date_created']; ?></td>
+                                            <td><?= $item['concern']; ?></td>
                                             <td><?= $item['branch']; ?></td>
                                             <td><?= $item['requester']; ?></td>
                                             <td class="<?= getStatusColorClass($item['status']); ?>">
                                                 <?= $item['status']; ?>
                                             </td>
                                             <td class="table-action">
-                                                <button class="btn btn-primary" onclick="AcceptTicket(<?php echo $item['ticket_id']; ?>)">
-                                                    <i class="fas fa-eye"></i> View
-                                                </button>
+                                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewCompany<?= $item['ticket_id']; ?>"><i class="fas fa-eye"></i>&nbsp;View</a>
                                             </td>
                                         </tr>
+
+                                         <!-- Edit Company Modal -->
+                                         <div class="modal fade" id="viewCompany<?= $item['ticket_id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Ticket</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <!-- Your edit form content goes here -->
+                                                            <form action="code.php" method="POST">
+                                                                <input type="hidden" name="ticket_id" value="<?= $item['ticket_id']; ?>">
+
+                                                                
+
+                                                                <!-- Add other form fields for editing as needed -->
+                                                                <hr>
+                                                                <div class="form-group pull-right">
+                                                                    <button class="btn btn-primary float-end" type="submit" name="edit_company">Save
+                                                                        Changes</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Edit Company Modal -->
                                 <?php
                                     }
                                 } else {
