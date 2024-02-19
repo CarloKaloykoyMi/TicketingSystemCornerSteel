@@ -49,7 +49,7 @@
             </li>
 
             <li>
-                <a href="company.php" class="sidebar-link">
+                <a href="#" class="sidebar-link">
                     <i class="fa-solid fa-ticket"></i>
                     <span class="nav-item"> &nbsp;Company</span>
                 </a>
