@@ -53,7 +53,7 @@ function getAll($table) //function to call the tables from the dabatabase
             <thead>
                 <tr>
                     <th>Ticket ID</th>
-                    <th>Requester</th>
+                    <th>Requestor</th>
                     <!-- <th>Assigned</th> -->
                     <th>Concern</th>
                     <th>Status</th>
@@ -104,7 +104,7 @@ function getAll($table) //function to call the tables from the dabatabase
                                 <span class="input-group-prepend">
                                     <i class="fa-solid fa-user input-group-text"></i>
                                 </span>
-                                <label for="requester" class="sr-only">Requester:</label>
+                                <label for="requester" class="sr-only">Requestor:</label>
                                 <input type="text" class="form-control" id="requester" name="requester" placeholder="Requester">
                             </div>
                         </div>
