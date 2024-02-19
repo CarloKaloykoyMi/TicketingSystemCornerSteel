@@ -66,7 +66,7 @@ function getStatusColorClass($status)
                                         <th>Ticket ID</th>
                                         <th>Company</th>
                                         <th>Branch</th>
-                                        <th>Requester</th>
+                                        <th>Requestor</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>

@@ -36,7 +36,7 @@
             <li>
                 <a href="ticket.php" class="sidebar-link">
                     <i class="fa-solid fa-ticket"></i>
-                    <span class="nav-item"> &nbsp;Tickets</span>
+                    <span class="nav-item"> &nbsp;Ticket</span>
                 </a>
                 <ul class="sub-menu">
                     <li><a href="#"><i class="fa-solid fa-circle-check"></i>
