@@ -24,32 +24,42 @@ include 'sidebar.php'
                         <div class="card-header">
                             <h4>Dashboard</h4>
                         </div>
+                        <br>
+                        <h2>&nbsp;Welcome Admin!</h2>
+                        <p>&nbsp;This dashboard provides you with tools to manage tickets, users, and system settings efficiently.</p>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card widget-card">
+                                        <div class="card-body text-center">
+                                            <h5 class="card-title"><i class="fa-solid fa-ticket"></i> Total Tickets</h5>
+                                            <p>Currently, there are <strong>150</strong> tickets in the system.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card widget-card">
+                                        <div class="card-body text-center">
+                                            <h5 class="card-title"><i class="fa-solid fa-triangle-exclamation"></i> Resolved Tickets</h5>
+                                            <p>Out of the total, <strong>120</strong> tickets have been resolved.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card widget-card">
+                                        <div class="card-body text-center">
+                                            <h5 class="card-title"><i class="fa-solid fa-spinner"></i> Pending Tickets</h5>
+                                            <p>There are <strong>20</strong> tickets pending for resolution.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <main>
-    <div class="main-content">
-        <h2>Welcome Admin!</h2>
-        <p>This dashboard provides you with tools to manage tickets, users, and system settings efficiently.</p>
-        <div class="dashboard-widgets">
-            <div class="widget">
-                <h3> <i class="fa-solid fa-ticket"></i> Total Tickets</h3>
-                <p>Currently, there are <strong>150</strong> tickets in the system.</p>
-            </div>
-            <div class="widget">
-                <h3><i class="fa-solid fa-triangle-exclamation"></i> Resolved Tickets</h3>
-                <p>Out of the total, <strong>120</strong> tickets have been resolved.</p>
-            </div>
-            <div class="widget">
-                <h3><i class="fa-solid fa-spinner"></i> Pending Tickets</h3>
-                <p>There are <strong>20</strong> tickets pending for resolution.</p>
-            </div>
-        </div>
-    </div>
-</main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="js/sidebar.js"></script>
