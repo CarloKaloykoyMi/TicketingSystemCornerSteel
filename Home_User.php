@@ -92,7 +92,7 @@ function getAll($table) //function to call the tables from the dabatabase
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Submit a Ticket</h4>
+                    <h4 class="modal-title">Submit a Tickett</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
