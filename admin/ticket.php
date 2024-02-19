@@ -77,15 +77,17 @@ function getStatusColorClass($status)
                                     foreach ($ticket as $item) {
                                 ?>
                                         <tr>
-                                            <td><?= $item['date_created']; ?></td>
-                                            <td><?= $item['concern']; ?></td>
+                                            <td><?= $item['ticket_id']; ?></td>
+                                            <td><?= $item['company']; ?></td>
                                             <td><?= $item['branch']; ?></td>
                                             <td><?= $item['requester']; ?></td>
                                             <td class="<?= getStatusColorClass($item['status']); ?>">
                                                 <?= $item['status']; ?>
                                             </td>
                                             <td class="table-action">
-                                                <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewCompany<?= $item['ticket_id']; ?>"><i class="fas fa-eye"></i>&nbsp;View</a>
+                                                <button class="btn btn-primary" onclick="AcceptTicket(<?php echo $item['ticket_id']; ?>)">
+                                                    <i class="fas fa-eye"></i> View
+                                                </button>
                                             </td>
                                         </tr>
 
