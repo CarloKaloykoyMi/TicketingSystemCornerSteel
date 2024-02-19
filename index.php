@@ -88,7 +88,7 @@
                     <div class="links">
                         <ul>
                             <li>
-                                <a href="index.php">Home</a>
+                                <a href="index.php">Homes</a>
                             </li>
                             <li>
                                 <a href="#aboutus">About</a>
