@@ -10,6 +10,14 @@
   body {
     background-color: #333333;
   }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    overflow: hidden;
+}
+
   nav {
     position: absolute;
     top: 0;
@@ -121,3 +129,4 @@ li:hover .sub-menu {
 .status-cancelled {
   background-color: red;
 }
+

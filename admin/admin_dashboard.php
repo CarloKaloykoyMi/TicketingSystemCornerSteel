@@ -6,7 +6,7 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="admin_dashboard.css">
+    <link rel="stylesheet" href="css/admin_dashboard.css">
 
     <style>
 
@@ -32,9 +32,9 @@
 
     <div class="sidebar">
         <div class="sidebar-links">
-            <li><a href="#"><i class="fas fa-home"></i> &nbsp;Dashboard</a></li>
+            <li><a href="admin_dashboard.php" class="sidebar-link"><i class="fas fa-home"></i> &nbsp;Dashboard</a></li>
             <li>
-                <a href="#">
+                <a href="ticket.php" class="sidebar-link">
                     <i class="fa-solid fa-ticket"></i>
                     <span class="nav-item"> &nbsp;Tickets</span>
                 </a>
@@ -47,7 +47,21 @@
                             <span class="nav-item"> &nbsp;Pending Tickets</span></a></li>
                 </ul>
             </li>
-            <li><a href="#"><i class="fas fa-users"></i> &nbsp;Users</a></li>
+
+            <li>
+                <a href="company.php" class="sidebar-link">
+                    <i class="fa-solid fa-ticket"></i>
+                    <span class="nav-item"> &nbsp;Company</span>
+                </a>
+                <ul class="sub-menu">
+                    <li><a href="department.php" class="sidebar-link"><i class="fa-solid fa-circle-check"></i>
+                            <span class="nav-item"> &nbsp;Department</span></a></li>
+                    <li><a href="branch.php" class="sidebar-link"><i class="fa-solid fa-triangle-exclamation"></i>
+                            <span class="nav-item"> &nbsp;Branches</span></a></li>
+                </ul>
+            </li>
+
+            <li><a href="user.php" class="sidebar-link"><i class="fas fa-users"></i> &nbsp;Users</a></li>
             <li><a href="#"><i class="fa fa-file"></i> &nbsp;Reports</a></li>
             <li><a href="#"><i class="fas fa-cog"></i> &nbsp;Settings</a></li>
             <li><a href="#" class="logout"><i class="fas fa-sign-out-alt"></i> &nbsp;Logout</a></li>

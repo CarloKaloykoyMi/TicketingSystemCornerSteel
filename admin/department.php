@@ -62,8 +62,8 @@ include 'sidebar.php'
                                                 <td><?= $item['department_head']; ?></td>
                                                 <td><?= $item['location']; ?></td>
                                                 <td>
-                                                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editDepartmentModal<?= $item['id']; ?>">Edit</a>
-                                                    <button type="button" class="btn btn-sm btn-danger delete_category_btn" value="<?= $item['id']; ?>">Delete</button>
+                                                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editDepartmentModal<?= $item['id']; ?>"><i class="fas fa-pencil"></i>&nbsp;Edit</a>
+                                                    <button type="button" class="btn btn-sm btn-danger delete_category_btn" value="<?= $item['id']; ?>"><i class="fas fa-trash"></i> &nbsp; Delete</button>
                                                 </td>
                                             </tr>
 

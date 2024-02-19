@@ -71,8 +71,8 @@ include 'sidebar.php'
                                                 <td><?= $item['email']; ?></td>
                                                 <td>
                                                     <div class="btn-group" role="group">
-                                                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editUserModal<?= $item['user_id']; ?>">Edit</a>
-                                                        <button type="button" class="btn btn-sm btn-danger delete_user_btn" data-bs-toggle="modal" data-bs-target="#deleteUserModal<?= $item['user_id']; ?>">Delete</button>
+                                                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editUserModal<?= $item['user_id']; ?>"><i class="fas fa-pencil"></i>&nbsp;Edit</a>
+                                                        <button type="button" class="btn btn-sm btn-danger delete_user_btn" data-bs-toggle="modal" data-bs-target="#deleteUserModal<?= $item['user_id']; ?>"><i class="fas fa-trash"></i> &nbsp; Delete</button>
                                                     </div>
                                                 </td>
                                             </tr>
