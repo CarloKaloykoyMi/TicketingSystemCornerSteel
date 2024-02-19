@@ -22,7 +22,7 @@
                 <li class="admin-profile">
                     <div class="profile-info">
                         <img src="img/cover1.jpg" alt="">
-                        <span>Admin Name</span>
+                        <span>Admin Names</span>
                     </div>
                 </li>
             </ul>
