@@ -105,3 +105,19 @@ li:hover .sub-menu {
 .fa-solid {
     color: white;
 }
+
+.status-pending {
+  background-color: orange;
+}
+
+.status-resolved {
+  background-color: green;
+}
+
+.status-unresolved {
+  background-color: blue;
+}
+
+.status-cancelled {
+  background-color: red;
+}

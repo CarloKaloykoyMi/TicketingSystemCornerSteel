@@ -2,6 +2,26 @@
 include 'sidebar.php'
 ?>
 
+<?php
+$ticket = getAll("ticket");
+
+function getStatusColorClass($status)
+{
+    switch ($status) {
+        case 'Pending':
+            return 'text-warning';
+        case 'Resolved':
+            return 'text-success';
+        case 'Unresolved':
+            return 'text-primary';
+        case 'Cancelled':
+            return 'text-danger';
+        default:
+            return '';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +37,7 @@ include 'sidebar.php'
 
     <!-- icon css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -51,30 +72,31 @@ include 'sidebar.php'
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php
-                                    $ticket = getAll("ticket");
-
-                                    if (mysqli_num_rows($ticket) > 0) {
-                                        foreach ($ticket as $item) {
-                                    ?>
-                                            <tr>
-                                                <td><?= $item['ticket_id']; ?></td>
-                                                <td><?= $item['company']; ?></td>
-                                                <td><?= $item['branch']; ?></td>
-                                                <td><?= $item['requester']; ?></td>
-                                                <td><?= $item['status']; ?></td>
-                                                <td class="table-action">
-                                                    <button class="btn btn-primary" onclick="AcceptTicket(<?php echo $item['ticket_id']; ?>)">Accept</button>
-                                                    <button class="btn btn-warning" onclick="DeclineTicket(<?php echo $item['ticket_id']; ?>)">Decline</button>
-                                                </td>
-                                            </tr>
-                                    <?php
-                                        }
-                                    } else {
-                                        echo "No Records Found!";
+                                <?php
+                                if (mysqli_num_rows($ticket) > 0) {
+                                    foreach ($ticket as $item) {
+                                ?>
+                                        <tr>
+                                            <td><?= $item['ticket_id']; ?></td>
+                                            <td><?= $item['company']; ?></td>
+                                            <td><?= $item['branch']; ?></td>
+                                            <td><?= $item['requester']; ?></td>
+                                            <td class="<?= getStatusColorClass($item['status']); ?>">
+                                                <?= $item['status']; ?>
+                                            </td>
+                                            <td class="table-action">
+                                                <button class="btn btn-primary" onclick="AcceptTicket(<?php echo $item['ticket_id']; ?>)">
+                                                    <i class="fas fa-eye"></i> View
+                                                </button>
+                                            </td>
+                                        </tr>
+                                <?php
                                     }
-                                    ?>
-                                </tbody>
+                                } else {
+                                    echo "No Records Found!";
+                                }
+                                ?>
+                            </tbody>
                             </table>
                         </div>
                     </div>
