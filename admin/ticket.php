@@ -63,7 +63,7 @@ function getStatusColorClass($status)
                             <table id="example" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>Dates</th>
+                                        <th>Date</th>
                                         <th>Subject</th>
                                         <th>Department</th>
                                         <th>Requestor</th>
