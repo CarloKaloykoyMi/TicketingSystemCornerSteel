@@ -1,5 +1,5 @@
 <?php include('../function/myfunction.php');
-include 'sidebar.php'
+include 'sidebar_navbar.php'
 
 ?>
 

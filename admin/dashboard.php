@@ -1,5 +1,5 @@
 <?php include('../function/myfunction.php');
-include 'sidebar.php'
+include 'sidebar_navbar.php'
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +16,8 @@ include 'sidebar.php'
 </head>
 
 <body>
+    
+    
     <div class="main p-3">
         <div class="container">
             <div class="row">

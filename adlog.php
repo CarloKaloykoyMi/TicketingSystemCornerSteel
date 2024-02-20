@@ -104,7 +104,7 @@ if (isset($_POST['register'])) {
 
                 if ($role == 0
                 ) {
-                    header("Location: admin/admin_dashboard.php");
+                    header("Location: admin/dashboard.php");
                     exit();
                 } elseif ($role == 1) {
                     // Deny login for employees

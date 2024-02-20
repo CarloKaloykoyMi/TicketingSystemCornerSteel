@@ -1,4 +1,5 @@
 <?php include('../function/myfunction.php');
+include 'sidebar_navbar.php'
 ?>
 
 <!DOCTYPE html>
@@ -25,84 +26,16 @@
     <script defer src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     <script defer src="js/table.js"></script>
-    <link rel="stylesheet" href="css/admin_dashboard.css">
+    <link rel="stylesheet" href="css/sidebar.css">
 </head>
-<header>
-    <nav class="navbar">
-        <div class="container">
-            <h1 class="logo"><img src="img/logo2.png" alt="Logo"> CGG E-Ticketing System</h1>
-            <i class="fas fa-bars toggle-sidebar"></i>
-            <ul class="nav-links">
-                <li class="admin-profile">
-                    <div class="profile-info">
-                        <img src="img/cover1.jpg" alt="">
-                        <span>Admin Name</span>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
-
-<div class="sidebar">
-    <div class="sidebar-links">
-        <li><a href="admin_dashboard.php" class="sidebar-link"><i class="fas fa-home"></i> &nbsp;Dashboard</a></li>
-        <li>
-            <a href="ticket.php" class="sidebar-link">
-                <i class="fa-solid fa-ticket"></i>
-                <span class="nav-item"> &nbsp;Tickets</span>
-            </a>
-            <ul class="sub-menu">
-                <li><a href="#"><i class="fa-solid fa-circle-check"></i>
-                        <span class="nav-item"> &nbsp;Resolved Tickets</span></a></li>
-                <li><a href="#"><i class="fa-solid fa-triangle-exclamation"></i>
-                        <span class="nav-item"> &nbsp;Unresolved Tickets</span></a></li>
-                <li><a href="#"><i class="fa-solid fa-spinner"></i>
-                        <span class="nav-item"> &nbsp;Pending Tickets</span></a></li>
-            </ul>
-        </li>
-
-        <li>
-            <a href="company.php" class="sidebar-link">
-                <i class="fa-solid fa-ticket"></i>
-                <span class="nav-item"> &nbsp;Company</span>
-            </a>
-            <ul class="sub-menu">
-                <li><a href="department.php" class="sidebar-link"><i class="fa-solid fa-circle-check"></i>
-                        <span class="nav-item"> &nbsp;Department</span></a></li>
-                <li><a href="branch.php" class="sidebar-link"><i class="fa-solid fa-triangle-exclamation"></i>
-                        <span class="nav-item"> &nbsp;Branches</span></a></li>
-            </ul>
-        </li>
-
-        <li><a href="user.php" class="sidebar-link"><i class="fas fa-users"></i> &nbsp;Users</a></li>
-        <li><a href="#"><i class="fa fa-file"></i> &nbsp;Reports</a></li>
-        <li><a href="#"><i class="fas fa-cog"></i> &nbsp;Settings</a></li>
-        <li><a href="#" class="logout"><i class="fas fa-sign-out-alt"></i> &nbsp;Logout</a></li>
-    </div>
-    <script>
-        // Add a script to handle the click event for the ticket categories
-        document.addEventListener("DOMContentLoaded", function() {
-            const ticketCategories = document.querySelectorAll('.sidebar-links > li');
-
-            ticketCategories.forEach(category => {
-                category.addEventListener('click', function() {
-                    const subMenu = this.querySelector('.sub-menu');
-                    if (subMenu) {
-                        subMenu.classList.toggle('show');
-                    }
-                });
-            });
-        });
-    </script>
-</div>
 
 <body>
+    
     <div class="main p-3">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card" style="margin-left: 220px; margin-top:100px;">
+                    <div class="card">
                         <div class="card-header">
                             <h4>Company</h4>
                             <button class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#addCompanyModal">Add Company</button>
