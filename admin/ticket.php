@@ -63,7 +63,7 @@ function getStatusColorClass($status)
                             <table id="example" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>Dates</th>
+                                        <th>Date</th>
                                         <th>Subject</th>
                                         <th>Department</th>
                                         <th>Requestor</th>
@@ -77,15 +77,15 @@ function getStatusColorClass($status)
                                     foreach ($ticket as $item) {
                                 ?>
                                         <tr>
-                                            <td><?= $item['ticket_id']; ?></td>
-                                            <td><?= $item['company']; ?></td>
-                                            <td><?= $item['branch']; ?></td>
-                                            <td><?= $item['requester']; ?></td>
+                                            <td><?= $item['date']; ?></td>
+                                            <td><?= $item['subject']; ?></td>
+                                            <td><?= $item['department']; ?></td>
+                                            <td><?= $item['requestor']; ?></td>
                                             <td class="<?= getStatusColorClass($item['status']); ?>">
                                                 <?= $item['status']; ?>
                                             </td>
                                             <td class="table-action">
-                                                <button class="btn btn-primary" onclick="AcceptTicket(<?php echo $item['ticket_id']; ?>)">
+                                                <button class="btn btn-primary" onclick="AcceptTicket(<?php echo $item['date']; ?>)">
                                                     <i class="fas fa-eye"></i> View
                                                 </button>
                                             </td>
