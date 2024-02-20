@@ -14,6 +14,7 @@ include('crud.php');
     <title>Home</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <style>
         .btn-custom {
@@ -120,7 +121,7 @@ include('crud.php');
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-prepend">
-                                    <i class="fa-solid fa-user input-group-text"></i>
+                                <i class="fa-solid fa-pencil input-group-text"></i>
                                 </span>
                                 <label for="subject" class="sr-only">Subject:</label>
                                 <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
