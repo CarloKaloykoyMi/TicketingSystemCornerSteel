@@ -72,27 +72,25 @@ function getStatusColorClass($status)
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php
-                                if (mysqli_num_rows($ticket) > 0) {
-                                    foreach ($ticket as $item) {
-                                ?>
-                                        <tr>
-                                            <td><?= $item['ticket_id']; ?></td>
-                                            <td><?= $item['company']; ?></td>
-                                            <td><?= $item['branch']; ?></td>
-                                            <td><?= $item['requester']; ?></td>
-                                            <td class="<?= getStatusColorClass($item['status']); ?>">
-                                                <?= $item['status']; ?>
-                                            </td>
-                                            <td class="table-action">
-                                                <button class="btn btn-primary" onclick="AcceptTicket(<?php echo $item['ticket_id']; ?>)">
-                                                    <i class="fas fa-eye"></i> View
-                                                </button>
-                                            </td>
-                                        </tr>
+                                    <?php
+                                    if (mysqli_num_rows($ticket) > 0) {
+                                        foreach ($ticket as $item) {
+                                    ?>
+                                            <tr>
+                                                <td><?= $item['ticket_id']; ?></td>
+                                                <td><?= $item['company']; ?></td>
+                                                <td><?= $item['branch']; ?></td>
+                                                <td><?= $item['requester']; ?></td>
+                                                <td class="<?= getStatusColorClass($item['status']); ?>">
+                                                    <?= $item['status']; ?>
+                                                </td>
+                                                <td class="table-action">
+                                                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCompanyModal<?= $item['ticket_id']; ?>"> <i class="fas fa-eye"></i>&nbsp;View</a>
+                                                </td>
+                                            </tr>
 
-                                         <!-- Edit Company Modal -->
-                                         <div class="modal fade" id="viewCompany<?= $item['ticket_id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <!-- Edit Company Modal -->
+                                            <div class="modal fade" id="editCompanyModal<?= $item['ticket_id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -101,10 +99,10 @@ function getStatusColorClass($status)
                                                         </div>
                                                         <div class="modal-body">
                                                             <!-- Your edit form content goes here -->
-                                                            <form action="code.php" method="POST">
-                                                                <input type="hidden" name="ticket_id" value="<?= $item['ticket_id']; ?>">
+                                                            <form action="" method="POST">
+                                                                <input type="hidden" name="company_id" value="<?= $item['ticket_id']; ?>">
 
-                                                                
+
 
                                                                 <!-- Add other form fields for editing as needed -->
                                                                 <hr>
@@ -118,13 +116,13 @@ function getStatusColorClass($status)
                                                 </div>
                                             </div>
                                             <!-- End Edit Company Modal -->
-                                <?php
+                                    <?php
+                                        }
+                                    } else {
+                                        echo "No Records Found!";
                                     }
-                                } else {
-                                    echo "No Records Found!";
-                                }
-                                ?>
-                            </tbody>
+                                    ?>
+                                </tbody>
                             </table>
                         </div>
                     </div>
