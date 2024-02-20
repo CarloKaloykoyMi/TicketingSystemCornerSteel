@@ -21,7 +21,6 @@ include 'sidebar_navbar.php'
 
 
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
     <!-- datatable css -->
     <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
@@ -30,54 +29,62 @@ include 'sidebar_navbar.php'
     <script defer src="js/table.js"></script>
     <link rel="stylesheet" href="css/sidebar.css">
 </head>
-    <style>
-        body 
-        
-        h2 {
-            font-family: "Arial", sans-serif;
-            font-style: italic;
-        }
+<style>
+    body h2 {
+        font-family: "Arial", sans-serif;
+        font-style: italic;
+    }
 
-        .container {
+    .container {
+        margin-top: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 800px;
+        /* Increased max-width for better spacing */
+        margin: 0 auto;
+        /* Center the container */
+    }
+
+    label {
+        margin-top: 10px;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+    input {
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        width: 100%;
+    }
+
+    button {
+        background-color: #007BFF;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    .logs-container {
             margin-top: 20px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
             max-width: 800px;
-            /* Increased max-width for better spacing */
             margin: 0 auto;
-            /* Center the container */
         }
-
-        label {
-            margin-top: 10px;
-            margin-bottom: 5px;
-            color: #555;
-        }
-
-        input {
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            width: 100%;
-        }
-
-        button {
-            background-color: #007BFF;
-            color: #fff;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+</style>
 </head>
 
 <body>
@@ -166,11 +173,56 @@ include 'sidebar_navbar.php'
 </form>
 </div>
 
+<!-- Admin Logs Section -->
+<div class="logs-container mt-4" style="padding: 10px;">
+    <h3>Admin Action Logs</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>User Level</th>
+                <th>Action</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody id="adminLogs">
+            <!-- Logs will be added dynamically here -->
+        </tbody>
+    </table>
+</div>
 
+<script>
+    function addLog(userLevel, action, date) {
+        var logsContainer = document.getElementById("adminLogs");
+        var logRow = document.createElement("tr");
+        
+        var userLevelCell = document.createElement("td");
+        userLevelCell.appendChild(document.createTextNode(userLevel));
+        logRow.appendChild(userLevelCell);
+
+        var actionCell = document.createElement("td");
+        actionCell.appendChild(document.createTextNode(action));
+        logRow.appendChild(actionCell);
+
+        var dateCell = document.createElement("td");
+        dateCell.appendChild(document.createTextNode(date));
+        logRow.appendChild(dateCell);
+
+        logsContainer.appendChild(logRow);
+    }
+
+    // Example log
+    addLog("Admin", "edited profile", "2024-02-20 15:30:00");
+</script>
+
+
+
+    <!-- Bootstrap and custom scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="js/sidebar.js"></script>
+    </body>
 </html>
