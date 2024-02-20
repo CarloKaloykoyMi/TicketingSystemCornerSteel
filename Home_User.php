@@ -71,7 +71,7 @@ function getAll($table) //function to call the tables from the dabatabase
                 ?>
                         <tr>
                             <td><?= $item['ticket_id']; ?></td>
-                            <td><?= $item['requester']; ?></td>
+                            <td><?= $item['requestor']; ?></td>
                             <td><?= $item['concern']; ?></td>
                             <td><?= $item['status']; ?></td>
                             <td><?= $item['date_created']; ?></td>
