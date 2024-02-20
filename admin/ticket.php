@@ -31,23 +31,28 @@ function getStatusColorClass($status)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tickets</title>
 
-    <!-- datatable css -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+    <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
 
-    <!-- icon css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
+    <!-- Lineicons CSS -->
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
-    <!-- datatable css -->
+    <!-- Your existing CSS -->
+    <link rel="stylesheet" href="css/sidebar.css">
+
+    <!-- jQuery and DataTables JavaScript -->
     <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     <script defer src="js/table.js"></script>
-    <link rel="stylesheet" href="css/sidebar.css">
+
 </head>
 
 <body>
@@ -99,16 +104,46 @@ function getStatusColorClass($status)
                                                         </div>
                                                         <div class="modal-body">
                                                             <!-- Your edit form content goes here -->
-                                                            
+
                                                             <form action="code.php" method="POST">
-                                                                <input type="hidden" name="ticket_id" value="<?= $item['ticket_id']; ?>">
+                                                                <label for="ticket_id"><i class="fas fa-building"></i> Ticket ID</label>
+                                                                <input type="text" name="ticket_id" value="<?= $item['ticket_id']; ?>" readonly class="form-control">
 
+                                                                <div class="col-md-12 mt-3">
+                                                                    <label for="requestor"><i class="fas fa-building"></i> Requestor</label>
+                                                                    <input type="text" name="requestor" value="<?= $item['requestor']; ?>" readonly class="form-control">
+                                                                </div>
 
-                                                                <!-- Add other form fields for editing as needed -->
+                                                                <div class="col-md-12 mt-3">
+                                                                    <label for="subject"><i class="fas fa-building"></i> Subject</label>
+                                                                    <input type="text" name="subject" value="<?= $item['subject']; ?>" readonly class="form-control">
+                                                                </div>
+
+                                                                <div class="col-md-12 mt-3">
+                                                                    <label for="company"><i class="fas fa-building"></i> Company</label>
+                                                                    <input type="text" name="company" value="<?= $item['company']; ?>" readonly class="form-control">
+                                                                </div>
+
+                                                                <div class="col-md-12 mt-3">
+                                                                    <label for="department"><i class="fas fa-building"></i> Department</label>
+                                                                    <input type="text" name="department" value="<?= $item['department']; ?>" readonly class="form-control">
+                                                                </div>
+
+                                                                <div class="col-md-12 mt-3">
+                                                                    <label for=""><i class="fas fa-building"></i> Concern</label>
+                                                                    <textarea name="concern" readonly class="form-control"><?= $item['concern']; ?></textarea>
+                                                                </div>
+
                                                                 <hr>
                                                                 <div class="form-group pull-right">
-                                                                    <button class="btn btn-primary float-end" type="submit" name="edit_company">Save
-                                                                        Changes</button>
+                                                                    <button type="button" class="btn btn-primary btn-accept-changes" data-bs-toggle="modal" data-bs-target="#acceptChangesModal">
+                                                                        Accept Changes
+                                                                    </button>
+                                                                </div>
+                                                                <div class="form-group pull-right">
+                                                                    <button type="button" class="btn btn-danger btn-decline-changes" data-bs-toggle="modal" data-bs-target="#declineChangesModal">
+                                                                        Decline Changes
+                                                                    </button>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -132,37 +167,81 @@ function getStatusColorClass($status)
         </div>
     </div>
 
+        <!-- Accept Changes Modal -->
+        <div class="modal fade" id="acceptChangesModal" tabindex="-1" aria-labelledby="acceptChangesModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="acceptChangesModalLabel">Accept Changes</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <label for="ticket_id"><i class="fas fa-building"></i> Ticket ID</label>
+                    <input type="text" name="ticket_id" value="<?= $item['ticket_id']; ?>" readonly class="form-control">
+
+                    <div class="modal-body">
+                        <div class="col-md-12 mt-3">
+                            <label for=""><i class="fas fa-building"></i> Add Comment</label>
+                            <textarea name="accept_comment" class="form-control"></textarea>
+                        </div>
+                        <hr>
+                        <div class="form-group pull-right">
+                            <button class="btn btn-primary float-end" type="submit" name="accept_request">Save Changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decline Changes Modal -->
+        <div class="modal fade" id="declineChangesModal" tabindex="-1" aria-labelledby="declineChangesModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="declineChangesModalLabel">Decline Changes</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="col-md-12 mt-3">
+                            <label for=""><i class="fas fa-building"></i> Add Comment</label>
+                            <textarea name="decline_comment" class="form-control"></textarea>
+                        </div>
+                        <hr>
+                        <div class="form-group pull-right">
+                            <button class="btn btn-danger float-end" type="submit" name="decline_request">Decline Changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="js/sidebar.js"></script>
 
-
     <script>
-        function handleTicket(ticketId, action) {
-            $.ajax({
-                type: "POST",
-                url: "update_status.php",
-                data: {
-                    ticket_id: ticketId,
-                    action: action
-                },
-                success: function(response) {
-                    // Handle the success response, e.g., refresh the ticket list
-                    location.reload();
-                },
-                error: function(xhr, status, error) {
-                    console.error(error);
-                }
+        $(document).ready(function() {
+            // Handle the click event for the "Accept Changes" button
+            $('.btn-accept-changes').click(function() {
+                // Close the current modal
+                $('#editCompanyModal').modal('hide');
+
+                // Open the new modal for accepting changes
+                $('#acceptChangesModal').modal('show');
             });
-        }
 
-        function AcceptTicket(ticketId) {
-            handleTicket(ticketId, "accept");
-        }
+            // Handle the click event for the "Decline Changes" button
+            $('.btn-decline-changes').click(function() {
+                // Close the current modal
+                $('#editCompanyModal').modal('hide');
 
-        function DeclineTicket(ticketId) {
-            handleTicket(ticketId, "decline");
-        }
+                // Open the new modal for declining changes
+                $('#declineChangesModal').modal('show');
+            });
+        });
     </script>
+
 </body>
 
 </html>

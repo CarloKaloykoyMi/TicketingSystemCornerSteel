@@ -173,5 +173,47 @@ else if(isset($_POST['edit_user']))
     
 }
 
+else if(isset($_POST['accept_request']))
+{
+    $ticket_id = $_POST['ticket_id'];
+    $accept_comment = $_POST['accept_comment'];
+    $status = "Resolved";   
+
+    $updateUser_query = "UPDATE ticket SET comment='$accept_comment', status='$status' WHERE ticket_id='$ticket_id' ";
+    $updateUser_query_run = mysqli_query($con, $updateUser_query);
+
+    if ($updateUser_query_run) {
+        echo '<script>alert("User request updated successfully.");</script>';
+        echo '<script>window.location.href = "ticket.php";</script>';
+        exit();
+    } else {
+        // PHP code failed to execute
+        echo '<script>alert("Error updating user request. Please try again.");</script>';
+    }
+
+    
+}
+
+else if(isset($_POST['decline_request']))
+{
+    $ticket_id = $_POST['ticket_id'];
+    $decline_comment = $_POST['decline_comment'];
+    $status = "Declined";   
+
+    $updateUser_query = "UPDATE ticket SET comment='$decline_comment', status='$status' WHERE ticket_id='$ticket_id' ";
+    $updateUser_query_run = mysqli_query($con, $updateUser_query);
+
+    if ($updateUser_query_run) {
+        echo '<script>alert("User request updated successfully.");</script>';
+        echo '<script>window.location.href = "ticket.php";</script>';
+        exit();
+    } else {
+        // PHP code failed to execute
+        echo '<script>alert("Error updating user request. Please try again.");</script>';
+    }
+
+    
+}
+
 
 ?>
