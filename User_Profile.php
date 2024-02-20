@@ -70,7 +70,7 @@ include('sidebar_user.php')
     </div>
 
     <div class="container mt-4" style="padding: 10px; height: 580px;">
-        <h3 class="text-center">Edit Profile</h3>
+        <h3 class="text-center"><i class="fa fa-pencil"></i> Edit Profile</h3>
         <form action="#" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-4">
