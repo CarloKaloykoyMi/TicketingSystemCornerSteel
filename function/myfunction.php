@@ -1,5 +1,5 @@
 <?php
-include('../mysql_connect.php');
+include('mysql_connect.php');
 
 function getAll($table)
 {
@@ -7,4 +7,6 @@ function getAll($table)
     $query = "SELECT * FROM $table";
     return $query_run = mysqli_query($con, $query);
 }
+
+
 ?>

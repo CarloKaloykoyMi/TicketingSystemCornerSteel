@@ -44,6 +44,7 @@ include 'sidebar_navbar.php'
                                 <thead>
                                     <tr>
                                         <th>ID</th>
+                                        <th>Company Name</th>
                                         <th>Branch Name</th>
                                         <th>Contact</th>
                                         <th>Email</th>
@@ -59,6 +60,7 @@ include 'sidebar_navbar.php'
                                     ?>
                                             <tr>
                                                 <td><?= $item['id']; ?></td>
+                                                <td><?= $item['company']; ?></td>
                                                 <td><?= $item['branch_name']; ?></td>
                                                 <td><?= $item['contact']; ?></td>
                                                 <td><?= $item['email']; ?></td>
@@ -80,6 +82,25 @@ include 'sidebar_navbar.php'
                                                             <!-- Your edit form content goes here -->
                                                             <form action="code.php" method="POST">
                                                                 <input type="hidden" name="branch_id" value="<?= $item['id']; ?>">
+
+                                                                <div class="col-md-12 mt-3">
+                                                                    <label for="company_name" class="form-label"> <i class="fa-solid fa-location-dot"></i> Company</label>
+                                                                    <select id=company_name name="company_name" class="form-control">
+                                                                        <option value="<?= $item['company']; ?>"><?= $item['company']; ?></option>
+                                                                        <?php
+                                                                        $company = getAll("company");
+                                                                        if (mysqli_num_rows($company) > 0) {
+                                                                            foreach ($company as $company) {
+                                                                        ?>
+                                                                                <option value="<?= $company['company_name']; ?>"><?= $company['company_name']; ?></option>
+                                                                        <?php
+                                                                            }
+                                                                        } else {
+                                                                            echo "<option value=''>No Company available</option>";
+                                                                        }
+                                                                        ?>
+                                                                    </select>
+                                                                </div>
 
                                                                 <div class="col-md-12 mt-3">
                                                                     <label for=""><i class="fas fa-building"></i> Branch Name</label>
@@ -139,6 +160,25 @@ include 'sidebar_navbar.php'
                 </div>
                 <div class="modal-body">
                     <form action="code.php" method="POST">
+
+                        <div class="col-md-12 mt-3">
+                            <label for="company_name" class="form-label"> <i class="fa-solid fa-location-dot"></i> Company</label>
+                            <select id=company_name name="company_name" class="form-control" required>
+                                <option value="" disabled selected>Select your Company</option>
+                                <?php
+                                $company = getAll("company");
+                                if (mysqli_num_rows($company) > 0) {
+                                    foreach ($company as $company) {
+                                ?>
+                                        <option value="<?= $company['company_name']; ?>"><?= $company['company_name']; ?></option>
+                                <?php
+                                    }
+                                } else {
+                                    echo "<option value=''>No Company available</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
 
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fas fa-building"></i> Branch Name</label>

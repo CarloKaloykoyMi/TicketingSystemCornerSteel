@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="css/regis1.css"> <!-- Your custom CSS -->
 
     <link rel="shortcut icon" href="image/ticket_logo.png">
+    <?php
+    include('function/myfunction.php');
+    ?>
 
 </head>
 <style>
@@ -125,7 +128,7 @@
                             if (mysqli_num_rows($company) > 0) {
                                 foreach ($company as $company) {
                             ?>
-                                    <option value="<?= $company['branch_name']; ?>"><?= $company['branch_name']; ?></option>
+                                    <option value="<?= $company['company_name']; ?>"><?= $company['company_name']; ?></option>
                             <?php
                                 }
                             } else {
@@ -163,7 +166,7 @@
                             if (mysqli_num_rows($department) > 0) {
                                 foreach ($department as $department) {
                             ?>
-                                    <option value="<?= $department['branch_name']; ?>"><?= $department['branch_name']; ?></option>
+                                    <option value="<?= $department['department_name']; ?>"><?= $department['department_name']; ?></option>
                             <?php
                                 }
                             } else {

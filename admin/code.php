@@ -51,13 +51,15 @@ else if(isset($_POST['edit_company']))
 
 else if(isset($_POST['add_branch']))
 {
+    $company_name = $_POST['company_name'];
     $branch_name = $_POST['branch_name'];
     $branch_address = $_POST['branch_address'];
     $contact = $_POST['contact'];
     $email = $_POST['email'];
+    
 
-    $insert_branch_query = "INSERT INTO branch (branch_name, branch_address, contact, email) 
-    VALUES ('$branch_name','$branch_address','$contact','$email')";
+    $insert_branch_query = "INSERT INTO branch (company,branch_name, branch_address, contact, email) 
+    VALUES ('$company_name','$branch_name','$branch_address','$contact','$email')";
     $insert_branch_query_run = mysqli_query($con, $insert_branch_query);
 
     if ($insert_branch_query_run) {
@@ -75,13 +77,14 @@ else if(isset($_POST['add_branch']))
 else if(isset($_POST['edit_branch']))
 {
     $id = $_POST['branch_id'];
+    $company_name = $_POST['company_name'];
     $branch_name = $_POST['branch_name'];
     $branch_address = $_POST['branch_address'];
     $contact = $_POST['contact'];
     $email = $_POST['email'];
     
 
-    $updateBranch_query = "UPDATE branch SET branch_name='$branch_name', branch_address='$branch_address', 
+    $updateBranch_query = "UPDATE branch SET company='$company_name', branch_name='$branch_name', branch_address='$branch_address', 
     contact='$contact', email='$email' WHERE id='$id' ";
     $updateBranch_query_run = mysqli_query($con, $updateBranch_query);
 
