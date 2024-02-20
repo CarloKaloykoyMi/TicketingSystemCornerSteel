@@ -77,19 +77,47 @@ function getStatusColorClass($status)
                                     foreach ($ticket as $item) {
                                 ?>
                                         <tr>
-                                        <td><?= date('F d, Y') . '<br>' . date('h:i:s A', strtotime($item['date'])); ?></td>
-                                            <td><?= $item['subject']; ?></td>
-                                            <td><?= $item['department']; ?></td>
-                                            <td><?= $item['requestor']; ?></td>
+                                            <td><?= $item['ticket_id']; ?></td>
+                                            <td><?= $item['company']; ?></td>
+                                            <td><?= $item['branch']; ?></td>
+                                            <td><?= $item['requester']; ?></td>
                                             <td class="<?= getStatusColorClass($item['status']); ?>">
                                                 <?= $item['status']; ?>
                                             </td>
                                             <td class="table-action">
-                                                <button class="btn btn-primary" onclick="AcceptTicket(<?php echo $item['date']; ?>)">
+                                                <button class="btn btn-primary" onclick="AcceptTicket(<?php echo $item['ticket_id']; ?>)">
                                                     <i class="fas fa-eye"></i> View
                                                 </button>
                                             </td>
                                         </tr>
+
+                                         <!-- Edit Company Modal -->
+                                         <div class="modal fade" id="viewCompany<?= $item['ticket_id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Ticket</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <!-- Your edit form content goes here -->
+                                                            <form action="code.php" method="POST">
+                                                                <input type="hidden" name="ticket_id" value="<?= $item['ticket_id']; ?>">
+
+                                                                
+
+                                                                <!-- Add other form fields for editing as needed -->
+                                                                <hr>
+                                                                <div class="form-group pull-right">
+                                                                    <button class="btn btn-primary float-end" type="submit" name="edit_company">Save
+                                                                        Changes</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Edit Company Modal -->
                                 <?php
                                     }
                                 } else {
