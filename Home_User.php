@@ -4,17 +4,7 @@ include('function/myfunction.php');
 include('crud.php');
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <link rel="shortcut icon" type="x-icon" href="Images/Ticket-Logo-3.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+ 
 
     <style>
         .btn-custom {
@@ -113,7 +103,7 @@ include('crud.php');
                                 <span class="input-group-prepend">
                                     <i class="fa-solid fa-user input-group-text"></i>
                                 </span>
-                                <label for="requestor" class="sr-only">Requestor:</label>
+                                <label for="requestor" class="sr-only">Requestor</label>
                                 <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor">
                             </div>
                         </div>
@@ -123,7 +113,7 @@ include('crud.php');
                                 <span class="input-group-prepend">
                                 <i class="fa-solid fa-pencil input-group-text"></i>
                                 </span>
-                                <label for="subject" class="sr-only">Subject:</label>
+                                <label for="subject" class="sr-only">Subject</label>
                                 <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
                             </div>
                         </div>
@@ -132,7 +122,7 @@ include('crud.php');
                             <span class="input-group-prepend">
                                 <i class="fa-solid fa-building input-group-text"></i>
                             </span>
-                            <label for="company" class="sr-only">Company:</label>
+                            <label for="company" class="sr-only">Company</label>
                             <select class="form-control" id="company" name="company">
                                 <option value="">Select Company:</option>
                                 <?php
