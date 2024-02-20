@@ -4,45 +4,54 @@ include('function/myfunction.php');
 include('crud.php');
 ?>
 
- 
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="Images/Ticket -Logo-3.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<style>
+    .btn-custom {
+        background-color: #333333;
+        color: #ffffff;
+        transition: color 0.3s;
+    }
 
-    <style>
-        .btn-custom {
-            background-color: #333333;
-            color: #ffffff;
-            transition: color 0.3s;
-        }
+    .btn-custom:hover {
+        color: #ffffff;
+    }
+</style>
 
-        .btn-custom:hover {
-            color: #ffffff;
-        }
-    </style>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#company').change(function() {
+            var companyName = $(this).val();
 
-    <script>
-        $(document).ready(function() {
-            $('#company').change(function() {
-                var companyName = $(this).val();
-
-                $.ajax({
-                    url: 'get_branches.php',
-                    type: 'POST',
-                    data: { company_name: companyName },
-                    success: function(response) {
-                        console.log(response);
-                        $('#branch').html(response);
-                        $('#branchGroup').toggle(response.trim() !== '');
-                    },
-                    error: function() {
-                        alert('Error fetching branches.');
-                    }
-                });
+            $.ajax({
+                url: 'get_branches.php',
+                type: 'POST',
+                data: {
+                    company_name: companyName
+                },
+                success: function(response) {
+                    console.log(response);
+                    $('#branch').html(response);
+                    $('#branchGroup').toggle(response.trim() !== '');
+                },
+                error: function() {
+                    alert('Error fetching branches.');
+                }
             });
         });
-    </script>
+    });
+</script>
 </head>
 
 <body style="margin-left: 100px">
@@ -52,7 +61,9 @@ include('crud.php');
 
     <div class="container1">
         <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#myModal" style="position: absolute; top: 10px; right: 20px;">Create Ticket</button>
-        <h3><center>Overall Ticket List</center></h3>
+        <h3>
+            <center>Overall Ticket List</center>
+        </h3>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -70,7 +81,7 @@ include('crud.php');
 
                 if (mysqli_num_rows($ticket) > 0) {
                     foreach ($ticket as $item) {
-                        ?>
+                ?>
                         <tr>
                             <td><?= $item['ticket_id']; ?></td>
                             <td><?= $item['requestor']; ?></td>
@@ -78,7 +89,7 @@ include('crud.php');
                             <td><?= $item['status']; ?></td>
                             <td><?= $item['date_created']; ?></td>
                         </tr>
-                        <?php
+                <?php
                     }
                 } else {
                     echo "No Records Found!";
@@ -111,13 +122,13 @@ include('crud.php');
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-prepend">
-                                <i class="fa-solid fa-pencil input-group-text"></i>
+                                    <i class="fa-solid fa-pencil input-group-text"></i>
                                 </span>
                                 <label for="subject" class="sr-only">Subject</label>
                                 <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
                             </div>
                         </div>
-                        
+
                         <div class="input-group">
                             <span class="input-group-prepend">
                                 <i class="fa-solid fa-building input-group-text"></i>
@@ -129,9 +140,9 @@ include('crud.php');
                                 $company = getAll("company");
                                 if (mysqli_num_rows($company) > 0) {
                                     foreach ($company as $company) {
-                                        ?>
+                                ?>
                                         <option value="<?= $company['company_name']; ?>"><?= $company['company_name']; ?></option>
-                                        <?php
+                                <?php
                                     }
                                 } else {
                                     echo "<option value=''>No Company available</option>";
@@ -162,9 +173,9 @@ include('crud.php');
                                 $department = getAll("department");
                                 if (mysqli_num_rows($department) > 0) {
                                     foreach ($department as $department) {
-                                        ?>
+                                ?>
                                         <option value="<?= $department['department_name']; ?>"><?= $department['department_name']; ?></option>
-                                        <?php
+                                <?php
                                     }
                                 } else {
                                     echo "<option value=''>No Department available</option>";
