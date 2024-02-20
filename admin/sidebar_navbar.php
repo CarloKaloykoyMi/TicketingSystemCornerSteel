@@ -73,12 +73,17 @@
                     <span>User</span>
                 </a>
             </li>
-            <!-- Add other menu items as needed -->
-        </ul>
-        <div class="sidebar-footer">
+            <li class="sidebar-item">
+                <a href="admin_profile.php" class="sidebar-link">
+                <i class="fa fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+            <div class="sidebar-item">
             <a href="logoutadmin.php" class="sidebar-link">
                 <i class="lni lni-exit"></i>
                 <span>Logout</span>
             </a>
         </div>
+        </ul>
     </aside>

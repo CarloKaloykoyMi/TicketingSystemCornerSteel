@@ -28,6 +28,7 @@ include 'sidebar_navbar.php'
     <script defer src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     <script defer src="js/table.js"></script>
     <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="user.css">
 </head>
 
 <body>
@@ -55,28 +56,29 @@ include 'sidebar_navbar.php'
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php
+                                <?php
                                     $company = getAll("user");
 
                                     if (mysqli_num_rows($company) > 0) {
                                         foreach ($company as $item) {
                                     ?>
                                             <tr>
-                                                <td><?= $item['user_id']; ?></td>
-                                                <td><?= $item['lastname']; ?></td>
-                                                <td><?= $item['firstname']; ?></td>
-                                                <td><?= $item['middleinitial']; ?></td>
-                                                <td><?= $item['company']; ?></td>
-                                                <td><?= $item['branch']; ?></td>
-                                                <td><?= $item['department']; ?></td>
-                                                <td><?= $item['email']; ?></td>
-                                                <td>
+            <td><?= $item['user_id']; ?></td>
+            <td><?= $item['lastname']; ?></td>
+            <td><?= $item['firstname']; ?></td>
+            <td><?= $item['middleinitial']; ?></td>
+            <td><?= $item['company']; ?></td>
+            <td><?= $item['branch']; ?></td>
+            <td><?= $item['department']; ?></td>
+            <td><?= $item['email']; ?></td>
+            <td>
                                                     <div class="btn-group" role="group">
-                                                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editUserModal<?= $item['user_id']; ?>"><i class="fas fa-pencil"></i>&nbsp;Edit</a>
-                                                        <button type="button" class="btn btn-sm btn-danger delete_user_btn" data-bs-toggle="modal" data-bs-target="#deleteUserModal<?= $item['user_id']; ?>"><i class="fas fa-trash"></i> &nbsp; Delete</button>
+                                                        <a href="#" class="btn btn-primary btn-sm" style="width: 80px;" data-bs-toggle="modal" data-bs-target="#editUserModal<?= $item['user_id']; ?>"><i class="fas fa-pencil"></i>&nbsp;Edit</a>
+                                                        <button type="button" class="btn btn-danger btn-sm delete_user_btn" style="width: 90px;" data-bs-toggle="modal" data-bs-target="#deleteUserModal<?= $item['user_id']; ?>"><i class="fas fa-trash"></i> &nbsp; Delete</button>
                                                     </div>
                                                 </td>
                                             </tr>
+
 
                                             <!-- Edit User Modal -->
                                             <div class="modal fade" id="editUserModal<?= $item['user_id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
