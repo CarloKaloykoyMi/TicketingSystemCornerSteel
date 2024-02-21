@@ -69,7 +69,7 @@ include('crud.php');
                 <tr>
                     <th>Ticket ID</th>
                     <th>Requestor</th>
-                    <th>Concern</th>
+                    <th>Subject</th>
                     <th>Status</th>
                     <th>Date Created</th>
                 </tr>
@@ -85,9 +85,9 @@ include('crud.php');
                         <tr>
                             <td><?= $item['ticket_id']; ?></td>
                             <td><?= $item['requestor']; ?></td>
-                            <td><?= $item['concern']; ?></td>
+                            <td><?= $item['subject']; ?></td>
                             <td><?= $item['status']; ?></td>
-                            <td><?= $item['date_created']; ?></td>
+                            <td><?= date('F j, Y h:i:s A', strtotime($item['date_created'])); ?></td>
                         </tr>
                 <?php
                     }

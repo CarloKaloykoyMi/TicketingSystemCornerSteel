@@ -1,8 +1,7 @@
 <?php
 include('../mysql_connect.php');
 
-if(isset($_POST['add_company']))
-{
+if (isset($_POST['add_company'])) {
     $company_name = $_POST['company_name'];
     $company_address = $_POST['company_address'];
     $contact = $_POST['contact'];
@@ -20,18 +19,13 @@ if(isset($_POST['add_company']))
         // PHP code failed to execute
         echo '<script>alert("Error adding company. Please try again.");</script>';
     }
-
-    
-}
-
-else if(isset($_POST['edit_company']))
-{
+} else if (isset($_POST['edit_company'])) {
     $id = $_POST['company_id'];
     $company_name = $_POST['company_name'];
     $company_address = $_POST['company_address'];
     $contact = $_POST['contact'];
     $email = $_POST['email'];
-    
+
 
     $updateCompany_query = "UPDATE company SET company_name='$company_name', company_address='$company_address', 
     contact='$contact', email='$email' WHERE id='$id' ";
@@ -45,18 +39,13 @@ else if(isset($_POST['edit_company']))
         // PHP code failed to execute
         echo '<script>alert("Error updating order status. Please try again.");</script>';
     }
-
-    
-}
-
-else if(isset($_POST['add_branch']))
-{
+} else if (isset($_POST['add_branch'])) {
     $company_name = $_POST['company_name'];
     $branch_name = $_POST['branch_name'];
     $branch_address = $_POST['branch_address'];
     $contact = $_POST['contact'];
     $email = $_POST['email'];
-    
+
 
     $insert_branch_query = "INSERT INTO branch (company,branch_name, branch_address, contact, email) 
     VALUES ('$company_name','$branch_name','$branch_address','$contact','$email')";
@@ -70,19 +59,14 @@ else if(isset($_POST['add_branch']))
         // PHP code failed to execute
         echo '<script>alert("Error adding Branch. Please try again.");</script>';
     }
-
-    
-}
-
-else if(isset($_POST['edit_branch']))
-{
+} else if (isset($_POST['edit_branch'])) {
     $id = $_POST['branch_id'];
     $company_name = $_POST['company_name'];
     $branch_name = $_POST['branch_name'];
     $branch_address = $_POST['branch_address'];
     $contact = $_POST['contact'];
     $email = $_POST['email'];
-    
+
 
     $updateBranch_query = "UPDATE branch SET company='$company_name', branch_name='$branch_name', branch_address='$branch_address', 
     contact='$contact', email='$email' WHERE id='$id' ";
@@ -96,12 +80,7 @@ else if(isset($_POST['edit_branch']))
         // PHP code failed to execute
         echo '<script>alert("Error updating order status. Please try again.");</script>';
     }
-
-    
-}
-
-else if(isset($_POST['add_department']))
-{
+} else if (isset($_POST['add_department'])) {
     $department_name = $_POST['department_name'];
     $department_head = $_POST['department_head'];
     $location = $_POST['location'];
@@ -118,17 +97,12 @@ else if(isset($_POST['add_department']))
         // PHP code failed to execute
         echo '<script>alert("Error adding Department. Please try again.");</script>';
     }
-
-    
-}
-
-else if(isset($_POST['edit_department']))
-{
+} else if (isset($_POST['edit_department'])) {
     $id = $_POST['department_id'];
     $department_name = $_POST['department_name'];
     $department_head = $_POST['department_head'];
     $location = $_POST['location'];
-    
+
 
     $updateDepartment_query = "UPDATE department SET department_name='$department_name', department_head='$department_head', 
     location='$location' WHERE id='$id' ";
@@ -142,12 +116,7 @@ else if(isset($_POST['edit_department']))
         // PHP code failed to execute
         echo '<script>alert("Error updating order status. Please try again.");</script>';
     }
-
-    
-}
-
-else if(isset($_POST['edit_user']))
-{
+} else if (isset($_POST['edit_user'])) {
     $user_id = $_POST['user_id'];
     $lastname = $_POST['lastname'];
     $firstname = $_POST['firstname'];
@@ -155,7 +124,7 @@ else if(isset($_POST['edit_user']))
     $company = $_POST['company'];
     $branch = $_POST['branch'];
     $department = $_POST['department'];
-    $email = $_POST['email'];    
+    $email = $_POST['email'];
 
     $updateUser_query = "UPDATE user SET lastname='$lastname', middleinitial='$middleinitial', firstname='$firstname', company='$company', 
     branch='$branch', department='$department', email='$email' WHERE user_id='$user_id' ";
@@ -169,15 +138,10 @@ else if(isset($_POST['edit_user']))
         // PHP code failed to execute
         echo '<script>alert("Error updating user status. Please try again.");</script>';
     }
-
-    
-}
-
-else if(isset($_POST['accept_request']))
-{
+} else if (isset($_POST['accept_request'])) {
     $ticket_id = $_POST['ticket_id'];
     $accept_comment = $_POST['accept_comment'];
-    $status = "Resolved";   
+    $status = "Resolved";
 
     $updateUser_query = "UPDATE ticket SET comment='$accept_comment', status='$status' WHERE ticket_id='$ticket_id' ";
     $updateUser_query_run = mysqli_query($con, $updateUser_query);
@@ -190,15 +154,10 @@ else if(isset($_POST['accept_request']))
         // PHP code failed to execute
         echo '<script>alert("Error updating user request. Please try again.");</script>';
     }
-
-    
-}
-
-else if(isset($_POST['decline_request']))
-{
+} else if (isset($_POST['decline_request'])) {
     $ticket_id = $_POST['ticket_id'];
     $decline_comment = $_POST['decline_comment'];
-    $status = "Declined";   
+    $status = "Declined";
 
     $updateUser_query = "UPDATE ticket SET comment='$decline_comment', status='$status' WHERE ticket_id='$ticket_id' ";
     $updateUser_query_run = mysqli_query($con, $updateUser_query);
@@ -211,9 +170,4 @@ else if(isset($_POST['decline_request']))
         // PHP code failed to execute
         echo '<script>alert("Error updating user request. Please try again.");</script>';
     }
-
-    
 }
-
-
-?>

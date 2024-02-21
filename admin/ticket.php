@@ -82,7 +82,7 @@ function getStatusColorClass($status)
                                         foreach ($ticket as $item) {
                                     ?>
                                             <tr>
-                                                <td><?= $item['date']; ?></td>
+                                                <td><?= date('F j, Y h:i:s A', strtotime($item['date'])); ?></td>
                                                 <td><?= $item['subject']; ?></td>
                                                 <td><?= $item['department']; ?></td>
                                                 <td><?= $item['requestor']; ?></td>
@@ -167,19 +167,24 @@ function getStatusColorClass($status)
         </div>
     </div>
 
-        <!-- Accept Changes Modal -->
-        <div class="modal fade" id="acceptChangesModal" tabindex="-1" aria-labelledby="acceptChangesModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="acceptChangesModalLabel">Accept Changes</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
+    <!-- Accept Changes Modal -->
+    <div class="modal fade" id="acceptChangesModal" tabindex="-1" aria-labelledby="acceptChangesModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="acceptChangesModalLabel">Accept Changes</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="code.php">
+                        <label for="ticket_id"><i class="fas fa-building"></i> Ticket ID</label>
+                        <input type="text" name="ticket_id" value="<?= $item['ticket_id']; ?>" readonly class="form-control">
 
-                    <label for="ticket_id"><i class="fas fa-building"></i> Ticket ID</label>
-                    <input type="text" name="ticket_id" value="<?= $item['ticket_id']; ?>" readonly class="form-control">
+                        <div class="col-md-12 mt-3">
+                            <label for=""><i class="fas fa-building"></i> Concern</label>
+                            <textarea name="concern" readonly class="form-control"><?= $item['concern']; ?></textarea>
+                        </div>
 
-                    <div class="modal-body">
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fas fa-building"></i> Add Comment</label>
                             <textarea name="accept_comment" class="form-control"></textarea>
@@ -188,33 +193,45 @@ function getStatusColorClass($status)
                         <div class="form-group pull-right">
                             <button class="btn btn-primary float-end" type="submit" name="accept_request">Save Changes</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Decline Changes Modal -->
-        <div class="modal fade" id="declineChangesModal" tabindex="-1" aria-labelledby="declineChangesModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="declineChangesModalLabel">Decline Changes</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
 
-                    <div class="modal-body">
+    <!-- Decline Changes Modal -->
+    <div class="modal fade" id="declineChangesModal" tabindex="-1" aria-labelledby="declineChangesModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="declineChangesModalLabel">Declined</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="code.php">
+
+                        <label for="ticket_id"><i class="fas fa-building"></i> Ticket ID</label>
+                        <input type="text" name="ticket_id" value="<?= $item['ticket_id']; ?>" readonly class="form-control">
+
+                        <div class="col-md-12 mt-3">
+                            <label for=""><i class="fas fa-building"></i> Concern</label>
+                            <textarea name="concern" readonly class="form-control"><?= $item['concern']; ?></textarea>
+                        </div>
+
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fas fa-building"></i> Add Comment</label>
                             <textarea name="decline_comment" class="form-control"></textarea>
                         </div>
                         <hr>
                         <div class="form-group pull-right">
-                            <button class="btn btn-danger float-end" type="submit" name="decline_request">Decline Changes</button>
+                            <button class="btn btn-danger float-end" type="submit" name="decline_request">Declined</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
