@@ -6,11 +6,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/sidebar.css" />
+    <link rel="stylesheet" href="css/sidebar_navbar.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
-<body>
+<body style="background-color: gray;">
     <nav>
         <ul>
             <li>
@@ -31,12 +31,26 @@
                     <span class="nav-item">Tickets</span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="resolvedtickets.php"><i class="fa-solid fa-circle-check"></i>
-                            <span class="nav-item">Resolved Tickets</span></a></li>
-                    <li><a href="unresolvedtickets.php"><i class="fa-solid fa-triangle-exclamation"></i>
-                            <span class="nav-item">Unresolved Tickets</span></a></li>
-                    <li><a href="pendingtickets.php"><i class="fa-solid fa-spinner"></i>
-                            <span class="nav-item">Pending Tickets</span></a></li>
+                    <li>
+                        <a href="resolvedtickets.php">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span class="nav-item">Resolved Tickets</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="unresolvedtickets.php">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <span class="nav-item">Unresolved Tickets</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pendingtickets.php">
+                            <i class="fa-solid fa-spinner"></i>
+                            <span class="nav-item">Pending Tickets</span>
+                        </a>
+                    </li>
+
                 </ul>
             </li>
             <li>
