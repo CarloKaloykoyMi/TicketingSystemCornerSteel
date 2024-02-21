@@ -171,3 +171,4 @@ if (isset($_POST['add_company'])) {
         echo '<script>alert("Error updating user request. Please try again.");</script>';
     }
 }
+?>

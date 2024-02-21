@@ -62,7 +62,7 @@ include('crud.php');
 <body>
     <div class="container-fluid">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-        <script src="js/sidebar.js"></script> <br> 
+        <script src="js/sidebar.js"></script> <br>
         <div class="container1">
             <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#myModal" style="position: absolute; top: 70px; right: 10px;">Create Ticket</button>
             <h3>
@@ -87,7 +87,7 @@ include('crud.php');
                         foreach ($ticket as $item) {
                     ?>
                             <tr>
-                                <td><?= $item['ticket_id']; ?></td>
+                                <td><u><a href="ticket_info.php?ticket_id=<?php echo $item['ticket_id']; ?>" class="text-body fw-bold">Ticket #<?php echo $item['ticket_id']; ?></a></u></td>
                                 <td><?= $item['requestor']; ?></td>
                                 <td><?= $item['concern']; ?></td>
                                 <td><?= $item['status']; ?></td>
