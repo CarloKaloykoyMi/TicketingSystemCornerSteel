@@ -1,5 +1,21 @@
 <?php session_start(); ?>
+<style>
+     body {
+        font-family: 'Poppins', sans-serif;
+    }
 
+    #sidebar {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .sidebar-link {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .sidebar-footer {
+        font-family: 'Poppins', sans-serif;
+    }
+</style>
 <div class="wrapper">
     <aside id="sidebar">
         <div class="d-flex">
