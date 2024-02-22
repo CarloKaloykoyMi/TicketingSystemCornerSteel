@@ -20,51 +20,52 @@
                 </a>
             </li>
             <li>
-                <a href="Home_User.php">
-                    <i class="fa-solid fa-house"></i>
-                    <span class="nav-item">Home</span>
-                </a>
-            </li>
-            <li>
-                <a href="Home_User.php">
-                    <i class="fa-solid fa-ticket"></i>
-                    <span class="nav-item">Tickets</span>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a href="resolvedtickets.php">
-                            <i class="fa-solid fa-circle-check"></i>
-                            <span class="nav-item">Resolved Tickets</span>
-                        </a>
-                    </li>
+    <a href="Home_User.php">
+        <i class="fa-solid fa-house"></i>
+        <span class="nav-item"><strong>HOME</strong></span>
+    </a>
+</li>
+<li>
+    <a href="Home_User.php">
+        <i class="fa-solid fa-ticket"></i>
+        <span class="nav-item"><strong>TICKETS</strong></span>
+    </a>
+    <ul class="sub-menu">
+        <li>
+            <a href="resolvedtickets.php">
+                <i class="fa-solid fa-circle-check"></i>
+                <span class="nav-item"><strong>RESOLVED TICKETS</strong></span>
+            </a>
+        </li>
 
-                    <li>
-                        <a href="unresolvedtickets.php">
-                            <i class="fa-solid fa-triangle-exclamation"></i>
-                            <span class="nav-item">Unresolved Tickets</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="pendingtickets.php">
-                            <i class="fa-solid fa-spinner"></i>
-                            <span class="nav-item">Pending Tickets</span>
-                        </a>
-                    </li>
+        <li>
+            <a href="unresolvedtickets.php">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span class="nav-item"><strong>UNRESOLVED TICKETS</strong></span>
+            </a>
+        </li>
+        <li>
+            <a href="pendingtickets.php">
+                <i class="fa-solid fa-spinner"></i>
+                <span class="nav-item"><strong>PENDING TICKETS</strong></span>
+            </a>
+        </li>
 
-                </ul>
-            </li>
-            <li>
-                <a href="User_Profile.php">
-                    <i class="fa-solid fa-user"></i>
-                    <span class="nav-item">Profile</span>
-                </a>
-            </li>
-            <li>
-                <a href="logout.php">
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                    <span class="nav-item">Logout</span>
-                </a>
-            </li>
+    </ul>
+</li>
+<li>
+    <a href="User_Profile.php">
+        <i class="fa-solid fa-user"></i>
+        <span class="nav-item"><strong>PROFILE</strong></span>
+    </a>
+</li>
+<li>
+    <a href="logout.php">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span class="nav-item"><strong>LOGOUT</strong></span>
+    </a>
+</li>
+
         </ul>
     </nav>
 </body>
