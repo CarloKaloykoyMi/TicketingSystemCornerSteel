@@ -61,7 +61,8 @@ include('crud.php');
 <style>
     .btn-custom:hover {
         background-color: gray;
-        color: #fff; /* Set the desired text color for hover state */
+        color: #fff;
+        /* Set the desired text color for hover state */
     }
 </style>
 
@@ -70,7 +71,7 @@ include('crud.php');
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
         <script src="js/sidebar.js"></script> <br>
         <div class="container1">
-        <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#myModal" style="position: absolute; top: 70px; right: 10px;">Create Ticket</button>
+            <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#myModal" style="position: absolute; top: 70px; right: 10px;">Create Ticket</button>
             <h3>
                 <center>Overall Ticket List</center>
             </h3>
@@ -96,8 +97,22 @@ include('crud.php');
                                 <td><u><a href="ticket_info.php?ticket_id=<?php echo $item['ticket_id']; ?>" class="text-body fw-bold">Ticket #<?php echo $item['ticket_id']; ?></a></u></td>
                                 <td><?= $item['requestor']; ?></td>
                                 <td><?= $item['subject']; ?></td>
-                                <td><?= $item['status']; ?></td>
-                                <td><?= $item['date_created']; ?></td>
+                                <td>
+                                    <?php
+                                    $status = $item['status'];
+
+                                    if ($status == 'Pending') {
+                                        echo '<span class="badge text-bg-warning">' . $status . '</span>';
+                                    } elseif ($status == 'Resolved') {
+                                        echo '<span class="badge text-bg-success">' . $status . '</span>';
+                                    } elseif ($status == 'Cancelled') {
+                                        echo '<span class="badge text-bg-danger">' . $status . '</span>';
+                                    } else {
+                                        echo '<span class="badge text-bg-primary">' . $status . '</span>';
+                                    }
+                                    ?>
+                                </td>
+                                <td><?= date('F j, Y h:i:s A', strtotime($item['date_created'])); ?></td>
                             </tr>
                     <?php
                         }
@@ -158,9 +173,9 @@ include('crud.php');
                                         echo "<option value=''>No Company available</option>";
                                     }
                                     ?>
-                                   </select>
-                                </div>                                                                   
-<br>
+                                </select>
+                            </div>
+                            <br>
                             <div class="form-group" style="display: none;" id="branchGroup">
                                 <div class="input-group">
                                     <i class="fa-solid fa-location-dot input-group-text"></i>
@@ -193,7 +208,7 @@ include('crud.php');
                                     ?>
                                 </select>
                             </div>
-<br>
+                            <br>
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-prepend">
@@ -209,7 +224,7 @@ include('crud.php');
                                         <i class="fa-solid fa-paperclip input-group-text"></i>
                                     </span>
                                     <label for="file" class="sr-only">Attach File:</label>
-                                    <input type="file" class="form-control-file" id="file" name="file" required>
+                                    <input type="file" class="form-control-file" id="file" name="file">
                                 </div>
                             </div>
 

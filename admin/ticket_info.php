@@ -76,14 +76,29 @@ if (isset($_GET['ticket_id'])) {
                                                     <hr>
                                                     <a href="ticket.php" class="btn btn-secondary mb-3">Go Back</a> <br>
                                                     <span class="number pull-right"><b>Ticket # <?php echo $ticket_data['ticket_id']; ?></b></span> <br>
-                                                    <span class="number pull-right"><b>Status: </b><?php echo $ticket_data['status']; ?> </span>
+                                                    <span class="number pull-right"><b>Status:
+                                                            <?php
+                                                            $status = $ticket_data['status'];
 
+                                                            if ($status == 'Pending') {
+                                                                echo '<span class="badge text-bg-warning">' . $status . '</span>';
+                                                            } elseif ($status == 'Resolved') {
+                                                                echo '<span class="badge text-bg-success">' . $status . '</span>';
+                                                            } elseif ($status == 'Cancelled') {
+                                                                echo '<span class="badge text-bg-danger">' . $status . '</span>';
+                                                            } else {
+                                                                echo '<span class="badge text-bg-primary">' . $status . '</span>';
+                                                            }
+                                                            ?>
+                                                        </b></span>
 
                                                     <!-- Button trigger modal -->
-                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                       Update Status
+                                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="padding: 5px 10px; font-size: 10px;">
+                                                        Update Status
                                                     </button>
 
+
+                                                    <br>
                                                     <!-- Modal -->
                                                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
@@ -93,21 +108,36 @@ if (isset($_GET['ticket_id'])) {
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    ...
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                                    <form action="code.php" method="POST">
+                                                                        <label for="Status" class="form-label"><i class="fa-solid fa-location-dot"></i> Status</label>
+                                                                        <select id="Status" name="status" class="form-control" required>
+                                                                            <option value="" disabled>Select your Status</option>
+                                                                            <?php
+                                                                            $currentStatus = $ticket_data['status'];
+                                                                            $statusOptions = array("Pending", "Unresolved", "Resolved", "Cancelled");
+                                                                            foreach ($statusOptions as $option) {
+                                                                                $selected = ($option == $currentStatus) ? 'selected' : '';
+                                                                                echo "<option value=\"$option\" $selected>$option</option>";
+                                                                            }
+                                                                            ?>
+                                                                        </select>
+                                                                        <!-- Add the ticket_id input field -->
+                                                                        <input type="hidden" name="ticket_id" value="<?php echo $ticket_data['ticket_id']; ?>">
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                            <!-- Move the submit button inside the form -->
+                                                                            <button class="btn btn-primary float-end" type="submit" name="change_status">Save Changes</button>
+                                                                        </div>
+                                                                    </form>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
 
+
                                                     <br>
                                                     <span style="font-size:26px;padding-bottom:10px;"><b> Subject: </b> <?php echo $ticket_data['subject']; ?></span>
-
                                                 </div>
-
 
                                                 <p class="info">Request by <a href="#"><?php echo $ticket_data['requestor']; ?></a> &nbsp; <?php echo date('M d, Y', strtotime($ticket_data['date_created'])); ?>
                                                     <i class="fa fa-comments"></i>
@@ -115,12 +145,14 @@ if (isset($_GET['ticket_id'])) {
                                                 <hr>
                                                 <b>Concern</b>
                                                 <p><?php echo $ticket_data['concern']; ?></p>
+
                                             </div>
                                         </div>
                                     </li>
                                 </ul>
                             </div>
                         </div>
+                        
 
                     </div>
                 </div>

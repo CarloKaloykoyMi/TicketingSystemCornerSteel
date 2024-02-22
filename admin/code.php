@@ -138,37 +138,27 @@ if (isset($_POST['add_company'])) {
         // PHP code failed to execute
         echo '<script>alert("Error updating user status. Please try again.");</script>';
     }
-} else if (isset($_POST['accept_request'])) {
+} else if (isset($_POST['change_status'])) {
     $ticket_id = $_POST['ticket_id'];
-    $accept_comment = $_POST['accept_comment'];
-    $status = "Unresolved";
+    $status = $_POST['status']; // Retrieve the selected status from the form data
 
-    $updateUser_query = "UPDATE ticket SET comment='$accept_comment', status='$status' WHERE ticket_id='$ticket_id' ";
-    $updateUser_query_run = mysqli_query($con, $updateUser_query);
+    // Use prepared statements to prevent SQL injection
+    $updateUser_query = "UPDATE ticket SET status=? WHERE ticket_id=?";
+    $stmt = mysqli_prepare($con, $updateUser_query);
+
+    // Bind parameters and execute the query
+    mysqli_stmt_bind_param($stmt, "si", $status, $ticket_id);
+    $updateUser_query_run = mysqli_stmt_execute($stmt);
 
     if ($updateUser_query_run) {
-        echo '<script>alert("User request updated successfully.");</script>';
-        echo '<script>window.location.href = "ticket.php";</script>';
+        echo '<script>alert("Status updated successfully.");</script>';
+        echo '<script>window.location.href = "ticket_info.php?ticket_id=' . $ticket_id . '";</script>';
         exit();
     } else {
         // PHP code failed to execute
         echo '<script>alert("Error updating user request. Please try again.");</script>';
     }
-} else if (isset($_POST['decline_request'])) {
-    $ticket_id = $_POST['ticket_id'];
-    $decline_comment = $_POST['decline_comment'];
-    $status = "Declined";
 
-    $updateUser_query = "UPDATE ticket SET comment='$decline_comment', status='$status' WHERE ticket_id='$ticket_id' ";
-    $updateUser_query_run = mysqli_query($con, $updateUser_query);
-
-    if ($updateUser_query_run) {
-        echo '<script>alert("User request updated successfully.");</script>';
-        echo '<script>window.location.href = "ticket.php";</script>';
-        exit();
-    } else {
-        // PHP code failed to execute
-        echo '<script>alert("Error updating user request. Please try again.");</script>';
-    }
+    // Close the statement
+    mysqli_stmt_close($stmt);
 }
-?>

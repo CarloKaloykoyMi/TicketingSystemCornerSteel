@@ -1,26 +1,9 @@
-<?php include('../function/myfunction.php');
-include 'sidebar_navbar.php'
-?>
-
-<?php
+<?php 
+include('../function/myfunction.php');
+include 'sidebar_navbar.php';
 $ticket = getAll("ticket");
-
-function getStatusColorClass($status)
-{
-    switch ($status) {
-        case 'Pending':
-            return 'text-warning';
-        case 'Resolved':
-            return 'text-success';
-        case 'Unresolved':
-            return 'text-primary';
-        case 'Cancelled':
-            return 'text-danger';
-        default:
-            return '';
-    }
-}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +57,6 @@ function getStatusColorClass($status)
                                         <th>Requestor</th>
                                         <th>Status</th>
                                         <th>Action</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -87,73 +69,26 @@ function getStatusColorClass($status)
                                                 <td><?= $item['subject']; ?></td>
                                                 <td><?= $item['department']; ?></td>
                                                 <td><?= $item['requestor']; ?></td>
-                                                <td class="<?= getStatusColorClass($item['status']); ?>">
-                                                    <?= $item['status']; ?>
+                                                <td>
+                                                    <?php
+                                                    $status = $item['status'];
+
+                                                    if ($status == 'Pending') {
+                                                        echo '<span class="badge text-bg-warning">' . $status . '</span>';
+                                                    } elseif ($status == 'Resolved') {
+                                                        echo '<span class="badge text-bg-success">' . $status . '</span>';
+                                                    } elseif ($status == 'Cancelled') {
+                                                        echo '<span class="badge text-bg-danger">' . $status . '</span>';
+                                                    } else {
+                                                        echo '<span class="badge text-bg-primary">' . $status . '</span>';
+                                                    }
+                                                    ?>
                                                 </td>
                                                 <td class="table-action">
-                                                    <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCompanyModal<?= $item['ticket_id']; ?>"><i class="fas fa-eye"></i>View</a>
+                                                    <a href="ticket_info.php?ticket_id=<?php echo $item['ticket_id']; ?>" class="btn btn-primary"><i class="fas fa-eye"></i>View
+                                                    </a>
                                                 </td>
-                                                <td><u><a href="ticket_info.php?ticket_id=<?php echo $item['ticket_id']; ?>" class="text-body fw-bold">Ticket #<?php echo $item['ticket_id']; ?></a></u></td>
                                             </tr>
-
-                                            <!-- Edit Company Modal -->
-                                            <div class="modal fade" id="editCompanyModal<?= $item['ticket_id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Ticket</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <!-- Your edit form content goes here -->
-
-                                                            <form action="code.php" method="POST">
-                                                                <label for="ticket_id"><i class="fas fa-building"></i> Ticket ID</label>
-                                                                <input type="text" name="ticket_id" value="<?= $item['ticket_id']; ?>" readonly class="form-control">
-
-                                                                <div class="col-md-12 mt-3">
-                                                                    <label for="requestor"><i class="fas fa-building"></i> Requestor</label>
-                                                                    <input type="text" name="requestor" value="<?= $item['requestor']; ?>" readonly class="form-control">
-                                                                </div>
-
-                                                                <div class="col-md-12 mt-3">
-                                                                    <label for="subject"><i class="fas fa-building"></i> Subject</label>
-                                                                    <input type="text" name="subject" value="<?= $item['subject']; ?>" readonly class="form-control">
-                                                                </div>
-
-                                                                <div class="col-md-12 mt-3">
-                                                                    <label for="company"><i class="fas fa-building"></i> Company</label>
-                                                                    <input type="text" name="company" value="<?= $item['company']; ?>" readonly class="form-control">
-                                                                </div>
-
-                                                                <div class="col-md-12 mt-3">
-                                                                    <label for="department"><i class="fas fa-building"></i> Department</label>
-                                                                    <input type="text" name="department" value="<?= $item['department']; ?>" readonly class="form-control">
-                                                                </div>
-
-                                                                <div class="col-md-12 mt-3">
-                                                                    <label for=""><i class="fas fa-building"></i> Concern</label>
-                                                                    <textarea name="concern" readonly class="form-control"><?= $item['concern']; ?></textarea>
-                                                                </div>
-
-                                                                <hr>
-                                                                <div class="form-group pull-right">
-                                                                    <button type="button" class="btn btn-primary btn-accept-changes" data-bs-toggle="modal" data-bs-target="#acceptChangesModal">
-                                                                        Accept Changes
-                                                                    </button>
-                                                                </div>
-                                                                <div class="form-group pull-right">
-                                                                    <button type="button" class="btn btn-danger btn-decline-changes" data-bs-toggle="modal" data-bs-target="#declineChangesModal">
-                                                                        Decline Changes
-                                                                    </button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End Edit Company Modal -->
-
                                     <?php
                                         }
                                     } else {
@@ -164,72 +99,6 @@ function getStatusColorClass($status)
                             </table>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Accept Changes Modal -->
-    <div class="modal fade" id="acceptChangesModal" tabindex="-1" aria-labelledby="acceptChangesModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="acceptChangesModalLabel">Accept Changes</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form method="post" action="code.php">
-                        <label for="ticket_id"><i class="fas fa-building"></i> Ticket ID</label>
-                        <input type="text" name="ticket_id" value="<?= $item['ticket_id']; ?>" readonly class="form-control">
-
-                        <div class="col-md-12 mt-3">
-                            <label for=""><i class="fas fa-building"></i> Concern</label>
-                            <textarea name="concern" readonly class="form-control"><?= $item['concern']; ?></textarea>
-                        </div>
-
-                        <div class="col-md-12 mt-3">
-                            <label for=""><i class="fas fa-building"></i> Add Comment</label>
-                            <textarea name="accept_comment" class="form-control"></textarea>
-                        </div>
-                        <hr>
-                        <div class="form-group pull-right">
-                            <button class="btn btn-primary float-end" type="submit" name="accept_request">Save Changes</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Decline Changes Modal -->
-    <div class="modal fade" id="declineChangesModal" tabindex="-1" aria-labelledby="declineChangesModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="declineChangesModalLabel">Declined</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form method="post" action="code.php">
-
-                        <label for="ticket_id"><i class="fas fa-building"></i> Ticket ID</label>
-                        <input type="text" name="ticket_id" value="<?= $item['ticket_id']; ?>" readonly class="form-control">
-
-                        <div class="col-md-12 mt-3">
-                            <label for=""><i class="fas fa-building"></i> Concern</label>
-                            <textarea name="concern" readonly class="form-control"><?= $item['concern']; ?></textarea>
-                        </div>
-
-                        <div class="col-md-12 mt-3">
-                            <label for=""><i class="fas fa-building"></i> Add Comment</label>
-                            <textarea name="decline_comment" class="form-control"></textarea>
-                        </div>
-                        <hr>
-                        <div class="form-group pull-right">
-                            <button class="btn btn-danger float-end" type="submit" name="decline_request">Declined</button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
