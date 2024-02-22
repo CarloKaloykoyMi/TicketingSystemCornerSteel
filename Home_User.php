@@ -73,7 +73,7 @@ include('crud.php');
                     <tr>
                         <th>Ticket ID</th>
                         <th>Requestor</th>
-                        <th>Concern</th>
+                        <th>Subject</th>
                         <th>Status</th>
                         <th>Date Created</th>
                     </tr>
@@ -89,7 +89,7 @@ include('crud.php');
                             <tr>
                                 <td><u><a href="ticket_info.php?ticket_id=<?php echo $item['ticket_id']; ?>" class="text-body fw-bold">Ticket #<?php echo $item['ticket_id']; ?></a></u></td>
                                 <td><?= $item['requestor']; ?></td>
-                                <td><?= $item['concern']; ?></td>
+                                <td><?= $item['subject']; ?></td>
                                 <td><?= $item['status']; ?></td>
                                 <td><?= $item['date_created']; ?></td>
                             </tr>

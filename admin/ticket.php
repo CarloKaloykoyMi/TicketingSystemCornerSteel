@@ -74,6 +74,7 @@ function getStatusColorClass($status)
                                         <th>Requestor</th>
                                         <th>Status</th>
                                         <th>Action</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -92,6 +93,7 @@ function getStatusColorClass($status)
                                                 <td class="table-action">
                                                     <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCompanyModal<?= $item['ticket_id']; ?>"><i class="fas fa-eye"></i>View</a>
                                                 </td>
+                                                <td><u><a href="ticket_info.php?ticket_id=<?php echo $item['ticket_id']; ?>" class="text-body fw-bold">Ticket #<?php echo $item['ticket_id']; ?></a></u></td>
                                             </tr>
 
                                             <!-- Edit Company Modal -->

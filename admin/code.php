@@ -141,7 +141,7 @@ if (isset($_POST['add_company'])) {
 } else if (isset($_POST['accept_request'])) {
     $ticket_id = $_POST['ticket_id'];
     $accept_comment = $_POST['accept_comment'];
-    $status = "Resolved";
+    $status = "Unresolved";
 
     $updateUser_query = "UPDATE ticket SET comment='$accept_comment', status='$status' WHERE ticket_id='$ticket_id' ";
     $updateUser_query_run = mysqli_query($con, $updateUser_query);

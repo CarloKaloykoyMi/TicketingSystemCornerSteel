@@ -68,11 +68,10 @@ if (isset($_GET['ticket_id'])) {
             <div class="grid support-content">
                 <div class="grid-body">
                     <h2>Ticket Details</h2>
-                    
-                    <hr>
-                    <a href="home_user.php" class="btn btn-secondary mb-3" onclick="goBack()">Go Back</a>
 
-                    <div class="padding"></div>
+                    <hr>
+                    <a href="home_user.php" class="btn btn-secondary mb-3">Go Back</a>
+
                     <div class="row">
                         <div class="col-md-12">
                             <ul class="list-group fa-padding">
