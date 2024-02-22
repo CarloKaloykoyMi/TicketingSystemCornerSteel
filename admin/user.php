@@ -170,22 +170,22 @@ include 'sidebar_navbar.php'
 
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fas fa-user"></i> Last Name</label>
-                            <input type="text" name="company_name" placeholder="Enter Last Name" class="form-control">
+                            <input type="text" name="company_name" placeholder="Enter Last Name" class="form-control" required>
                         </div>
 
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fas fa-user"></i> First Name</label>
-                            <input type="text" name="company_address" placeholder="Enter First Name" class="form-control">
+                            <input type="text" name="company_address" placeholder="Enter First Name" class="form-control" required>
                         </div>
 
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fas fa-user"></i> Middle Name</label>
-                            <input type="text" name="contact" placeholder="Enter Middle Name" maxlength="11" class="form-control">
+                            <input type="text" name="contact" placeholder="Enter Middle Name" maxlength="11" class="form-control" required>
                         </div>
 
                         <div class="col-md-12 mt-3">
     <label for="company"><i class="fas fa-building"></i> Company</label>
-    <select name="company" class="form-control">
+    <select name="company" class="form-control" required>
         <option value="company1">Company 1</option>
         <option value="company2">Company 2</option>
         <option value="company3">Company 3</option>
@@ -196,7 +196,7 @@ include 'sidebar_navbar.php'
 
 <div class="col-md-12 mt-3">
     <label for="company"><i class="fa-solid fa-location-dot"></i> Branch</label>
-    <select name="company" class="form-control">
+    <select name="company" class="form-control" required>
         <option value="company1">Branch 1</option>
         <option value="company2">Branch  2</option>
         <option value="company3">Branch  3</option>
@@ -206,7 +206,7 @@ include 'sidebar_navbar.php'
 
 <div class="col-md-12 mt-3">
     <label for="company"><i class="fa-solid fa-users"></i> Department</label>
-    <select name="company" class="form-control">
+    <select name="company" class="form-control" required>
         <option value="company1">Department 1</option>
         <option value="company2">Department 2</option>
         <option value="company3">Department 3</option>
@@ -217,12 +217,12 @@ include 'sidebar_navbar.php'
 
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fas fa-envelope"></i> Email</label>
-                            <input type="text" name="email" placeholder="Enter Email" class="form-control">
+                            <input type="text" name="email" placeholder="Enter Email" class="form-control" required>
                         </div>
 
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fas fa-lock"></i> Password</label>
-                            <input type="text" name="email" placeholder="Enter Password" class="form-control">
+                            <input type="text" name="email" placeholder="Enter Password" class="form-control" required>
                         </div>
 
                         <hr>

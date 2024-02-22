@@ -16,7 +16,7 @@
             <ul class="navbar-nav ms-auto">
                 <!-- User Profile Picture -->
                 <li class="nav-item">
-                    <img src="logo2.png" alt="User Profile" class="nav-link rounded-circle" style="width: 40px; height: 40px;">
+                    <img src="img/user1.png" alt="User Profile" class="nav-link rounded-circle" style="width: 40px; height: 40px;">
                 </li>
 
                 <!-- User Name -->
@@ -27,6 +27,13 @@
         </div>
     </div>
 </nav>
+<style>
+    .sidebar-link:hover,
+    .sidebar-footer:hover {
+        background-color: white;
+        color: #FFF; /* Set the desired text color for hover state */
+    }
+</style>
 
 <div class="wrapper">
     <aside id="sidebar">
@@ -37,36 +44,37 @@
 
         </div>
         <ul class="sidebar-nav">
-            <li class="sidebar-item">
-                <a href="Home_User.php" class="sidebar-link">
-                    <i class="lni lni-home"></i>
-                    <span>HOME</span>
-                </a>
+    <li class="sidebar-item">
+        <a href="Home_User.php" class="sidebar-link">
+        <i class="fa-solid fa-house"></i>
+            <span><strong>HOME</strong></span>
+        </a>
+    </li>
+    <li class="sidebar-item">
+        <a href="Home_User.php" class="sidebar-link">
+        <i class="fa-solid fa-ticket"></i>
+            <span><strong>TICKETS</strong></span>
+        </a>
+        <ul class="sub-menu">
+            <li><a href="resolvedtickets.php"><i class="fa-solid fa-circle-check"></i>
+                    <span class="nav-item">RESOLVED TICKETS</span></a></li>
+            <li><a href="unresolvedtickets.php"><i class="fa-solid fa-triangle-exclamation"></i>
+                    <span class="nav-item">UNRESOLVED TICKETS </span></a></li>
+            <li><a href="pendingtickets.php"><i class="fa-solid fa-spinner"></i>
+                    <span class="nav-item">PENDING TICKETS</span></a></li>
+        </ul>
+    </li>
+    <li class="sidebar-item">
+        <a href="User_Profile.php" class="sidebar-link">
+        <i class="fa fa-gear"></i>
+            <span><strong>SETTINGS</strong></span>
+        </a>
             </li>
-            <li class="sidebar-item">
-                <a href="Home_User.php" class="sidebar-link">
-                    <i class="lni lni-ticket"></i>
-                    <span>Tickets</span>
-                </a>
-                <ul class="sub-menu">
-                    <li><a href="resolvedtickets.php"><i class="fa-solid fa-circle-check"></i>
-                            <span class="nav-item">Resolved Tickets</span></a></li>
-                    <li><a href="unresolvedtickets.php"><i class="fa-solid fa-triangle-exclamation"></i>
-                            <span class="nav-item">Unresolved Tickets</span></a></li>
-                    <li><a href="pendingtickets.php"><i class="fa-solid fa-spinner"></i>
-                            <span class="nav-item">Pending Tickets</span></a></li>
-                </ul>
-            </li>
-            <li class="sidebar-item">
-                <a href="User_Profile.php" class="sidebar-link">
-                    <i class="fa-solid fa-user"></i>
-                    <span>Profile</span>
-                </a>
-            </li>
-        <div class="sidebar-footer">
-            <a href="logout.php" class="sidebar-link">
-                <i class="lni lni-exit"></i>
-                <span>Logout</span>
+            <div class="sidebar-item">
+            <a href="logoutadmin.php" class="sidebar-link">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span><strong>LOGOUT</strong></span>
             </a>
         </div>
+        </ul>
     </aside>

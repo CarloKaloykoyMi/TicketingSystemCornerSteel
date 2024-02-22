@@ -39,19 +39,19 @@
         <ul class="sidebar-nav">
             <li class="sidebar-item">
                 <a href="dashboard.php" class="sidebar-link">
-                    <i class="lni lni-home"></i>
+                
                     <span>Dashboard</span>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a href="ticket.php" class="sidebar-link">
-                    <i class="lni lni-ticket"></i>
+                <i class="fa-solid fa-ticket"></i>
                     <span>Tickets</span>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a href="company.php" class="sidebar-link">
-                    <i class="lni lni-apartment"></i>
+                <i class="fa-solid fa-building"></i>
                     <span>Company</span>
                 </a>
             </li>
@@ -69,7 +69,7 @@
             </li>
             <li class="sidebar-item">
                 <a href="user.php" class="sidebar-link">
-                    <i class="lni lni-user"></i>
+                <i class="fa-solid fa-user-large"></i>
                     <span>User</span>
                 </a>
             </li>
@@ -81,7 +81,7 @@
             </li>
             <div class="sidebar-item">
             <a href="logoutadmin.php" class="sidebar-link">
-                <i class="lni lni-exit"></i>
+            <i class="fa-solid fa-right-from-bracket"></i>
                 <span>Logout</span>
             </a>
         </div>

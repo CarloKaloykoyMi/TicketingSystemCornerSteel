@@ -137,17 +137,17 @@ include 'sidebar_navbar.php'
 
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fa-solid fa-users"></i> Department Name</label>
-                            <input type="text" name="department_name" placeholder="Enter Department Name" class="form-control">
+                            <input type="text" name="department_name" placeholder="Enter Department Name" class="form-control" required>
                         </div>
 
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fas fa-user"></i> Department Head</label>
-                            <input type="text" name="department_head" placeholder="Enter Department Head" class="form-control">
+                            <input type="text" name="department_head" placeholder="Enter Department Head" class="form-control" required>
                         </div>
 
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fa-solid fa-location-dot"></i> Location</label>
-                            <input type="text" name="location" placeholder="Enter Location" class="form-control">
+                            <input type="text" name="location" placeholder="Enter Location" class="form-control" required>
                         </div>
 
                         <hr>

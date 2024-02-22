@@ -143,22 +143,22 @@ include 'sidebar_navbar.php'
 
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fas fa-building"></i> Company Name</label>
-                            <input type="text" name="company_name" placeholder="Enter Company Name" class="form-control">
+                            <input type="text" name="company_name" placeholder="Enter Company Name" class="form-control" required>
                         </div>
 
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fa-solid fa-location-dot"></i> Company Address</label>
-                            <input type="text" name="company_address" placeholder="Enter Company Address" class="form-control">
+                            <input type="text" name="company_address" placeholder="Enter Company Address" class="form-control" required>
                         </div>
 
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fa-solid fa-phone"></i> Contact</label>
-                            <input type="text" name="contact" placeholder="Enter Contact" maxlength="11" class="form-control">
+                            <input type="text" name="contact" placeholder="Enter Contact" maxlength="11" class="form-control" required>
                         </div>
 
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fas fa-envelope"></i> Email</label>
-                            <input type="text" name="email" placeholder="Enter Email" class="form-control">
+                            <input type="text" name="email" placeholder="Enter Email" class="form-control" required>
                         </div>
 
                         <hr>

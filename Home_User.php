@@ -58,13 +58,19 @@ include('crud.php');
     });
 </script>
 </head>
+<style>
+    .btn-custom:hover {
+        background-color: gray;
+        color: #fff; /* Set the desired text color for hover state */
+    }
+</style>
 
 <body>
     <div class="container-fluid">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
         <script src="js/sidebar.js"></script> <br>
         <div class="container1">
-            <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#myModal" style="position: absolute; top: 70px; right: 10px;">Create Ticket</button>
+        <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#myModal" style="position: absolute; top: 70px; right: 10px;">Create Ticket</button>
             <h3>
                 <center>Overall Ticket List</center>
             </h3>
@@ -119,7 +125,7 @@ include('crud.php');
                                         <i class="fa-solid fa-user input-group-text"></i>
                                     </span>
                                     <label for="requestor" class="sr-only">Requestor</label>
-                                    <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor">
+                                    <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor" required>
                                 </div>
                             </div>
 
@@ -129,7 +135,7 @@ include('crud.php');
                                         <i class="fa-solid fa-pencil input-group-text"></i>
                                     </span>
                                     <label for="subject" class="sr-only">Subject</label>
-                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
+                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
                                 </div>
                             </div>
 
@@ -138,7 +144,7 @@ include('crud.php');
                                     <i class="fa-solid fa-building input-group-text"></i>
                                 </span>
                                 <label for="company" class="sr-only">Company</label>
-                                <select class="form-control" id="company" name="company">
+                                <select class="form-control" id="company" name="company" required>
                                     <option value="">Select Company:</option>
                                     <?php
                                     $company = getAll("company");
@@ -152,15 +158,15 @@ include('crud.php');
                                         echo "<option value=''>No Company available</option>";
                                     }
                                     ?>
-                                </select>
-                            </div>
-
+                                   </select>
+                                </div>                                                                   
+<br>
                             <div class="form-group" style="display: none;" id="branchGroup">
                                 <div class="input-group">
                                     <i class="fa-solid fa-location-dot input-group-text"></i>
                                     </span>
                                     <label for="branch" class="sr-only">Branch:</label>
-                                    <select class="form-control" id="branch" name="branch">
+                                    <select class="form-control" id="branch" name="branch" required>
                                         <option value="">Select Branch:</option>
                                     </select>
                                 </div>
@@ -171,7 +177,7 @@ include('crud.php');
                                     <i class="fa-solid fa-building input-group-text"></i>
                                 </span>
                                 <label for="department" class="sr-only">Department:</label>
-                                <select class="form-control" id="department" name="department">
+                                <select class="form-control" id="department" name="department" required>
                                     <option value="">Select Department:</option>
                                     <?php
                                     $department = getAll("department");
@@ -187,14 +193,14 @@ include('crud.php');
                                     ?>
                                 </select>
                             </div>
-
+<br>
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-prepend">
                                         <i class="fa-solid fa-comment-alt input-group-text"></i>
                                     </span>
                                     <label for="concerns" class="sr-only">Concerns/Questions/Inquiries:</label>
-                                    <textarea class="form-control" id="concern" name="concern" rows="4"></textarea>
+                                    <textarea class="form-control" id="concern" name="concern" rows="4" placeholder="Concerns" required></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -203,7 +209,7 @@ include('crud.php');
                                         <i class="fa-solid fa-paperclip input-group-text"></i>
                                     </span>
                                     <label for="file" class="sr-only">Attach File:</label>
-                                    <input type="file" class="form-control-file" id="file" name="file">
+                                    <input type="file" class="form-control-file" id="file" name="file" required>
                                 </div>
                             </div>
 

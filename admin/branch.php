@@ -183,22 +183,22 @@ include 'sidebar_navbar.php'
 
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fas fa-building"></i> Branch Name</label>
-                            <input type="text" name="branch_name" placeholder="Enter Branch Name" class="form-control">
+                            <input type="text" name="branch_name" placeholder="Enter Branch Name" class="form-control" required>
                         </div>
 
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fa-solid fa-location-dot"></i> Branch Address</label>
-                            <input type="text" name="branch_address" placeholder="Enter Branch Address" class="form-control">
+                            <input type="text" name="branch_address" placeholder="Enter Branch Address" class="form-control" required>
                         </div>
 
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fa-solid fa-phone"></i> Contact</label>
-                            <input type="text" name="contact" placeholder="Enter Contact" class="form-control">
+                            <input type="text" name="contact" placeholder="Enter Contact" class="form-control" required>
                         </div>
 
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fas fa-envelope"></i> Email</label>
-                            <input type="text" name="email" placeholder="Enter Email" class="form-control">
+                            <input type="text" name="email" placeholder="Enter Email" class="form-control" required>
                         </div>
 
                         <hr>

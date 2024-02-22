@@ -41,7 +41,7 @@
         <li>
             <a href="unresolvedtickets.php">
                 <i class="fa-solid fa-triangle-exclamation"></i>
-                <span class="nav-item"><strong>UNRESOLVED TICKETS</strong></span>
+                <span class="nav-item"><strong>UNRESOLVED TICKETsS</strong></span>
             </a>
         </li>
         <li>
