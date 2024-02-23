@@ -1,5 +1,5 @@
-<?php
-include('sidebar_navbar.php')
+<?php include('function/myfunction.php');
+include 'sidebar_navbar.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +8,7 @@ include('sidebar_navbar.php')
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="x-icon" href="Images/Ticket -Logo-3.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unresolved</title>
+    <title>Unrnesolved</title>
     <!-- Add Bootstrap CSS link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -18,6 +18,16 @@ include('sidebar_navbar.php')
     <link rel="stylesheet" href="css/sidebar_navbar.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+
+    <!-- jQuery and DataTables JavaScript -->
+    <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script defer src="script.js"></script>
 
 </head>
 <style>
@@ -53,183 +63,46 @@ include('sidebar_navbar.php')
             <h3>
                 <center>Unresolved List</center>
             </h3>
-            <table class="table  table-bordered ">
-                <thead <tr>
-                    <th scope="col">Ticket ID</th>
-                    <th scope="col">Requester</th>
-                    <th scope="col">Asigned</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Date Created</th>
-                    <th scope="col">Date Updated</th>
-
-
+            <table id="example" class="table table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th scope="col">Ticket ID</th>
+                        <th scope="col">Requester</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Date Created</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>@fat</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                        <td>@twitter</td>
-                    </tr>
+                    <?php
+                    $ticket = getAll("ticket");
+
+                    if (mysqli_num_rows($ticket) > 0) {
+                        foreach ($ticket as $item) {
+                            $status = $item['status'];
+
+                            // Only display rows with status "Resolved"
+                            if ($status == 'Unresolved') {
+                    ?>
+                                <tr>
+                                    <td><u><a href="ticket_info.php?ticket_id=<?= $item['ticket_id']; ?>" class="text-body fw-bold">Ticket #<?= $item['ticket_id']; ?></a></u></td>
+                                    <td><?= $item['requestor']; ?></td>
+                                    <td class="text-justify"><?= $item['subject']; ?></td>
+                                    <td class="text-center">
+                                        <span class="badge text-bg-primary"><?= $status; ?></span>
+                                    </td>
+                                    <td class="text-center"><?= date('F j, Y h:i:s A', strtotime($item['date_created'])); ?></td>
+                                </tr>
+                    <?php
+                            }
+                        }
+                    } else {
+                        echo "No Records Found!";
+                    }
+                    ?>
                 </tbody>
             </table>
-        </div>
 
-
-        <!-- Modal -->
-        <div class="modal fade" id="myModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Submit a Ticket</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <!-- Include jQuery -->
-                    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-                    <!-- Modal Body -->
-                    <div class="modal-body">
-                        <form id="ticketForm">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-prepend">
-                                        <i class="fa-solid fa-user input-group-text"></i>
-                                    </span>
-                                    <label for="requester" class="sr-only">Requester:</label>
-                                    <input type="text" class="form-control" id="requester" name="requester" placeholder="Requester">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-prepend">
-                                        <i class="fa-solid fa-building input-group-text"></i>
-                                    </span>
-                                    <label for="company" class="sr-only">Company:</label>
-                                    <select class="form-control" id="company" name="company">
-                                        <option value="company1">Select Company:</option>
-                                        <disabled>
-                                            <option value="company1">Comfac Global Group</option>
-                                            <option value="company1">Comfac Technology Options (CTO)</option>
-                                            <option value="company2">Cornersteel Systems Corporation</option>
-                                            <option value="company2">Energy Specialist Company(ESCO)</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group" style="display: none;" id="branchGroup">
-                                <div class="input-group">
-                                    <i class="fa-solid fa-location-dot input-group-text"></i>
-                                    </span>
-                                    <label for="branch" class="sr-only">Branch:</label>
-                                    <select class="form-control" id="branch" name="branch">
-                                        <option value="branch1">Select Branch:</option>
-                                        <disabled>
-                                            <option value="branch1">Mandaluyong City</option>
-                                            <option value="branch1">Makati City</option>
-                                            <option value="branch1">Cabuyao Laguna</option>
-                                            <option value="branch1">General Santos</option>
-                                            <option value="branch1">Cebu City</option>
-                                            <option value="branch1">Cagayan De Oro</option>
-                                            <option value="branch1">Davao City</option>
-
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group" style="display: none;" id="departmentGroup">
-                                <div class="input-group">
-                                    <span class="input-group-prepend">
-                                        <i class="fa-solid fa-users input-group-text"></i>
-                                    </span>
-                                    <label for="department" class="sr-only">Department:</label>
-                                    <select class="form-control" id="department" name="department">
-                                        <option value="department1">Select Department:</option>
-                                        <disabled>
-                                            <option value="department1">HR</option>
-                                            <option value="department2">Accounting</option>
-                                            <option value="department2">Management Info</option>
-                                            <option value="department2">Purchasing</option>
-                                            <option value="department2">System Installation</option>
-                                            <option value="department2">MIS</option>
-                                            <option value="department2">Building Management System(BMS)</option>
-                                            <option value="department2">Systems Mechanical</option>
-                                            <option value="department2">Building Management System(BMS)</option>
-                                            <option value="department2">Field Service</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-prepend">
-                                        <i class="fa-solid fa-comment-alt input-group-text"></i>
-                                    </span>
-                                    <label for="concerns" class="sr-only">Concerns/Questions/Inquiries:</label>
-                                    <textarea class="form-control" id="concerns" name="concerns" rows="4"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-prepend">
-                                        <i class="fa-solid fa-paperclip input-group-text"></i>
-                                    </span>
-                                    <label for="file" class="sr-only">Attach File:</label>
-                                    <input type="file" class="form-control-file" id="file" name="file">
-                                </div>
-                            </div>
-                        </form>
-
-
-                        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-                        <script>
-                            // jQuery script to handle the visibility of branch and department fields
-                            $(document).ready(function() {
-                                $('#company').change(function() {
-                                    if ($(this).val() !== '') {
-                                        $('#branchGroup').show();
-                                    } else {
-                                        $('#branchGroup').hide();
-                                        $('#departmentGroup').hide();
-                                    }
-                                });
-
-                                $('#branch').change(function() {
-                                    if ($('#branch').val() !== '') {
-                                        $('#departmentGroup').show();
-                                    } else {
-                                        $('#departmentGroup').hide();
-                                    }
-                                });
-                            });
-                        </script>
-                    </div>
-
-                    <!-- Modal Footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-- Add Bootstrap JS script -->

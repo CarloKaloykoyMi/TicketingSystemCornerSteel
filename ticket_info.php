@@ -114,21 +114,22 @@ if (isset($_GET['ticket_id'])) {
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form>
+                                                                <form action="crud.php" method="POST">
+                                                                    <input type="text" name="ticket_id" value="<?php echo $ticket_id; ?>">
                                                                     <div class="mb-3">
-                                                                        <label for="replyMessage" class="form-label">Your Reply</label>
-                                                                        <textarea class="form-control" id="replyMessage" rows="3"></textarea>
+                                                                        <label for="replyMessage" class="form-label">Reply</label>
+                                                                        <textarea class="form-control" name="reply" id="replyMessage" rows="3"></textarea>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                        <!-- Move the submit button inside the form -->
+                                                                        <button class="btn btn-primary float-end" type="submit" name="add_reply">Save Changes</button>
                                                                     </div>
                                                                 </form>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                <button type="button" class="btn btn-primary">Save changes</button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
                                             </div>
                                         </div>
                                 </li>
