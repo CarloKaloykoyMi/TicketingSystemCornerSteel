@@ -128,8 +128,7 @@ if (isset($_GET['ticket_id'])) {
                                                         </div>
                                                     </div>
                                                 </div>
-
-
+                                                
                                             </div>
                                         </div>
                                 </li>
