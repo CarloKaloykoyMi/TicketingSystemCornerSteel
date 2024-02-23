@@ -56,34 +56,6 @@ if (isset($_GET['ticket_id'])) {
 </head>
 
 <body>
-
-<!-- Add a modal markup for reply form -->
-<div class="modal fade" id="replyModal" tabindex="-1" role="dialog" aria-labelledby="replyModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="replyModalLabel">Reply to Ticket</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!-- Reply form content goes here -->
-                <form>
-                    <div class="mb-3">
-                        <label for="replyMessage" class="form-label">Your Reply</label>
-                        <textarea class="form-control" id="replyMessage" rows="3"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send Reply</button>
-            </div>
-        </div>
-    </div>
-</div>
-
     <div class="container-fluid">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
         <script src="js/sidebar.js"></script> <br>
@@ -128,7 +100,35 @@ if (isset($_GET['ticket_id'])) {
                                     <div class="media">
                                         <div class="media-body">
                                             <div>
-                                                <a href="#" class="reply-link" data-toggle="modal" data-target="#replyModal">Reply</a>
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    Reply
+                                                </button>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form>
+                                                                    <div class="mb-3">
+                                                                        <label for="replyMessage" class="form-label">Your Reply</label>
+                                                                        <textarea class="form-control" id="replyMessage" rows="3"></textarea>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
 
                                             </div>
                                         </div>
@@ -141,13 +141,5 @@ if (isset($_GET['ticket_id'])) {
         </div>
     </div>
 </body>
-<script>
-    $(document).ready(function() {
-        // Handler for reply link click
-        $('.reply-link').click(function() {
-            $('#replyModal').modal('show');
-        });
-    });
-</script>
 
 </html>

@@ -16,6 +16,16 @@ include('crud.php');
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+
+    <!-- jQuery and DataTables JavaScript -->
+    <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script defer src="script.js"></script>
+
     <title>Home</title>
 </head>
 <style>
@@ -75,7 +85,7 @@ include('crud.php');
             <h3>
                 <center>Overall Ticket List</center>
             </h3>
-            <table class="table table-bordered">
+            <table id="example" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
                         <th>Ticket ID</th>
