@@ -1,5 +1,5 @@
 <?php
-include('sidebar_user.php')
+include('sidebar_navbar.php')
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,12 +12,16 @@ include('sidebar_user.php')
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/sidebar_navbar.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        body {
-            margin-left: 100px;
-        }
-
         h2 {
             font-family: "Arial", sans-serif;
             font-style: italic;
@@ -66,10 +70,8 @@ include('sidebar_user.php')
 </head>
 
 <body>
-    <div style="background:#7a7a7a; padding-top:20px;">
-        <h2 style="margin-left: 10px; color:#e7e7e7;">Hello User, Welcome!</h2>
-    </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="js/sidebar.js"></script> <br>
     <div class="container mt-4" style="padding: 10px; height: 580px;">
         <h3 class="text-center"><i class="fa fa-pencil"></i> Edit Profile</h3>
         <form action="#" method="post" enctype="multipart/form-data">
