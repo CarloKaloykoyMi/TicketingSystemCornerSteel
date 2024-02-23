@@ -87,7 +87,6 @@ if (isset($_GET['ticket_id'])) {
                                             </div>
                                             <p class="info">Request by <a href="#"><?php echo $ticket_data['requestor']; ?></a> &nbsp; <?php echo date('M d, Y', strtotime($ticket_data['date_created'])); ?>
                                                 <i class="fa fa-comments"></i>
-
                                             </p>
 
                                             <p><?php echo $ticket_data['concern']; ?></p>
@@ -115,7 +114,7 @@ if (isset($_GET['ticket_id'])) {
                                                             </div>
                                                             <div class="modal-body">
                                                                 <form action="crud.php" method="POST">
-                                                                    <input type="text" name="ticket_id" value="<?php echo $ticket_id; ?>">
+                                                                    <input type="hidden" name="ticket_id" value="<?php echo $ticket_id; ?>">
                                                                     <div class="mb-3">
                                                                         <label for="replyMessage" class="form-label">Reply</label>
                                                                         <textarea class="form-control" name="reply" id="replyMessage" rows="3"></textarea>
