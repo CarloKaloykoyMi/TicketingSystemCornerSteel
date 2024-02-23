@@ -71,7 +71,7 @@
         </a>
             </li>
             <div class="sidebar-item">
-            <a href="logoutadmin.php" class="sidebar-link">
+            <a href="logout.php" class="sidebar-link">
             <i class="fa-solid fa-right-from-bracket"></i>
             <span><strong>LOGOUT</strong></span>
             </a>
