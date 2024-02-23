@@ -1,5 +1,94 @@
 <?php include('../function/myfunction.php');
-include 'sidebar_navbar.php'
+include ('sidebar_navbar.php');
+include ('mysql_connect.php');
+
+$sql = "SELECT COUNT(*) AS ticket_count FROM ticket";
+$result = $con->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $ticketCount = $row["ticket_count"];
+} else {
+    $ticketCount = 0;
+}
+// --------------------------------------------------------------------------------------------
+// Count of tickets with status "Pending"
+$sql = "SELECT COUNT(DISTINCT ticket_id) AS pending_count FROM ticket WHERE status = 'Pending'";
+$result = $con->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $pendingCount = $row["pending_count"];
+} else {
+    $pendingCount = 0;
+}
+// --------------------------------------------------------------------------------------------
+// Count of tickets with status "Resolved"
+$sql = "SELECT COUNT(DISTINCT ticket_id) AS resolved_count FROM ticket WHERE status = 'Resolved'";
+$result = $con->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $resolvedCount = $row["resolved_count"];
+} else {
+    $resolvedCount = 0;
+}
+// --------------------------------------------------------------------------------------------
+// Count of tickets with status "Unresolved"
+$sql = "SELECT COUNT(DISTINCT ticket_id) AS Unresolved_count FROM ticket WHERE status = 'Unresolved'";
+$result = $con->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $unresolvedCount = $row["Unresolved_count"];
+} else {
+    $unresolvedCount = 0;
+}
+
+// ---------------------------------------------------------------------------------------------
+// Fetch data from the database
+$query = "SELECT status, COUNT(*) as count FROM ticket GROUP BY status";
+$result = mysqli_query($con, $query);
+
+// Prepare data for the chart
+$labels = [];
+$data = [];
+
+while ($row = mysqli_fetch_assoc($result)) {
+    $labels[] = $row['status'];
+    $data[] = $row['count'];
+}
+
+// ----------------------------------------------------------------------------------------------
+// Fetch data for "Pending" tickets from the database
+$query1 = "SELECT status, COUNT(*) as count FROM ticket WHERE status = 'Pending'";
+$result1 = mysqli_query($con, $query1);
+
+// Prepare data for the chart
+$labels1 = ['Pending']; // You only have one label for "Pending" status
+$data1 = [];
+
+if ($row1 = mysqli_fetch_assoc($result1)) {
+    $data1[] = $row1['count'];
+}
+
+// Fetch data for "Resolved" and "Unresolved" tickets from the database
+$query = "SELECT status, COUNT(*) as count FROM ticket WHERE status IN ('Resolved', 'Unresolved') GROUP BY status";
+$result = mysqli_query($con, $query);
+
+// Prepare data for the chart
+$labels2= [];
+$data2= [];
+
+while ($row = mysqli_fetch_assoc($result)) {
+    $labels2[] = $row['status'];
+    $data2[] = $row['count'];
+}
+
+
+// Close the database connection
+mysqli_close($con);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,26 +124,64 @@ include 'sidebar_navbar.php'
                                 <div class="card widget-card">
                                     <div class="card-body text-center">
                                         <h5 class="card-title"><i class="fa-solid fa-ticket"></i> Total Tickets</h5>
-                                        <p>Currently, there are <strong>150</strong> tickets in the system.</p>
+                                        <p> <?php echo $ticketCount; ?> Tickets</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="card widget-card">
                                     <div class="card-body text-center">
-                                        <h5 class="card-title"><i class="fa-solid fa-triangle-exclamation"></i> Resolved Tickets</h5>
-                                        <p>Out of the total, <strong>120</strong> tickets have been resolved.</p>
+                                        <h5 class="card-title"><i class="fa-solid fa-triangle-exclamation"></i> Pending Tickets</h5>
+                                        <p><?php echo $pendingCount; ?> Tickets</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="card widget-card">
                                     <div class="card-body text-center">
-                                        <h5 class="card-title"><i class="fa-solid fa-spinner"></i> Pending Tickets</h5>
-                                        <p>There are <strong>20</strong> tickets pending for resolution.</p>
+                                        <h5 class="card-title"><i class="fa-solid fa-spinner"></i> Resolved Tickets</h5>
+                                        <p><?php echo $resolvedCount; ?> Tickets</p>
                                     </div>
                                 </div>
                             </div>
+                            <center>
+                            <div class="col-md-4 mt-3">
+                                <div class="card widget-card">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title"><i class="fa-solid fa-spinner"></i> UnResolved Tickets</h5>
+                                        <p><?php echo $unresolvedCount; ?> Tickets</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </center>
+                        </div>
+
+                        <div class="row">
+                            <!-- Add the canvas element for the chart -->
+                            <div class="col-md-4">
+                                <div class="card widget-card">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title"><i class="fa-solid fa-ticket"></i> Total Tickets</h5>
+                                        <canvas id="ticketChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card widget-card">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title"><i class="fa-solid fa-ticket"></i> Ticket Status</h5>
+                                        <canvas id="ticketStatusChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                            <div class="card widget-card">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title"><i class="fa-solid fa-ticket"></i> Pending Tickets</h5>
+                                    <canvas id="pendingTicketsChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
                         </div>
 
                         <!-- Additional Content -->
@@ -100,6 +227,80 @@ include 'sidebar_navbar.php'
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="js/sidebar.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Add JavaScript to create the chart -->
+<script>
+    var ctx = document.getElementById('ticketChart').getContext('2d');
+    var ticketChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: <?php echo json_encode($labels); ?>,
+            datasets: [{
+                label: 'Ticket Status',
+                data: <?php echo json_encode($data); ?>,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+<!-- Add JavaScript to create the chart -->
+<script>
+    var ctx = document.getElementById('pendingTicketsChart').getContext('2d');
+    var pendingTicketsChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: <?php echo json_encode($labels1); ?>,
+            datasets: [{
+                label: 'Pending Tickets',
+                data: <?php echo json_encode($data1); ?>,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)', // Customize the color as needed
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+<script>
+    var ctx = document.getElementById('ticketStatusChart').getContext('2d');
+    var ticketStatusChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: <?php echo json_encode($labels2); ?>,
+            datasets: [{
+                data: <?php echo json_encode($data2); ?>,
+                backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'], // Customize colors as needed
+                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+</script>
+
+
+
 
     <script>
         $(".btn-primary").click(function() {
