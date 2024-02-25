@@ -13,8 +13,6 @@ include('crud.php');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="css/sidebar_navbar.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
@@ -44,29 +42,7 @@ include('crud.php');
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<script>
-    $(document).ready(function() {
-        $('#company').change(function() {
-            var companyName = $(this).val();
 
-            $.ajax({
-                url: 'get_branches.php',
-                type: 'POST',
-                data: {
-                    company_name: companyName
-                },
-                success: function(response) {
-                    console.log(response);
-                    $('#branch').html(response);
-                    $('#branchGroup').toggle(response.trim() !== '');
-                },
-                error: function() {
-                    alert('Error fetching branches.');
-                }
-            });
-        });
-    });
-</script>
 </head>
 <style>
     .btn-custom:hover {
@@ -85,8 +61,8 @@ include('crud.php');
             <h3>
                 <center>Overall Ticket List</center>
             </h3>
-            <table id="example" class="table table-striped" style="width:100%">
-                <thead>
+            <table id="example" class="table table-responsive hover table-bordered">
+                <thead class="table-light">
                     <tr>
                         <th>Ticket ID</th>
                         <th class="text-center">Requestor</th>
@@ -249,5 +225,30 @@ include('crud.php');
         </div>
     </div>
 </body>
+
+
+<script>
+    $(document).ready(function() {
+        $('#company').change(function() {
+            var companyName = $(this).val();
+
+            $.ajax({
+                url: 'get_branches.php',
+                type: 'POST',
+                data: {
+                    company_name: companyName
+                },
+                success: function(response) {
+                    console.log(response);
+                    $('#branch').html(response);
+                    $('#branchGroup').toggle(response.trim() !== '');
+                },
+                error: function() {
+                    alert('Error fetching branches.');
+                }
+            });
+        });
+    });
+</script>
 
 </html>

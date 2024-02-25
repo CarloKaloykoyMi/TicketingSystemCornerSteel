@@ -9,13 +9,7 @@ include('sidebar_navbar.php')
     <link rel="shortcut icon" type="x-icon" href="Images/Ticket -Logo-3.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="css/sidebar_navbar.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -106,7 +100,7 @@ include('sidebar_navbar.php')
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="contact-number"><i class="fa-solid fa-phone"></i> Contact Number:</label>
+                        <label for="contact-number"><i class="lni lni-phone"></i> Contact Number:</label>
                         <input type="tel" id="contact-number" name="contact-number" class="form-control">
                     </div>
                 </div>
@@ -120,7 +114,7 @@ include('sidebar_navbar.php')
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="branch"><i class="fa-solid fa-location-dot"></i> Branch:</label>
+                        <label for="branch"><i class="lni lni-map-marker"></i> Branch:</label>
                         <input type="text" id="branch" name="branch" class="form-control">
                     </div>
                 </div>

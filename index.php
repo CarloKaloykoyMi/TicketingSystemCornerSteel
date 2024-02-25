@@ -128,7 +128,7 @@
 
             <div class="container">
                 <div class="section-header">
-                    <h3 class="title">COMPANIES  </h3>
+                    <h3 class="title">COMPANIES </h3>
                 </div>
 
                 <div class="section-body">

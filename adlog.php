@@ -102,7 +102,8 @@ if (isset($_POST['register'])) {
                 ];
                 $_SESSION['role'] = $role;
 
-                if ($role == 0
+                if (
+                    $role == 0
                 ) {
                     header("Location: admin/dashboard.php");
                     exit();

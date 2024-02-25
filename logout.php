@@ -7,5 +7,4 @@ if (isset($_SESSION['auth'])) {
 }
 
 header('Location: emplogin.php')
-
 ?>

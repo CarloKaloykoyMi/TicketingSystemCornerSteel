@@ -39,4 +39,3 @@ if (isset($_POST['add_ticket'])) {
         echo '<script>alert("Error adding reply. Please try again.");</script>';
     }
 }
-?>

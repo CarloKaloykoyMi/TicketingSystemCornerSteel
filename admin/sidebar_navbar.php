@@ -39,19 +39,19 @@
         <ul class="sidebar-nav">
             <li class="sidebar-item">
                 <a href="dashboard.php" class="sidebar-link">
-                
+                    <i class="fa-solid fa-home"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a href="ticket.php" class="sidebar-link">
-                <i class="fa-solid fa-ticket"></i>
+                    <i class="fa-solid fa-ticket"></i>
                     <span>Tickets</span>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a href="company.php" class="sidebar-link">
-                <i class="fa-solid fa-building"></i>
+                    <i class="fa-solid fa-building"></i>
                     <span>Company</span>
                 </a>
             </li>
@@ -69,21 +69,21 @@
             </li>
             <li class="sidebar-item">
                 <a href="user.php" class="sidebar-link">
-                <i class="fa-solid fa-user-large"></i>
+                    <i class="fa-solid fa-user-large"></i>
                     <span>User</span>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a href="admin_profile.php" class="sidebar-link">
-                <i class="fa fa-gear"></i>
+                    <i class="fa fa-gear"></i>
                     <span>Settings</span>
                 </a>
             </li>
             <div class="sidebar-item">
-            <a href="logoutadmin.php" class="sidebar-link">
-            <i class="fa-solid fa-right-from-bracket"></i>
-                <span>Logout</span>
-            </a>
-        </div>
+                <a href="logoutadmin.php" class="sidebar-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
         </ul>
     </aside>
