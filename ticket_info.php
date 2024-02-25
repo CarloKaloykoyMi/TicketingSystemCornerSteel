@@ -141,10 +141,10 @@ $reply_result = mysqli_query($con, $query);
                             // Check if there's any result
                             if ($reply_result->num_rows > 0) {
                                 // Output data of each row
-                                echo "<table";
+                                echo "<table>";
                                 while ($row = $reply_result->fetch_assoc()) {
                             ?>
-                                    <ul class="list-group fa-padding" style="padding-top: 1px;">
+                                    <ul class="list-group fa-padding" style="padding-top: 5px;">
                                         <li class="list-group-item">
                                             <div class="media">
                                                 <div class="media-body">
