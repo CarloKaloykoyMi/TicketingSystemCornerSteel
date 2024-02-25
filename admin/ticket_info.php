@@ -42,6 +42,7 @@ if (isset($_GET['ticket_id'])) {
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- Lineicons CSS -->
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
@@ -64,7 +65,7 @@ if (isset($_GET['ticket_id'])) {
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Tickets</h4>
+                            <h4><i class="fa-solid fa-ticket"></i> Tickets</h4>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
@@ -74,7 +75,9 @@ if (isset($_GET['ticket_id'])) {
                                             <div class="media-body">
                                                 <div>
                                                     <hr>
-                                                    <a href="ticket.php" class="btn btn-secondary mb-3">Go Back</a> <br>
+                                                    <div class="text-right">
+    <a href="ticket.php" class="btn btn-secondary mb-3" style="position: absolute; top: 40px; right: 10px;">Go Back</a>
+</div>
                                                     <span class="number pull-right"><b>Ticket # <?php echo $ticket_data['ticket_id']; ?></b></span> <br>
                                                     <span class="number pull-right"><b>Status:
                                                             <?php
@@ -104,12 +107,12 @@ if (isset($_GET['ticket_id'])) {
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Ticket Status</h5>
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <form action="code.php" method="POST">
-                                                                        <label for="Status" class="form-label"><i class="fa-solid fa-location-dot"></i> Status</label>
+                                                                        <label for="Status" class="form-label"><i class="fas fa-info-circle"></i> Status</label>
                                                                         <select id="Status" name="status" class="form-control" required>
                                                                             <option value="" disabled>Select your Status</option>
                                                                             <?php
@@ -124,10 +127,12 @@ if (isset($_GET['ticket_id'])) {
                                                                         <!-- Add the ticket_id input field -->
                                                                         <input type="hidden" name="ticket_id" value="<?php echo $ticket_data['ticket_id']; ?>">
                                                                         <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            
                                                                             <!-- Move the submit button inside the form -->
                                                                             <button class="btn btn-primary float-end" type="submit" name="change_status">Save Changes</button>
+                                                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                                         </div>
+                                        
                                                                     </form>
                                                                 </div>
                                                             </div>
@@ -136,14 +141,14 @@ if (isset($_GET['ticket_id'])) {
 
 
                                                     <br>
-                                                    <span style="font-size:26px;padding-bottom:10px;"><b> Subject: </b> <?php echo $ticket_data['subject']; ?></span>
+                                                    <span style="font-size:26px;padding-bottom:10px;"><b><i class="fas fa-file"></i> Subject: </b> <?php echo $ticket_data['subject']; ?></span>
                                                 </div>
 
-                                                <p class="info">Request by <a href="#"><?php echo $ticket_data['requestor']; ?></a> &nbsp; <?php echo date('M d, Y', strtotime($ticket_data['date_created'])); ?>
+                                                <p class="info">Requested by <a href="#"><?php echo $ticket_data['requestor']; ?></a> &nbsp; <?php echo date('M d, Y', strtotime($ticket_data['date_created'])); ?>
                                                     <i class="fa fa-comments"></i>
                                                 </p>
                                                 <hr>
-                                                <b>Concern</b>
+                                                <b>Concern:</b>
                                                 <p><?php echo $ticket_data['concern']; ?></p>
 
                                             </div>
