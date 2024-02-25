@@ -22,7 +22,7 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    
+
     <title>Reset Password</title>
 </head>
 <style>
@@ -67,73 +67,73 @@
 
 <body>
     <!-- Navbar -->
-<header id="header">
+    <header id="header">
         <nav class="navbar">
-        <div class="navbar-logo">
-        <a href="index.php">
-            <img src="img/logo2.png">
-        </a>
-            <span class="logo-text">CGG e-Ticketing</span>
-        </div>
-        <div class="links">
-            <ul>
-                <li>
-                  <a href="#header">Home</a>
-                </li>
-                <li>
-                  <a href="#aboutus">About</a>
-                </li>
-                <li>
-                  <a href="#contact">Contact</a>
-                </li>
-                <li><a href="usertype.php" class="active">LOGIN</a></li>
-            </ul>
-        </div>
-    </nav>
-</header>
+            <div class="navbar-logo">
+                <a href="index.php">
+                    <img src="img/logo2.png">
+                </a>
+                <span class="logo-text">CGG e-Ticketing</span>
+            </div>
+            <div class="links">
+                <ul>
+                    <li>
+                        <a href="#header">Home</a>
+                    </li>
+                    <li>
+                        <a href="#aboutus">About</a>
+                    </li>
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
+                    <li><a href="usertype.php" class="active">LOGIN</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-<br><br>
-        <p style="text-align: center; font-size: 25px; font-weight: bold;">Reset Password</p>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
+    <br><br>
+    <p style="text-align: center; font-size: 25px; font-weight: bold;">Reset Password</p>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    </div>
     </nav>
 
     <main class="login-form">
         <div class="container">
             <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card" style="background-color: #e7e7e7;">
-                  <p style="text-align: center; font-size: 18px; color: #232836;">Please enter your new password.</p>
+                <div class="col-md-8">
+                    <div class="card" style="background-color: #e7e7e7;">
+                        <p style="text-align: center; font-size: 18px; color: #232836;">Please enter your new password.</p>
                         <form action="#" method="POST" name="login">
                             <div class="card-body">
-                          <div class="form-group row">
-                          <div class="col-12">
-    <div class="input-group">
-    <span style="color: #232836;"><i class="fas fa-lock"></i>  Password: &nbsp;&nbsp;</span>
-        <input type="password" class="form-control" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="" required>
-        <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" id="togglePassword" style="color: #232836;"><i class="fas fa-eye"></i></button>
+                                <div class="form-group row">
+                                    <div class="col-12">
+                                        <div class="input-group">
+                                            <span style="color: #232836;"><i class="fas fa-lock"></i> Password: &nbsp;&nbsp;</span>
+                                            <input type="password" class="form-control" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="" required>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary" type="button" id="togglePassword" style="color: #232836;"><i class="fas fa-eye"></i></button>
 
-        </div>
-    </div>
-</div>
-</div>
-
-                                    <div id="message">
-                                        <h6>Password must contain:</h6>
-                                        <p id="letter" class="invalid">At least one letter</p>
-                                        <p id="capital" class="invalid">At least one capital letter</p>
-                                        <p id="number" class="invalid">At least one number</p>
-                                        <p id="special" class="invalid">At least one special character</p>
-                                        <p id="length" class="invalid">Minimum 8 characters</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="form-group row justify-content-center"> <!-- Center the content -->
-    <div class="col-md-6">
-                                <input type="submit" value="Reset" class="btn btn-primary" name="reset" style="background-color: #424949; width: 100px; height: 40px;">
+                                <div id="message">
+                                    <h6>Password must contain:</h6>
+                                    <p id="letter" class="invalid">At least one letter</p>
+                                    <p id="capital" class="invalid">At least one capital letter</p>
+                                    <p id="number" class="invalid">At least one number</p>
+                                    <p id="special" class="invalid">At least one special character</p>
+                                    <p id="length" class="invalid">Minimum 8 characters</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group row justify-content-center"> <!-- Center the content -->
+                                <div class="col-md-6">
+                                    <input type="submit" value="Reset" class="btn btn-primary" name="reset" style="background-color: #424949; width: 100px; height: 40px;">
 
                                 </div>
                             </div>
@@ -147,39 +147,40 @@
     </main>
 
     <footer class="footer">
-    <div class="container">
-        <div class="bottom-footer">
+        <div class="container">
+            <div class="bottom-footer">
 
-            <div class="copyright">
-                <p class="text">
-                  &copy; 2024 Comfac Global Group.
-                </p>
-            </div>
+                <div class="copyright">
+                    <p class="text">
+                        &copy; 2024 Comfac Global Group.
+                    </p>
+                </div>
 
-            <!-- Follow Us -->
-            <div class="followme-wrap">
-                <div class="followme">
-                    <h3>Follow Us</h3>
-                    <span class="footer-line"></span>
-                    <div class="social-media">
-                        <a href="https://www.facebook.com/ComfacGlobalGroupRecruitment/">
-                            <i class="fab fa-facebook-f"></i> 
-                        </a>
-                        <a href="https://www.instagram.com/cornersteelsystemscorp/">
-                            <i class="fab fa-instagram"></i> 
+                <!-- Follow Us -->
+                <div class="followme-wrap">
+                    <div class="followme">
+                        <h3>Follow Us</h3>
+                        <span class="footer-line"></span>
+                        <div class="social-media">
+                            <a href="https://www.facebook.com/ComfacGlobalGroupRecruitment/">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://www.instagram.com/cornersteelsystemscorp/">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="back-btn-wrap">
+                        <a href="#" class="back-btn">
+                            <i class="fas fa-chevron-up"></i>
                         </a>
                     </div>
                 </div>
-                <div class="back-btn-wrap">
-                    <a href="#" class="back-btn">
-                        <i class="fas fa-chevron-up"></i>
-                    </a>
-                </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 </body>
+
 </html>
 </body>
 
@@ -310,10 +311,11 @@ if (isset($_POST["reset"])) {
         }
     }
 </script>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <script src="main.js"></script>
-  </body>
+</div>
+</div>
+</div>
+</footer>
+<script src="main.js"></script>
+</body>
+
 </html>

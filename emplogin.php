@@ -27,7 +27,7 @@
         <div class="links">
             <ul>
                 <li>
-                    <a href="index.php#header">Home</a>
+                    <a href="index.php">Home</a>
                 </li>
                 <li>
                     <a href="index.php#aboutus">About</a>
@@ -39,66 +39,7 @@
             </ul>
         </div>
     </nav>
-    </header>
-    <style>
-        .grid-item {
-            width: 48%;
-            margin: 1%;
-        }
 
-        @media (max-width: 767px) {
-            .grid-item {
-                width: 100%;
-                margin: 0;
-            }
-        }
-
-        .grid-item {
-            width: 48%;
-            margin: 1%;
-            float: left;
-        }
-
-        @media (max-width: 767px) {
-            .grid-item {
-                width: 100%;
-                margin: 0;
-                float: none;
-            }
-        }
-
-        .footer {
-            padding: 10px 0;
-        }
-
-        .logo img {
-            width: 100px;
-            height: auto;
-        }
-
-        .copyright {
-            text-align: center;
-        }
-
-        .copyright p {
-            font-weight: bold;
-            font-size: 16px;
-        }
-
-        .logo-text {
-            font-size: 24px;
-            margin-left: 10px;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        .gallery-image img {
-            width: 250px;
-            height: auto;
-            border-radius: 15px;
-        }
-    </style>
-    </head>
     <section class="container forms">
         <div class="form login">
             <div class="form-content">
@@ -126,7 +67,6 @@
                     <span>Don't have an account yet? <a href="register.php" class="button">Signup</a></span>
                 </div>
             </div>
-
         </div>
 
     </section>

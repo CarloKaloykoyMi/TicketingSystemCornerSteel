@@ -26,21 +26,21 @@ include('mysql_connect.php'); // connection to MySQL
             <div class="navbar-logo">
                 <img src="img/logo2.png">
                 <span class="logo-text">CGG e-Ticketing</span>
-                </div>
-        <div class="links">
-            <ul>
-                <li>
-                    <a href="index.php#header">Home</a>
-                </li>
-                <li>
-                    <a href="index.php#aboutus">About</a>
-                </li>
-                <li>
-                    <a href="index.php#contact">Contact</a>
-                </li>
-                <li><a href="usertype.php" class="active">LOGIN</a></li>
-            </ul>
-        </div>
+            </div>
+            <div class="links">
+                <ul>
+                    <li>
+                        <a href="index.php#header">Home</a>
+                    </li>
+                    <li>
+                        <a href="index.php#aboutus">About</a>
+                    </li>
+                    <li>
+                        <a href="index.php#contact">Contact</a>
+                    </li>
+                    <li><a href="usertype.php" class="active">LOGIN</a></li>
+                </ul>
+            </div>
             </div>
 
         </nav>

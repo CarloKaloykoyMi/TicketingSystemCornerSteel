@@ -116,73 +116,80 @@ mysqli_close($con);
                         <h4>Dashboard</h4>
                     </div>
                     <br>
-                    <h2>&nbsp;Welcome Admin!</h2>
+                    <h2> <i class="fas fa-smile"></i> Welcome Admin!</h2>
+
                     <p>&nbsp;This dashboard provides you with tools to manage tickets, users, and system settings efficiently.</p>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="card widget-card">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title"><i class="fa-solid fa-ticket"></i> Total Tickets</h5>
-                                        <p> <?php echo $ticketCount; ?> Tickets</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card widget-card">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title"><i class="fa-solid fa-triangle-exclamation"></i> Pending Tickets</h5>
-                                        <p><?php echo $pendingCount; ?> Tickets</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card widget-card">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title"><i class="fa-solid fa-spinner"></i> Resolved Tickets</h5>
-                                        <p><?php echo $resolvedCount; ?> Tickets</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <center>
-                            <div class="col-md-4 mt-3">
-                                <div class="card widget-card">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title"><i class="fa-solid fa-spinner"></i> UnResolved Tickets</h5>
-                                        <p><?php echo $unresolvedCount; ?> Tickets</p>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card widget-card">
+                <div class="card-body text-center">
+                    <h5 class="card-title"><i class="fas fa-info-circle"></i> Total Tickets</h5>
+                    <p><?php echo $ticketCount; ?> Tickets</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card widget-card">
+                <div class="card-body text-center">
+                    <h5 class="card-title"><i class="fa-solid fa-triangle-exclamation"></i> Pending Tickets</h5>
+                    <p><?php echo $pendingCount; ?> Tickets</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card widget-card">
+                <div class="card-body text-center">
+                    <h5 class="card-title"><i class="fa-solid fa-check"></i> Resolved Tickets</h5>
+                    <p><?php echo $resolvedCount; ?> Tickets</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card widget-card">
+                <div class="card-body text-center">
+                    <h5 class="card-title"><i class="fa-solid fa-spinner"></i> UnResolved Tickets</h5>
+                    <p><?php echo $unresolvedCount; ?> Tickets</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
                         </center>
                         </div>
-
+<br>
                         <div class="row">
-                            <!-- Add the canvas element for the chart -->
-                            <div class="col-md-4">
-                                <div class="card widget-card">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title"><i class="fa-solid fa-ticket"></i> Total Tickets</h5>
-                                        <canvas id="ticketChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card widget-card">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title"><i class="fa-solid fa-ticket"></i> Ticket Status</h5>
-                                        <canvas id="ticketStatusChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                            <div class="card widget-card">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title"><i class="fa-solid fa-ticket"></i> Pending Tickets</h5>
-                                    <canvas id="pendingTicketsChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
+    <!-- Total Tickets Chart -->
+    <div class="col-md-4">
+        <div class="card widget-card">
+            <div class="card-body text-center">
+                <h5 class="card-title"><i class="fas fa-info-circle"></i> Total Tickets</h5>
+                <canvas id="ticketChart" width="200" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ticket Status Chart -->
+    <div class="col-md-4">
+        <div class="card widget-card">
+            <div class="card-body text-center">
+                <h5 class="card-title"><i class="fa-solid fa-ticket"></i> Ticket Status</h5>
+                <canvas id="ticketStatusChart" width="200" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pending Tickets Chart -->
+    <div class="col-md-4">
+        <div class="card widget-card">
+            <div class="card-body text-center">
+                <h5 class="card-title"><i class="fa-solid fa-triangle-exclamation"></i> Pending Tickets</h5>
+                <canvas id="pendingTicketsChart" width="200" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
 
                         <!-- Additional Content -->
                         <div class="row mt-4">
@@ -212,7 +219,7 @@ mysqli_close($con);
                         </div>
 
 
-                        <div class="col-md-6">
+                     <!--   <div class="col-md-6">
             <h4>Ticket Status Overview</h4>
             <div class="card widget-card">
                 <div class="card-body">
@@ -222,7 +229,7 @@ mysqli_close($con);
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>

@@ -17,4 +17,3 @@ if (isset($_POST['company_name'])) {
 } else {
     echo "<option value=''>Invalid request</option>";
 }
-?>
