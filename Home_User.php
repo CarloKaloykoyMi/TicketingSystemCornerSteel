@@ -61,8 +61,8 @@ include('crud.php');
             <h3>
                 <center>Overall Ticket List</center>
             </h3>
-            <table id="example" class="table table-striped" style="width:100%">
-                <thead>
+            <table id="example" class="table table-responsive hover table-bordered">
+                <thead class="table-light">
                     <tr>
                         <th>Ticket ID</th>
                         <th class="text-center">Requestor</th>
