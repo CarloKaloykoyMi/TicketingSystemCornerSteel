@@ -21,6 +21,11 @@ if (isset($_GET['ticket_id'])) {
     // Handle the case where the ticket_id parameter is not provided in the URL
     $error_message = "Error: Missing ticket_id parameter.";
 }
+
+$query = "SELECT * FROM ticket_reply WHERE ticket_id = '$ticket_id'";
+
+$reply_result = mysqli_query($con, $query);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -133,6 +138,34 @@ if (isset($_GET['ticket_id'])) {
                                         </div>
                                 </li>
                             </ul>
+
+                            <?php
+                            // Check if there's any result
+                            if ($reply_result->num_rows > 0) {
+                                // Output data of each row
+                                echo "<table";
+                                while ($row = $reply_result->fetch_assoc()) {
+                            ?>
+                                    <ul class="list-group fa-padding" style="padding-top: 1px;">
+                                        <li class="list-group-item">
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <div>
+                                                        <?php
+                                                        echo "User Reply: " . $row["reply"] . "User ID: " . $row["ticket_id"];
+                                                        ?>
+                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                            Reply
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                        </li>
+                                    </ul>
+                            <?php
+                                }
+                                echo "</table>";
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
