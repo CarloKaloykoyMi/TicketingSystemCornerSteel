@@ -63,6 +63,53 @@ $reply_result = mysqli_query($con, $query);
 
 </head>
 
+<style>
+    .dialog-box {
+        max-width: 60%;
+        margin-bottom: 1rem;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        background-color: #f5f5f5;
+        position: relative;
+    }
+
+    .dialog-header {
+        padding: 0.5rem 1rem;
+        background-color: #f5f5f5;
+        border-radius: 15px 15px 0 0;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        align-items: center;
+    }
+
+    .dialog-header img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 0.5rem;
+    }
+
+    .dialog-header p {
+        margin-bottom: 0;
+    }
+
+    .dialog-body {
+        padding: 0.5rem 1rem;
+        border-radius: 0 0 15px 15px;
+        background-color: #fff;
+    }
+
+    .reply-dialog {
+        align-self: flex-start;
+    }
+
+    .user-dialog {
+        align-self: flex-end;
+        background-color: #dcf8c6;
+    }
+</style>
 <body>
     <div class="main p-3">
         <div class="container">
@@ -150,10 +197,10 @@ $reply_result = mysqli_query($con, $query);
                                                 </div>
 
                                                 <p class="info">Requested by <a href="#"><?php echo $ticket_data['requestor']; ?></a> &nbsp; <?php echo date('M d, Y', strtotime($ticket_data['date_created'])); ?>
-                                                    <i class="fa fa-comments"></i>
+                                                   
                                                 </p>
                                                 <hr>
-                                                <b>Concern:</b>
+                                                <b><i class="fas fa-comments"></i> Concern:</b>
                                                 <p><?php echo $ticket_data['concern']; ?></p>
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#replyModal" style="position: absolute; top: 200px; right: 10px;">
                                                     Reply
@@ -163,7 +210,7 @@ $reply_result = mysqli_query($con, $query);
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Reply Box</h1>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
@@ -195,18 +242,16 @@ $reply_result = mysqli_query($con, $query);
                                 echo "<table>";
                                 while ($row = $reply_result->fetch_assoc()) {
                             ?>
-                                    <ul class="list-group fa-padding" style="padding-top: 5px;">
-                                        <li class="list-group-item">
-                                            <div class="media">
-                                                <div class="media-body">
-                                                    <div>
-                                                        <?php
-                                                        echo "Admin Reply: " . $row["reply"];
-                                                        ?>
-                                                    </div>
-                                                </div>
-                                        </li>
-                                    </ul>
+                                    <div class="dialog-header">
+                                        <img src="img/cover1.jpg" alt="Profile Icon" class="dialog-profile-icon">
+                                        <p class="mb-0">Admin</p>
+                                    </div>
+                                        <div class="dialog-body">
+                                            <p class="mb-0"><?php echo "" . $row["reply"]; ?></p>
+                                        </div>
+                                    </div>
+
+
                             <?php
                                 }
                                 echo "</table>";

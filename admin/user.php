@@ -37,21 +37,33 @@ include 'sidebar_navbar.php'
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">
-                            <h4>Users</h4>
-                            <button class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button>
+                    <div class="card-header">
+                        <h4>Users</h4>
+                        <button class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button>
+
+                        <!-- Filter dropdown -->
+                        <div class="dropdown float-end ms-2">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                Filter
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+                                <li><a class="dropdown-item" href="#" id="filterEmployee">Employee</a></li>
+                                <li><a class="dropdown-item" href="#" id="filterAdmin">Admin</a></li>
+                                <!-- Add more filter options as needed -->
+                            </ul>
                         </div>
+                    </div>
                         <div class="card-body" id="category_table">
                             <table id="example" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Last Name</th>
                                         <th>First Name</th>
-                                        <th>Middle Initial</th>
                                         <th>Company</th>
                                         <th>Branch</th>
                                         <th>Department</th>
                                         <th>Email</th>
+                                        <th>Role</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -65,11 +77,11 @@ include 'sidebar_navbar.php'
                                             <tr>
                                                 <td><?= $item['lastname']; ?></td>
                                                 <td><?= $item['firstname']; ?></td>
-                                                <td><?= $item['middleinitial']; ?></td>
                                                 <td><?= $item['company']; ?></td>
                                                 <td><?= $item['branch']; ?></td>
                                                 <td><?= $item['department']; ?></td>
                                                 <td><?= $item['email']; ?></td>
+                                                <td><?= $item['role'] == 0 ? 'Admin' : 'Employee'; ?></td>
                                                 <td>
                                                     <div class="btn-group" role="group">
                                                         <a href="#" class="btn btn-primary btn-sm" style="width: 80px;" data-bs-toggle="modal" data-bs-target="#editUserModal<?= $item['user_id']; ?>"><i class="fas fa-pencil"></i>&nbsp;Edit</a>
@@ -250,6 +262,29 @@ include 'sidebar_navbar.php'
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="js/sidebar.js"></script>
+
+    <script>
+    $(document).ready(function () {
+        // DataTable initialization
+        $('#example').DataTable();
+
+        // Filter dropdown item click events
+        $('#filterEmployee').on('click', function () {
+            applyFilter('Employee');
+        });
+
+        $('#filterAdmin').on('click', function () {
+            applyFilter('Admin');
+        });
+
+        // Filter button click event
+        function applyFilter(filterType) {
+            // Display a modal or perform any other filter-related action
+            alert('Filtering by ' + filterType + '. Implement your filter logic here.');
+        }
+    });
+</script>
+
 </body>
 
 </html>
