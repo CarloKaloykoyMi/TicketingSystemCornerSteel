@@ -150,7 +150,7 @@ $reply_result = mysqli_query($con, $query);
                                                 <div class="media-body">
                                                     <div>
                                                         <?php
-                                                        echo "User Reply: " . $row["reply"] . "User ID: " . $row["ticket_id"];
+                                                        echo "User Reply: " . $row["reply"];
                                                         ?>
                                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                             Reply
