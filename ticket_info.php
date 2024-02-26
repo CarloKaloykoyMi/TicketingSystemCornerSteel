@@ -152,9 +152,6 @@ $reply_result = mysqli_query($con, $query);
                                                         <?php
                                                         echo "User Reply: " . $row["reply"];
                                                         ?>
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                            Reply
-                                                        </button>
                                                     </div>
                                                 </div>
                                         </li>

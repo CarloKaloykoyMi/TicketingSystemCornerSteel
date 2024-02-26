@@ -109,13 +109,16 @@ a.sidebar-link:hover {
 
 #sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
     position: absolute;
-    top: 0;
-    left: 70px;
+    top: 0; 
     background-color: #0e2238;
     padding: 0;
     min-width: 15rem;
-    display: none;
-}
+            width: 100%;
+            position: absolute;
+            left: -100%;
+            transition: 0.5s;
+        }
+        
 
 #sidebar:not(.expand) .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
     display: block;
@@ -208,4 +211,5 @@ li {
   a:hover {
     background: #a3a3a3;
   }
+  /* Responsive styles for smaller screens */
   

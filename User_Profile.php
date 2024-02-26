@@ -100,7 +100,7 @@ include('sidebar_navbar.php')
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="contact-number"><i class="lni lni-phone"></i> Contact Number:</label>
+                        <label for="contact-number"><i class="fas fa-phone"></i> Contact Number:</label>
                         <input type="tel" id="contact-number" name="contact-number" class="form-control">
                     </div>
                 </div>
@@ -114,14 +114,14 @@ include('sidebar_navbar.php')
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="branch"><i class="lni lni-map-marker"></i> Branch:</label>
+                        <label for="branch"><i class="fas fa-location-dot"></i> Branch:</label>
                         <input type="text" id="branch" name="branch" class="form-control">
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="department"><i class="fa-solid fa-users"></i> Department:</label>
+                        <label for="department"><i class="fas fa-users"></i> Department:</label>
                         <input type="text" id="department" name="department" class="form-control">
                     </div>
                 </div>
