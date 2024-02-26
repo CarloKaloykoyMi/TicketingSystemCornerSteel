@@ -35,7 +35,7 @@ $ticket = getAll("ticket");
     <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
-    <script defer src="js/table_user.js"></script>
+    <script defer src="js/table.js"></script>
 
 </head>
 
