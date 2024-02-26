@@ -29,10 +29,10 @@ if (isset($_POST['register'])) {
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>';
         } else {
-            $status = 0;
+            $verification_status = 0;
             // Insert the data into the database
-            $query = mysqli_query($con, "INSERT INTO user (lastName,firstName,middleinitial,company,branch,department,email,contact,username,password,status) 
-            VALUES('$lastName','$firstName','$middleinitial','$company','$branch','$department','$email','$contact','$username','$password','$status')");
+            $query = mysqli_query($con, "INSERT INTO user (lastName,firstName,middleinitial,company,branch,department,email,contact,username,password,verification_status,role) 
+            VALUES('$lastName','$firstName','$middleinitial','$company','$branch','$department','$email','$contact','$username','$password','$verification_status','1')");
 
             if ($query) {
                 $otp = rand(100000, 999999);
@@ -99,6 +99,8 @@ if (isset($_POST['register'])) {
                         'user_id' => $row['id'],
                         'username' => $row['username'],
                         'email' => $row['email'],
+                        'firstname' => $row['firstname'],
+                        'lastname' => $row['lastname'],
                         'role' => $row['role'],
                     ];
                     $_SESSION['role'] = $role;
@@ -109,28 +111,28 @@ if (isset($_POST['register'])) {
                         exit();
                     } else {
                         // Handle other roles here
-                        $_SESSION['status'] = "Access Denied!";
+                        $_SESSION['verification_status'] = "Access Denied!";
                         header("Location: emplogin.php");
                         exit();
                     }
                 } else {
                     // Admin user, deny login
-                    $_SESSION['status'] = "Admins cannot log in via this form!";
+                    $_SESSION['verification_status'] = "Admins cannot log in via this form!";
                     header("Location: emplogin.php");
                     exit();
                 }
             } else {
-                $_SESSION['status'] = "PLEASE VERIFY YOUR EMAIL!";
+                $_SESSION['verification_status'] = "PLEASE VERIFY YOUR EMAIL!";
                 header("Location: emplogin.php");
                 exit();
             }
         } else {
-            $_SESSION['status'] = "EMAIL OR PASSWORD INVALID";
+            $_SESSION['verification_status'] = "EMAIL OR PASSWORD INVALID";
             header("Location: emplogin.php");
             exit();
         }
     } else {
-        $_SESSION['status'] = "ALL FIELDS MUST BE FILLED";
+        $_SESSION['verification_status'] = "ALL FIELDS MUST BE FILLED";
         header("Location: emplogin.php");
         exit();
     }

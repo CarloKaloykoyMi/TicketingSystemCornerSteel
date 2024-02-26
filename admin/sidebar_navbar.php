@@ -21,7 +21,12 @@
 
                 <!-- User Name -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">John Doe</a>
+                    <a class="nav-link" href="#"> Hi,
+                        <?php
+                        $username = $_SESSION['auth_user']['username'];
+                        echo $username;
+                        ?>
+                    </a>
                 </li>
             </ul>
         </div>
