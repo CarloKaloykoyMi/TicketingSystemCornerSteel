@@ -24,9 +24,10 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+
 .wrapper {
     display: flex;
-    min-height: 100vh; /* Set the minimum height to 100% of the viewport height */
+    height: auto; /* Set the minimum height to 100% of the viewport height */
 }
 .main {
     min-height: 100vh;
@@ -37,7 +38,7 @@ body {
 }
 
 #sidebar {
-    height: 100vh; /* Set the height to 100% of the viewport height */
+    height: auto; /* Set the height to 100% of the viewport height */
     width: 70px;
     min-width: 70px;
     z-index: 1000;
