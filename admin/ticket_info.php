@@ -1,5 +1,6 @@
 <?php include('../function/myfunction.php');
-include 'sidebar_navbar.php'
+include 'sidebar_navbar.php';
+include '../crud.php';
 ?>
 
 <?php
@@ -22,6 +23,10 @@ if (isset($_GET['ticket_id'])) {
     // Handle the case where the ticket_id parameter is not provided in the URL
     $error_message = "Error: Missing ticket_id parameter.";
 }
+$query = "SELECT * FROM ticket_reply WHERE ticket_id = '$ticket_id'";
+
+$reply_result = mysqli_query($con, $query);
+
 ?>
 
 <!DOCTYPE html>
@@ -150,11 +155,63 @@ if (isset($_GET['ticket_id'])) {
                                                 <hr>
                                                 <b>Concern:</b>
                                                 <p><?php echo $ticket_data['concern']; ?></p>
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#replyModal" style="position: absolute; top: 200px; right: 10px;">
+                                                    Reply
+                                                </button>
+
+                                                <div class="modal fade" id="replyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form action="code.php" method="POST">
+                                                                    <input type="hidden" name="ticket_id" value="<?php echo $ticket_id; ?>">
+                                                                    <div class="mb-3">
+                                                                        <label for="replyMessage" class="form-label">Reply</label>
+                                                                        <textarea class="form-control" name="reply" id="replyMessage" rows="3"></textarea>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                        <!-- Move the submit button inside the form -->
+                                                                        <button class="btn btn-primary float-end" type="submit" name="add_reply">Save Changes</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                             </div>
                                         </div>
                                     </li>
                                 </ul>
+                                <?php
+                            // Check if there's any result
+                            if ($reply_result->num_rows > 0) {
+                                // Output data of each row
+                                echo "<table>";
+                                while ($row = $reply_result->fetch_assoc()) {
+                            ?>
+                                    <ul class="list-group fa-padding" style="padding-top: 5px;">
+                                        <li class="list-group-item">
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <div>
+                                                        <?php
+                                                        echo "Admin Reply: " . $row["reply"];
+                                                        ?>
+                                                    </div>
+                                                </div>
+                                        </li>
+                                    </ul>
+                            <?php
+                                }
+                                echo "</table>";
+                            }
+                            ?>
                             </div>
                         </div>
                         
