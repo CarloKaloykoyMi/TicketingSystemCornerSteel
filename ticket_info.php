@@ -168,11 +168,11 @@ $reply_result = mysqli_query($con, $query);
 
 
                                                 <!-- Modal -->
-                                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="replyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Reply Box</h1>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
@@ -180,7 +180,7 @@ $reply_result = mysqli_query($con, $query);
                                                                     <input type="hidden" name="ticket_id" value="<?php echo $ticket_id; ?>">
                                                                     <div class="mb-3">
                                                                         <label for="replyMessage" class="form-label">Reply</label>
-                                                                        <textarea class="form-control" name="reply" id="replyMessage" rows="3"></textarea>
+                                                                        <textarea class="form-control" name="reply" id="exampleModal" rows="3"></textarea>
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
