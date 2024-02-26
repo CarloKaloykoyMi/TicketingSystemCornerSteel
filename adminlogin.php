@@ -60,10 +60,6 @@ include('mysql_connect.php'); // connection to MySQL
                         <i class='bx bx-hide eye-icon'></i>
                     </div>
 
-                    <div class="form-link">
-                        <a href="" class="forgot-pass">Forgot password?</a>
-                    </div>
-
                     <div class="field button-field">
                         <button type="submit" name="login_btn">Sign In</button>
                     </div>
