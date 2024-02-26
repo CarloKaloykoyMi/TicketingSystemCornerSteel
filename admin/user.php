@@ -78,7 +78,6 @@ include 'sidebar_navbar.php'
                                                 </td>
                                             </tr>
 
-
                                             <!-- Edit User Modal -->
                                             <div class="modal fade" id="editUserModal<?= $item['user_id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
@@ -137,17 +136,15 @@ include 'sidebar_navbar.php'
                                                                     </select>
                                                                 </div>
 
-
                                                                 <div class="col-md-12 mt-3">
                                                                     <label for=""><i class="fas fa-envelope"></i> Email</label>
-                                                                    <input type="text" name="email" value="<?= $item['email']; ?>" class="form-control">
+                                                                    <input type="email" name="email" value="<?= $item['email']; ?>" class="form-control">
                                                                 </div>
 
                                                                 <!-- Add other form fields for editing as needed -->
                                                                 <hr>
                                                                 <div class="form-group pull-right">
-                                                                    <button class="btn btn-primary float-end" type="submit" name="edit_user">Save
-                                                                        Changes</button>
+                                                                    <button class="btn btn-primary float-end" type="submit" name="edit_user">Save Changes</button>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -155,84 +152,6 @@ include 'sidebar_navbar.php'
                                                 </div>
                                             </div>
                                             <!-- End Edit User Modal -->
-
-                                            <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form action="code.php" method="POST">
-
-                                                                <div class="col-md-12 mt-3">
-                                                                    <label for=""><i class="fas fa-user"></i> Last Name</label>
-                                                                    <input type="text" name="company_name" placeholder="Enter Last Name" class="form-control" required>
-                                                                </div>
-
-                                                                <div class="col-md-12 mt-3">
-                                                                    <label for=""><i class="fas fa-user"></i> First Name</label>
-                                                                    <input type="text" name="company_address" placeholder="Enter First Name" class="form-control" required>
-                                                                </div>
-
-                                                                <div class="col-md-12 mt-3">
-                                                                    <label for=""><i class="fas fa-user"></i> Middle Name</label>
-                                                                    <input type="text" name="contact" placeholder="Enter Middle Name" maxlength="11" class="form-control" required>
-                                                                </div>
-
-                                                                <div class="col-md-12 mt-3">
-                                                                    <label for="company"><i class="fas fa-building"></i> Company</label>
-                                                                    <select name="company" class="form-control" required>
-                                                                        <option value="company1">Company 1</option>
-                                                                        <option value="company2">Company 2</option>
-                                                                        <option value="company3">Company 3</option>
-                                                                        <!-- Add more options as needed -->
-                                                                    </select>
-                                                                </div>
-
-
-                                                                <div class="col-md-12 mt-3">
-                                                                    <label for="company"><i class="fa-solid fa-location-dot"></i> Branch</label>
-                                                                    <select name="company" class="form-control" required>
-                                                                        <option value="company1">Branch 1</option>
-                                                                        <option value="company2">Branch 2</option>
-                                                                        <option value="company3">Branch 3</option>
-                                                                        <!-- Add more options as needed -->
-                                                                    </select>
-                                                                </div>
-
-                                                                <div class="col-md-12 mt-3">
-                                                                    <label for="company"><i class="fa-solid fa-users"></i> Department</label>
-                                                                    <select name="company" class="form-control" required>
-                                                                        <option value="company1">Department 1</option>
-                                                                        <option value="company2">Department 2</option>
-                                                                        <option value="company3">Department 3</option>
-                                                                        <!-- Add more options as needed -->
-                                                                    </select>
-                                                                </div>
-
-
-                                                                <div class="col-md-12 mt-3">
-                                                                    <label for=""><i class="fas fa-envelope"></i> Email</label>
-                                                                    <input type="text" name="email" placeholder="Enter Email" class="form-control" required>
-                                                                </div>
-
-                                                                <div class="col-md-12 mt-3">
-                                                                    <label for=""><i class="fas fa-lock"></i> Password</label>
-                                                                    <input type="text" name="email" placeholder="Enter Password" class="form-control" required>
-                                                                </div>
-
-                                                                <hr>
-                                                                <div class="form-group pull-right">
-                                                                    <button class="btn btn-primary float-end" type="submit" name="add_company"> Submit</button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
                                     <?php
                                         }
                                     } else {
@@ -243,6 +162,76 @@ include 'sidebar_navbar.php'
                             </table>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add U</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="code.php" method="POST">
+
+                        <div class="col-md-12 mt-3">
+                            <label for=""><i class="fas fa-user"></i> Last Name</label>
+                            <input type="text" name="lastname" class="form-control">
+                        </div>
+
+                        <div class="col-md-12 mt-3">
+                            <label for=""><i class="fas fa-user"></i> First Name</label>
+                            <input type="text" name="firstname" class="form-control">
+                        </div>
+
+                        <div class="col-md-12 mt-3">
+                            <label for=""><i class="fas fa-user"></i> Middle Initial</label>
+                            <input type="text" name="middleinitial" class="form-control">
+                        </div>
+
+                        <div class="col-md-12 mt-3">
+                            <label for="company"><i class="fas fa-building"></i> Company</label>
+                            <select name="company" class="form-control">
+                                <option value="company1" <?= ($item['company'] == 'company1') ? 'selected' : ''; ?>>Company 1</option>
+                                <option value="company2" <?= ($item['company'] == 'company2') ? 'selected' : ''; ?>>Company 2</option>
+                                <option value="company3" <?= ($item['company'] == 'company3') ? 'selected' : ''; ?>>Company 3</option>
+                                <!-- Add more options as needed -->
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 mt-3">
+                            <label for="branch"><i class="fa-solid fa-location-dot"></i> Branch</label>
+                            <select name="branch" class="form-control">
+                                <option value="branch1" <?= ($item['branch'] == 'branch1') ? 'selected' : ''; ?>>Branch 1</option>
+                                <option value="branch2" <?= ($item['branch'] == 'branch2') ? 'selected' : ''; ?>>Branch 2</option>
+                                <option value="branch3" <?= ($item['branch'] == 'branch3') ? 'selected' : ''; ?>>Branch 3</option>
+                                <!-- Add more options as needed -->
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 mt-3">
+                            <label for="department"><i class="fa-solid fa-users"></i> Department</label>
+                            <select name="department" class="form-control">
+                                <option value="department1" <?= ($item['department'] == 'department1') ? 'selected' : ''; ?>>Department 1</option>
+                                <option value="department2" <?= ($item['department'] == 'department2') ? 'selected' : ''; ?>>Department 2</option>
+                                <option value="department3" <?= ($item['department'] == 'department3') ? 'selected' : ''; ?>>Department 3</option>
+                                <!-- Add more options as needed -->
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 mt-3">
+                            <label for=""><i class="fas fa-envelope"></i> Email</label>
+                            <input type="email" name="email" class="form-control">
+                        </div>
+
+                        <hr>
+                        <div class="form-group pull-right">
+                            <button class="btn btn-primary float-end" type="submit" name="add_user">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
