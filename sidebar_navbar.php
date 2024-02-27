@@ -7,7 +7,7 @@ $role = $_SESSION['auth_user']['role'];
 ?>
 =======
 
->>>>>>> 9b1083e8c86efa4a80ac8da2595099c3d56d4a86
+>>>>>> 9b108>3e8c86efa4a80ac8da2595099c3d56d4a86
 <script defer src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #595959;">
     <div class="container-fluid">
