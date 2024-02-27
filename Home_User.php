@@ -11,6 +11,7 @@ include('crud.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="css/sidebar_navbar.css">
 
@@ -114,7 +115,7 @@ include('crud.php');
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Submit a Ticket</h4>
+                        <h4 class="modal-title"><i class="fas fa-ticket"></i> Submit a Ticket</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 
@@ -123,7 +124,7 @@ include('crud.php');
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-prepend">
-                                        <i class="fa-solid fa-user input-group-text"></i>
+                                    <i class="fas fa-user input-group-text"></i>
                                     </span>
                                     <label for="requestor" class="sr-only">Requestor</label>
                                     <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor" required>
@@ -133,13 +134,13 @@ include('crud.php');
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-prepend">
-                                        <i class="fa-solid fa-pencil input-group-text"></i>
+                                        <i class="fa-solid fa-file input-group-text"></i>
                                     </span>
-                                    <label for="subject" class="sr-only">Subject</label>
+                                     <br><label for="subject" class="sr-only">Subject</label>
                                     <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
                                 </div>
                             </div>
-
+                            
                             <div class="input-group">
                                 <span class="input-group-prepend">
                                     <i class="fa-solid fa-building input-group-text"></i>
@@ -175,7 +176,8 @@ include('crud.php');
 
                             <div class="input-group">
                                 <span class="input-group-prepend">
-                                    <i class="fa-solid fa-building input-group-text"></i>
+                                    <i class="fa-solid fa-users input-group-text"></i>
+                              
                                 </span>
                                 <label for="department" class="sr-only">Department:</label>
                                 <select class="form-control" id="department" name="department" required>

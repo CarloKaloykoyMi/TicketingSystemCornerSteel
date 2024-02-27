@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../mysql_connect.php');
 
 if (isset($_POST['add_company'])) {
@@ -161,9 +162,10 @@ if (isset($_POST['add_company'])) {
 } else if (isset($_POST['add_reply'])) {
     $reply = $_POST['reply'];
     $ticket_id = $_POST['ticket_id'];
+    $user_id = $_SESSION['auth_user']['user_id'];
 
-    $insert_reply = "INSERT INTO ticket_reply (reply, ticket_id) 
-    VALUES ('$reply', '$ticket_id')";
+    $insert_reply = "INSERT INTO ticket_reply (reply, ticket_id, user_id) 
+    VALUES ('$reply', '$ticket_id', '$user_id')";
     $insert_reply_run = mysqli_query($con, $insert_reply);
 
     if ($insert_reply_run) {

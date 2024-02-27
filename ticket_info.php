@@ -205,7 +205,7 @@ $reply_result = mysqli_query($con, $query);
                                 while ($row = $reply_result->fetch_assoc()) {
                             ?>
                                        <div class="dialog-header">
-                                        <img src="img/cover1.jpg" alt="Profile Icon" class="dialog-profile-icon">
+                                        <img src="img/usernocheck.png" alt="Profile Icon" class="dialog-profile-icon">
                                         <p class="mb-0">User</p>
                                     </div>
                                         <div class="dialog-body">
