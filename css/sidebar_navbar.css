@@ -24,9 +24,10 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+
 .wrapper {
     display: flex;
-    min-height: 100vh; /* Set the minimum height to 100% of the viewport height */
+    height: auto; /* Set the minimum height to 100% of the viewport height */
 }
 .main {
     min-height: 100vh;
@@ -37,7 +38,7 @@ body {
 }
 
 #sidebar {
-    height: 100vh; /* Set the height to 100% of the viewport height */
+    height: auto; /* Set the height to 100% of the viewport height */
     width: 70px;
     min-width: 70px;
     z-index: 1000;
@@ -109,13 +110,16 @@ a.sidebar-link:hover {
 
 #sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
     position: absolute;
-    top: 0;
-    left: 70px;
+    top: 0; 
     background-color: #0e2238;
     padding: 0;
     min-width: 15rem;
-    display: none;
-}
+            width: 100%;
+            position: absolute;
+            left: -100%;
+            transition: 0.5s;
+        }
+        
 
 #sidebar:not(.expand) .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
     display: block;
@@ -208,4 +212,5 @@ li {
   a:hover {
     background: #a3a3a3;
   }
+  /* Responsive styles for smaller screens */
   

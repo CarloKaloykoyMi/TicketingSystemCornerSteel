@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../mysql_connect.php');
 
 if (isset($_POST['add_company'])) {
@@ -158,7 +159,56 @@ if (isset($_POST['add_company'])) {
         // PHP code failed to execute
         echo '<script>alert("Error updating user request. Please try again.");</script>';
     }
+} else if (isset($_POST['add_reply'])) {
+    $reply = $_POST['reply'];
+    $ticket_id = $_POST['ticket_id'];
+    $user_id = $_SESSION['auth_user']['user_id'];
 
-    // Close the statement
-    mysqli_stmt_close($stmt);
+    $insert_reply = "INSERT INTO ticket_reply (reply, ticket_id, user_id) 
+    VALUES ('$reply', '$ticket_id', '$user_id')";
+    $insert_reply_run = mysqli_query($con, $insert_reply);
+
+    if ($insert_reply_run) {
+        echo '<script>alert("Reply added.");</script>';
+        echo '<script>window.location.href = "ticket_info.php?ticket_id=' . $ticket_id . '"</script>';
+        exit();
+    } else {
+        // PHP code failed to execute
+        echo '<script>alert("Error adding reply. Please try again.");</script>';
+    }
+} else if (isset($_POST['add_user'])) {
+    $lastName = $_POST['lastname'];
+    $firstName = $_POST['firstname'];
+    $middleinitial = $_POST['middleinitial'];
+    $company = $_POST['company'];
+    $branch = $_POST['branch'];
+    $department = $_POST['department'];
+    $email = $_POST['email'];
+
+    $insert_user_query = mysqli_query($con, "INSERT INTO user (lastName, firstName, middleinitial, company, branch, department, email, contact, username, password, verification_status, role) 
+    VALUES('$lastName', '$firstName', '$middleinitial', '$company', '$branch', '$department', '$email', '$contact', '$username', '$password', '$verification_status', '1')");
+
+    if ($insert_user_query) {
+        echo '<script>alert("User added successfully.");</script>';
+        echo '<script>window.location.href = "user.php";</script>';
+        exit(); 
+    } else {
+        // PHP code failed to execute
+        echo '<script>alert("Error adding user. Please try again.");</script>';
+    }
 }
+
+
+
+    $insert_user_query = mysqli_query($con, "INSERT INTO user (lastName,firstName,middleinitial,company,branch,department,email,contact,username,password,verification_status,role) 
+    VALUES('$lastName','$firstName','$middleinitial','$company','$branch','$department','$email','$contact','$username','$password','$verification_status','1')");
+
+    if ($insert_user_query) {
+        echo '<script>alert("User status updated successfully.");</script>';
+        echo '<script>window.location.href = "user.php";</script>';
+        exit(); 
+    } else {
+        // PHP code failed to execute
+        echo '<script>alert("Error updating user status. Please try again.");</script>';
+    }
+

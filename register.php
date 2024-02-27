@@ -120,7 +120,7 @@
                     </div>
 
                     <div class="col-md-4 mt-2">
-                        <label for="company" class="form-label"> <i class="fa-solid fa-location-dot"></i> Comapany</label>
+                        <label for="company" class="form-label"><i class="fa-solid fa-building"></i> Company</label>
                         <select id=company name="company" class="form-control" required>
                             <option value="" disabled selected>Select your Company</option>
                             <?php
@@ -158,7 +158,7 @@
                     </div>
 
                     <div class="col-md-4 mt-2">
-                        <label for="department" class="form-label"> <i class="fa-solid fa-location-dot"></i> Department</label>
+                        <label for="department" class="form-label"><i class="fa-solid fa-users"></i> Department</label>
                         <select id=department name="department" class="form-control" required>
                             <option value="" disabled selected>Select your Department</option>
                             <?php
