@@ -1,6 +1,23 @@
 <?php include('function/myfunction.php');
 include 'sidebar_navbar.php';
 include('crud.php');
+
+
+if (!isset($_SESSION['auth_user']['username'])) {
+    session_destroy();
+    unset($_SESSION['auth_user']['username']);
+    unset($_SESSION['auth_user']['user_id']);
+    unset($_SESSION['auth_user']['email']);
+    unset($_SESSION['auth_user']['role']);
+    echo '<script>window.location.href = "emplogin.php";</script>';
+} else {
+    $username = $_SESSION['auth_user']['username'];
+    $user_id = $_SESSION['auth_user']['user_id'];
+    $email = $_SESSION['auth_user']['email'];
+    $role = $_SESSION['auth_user']['role'];
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +76,7 @@ include('crud.php');
         <div class="container1">
             <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#myModal" style="position: absolute; top: 70px; right: 10px;">Create Ticket</button>
             <h3>
-                <center>Overall Ticket List</center>
+                <center>Overall Ticket List </center>
             </h3>
             <table id="example" class="table table-responsive hover table-bordered">
                 <thead class="table-light">

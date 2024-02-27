@@ -1,5 +1,9 @@
-<?php session_start(); ?>
-
+<?php session_start(); 
+$username = $_SESSION['auth_user']['username'];
+$user_id = $_SESSION['auth_user']['user_id'];
+$email = $_SESSION['auth_user']['email'];
+$role = $_SESSION['auth_user']['role'];
+?>
 <script defer src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #595959;">
     <div class="container-fluid">
@@ -21,7 +25,7 @@
 
                 <!-- User Name -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">John Doe</a>
+                    <a class="nav-link" href="#"><?php echo $username; ?></a>
                 </li>
             </ul>
         </div>
