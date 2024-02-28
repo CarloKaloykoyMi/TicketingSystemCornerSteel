@@ -160,8 +160,14 @@ $reply_result = mysqli_query($con, $query);
                                             <div>
                                             <hr>
                                                     <div class="text-right">
-    <a href="ticket.php" class="btn btn-secondary mb-3" style="position: absolute; top: 40px; right: 10px;">Go Back</a>
+                                                    <a href="#" class="btn btn-secondary mb-3" style="position: absolute; top: 40px; right: 10px;" onclick="goBack()">Go Back</a>
 </div>
+
+<script>
+        function goBack() {
+            history.back();
+        }
+    </script>
              
 <span class="number pull-right"><strong>Ticket #<?php echo $ticket_data['ticket_id']; ?></strong></span> <br>
                                            
@@ -189,7 +195,7 @@ $reply_result = mysqli_query($con, $query);
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Reply Box</h1>
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Reply Message Box</h1>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">

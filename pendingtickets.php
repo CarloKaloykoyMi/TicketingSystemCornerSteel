@@ -79,7 +79,8 @@ if (!isset($_SESSION['auth_user']['username'])) {
                 <thead>
                     <tr>
                         <th scope="col">Ticket ID</th>
-                        <th scope="col">Requester</th>
+                        <th scope="col">Requestor</th>
+                        <th scope="col">To Department</th>
                         <th scope="col">Subject</th>
                         <th scope="col">Status</th>
                         <th scope="col">Date Created</th>
@@ -99,6 +100,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                 <tr>
                                     <td><u><a href="ticket_info.php?ticket_id=<?= $item['ticket_id']; ?>" class="text-body fw-bold">Ticket #<?= $item['ticket_id']; ?></a></u></td>
                                     <td><?= $item['requestor']; ?></td>
+                                    <td><?= $item['to_dept']; ?></td>
                                     <td class="text-justify"><?= $item['subject']; ?></td>
                                     <td class="text-center">
                                         <span class="badge text-bg-warning"><?= $status; ?></span>
