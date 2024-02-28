@@ -9,12 +9,17 @@ if (!isset($_SESSION['auth_user']['username'])) {
     unset($_SESSION['auth_user']['user_id']);
     unset($_SESSION['auth_user']['email']);
     unset($_SESSION['auth_user']['role']);
+    unset($_SESSION['auth_user']['fname']);
+    unset($_SESSION['auth_user']['lname']);
     echo '<script>window.location.href = "../adminlogin.php";</script>';
 } else {
     $username = $_SESSION['auth_user']['username'];
-    $user_id1 = $_SESSION['auth_user']['user_id'];
+    $user_id = $_SESSION['auth_user']['user_id'];
     $email = $_SESSION['auth_user']['email'];
     $role = $_SESSION['auth_user']['role'];
+    $lname = $_SESSION['auth_user']['lastname'];
+    $fname = $_SESSION['auth_user']['firstname'];
+    
 }
 
 ?>

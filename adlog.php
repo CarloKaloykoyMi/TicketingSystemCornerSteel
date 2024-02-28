@@ -99,9 +99,8 @@ if (isset($_POST['register'])) {
                     'username' => $row['username'],
                     'email' => $row['email'],
                     'role' => $row['role'],
-                    'fname' => $row['firstname'],
-                    'lname' => $row['lastname'],
-                    'middleinitial' => $row['middleinitial'],
+                    'firstname' => $row['firstname'],
+                    'lastname' => $row['lastname'],
                 ];
                 $_SESSION['role'] = $role;
 
