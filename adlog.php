@@ -95,10 +95,13 @@ if (isset($_POST['register'])) {
                 $_SESSION['auth'] = true;
                 $role = $row['role'];
                 $_SESSION['auth_user'] = [
-                    'user_id' => $row['id'],
+                    'user_id' => $row['user_id'],
                     'username' => $row['username'],
                     'email' => $row['email'],
                     'role' => $row['role'],
+                    'fname' => $row['firstname'],
+                    'lname' => $row['lastname'],
+                    'middleinitial' => $row['middleinitial'],
                 ];
                 $_SESSION['role'] = $role;
 

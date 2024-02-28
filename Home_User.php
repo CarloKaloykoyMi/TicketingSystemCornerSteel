@@ -9,12 +9,16 @@ if (!isset($_SESSION['auth_user']['username'])) {
     unset($_SESSION['auth_user']['user_id']);
     unset($_SESSION['auth_user']['email']);
     unset($_SESSION['auth_user']['role']);
+    unset($_SESSION['auth_user']['lastname']);
+    unset($_SESSION['auth_user']['firstname']);
     echo '<script>window.location.href = "emplogin.php";</script>';
 } else {
     $username = $_SESSION['auth_user']['username'];
     $user_id = $_SESSION['auth_user']['user_id'];
     $email = $_SESSION['auth_user']['email'];
     $role = $_SESSION['auth_user']['role'];
+    $lname = $_SESSION['auth_user']['lastname'];
+    $fname = $_SESSION['auth_user']['firstname'];
 }
 
 
@@ -99,7 +103,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                     ?>
                             <tr>
                                 <td><u><a href="ticket_info.php?ticket_id=<?php echo $item['ticket_id']; ?>" class="text-body fw-bold">Ticket #<?php echo $item['ticket_id']; ?></a></u></td>
-                                <td><?= $item['requestor']; ?></td>
+                                <td><?php echo $fname ." ". $lname;?></td>
                                 <td class="text-justify"><?= $item['subject']; ?></td>
                                 <td class="text-center">
                                     <?php
@@ -141,7 +145,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-prepend">
-                                    <i class="fas fa-user input-group-text"></i>
+                                        <i class="fas fa-user input-group-text"></i>
                                     </span>
                                     <label for="requestor" class="sr-only">Requestor</label>
                                     <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor" required>
@@ -153,11 +157,11 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                     <span class="input-group-prepend">
                                         <i class="fa-solid fa-file input-group-text"></i>
                                     </span>
-                                     <br><label for="subject" class="sr-only">Subject</label>
+                                    <br><label for="subject" class="sr-only">Subject</label>
                                     <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
                                 </div>
                             </div>
-                            
+
                             <div class="input-group">
                                 <span class="input-group-prepend">
                                     <i class="fa-solid fa-building input-group-text"></i>
@@ -194,7 +198,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                             <div class="input-group">
                                 <span class="input-group-prepend">
                                     <i class="fa-solid fa-users input-group-text"></i>
-                              
+
                                 </span>
                                 <label for="department" class="sr-only">Department:</label>
                                 <select class="form-control" id="department" name="department" required>
