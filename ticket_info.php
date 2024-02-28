@@ -1,6 +1,5 @@
 <?php include('function/myfunction.php');
 include 'sidebar_navbar.php';
-include('crud.php');
 
 if (!isset($_SESSION['auth_user']['username'])) {
     session_destroy();
@@ -196,6 +195,8 @@ $reply_result = mysqli_query($con, $query);
                                                             <div class="modal-body">
                                                                 <form action="crud.php" method="POST">
                                                                     <input type="hidden" name="ticket_id" value="<?php echo $ticket_id; ?>">
+                                                                    <input type="hidden" name="userid" value="<?php echo $user_id; ?>">
+                                                                    <input type="text" name="sender" style="display: none;" value="<?php echo $fname. " ". $lname; ?>">
                                                                     <div class="mb-3">
                                                                         <label for="replyMessage" class="form-label">Reply</label>
                                                                         <textarea class="form-control" name="reply" id="exampleModal" rows="3"></textarea>
@@ -224,7 +225,7 @@ $reply_result = mysqli_query($con, $query);
                             ?>
                                        <div class="dialog-header">
                                         <img src="img/usernocheck.png" alt="Profile Icon" class="dialog-profile-icon">
-                                        <p class="mb-0">User</p>
+                                        <p class="mb-0"><?php echo "" . $row["Name"]; ?></p>
                                     </div>
                                         <div class="dialog-body">
                                             <p class="mb-0"><?php echo "" . $row["reply"]; ?></p>

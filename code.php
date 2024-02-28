@@ -78,7 +78,7 @@ if (isset($_POST['register'])) {
             }
         }
     }
-} else if (isset($_POST['emp_login_btn'])) {
+} else if (isset($_POST['emp_login_btn'])) { 
     // Employee login
     if (!empty(trim($_POST['email'])) && !empty(trim($_POST['password']))) {
         $email = mysqli_real_escape_string($con, $_POST['email']);

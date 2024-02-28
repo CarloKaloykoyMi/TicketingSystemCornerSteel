@@ -1,6 +1,5 @@
 <?php include('../function/myfunction.php');
 include 'sidebar_navbar.php';
-include '../crud.php';
 
 if (!isset($_SESSION['auth_user']['username'])) {
     session_destroy();
@@ -8,12 +7,17 @@ if (!isset($_SESSION['auth_user']['username'])) {
     unset($_SESSION['auth_user']['user_id']);
     unset($_SESSION['auth_user']['email']);
     unset($_SESSION['auth_user']['role']);
+    unset($_SESSION['auth_user']['fname']);
+    unset($_SESSION['auth_user']['lname']);
     echo '<script>window.location.href = "../adminlogin.php";</script>';
 } else {
     $username = $_SESSION['auth_user']['username'];
-    $user_id1 = $_SESSION['auth_user']['user_id'];
+    $user_id = $_SESSION['auth_user']['user_id'];
     $email = $_SESSION['auth_user']['email'];
     $role = $_SESSION['auth_user']['role'];
+    $lname = $_SESSION['auth_user']['lastname'];
+    $fname = $_SESSION['auth_user']['firstname'];
+    
 }
 
 ?>
@@ -230,7 +234,8 @@ $reply_result = mysqli_query($con, $query);
                                                             </div>
                                                             <div class="modal-body">
                                                                 <form action="code.php" method="POST">
-                                                                    <input type="hidden" name="ticket_id" value="<?php echo $ticket_id; ?>">
+                                                                    <input type="hidden" name="ticket_id" value="<?php echo $ticket_id; ?>">                                                                    <input type="hidden" name="userid" value="<?php echo $user_id; ?>">
+                                                                    <input type="text" name="sender" style="display: none;" value="<?php echo $fname. " ". $lname; ?>">
                                                                     <div class="mb-3">
                                                                         <label for="replyMessage" class="form-label">Reply</label>
                                                                         <textarea class="form-control" name="reply" id="replyMessage" rows="3"></textarea>
@@ -259,7 +264,7 @@ $reply_result = mysqli_query($con, $query);
                             ?>
                                     <div class="dialog-header">
                                         <img src="img/usercheck.png" alt="Profile Icon" class="dialog-profile-icon">
-                                        <p class="mb-0">Admin</p>
+                                        <p class="mb-0"><?php echo "" . $row["Name"]; ?></p>
                                     </div>
                                         <div class="dialog-body">
                                             <p class="mb-0"><?php echo "" . $row["reply"]; ?></p>
