@@ -149,9 +149,9 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                         <span class="input-group-prepend">
                                             <i class="fas fa-user input-group-text"></i>
                                         </span>
-                                        <input type="text" name="userid" value="<?php echo $userid; ?>">
+                                        <input type="hidden" name="userid" value="<?php echo $userid; ?>">
                                         <label for="requestor" class="sr-only">Requestor</label>
-                                        <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor" required>
+                                        <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor"  value="<?php echo $fname . ' ' . $lname; ?>" readonly required>
                                     </div>
                                 </div>
                                 <br>
