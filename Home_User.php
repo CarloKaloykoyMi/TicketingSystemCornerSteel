@@ -192,6 +192,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                         <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
                                     </div>
                                 </div>
+                            <br>
 
                                 <div class="input-group">
                                     <span class="input-group-prepend">
