@@ -1,23 +1,26 @@
 <?php
-include('sidebar_navbar.php');
+include('function/myfunction.php');
+include 'sidebar_navbar.php';
+
 if (!isset($_SESSION['auth_user']['username'])) {
     session_destroy();
     unset($_SESSION['auth_user']['username']);
-    unset($_SESSION['auth_user']['user_id']);
+    unset($_SESSION['userid']);
     unset($_SESSION['auth_user']['email']);
     unset($_SESSION['auth_user']['role']);
     unset($_SESSION['auth_user']['lastname']);
     unset($_SESSION['auth_user']['firstname']);
-    echo '<script>window.location.href = "../adminlogin.php";</script>';
+    echo '<script>window.location.href = "emplogin.php";</script>';
 } else {
     $username = $_SESSION['auth_user']['username'];
-    $userid = $_SESSION['userid'];
     $email = $_SESSION['auth_user']['email'];
     $role = $_SESSION['auth_user']['role'];
     $lname = $_SESSION['auth_user']['lastname'];
     $fname = $_SESSION['auth_user']['firstname'];
-    
+    $userid1 = $_SESSION['userid'];
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

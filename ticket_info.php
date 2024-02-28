@@ -129,7 +129,7 @@ $reply_result = mysqli_query($con, $query);
 
             <div class="grid support-content">
                 <div class="grid-body">
-                   <center><h2>Ticket Details <?php echo $userid1?></h2></center
+                   <center><h2>Ticket Details </h2></center
 
                     <hr>
        </head>
@@ -142,7 +142,7 @@ $reply_result = mysqli_query($con, $query);
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                        <h4 style="color: black;"><i class="fas fa-ticket"></i> Tickets <?= $lname ?></h4>
+                        <h4 style="color: black;"><i class="fas fa-ticket"></i> Tickets </h4>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
