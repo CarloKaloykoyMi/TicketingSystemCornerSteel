@@ -67,6 +67,7 @@ include('crud.php');
                     <tr>
                         <th>Ticket ID</th>
                         <th class="text-center">Requestor</th>
+                        <th class="text-center">To Department</th>
                         <th class="text-center">Subject</th>
                         <th class="text-center">Status</th>
                         <th class="text-center">Date Created</th>
@@ -83,6 +84,7 @@ include('crud.php');
                             <tr>
                                 <td><u><a href="ticket_info.php?ticket_id=<?php echo $item['ticket_id']; ?>" class="text-body fw-bold">Ticket #<?php echo $item['ticket_id']; ?></a></u></td>
                                 <td><?= $item['requestor']; ?></td>
+                                <td><?= $item['to_dept']; ?></td>
                                 <td class="text-justify"><?= $item['subject']; ?></td>
                                 <td class="text-center">
                                     <?php
@@ -130,6 +132,34 @@ include('crud.php');
                                     <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor" required>
                                 </div>
                             </div>
+                            <br>
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                </div>
+                                <label for="department" class="sr-only">To Department:</label>
+                                <select class="form-control" id="department" name="department" required>
+                                    <option value="">To Department:</option>
+                                    <?php
+                                    $department = getAll("department");
+                                    if (mysqli_num_rows($department) > 0) {
+                                        foreach ($department as $department) {
+                                    ?>
+                                            <option value="<?= $department['department_name']; ?>"><?= $department['department_name']; ?></option>
+                                    <?php
+                                        }
+                                    } else {
+                                        echo "<option value=''>No Department available</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+
+
+                            <br>
 
                             <div class="form-group">
                                 <div class="input-group">
@@ -140,6 +170,7 @@ include('crud.php');
                                     <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
                                 </div>
                             </div>
+                            <br>
                             
                             <div class="input-group">
                                 <span class="input-group-prepend">
@@ -206,6 +237,8 @@ include('crud.php');
                                     <textarea class="form-control" id="concern" name="concern" rows="4" placeholder="Concerns" required></textarea>
                                 </div>
                             </div>
+                            <br>
+                            
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-prepend">
@@ -215,6 +248,7 @@ include('crud.php');
                                     <input type="file" class="form-control-file" id="file" name="file">
                                 </div>
                             </div>
+                            
 
                             <div class="modal-footer">
                                 <button type="submit" name="add_ticket" class="btn btn-success">Submit</button>

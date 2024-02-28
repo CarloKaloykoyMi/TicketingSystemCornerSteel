@@ -143,8 +143,14 @@ $reply_result = mysqli_query($con, $query);
                                             <div>
                                             <hr>
                                                     <div class="text-right">
-    <a href="ticket.php" class="btn btn-secondary mb-3" style="position: absolute; top: 40px; right: 10px;">Go Back</a>
+                                                    <a href="#" class="btn btn-secondary mb-3" style="position: absolute; top: 40px; right: 10px;" onclick="goBack()">Go Back</a>
 </div>
+
+<script>
+        function goBack() {
+            history.back();
+        }
+    </script>
              
 <span class="number pull-right"><strong>Ticket #<?php echo $ticket_data['ticket_id']; ?></strong></span> <br>
                                            
