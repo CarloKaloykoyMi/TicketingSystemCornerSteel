@@ -3,6 +3,8 @@ $username = $_SESSION['auth_user']['username'];
 $user_id = $_SESSION['auth_user']['user_id'];
 $email = $_SESSION['auth_user']['email'];
 $role = $_SESSION['auth_user']['role'];
+$lname = $_SESSION['auth_user']['lastname'];
+$fname = $_SESSION['auth_user']['firstname'];
 ?>
 
 
@@ -27,8 +29,7 @@ $role = $_SESSION['auth_user']['role'];
 
                 <!-- User Name -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><?php echo $username; ?></a>
-
+                    <a class="nav-link" href="#"><?php echo $fname . ' ' . $lname; ?></a>
                 </li>
             </ul>
         </div>
@@ -78,6 +79,7 @@ $role = $_SESSION['auth_user']['role'];
                     <span><strong>SETTINGS</strong></span>
                 </a>
             </li>
+            <hr style="border-color: white;">
             <div class="sidebar-item">
                 <a href="logout.php" class="sidebar-link">
                     <i class="fa-solid fa-right-from-bracket"></i>
