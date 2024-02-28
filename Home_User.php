@@ -18,7 +18,6 @@ if (!isset($_SESSION['auth_user']['username'])) {
     $role = $_SESSION['auth_user']['role'];
     $lname = $_SESSION['auth_user']['lastname'];
     $fname = $_SESSION['auth_user']['firstname'];
-    
 }
 
 
@@ -75,212 +74,215 @@ if (!isset($_SESSION['auth_user']['username'])) {
 </style>
 
 <body>
-    <div class="container-fluid">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-        <script src="js/sidebar.js"></script> <br>
-        <div class="container1">
-            <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#myModal" style="position: absolute; top: 70px; right: 10px;">Create Ticket</button>
-            <h3>
-                <center>Overall Ticket List </center>
-            </h3>
-            <table id="example" class="table table-responsive hover table-bordered">
-                <thead class="table-light">
-                    <tr>
-                        <th>Ticket ID</th>
-                        <th class="text-center">Requestor</th>
-                        <th class="text-center">To Department</th>
-                        <th class="text-center">Subject</th>
-                        <th class="text-center">Status</th>
-                        <th class="text-center">Date Created</th>
-                    </tr>
-                </thead>
+    <div class="main p-3">
+        <div class="container-fluid">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+            <script src="js/sidebar.js"></script> <br>
+            <div class="container1">
+                <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#myModal" style="position: absolute; top: 70px; right: 10px;">Create Ticket</button>
+                <h3>
+                    <center>Overall Ticket List </center>
+                </h3>
+                <table id="example" class="table table-responsive hover table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Ticket ID</th>
+                            <th class="text-center">Requestor</th>
+                            <th class="text-center">To Department</th>
+                            <th class="text-center">Subject</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Date Created</th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                    <?php
-                    $ticket = getAll("ticket");
+                    <tbody>
+                        <?php
+                        $ticket = getAll("ticket");
 
-                    if (mysqli_num_rows($ticket) > 0) {
-                        foreach ($ticket as $item) {
-                    ?>
-                            <tr>
-                                <td><u><a href="ticket_info.php?ticket_id=<?php echo $item['ticket_id']; ?>" class="text-body fw-bold">Ticket #<?php echo $item['ticket_id']; ?></a></u></td>
-                                <td><?= $item['requestor']; ?></td>
-                                <td><?= $item['to_dept']; ?></td>
-                                <td class="text-justify"><?= $item['subject']; ?></td>
-                                <td class="text-center">
-                                    <?php
-                                    $status = $item['status'];
+                        if (mysqli_num_rows($ticket) > 0) {
+                            foreach ($ticket as $item) {
+                        ?>
+                                <tr>
+                                    <td><u><a href="ticket_info.php?ticket_id=<?php echo $item['ticket_id']; ?>" class="text-body fw-bold">Ticket #<?php echo $item['ticket_id']; ?></a></u></td>
+                                    <td><?= $item['requestor']; ?></td>
+                                    <td><?= $item['to_dept']; ?></td>
+                                    <td class="text-justify"><?= $item['subject']; ?></td>
+                                    <td class="text-center">
+                                        <?php
+                                        $status = $item['status'];
 
-                                    if ($status == 'Pending') {
-                                        echo '<span class="badge text-bg-warning">' . $status . '</span>';
-                                    } elseif ($status == 'Resolved') {
-                                        echo '<span class="badge text-bg-success">' . $status . '</span>';
-                                    } elseif ($status == 'Cancelled') {
-                                        echo '<span class="badge text-bg-danger">' . $status . '</span>';
-                                    } else {
-                                        echo '<span class="badge text-bg-primary">' . $status . '</span>';
-                                    }
-                                    ?>
-                                </td>
-                                <td class="text-center"><?= date('F j, Y h:i:s A', strtotime($item['date_created'])); ?></td>
-                            </tr>
-                    <?php
+                                        if ($status == 'Pending') {
+                                            echo '<span class="badge text-bg-warning">' . $status . '</span>';
+                                        } elseif ($status == 'Resolved') {
+                                            echo '<span class="badge text-bg-success">' . $status . '</span>';
+                                        } elseif ($status == 'Cancelled') {
+                                            echo '<span class="badge text-bg-danger">' . $status . '</span>';
+                                        } else {
+                                            echo '<span class="badge text-bg-primary">' . $status . '</span>';
+                                        }
+                                        ?>
+                                    </td>
+                                    <td class="text-center"><?= date('F j, Y h:i:s A', strtotime($item['date_created'])); ?></td>
+                                </tr>
+                        <?php
+                            }
+                        } else {
+                            echo "No Records Found!";
                         }
-                    } else {
-                        echo "No Records Found!";
-                    }
-                    ?>
-                </tbody>
-            </table>
-        </div>
+                        ?>
+                    </tbody>
+                </table>
+            </div>
 
-        <div class="modal fade" id="myModal">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title"><i class="fas fa-ticket"></i> Submit a Ticket</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title"><i class="fas fa-ticket"></i> Submit a Ticket</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
 
-                    <div class="modal-body">
-                        <form action="crud.php" method="POST" id="ticketForm">
-                            <div class="form-group">
+                        <div class="modal-body">
+                            <form action="crud.php" method="POST" id="ticketForm">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-prepend">
+                                            <i class="fas fa-user input-group-text"></i>
+                                        </span>
+                                        <input type="text" name="userid" value="<?php echo $userid; ?>">
+                                        <label for="requestor" class="sr-only">Requestor</label>
+                                        <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor" required>
+                                    </div>
+                                </div>
+                                <br>
+
                                 <div class="input-group">
-                                    <span class="input-group-prepend">
-                                        <i class="fas fa-user input-group-text"></i>
-                                    </span>
-                                    <input type="text" name="userid" value="<?php echo $userid; ?>">
-                                    <label for="requestor" class="sr-only">Requestor</label>
-                                    <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor" required>
-                                </div>
-                            </div>
-                            <br>
-
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="fas fa-user"></i>
-                                    </span>
-                                </div>
-                                <label for="department" class="sr-only">To Department:</label>
-                                <select class="form-control" id="department" name="department" required>
-                                    <option value="">To Department:</option>
-                                    <?php
-                                    $department = getAll("department");
-                                    if (mysqli_num_rows($department) > 0) {
-                                        foreach ($department as $department) {
-                                    ?>
-                                            <option value="<?= $department['department_name']; ?>"><?= $department['department_name']; ?></option>
-                                    <?php
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-user"></i>
+                                        </span>
+                                    </div>
+                                    <label for="department" class="sr-only">To Department:</label>
+                                    <select class="form-control" id="department" name="department" required>
+                                        <option value="">To Department:</option>
+                                        <?php
+                                        $department = getAll("department");
+                                        if (mysqli_num_rows($department) > 0) {
+                                            foreach ($department as $department) {
+                                        ?>
+                                                <option value="<?= $department['department_name']; ?>"><?= $department['department_name']; ?></option>
+                                        <?php
+                                            }
+                                        } else {
+                                            echo "<option value=''>No Department available</option>";
                                         }
-                                    } else {
-                                        echo "<option value=''>No Department available</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-
-
-                            <br>
-
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-prepend">
-                                        <i class="fa-solid fa-file input-group-text"></i>
-                                    </span>
-                                    <br><label for="subject" class="sr-only">Subject</label>
-                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
-                                </div>
-                            </div>
-                            
-                            <div class="input-group">
-                                <span class="input-group-prepend">
-                                    <i class="fa-solid fa-building input-group-text"></i>
-                                </span>
-                                <label for="company" class="sr-only">Company</label>
-                                <select class="form-control" id="company" name="company" required>
-                                    <option value="">Select Company:</option>
-                                    <?php
-                                    $company = getAll("company");
-                                    if (mysqli_num_rows($company) > 0) {
-                                        foreach ($company as $company) {
-                                    ?>
-                                            <option value="<?= $company['company_name']; ?>"><?= $company['company_name']; ?></option>
-                                    <?php
-                                        }
-                                    } else {
-                                        echo "<option value=''>No Company available</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <br>
-                            <div class="form-group" style="display: none;" id="branchGroup">
-                                <div class="input-group">
-                                    <i class="fa-solid fa-location-dot input-group-text"></i>
-                                    </span>
-                                    <label for="branch" class="sr-only">Branch:</label>
-                                    <select class="form-control" id="branch" name="branch" required>
-                                        <option value="">Select Branch:</option>
+                                        ?>
                                     </select>
                                 </div>
-                            </div>
 
-                            <div class="input-group">
-                                <span class="input-group-prepend">
-                                    <i class="fa-solid fa-users input-group-text"></i>
 
-                                </span>
-                                <label for="department" class="sr-only">Department:</label>
-                                <select class="form-control" id="department" name="department" required>
-                                    <option value="">Select Department:</option>
-                                    <?php
-                                    $department = getAll("department");
-                                    if (mysqli_num_rows($department) > 0) {
-                                        foreach ($department as $department) {
-                                    ?>
-                                            <option value="<?= $department['department_name']; ?>"><?= $department['department_name']; ?></option>
-                                    <?php
+                                <br>
+
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-prepend">
+                                            <i class="fa-solid fa-file input-group-text"></i>
+                                        </span>
+                                        <br><label for="subject" class="sr-only">Subject</label>
+                                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <span class="input-group-prepend">
+                                        <i class="fa-solid fa-building input-group-text"></i>
+                                    </span>
+                                    <label for="company" class="sr-only">Company</label>
+                                    <select class="form-control" id="company" name="company" required>
+                                        <option value="">Select Company:</option>
+                                        <?php
+                                        $company = getAll("company");
+                                        if (mysqli_num_rows($company) > 0) {
+                                            foreach ($company as $company) {
+                                        ?>
+                                                <option value="<?= $company['company_name']; ?>"><?= $company['company_name']; ?></option>
+                                        <?php
+                                            }
+                                        } else {
+                                            echo "<option value=''>No Company available</option>";
                                         }
-                                    } else {
-                                        echo "<option value=''>No Department available</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-prepend">
-                                        <i class="fa-solid fa-comment-alt input-group-text"></i>
-                                    </span>
-                                    <label for="concerns" class="sr-only">Concerns/Questions/Inquiries:</label>
-                                    <textarea class="form-control" id="concern" name="concern" rows="4" placeholder="Concerns" required></textarea>
+                                        ?>
+                                    </select>
                                 </div>
-                            </div>
-                            <br>
-                            
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-prepend">
-                                        <i class="fa-solid fa-paperclip input-group-text"></i>
-                                    </span>
-                                    <label for="file" class="sr-only">Attach File:</label>
-                                    <input type="file" class="form-control-file" id="file" name="file">
+                                <br>
+                                <div class="form-group" style="display: none;" id="branchGroup">
+                                    <div class="input-group">
+                                        <i class="fa-solid fa-location-dot input-group-text"></i>
+                                        </span>
+                                        <label for="branch" class="sr-only">Branch:</label>
+                                        <select class="form-control" id="branch" name="branch" required>
+                                            <option value="">Select Branch:</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            
 
-                            <div class="modal-footer">
-                                <button type="submit" name="add_ticket" class="btn btn-success">Submit</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
-                        </form>
+                                <div class="input-group">
+                                    <span class="input-group-prepend">
+                                        <i class="fa-solid fa-users input-group-text"></i>
+
+                                    </span>
+                                    <label for="department" class="sr-only">Department:</label>
+                                    <select class="form-control" id="department" name="department" required>
+                                        <option value="">Select Department:</option>
+                                        <?php
+                                        $department = getAll("department");
+                                        if (mysqli_num_rows($department) > 0) {
+                                            foreach ($department as $department) {
+                                        ?>
+                                                <option value="<?= $department['department_name']; ?>"><?= $department['department_name']; ?></option>
+                                        <?php
+                                            }
+                                        } else {
+                                            echo "<option value=''>No Department available</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-prepend">
+                                            <i class="fa-solid fa-comment-alt input-group-text"></i>
+                                        </span>
+                                        <label for="concerns" class="sr-only">Concerns/Questions/Inquiries:</label>
+                                        <textarea class="form-control" id="concern" name="concern" rows="4" placeholder="Concerns" required></textarea>
+                                    </div>
+                                </div>
+                                <br>
+
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-prepend">
+                                            <i class="fa-solid fa-paperclip input-group-text"></i>
+                                        </span>
+                                        <label for="file" class="sr-only">Attach File:</label>
+                                        <input type="file" class="form-control-file" id="file" name="file">
+                                    </div>
+                                </div>
+
+
+                                <div class="modal-footer">
+                                    <button type="submit" name="add_ticket" class="btn btn-success">Submit</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 </body>
 
 
