@@ -1,10 +1,24 @@
 <?php
-$username = $_SESSION['auth_user']['username'];
-$user_id = $_SESSION['auth_user']['user_id'];
+$user_id = $_SESSION['userid'];
 $email = $_SESSION['auth_user']['email'];
 $role = $_SESSION['auth_user']['role'];
 $lname = $_SESSION['auth_user']['lastname'];
 $fname = $_SESSION['auth_user']['firstname'];
+include('mysql_connect.php');
+$sql = "SELECT * FROM user WHERE user_id='$user_id'";
+$result = mysqli_query($con, $sql);
+while ($row = mysqli_fetch_array($result)) {
+    $username =$row['username'];
+    $fn = $row['firstname'];
+    $ml = $row['middleinitial'];
+    $ln = $row['lastname'];
+    $name = $fn . " " . $ml . ". " . $ln;
+    $company = $row['company'];
+    $branch = $row['branch'];
+    $department = $row['department'];
+    $contact = $row['contact'];
+    $img = $row['image'];
+}
 ?>
 
 
@@ -24,7 +38,7 @@ $fname = $_SESSION['auth_user']['firstname'];
             <ul class="navbar-nav ms-auto">
                 <!-- User Profile Picture -->
                 <li class="nav-item">
-                    <img src="img/user1.png" alt="User Profile" class="nav-link rounded-circle" style="width: 40px; height: 40px;">
+                    <img src='<?php echo "Images/". $user_id."-".$username. "/" . $img ?>' alt="User Profile" class="nav-link rounded-circle" style="width: 50px; height: 50px;">
                 </li>
 
                 <!-- User Name -->

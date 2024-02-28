@@ -24,13 +24,14 @@ $sql = "SELECT * FROM user WHERE user_id = '$userid';";
 $result = mysqli_query($con, $sql);
 while ($row = mysqli_fetch_array($result)) {
     $fn = $row['firstname'];
-    $ml= $row['middleinitial'];
+    $ml = $row['middleinitial'];
     $ln = $row['lastname'];
     $name = $fn . " " . $ml . ". " . $ln;
-    $company= $row['company'];
-    $branch= $row['branch'];
-    $department= $row['department'];
-    $contact= $row['contact'];
+    $company = $row['company'];
+    $branch = $row['branch'];
+    $department = $row['department'];
+    $contact = $row['contact'];
+    $img = $row['image'];
 }
 
 ?>
@@ -89,8 +90,10 @@ while ($row = mysqli_fetch_array($result)) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="profilepic.php" enctype="multipart/form-data">
+                    <form method="POST" action="crud.php" enctype="multipart/form-data">
                         <input type="hidden" name="size" value="1000000">
+                        <input type="hidden" name="userid" value=<?= $userid ?>>
+                        <input type="hidden" name="username" value=<?= $username ?>>
                         <input type="file" name="image">
                         <input type="submit" name="upload" value="Upload Image">
                     </form>
@@ -113,7 +116,7 @@ while ($row = mysqli_fetch_array($result)) {
                                 <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
                                     <div class="card" style="width: 18rem;">
-                                        <img src="img/usernocheck.png" class="card-img-top " alt="Profile">
+                                        <img src='<?="Images/". $userid."-".$username. "/" . $img ?>' class="card-img-top " alt="Profile">
                                     </div>
                                     <h2><?php echo $name ?></h2>
                                 </div>

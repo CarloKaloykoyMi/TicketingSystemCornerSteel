@@ -41,4 +41,33 @@ if (isset($_POST['add_ticket'])) {
         // PHP code failed to execute
         echo '<script>alert("Error adding reply. Please try again.");</script>';
     }
+} else if (isset($_POST['upload'])) {
+    $file = $_FILES['image'];
+    $user_id = $_POST['userid'];
+    $username = $_POST['username'];
+
+    // Create a folder path based on User_id and Username
+    $folder_path = "Images/$user_id-$username/";
+
+    // Ensure the folder exists or create it
+    if (!is_dir($folder_path)) {
+        mkdir($folder_path, 0755, true);
+    }
+
+    // Set the target path with the folder
+    $target = $folder_path . basename($_FILES['image']['name']);
+
+    $image = $_FILES['image']['name'];
+
+    // Update the image name in the database
+    $sql = "UPDATE user SET image ='$image' WHERE user_id='$user_id';";
+    mysqli_query($con, $sql);
+
+    if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+        $msg = "Image uploaded Successfully";
+    } else {
+        $msg = "There was a problem uploading Image";
+    }
+
+    echo "<script> location.href='User_Profile.php'; </script>";
 }
