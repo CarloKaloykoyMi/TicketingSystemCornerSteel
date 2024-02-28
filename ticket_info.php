@@ -2,6 +2,24 @@
 include 'sidebar_navbar.php';
 include('crud.php');
 
+if (!isset($_SESSION['auth_user']['username'])) {
+    session_destroy();
+    unset($_SESSION['auth_user']['username']);
+    unset($_SESSION['auth_user']['user_id']);
+    unset($_SESSION['auth_user']['email']);
+    unset($_SESSION['auth_user']['role']);
+    unset($_SESSION['auth_user']['lastname']);
+    unset($_SESSION['auth_user']['firstname']);
+    echo '<script>window.location.href = "emplogin.php";</script>';
+} else {
+    $username = $_SESSION['auth_user']['username'];
+    $user_id = $_SESSION['auth_user']['user_id'];
+    $email = $_SESSION['auth_user']['email'];
+    $role = $_SESSION['auth_user']['role'];
+    $lname = $_SESSION['auth_user']['lastname'];
+    $fname = $_SESSION['auth_user']['firstname'];
+}
+
 if (isset($_GET['ticket_id'])) {
     $ticket_id = $_GET['ticket_id'];
 
@@ -125,7 +143,7 @@ $reply_result = mysqli_query($con, $query);
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                        <h4 style="color: black;"><i class="fas fa-ticket"></i> Tickets</h4>
+                        <h4 style="color: black;"><i class="fas fa-ticket"></i> Tickets <?= $lname ?></h4>
                         </div>
                         <div class="row">
                             <div class="col-md-12">

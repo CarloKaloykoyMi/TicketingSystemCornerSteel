@@ -2,6 +2,21 @@
 include('../function/myfunction.php');
 include 'sidebar_navbar.php';
 $ticket = getAll("ticket");
+
+if (!isset($_SESSION['auth_user']['username'])) {
+    session_destroy();
+    unset($_SESSION['auth_user']['username']);
+    unset($_SESSION['auth_user']['user_id']);
+    unset($_SESSION['auth_user']['email']);
+    unset($_SESSION['auth_user']['role']);
+    echo '<script>window.location.href = "../adminlogin.php";</script>';
+} else {
+    $username = $_SESSION['auth_user']['username'];
+    $user_id1 = $_SESSION['auth_user']['user_id'];
+    $email = $_SESSION['auth_user']['email'];
+    $role = $_SESSION['auth_user']['role'];
+}
+
 ?>
 
 

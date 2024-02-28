@@ -1,5 +1,18 @@
 <?php include('function/myfunction.php');
 include 'sidebar_navbar.php';
+if (!isset($_SESSION['auth_user']['username'])) {
+    session_destroy();
+    unset($_SESSION['auth_user']['username']);
+    unset($_SESSION['auth_user']['user_id']);
+    unset($_SESSION['auth_user']['email']);
+    unset($_SESSION['auth_user']['role']);
+    echo '<script>window.location.href = "emplogin.php";</script>';
+} else {
+    $username = $_SESSION['auth_user']['username'];
+    $user_id = $_SESSION['auth_user']['user_id'];
+    $email = $_SESSION['auth_user']['email'];
+    $role = $_SESSION['auth_user']['role'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

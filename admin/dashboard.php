@@ -2,6 +2,20 @@
 include ('sidebar_navbar.php');
 include ('mysql_connect.php');
 
+if (!isset($_SESSION['auth_user']['username'])) {
+    session_destroy();
+    unset($_SESSION['auth_user']['username']);
+    unset($_SESSION['auth_user']['user_id']);
+    unset($_SESSION['auth_user']['email']);
+    unset($_SESSION['auth_user']['role']);
+    echo '<script>window.location.href = "../adminlogin.php";</script>';
+} else {
+    $username = $_SESSION['auth_user']['username'];
+    $user_id = $_SESSION['auth_user']['user_id'];
+    $email = $_SESSION['auth_user']['email'];
+    $role = $_SESSION['auth_user']['role'];
+}
+
 $sql = "SELECT COUNT(*) AS ticket_count FROM ticket";
 $result = $con->query($sql);
 
@@ -116,7 +130,7 @@ mysqli_close($con);
                         <h4>Dashboard</h4>
                     </div>
                     <br>
-                    <h2> <i class="fas fa-smile"></i> Welcome Admin!</h2>
+                    <h2> <i class="fas fa-smile"></i> Welcome, <?php echo $user_id . " "; ?>!</h2>
 
                     <p>&nbsp;This dashboard provides you with tools to manage tickets, users, and system settings efficiently.</p>
                     <div class="container">
