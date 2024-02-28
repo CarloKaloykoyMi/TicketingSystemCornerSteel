@@ -23,7 +23,10 @@ if (!isset($_SESSION['auth_user']['username'])) {
 $sql = "SELECT * FROM user WHERE user_id = '$userid';";
 $result = mysqli_query($con, $sql);
 while ($row = mysqli_fetch_array($result)) {
-    $name = $row['firstname'] . " " . $row['middleinitial'] . ". " . $row['lastname'];
+    $fn = $row['firstname'];
+    $ml= $row['middleinitial'];
+    $ln = $row['lastname'];
+    $name = $fn . " " . $ml . ". " . $ln;
     $company= $row['company'];
     $branch= $row['branch'];
     $department= $row['department'];
@@ -173,7 +176,7 @@ while ($row = mysqli_fetch_array($result)) {
                                         <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                                             <!-- Profile Edit Form -->
-                                            <form method="POST" action="Profile.php">
+                                            <form method="POST" action="User_Profile.php">
                                                 <div class="row mb-3">
                                                     <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                                                     <div class="col-md-8 col-lg-9">
@@ -186,41 +189,46 @@ while ($row = mysqli_fetch_array($result)) {
                                                 <div class="row mb-3">
                                                     <label for="fullName" class="col-md-4 col-lg-3 col-form-label">First Name</label>
                                                     <div class="col-md-8 col-lg-9">
-                                                        <input name="firstName" type="text" class="form-control" id="fullName" value="<?php echo $fistn ?>">
+                                                        <input name="firstName" type="text" class="form-control" id="fullName" value="<?php echo $fn ?>">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Middle Initial</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="lastName" type="text" class="form-control" id="fullName" value="<?php echo $ml ?>">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
                                                     <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Last Name</label>
                                                     <div class="col-md-8 col-lg-9">
-                                                        <input name="lastName" type="text" class="form-control" id="fullName" value="<?php echo $lastn ?>">
+                                                        <input name="lastName" type="text" class="form-control" id="fullName" value="<?php echo $ln ?>">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Company</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="lastName" type="text" class="form-control" id="fullName" value="<?php echo $company ?>">
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
-                                                    <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
+                                                    <label for="Job" class="col-md-4 col-lg-3 col-form-label">Branch</label>
                                                     <div class="col-md-8 col-lg-9">
-                                                        <textarea name="about" class="form-control" id="about" style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
+                                                        <input name="job" type="text" class="form-control" id="Job" value="<?php echo $branch ?>" disabled>
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
-                                                    <label for="Job" class="col-md-4 col-lg-3 col-form-label">Position</label>
+                                                    <label for="Address" class="col-md-4 col-lg-3 col-form-label">Department</label>
                                                     <div class="col-md-8 col-lg-9">
-                                                        <input name="job" type="text" class="form-control" id="Job" value="<?php echo $position ?>" disabled>
+                                                        <input name="address" type="text" class="form-control" id="Address" value="<?php echo $department ?>">
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
-                                                    <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
+                                                    <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Contact Number</label>
                                                     <div class="col-md-8 col-lg-9">
-                                                        <input name="address" type="text" class="form-control" id="Address" value="<?php echo $address ?>">
-                                                    </div>
-                                                </div>
-
-                                                <div class="row mb-3">
-                                                    <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
-                                                    <div class="col-md-8 col-lg-9">
-                                                        <input name="phone" type="text" class="form-control" id="Phone" value="<?php echo $Phone ?>">
+                                                        <input name="phone" type="text" class="form-control" id="Phone" value="<?php echo $contact ?>">
                                                     </div>
                                                 </div>
 
@@ -228,6 +236,12 @@ while ($row = mysqli_fetch_array($result)) {
                                                     <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                                                     <div class="col-md-8 col-lg-9">
                                                         <input name="email" type="email" class="form-control" id="Email" value="<?php echo $email ?>">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <textarea name="about" class="form-control" id="about" style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
                                                     </div>
                                                 </div>
 
