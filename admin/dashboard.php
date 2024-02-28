@@ -8,8 +8,8 @@ if (!isset($_SESSION['auth_user']['username'])) {
     unset($_SESSION['auth_user']['user_id']);
     unset($_SESSION['auth_user']['email']);
     unset($_SESSION['auth_user']['role']);
-    unset($_SESSION['auth_user']['fname']);
-    unset($_SESSION['auth_user']['lname']);
+    unset($_SESSION['auth_user']['lastname']);
+    unset($_SESSION['auth_user']['firstname']);
     echo '<script>window.location.href = "../adminlogin.php";</script>';
 } else {
     $username = $_SESSION['auth_user']['username'];
