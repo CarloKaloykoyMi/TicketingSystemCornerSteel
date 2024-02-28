@@ -105,6 +105,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                             <tr>
                                 <td><u><a href="ticket_info.php?ticket_id=<?php echo $item['ticket_id']; ?>" class="text-body fw-bold">Ticket #<?php echo $item['ticket_id']; ?></a></u></td>
                                 <td><?= $item['requestor']; ?></td>
+                                <td><?= $item['to_dept']; ?></td>
                                 <td class="text-justify"><?= $item['subject']; ?></td>
                                 <td class="text-center">
                                     <?php
