@@ -2,6 +2,7 @@
 include('mysql_connect.php');
 
 if (isset($_POST['add_ticket'])) {
+    $userid = $_SESSION ['user_id'];
     $requestor = $_POST['requestor'];
     $subject = $_POST['subject'];
     $company = $_POST['company'];
@@ -10,8 +11,8 @@ if (isset($_POST['add_ticket'])) {
     $concern = $_POST['concern'];
     $status = "Pending";
 
-    $insert_ticket_query = "INSERT INTO ticket (subject, company, branch, department, requestor, concern, status) 
-    VALUES ('$subject','$company','$branch','$department','$requestor','$concern','$status')";
+    $insert_ticket_query = "INSERT INTO ticket (user_id, subject, company, branch, department, requestor, concern, status) 
+    VALUES ('$userid','$subject','$company','$branch','$department','$requestor','$concern','$status')";
     $insert_ticket_query_run = mysqli_query($con, $insert_ticket_query);
 
     if ($insert_ticket_query_run) {

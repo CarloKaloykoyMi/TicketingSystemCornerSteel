@@ -2,7 +2,6 @@
 include 'sidebar_navbar.php';
 include('crud.php');
 
-
 if (!isset($_SESSION['auth_user']['username'])) {
     session_destroy();
     unset($_SESSION['auth_user']['username']);
@@ -11,7 +10,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
     unset($_SESSION['auth_user']['role']);
     unset($_SESSION['auth_user']['lastname']);
     unset($_SESSION['auth_user']['firstname']);
-    echo '<script>window.location.href = "emplogin.php";</script>';
+    echo '<script>window.location.href = "../adminlogin.php";</script>';
 } else {
     $username = $_SESSION['auth_user']['username'];
     $user_id = $_SESSION['auth_user']['user_id'];
@@ -19,6 +18,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
     $role = $_SESSION['auth_user']['role'];
     $lname = $_SESSION['auth_user']['lastname'];
     $fname = $_SESSION['auth_user']['firstname'];
+    
 }
 
 
@@ -147,6 +147,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                     <span class="input-group-prepend">
                                         <i class="fas fa-user input-group-text"></i>
                                     </span>
+                                    <input type="text" name="userid" value="<?php echo $user_id; ?>">
                                     <label for="requestor" class="sr-only">Requestor</label>
                                     <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor" required>
                                 </div>

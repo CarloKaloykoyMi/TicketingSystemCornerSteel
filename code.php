@@ -95,6 +95,7 @@ if (isset($_POST['register'])) {
                 // Check if the user is not an admin
                 if ($role != 0) {
                     $_SESSION['auth'] = true;
+                    $_SESSION['userid'] = $row['user_id'];
                     $_SESSION['auth_user'] = [
                         'user_id' => $row['id'],
                         'username' => $row['username'],

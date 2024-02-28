@@ -4,7 +4,7 @@ include 'sidebar_navbar.php';
 if (!isset($_SESSION['auth_user']['username'])) {
     session_destroy();
     unset($_SESSION['auth_user']['username']);
-    unset($_SESSION['auth_user']['user_id']);
+    unset($_SESSION['userid']);
     unset($_SESSION['auth_user']['email']);
     unset($_SESSION['auth_user']['role']);
     unset($_SESSION['auth_user']['lastname']);
@@ -12,11 +12,11 @@ if (!isset($_SESSION['auth_user']['username'])) {
     echo '<script>window.location.href = "emplogin.php";</script>';
 } else {
     $username = $_SESSION['auth_user']['username'];
-    $user_id = $_SESSION['auth_user']['user_id'];
     $email = $_SESSION['auth_user']['email'];
     $role = $_SESSION['auth_user']['role'];
     $lname = $_SESSION['auth_user']['lastname'];
     $fname = $_SESSION['auth_user']['firstname'];
+    $userid1 = $_SESSION['userid'];
 }
 
 if (isset($_GET['ticket_id'])) {
@@ -129,7 +129,7 @@ $reply_result = mysqli_query($con, $query);
 
             <div class="grid support-content">
                 <div class="grid-body">
-                   <center><h2>Ticket Details</h2></center
+                   <center><h2>Ticket Details <?php echo $userid1?></h2></center
 
                     <hr>
        </head>
@@ -195,7 +195,7 @@ $reply_result = mysqli_query($con, $query);
                                                             <div class="modal-body">
                                                                 <form action="crud.php" method="POST">
                                                                     <input type="hidden" name="ticket_id" value="<?php echo $ticket_id; ?>">
-                                                                    <input type="hidden" name="userid" value="<?php echo $user_id; ?>">
+                                                                    <input type="hidden" name="userid" value="<?php echo $userid1; ?>">
                                                                     <input type="text" name="sender" style="display: none;" value="<?php echo $fname. " ". $lname; ?>">
                                                                     <div class="mb-3">
                                                                         <label for="replyMessage" class="form-label">Reply</label>
@@ -226,6 +226,7 @@ $reply_result = mysqli_query($con, $query);
                                        <div class="dialog-header">
                                         <img src="img/usernocheck.png" alt="Profile Icon" class="dialog-profile-icon">
                                         <p class="mb-0"><?php echo "" . $row["Name"]; ?></p>
+                                        <p class="mb-0"><?php echo "" . $user_id; ?></p>
                                     </div>
                                         <div class="dialog-body">
                                             <p class="mb-0"><?php echo "" . $row["reply"]; ?></p>
