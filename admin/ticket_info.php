@@ -17,7 +17,6 @@ if (!isset($_SESSION['auth_user']['username'])) {
     $role = $_SESSION['auth_user']['role'];
     $lname = $_SESSION['auth_user']['lastname'];
     $fname = $_SESSION['auth_user']['firstname'];
-    
 }
 
 ?>
@@ -129,6 +128,7 @@ $reply_result = mysqli_query($con, $query);
         background-color: #dcf8c6;
     }
 </style>
+
 <body>
     <div class="main p-3">
         <div class="container">
@@ -147,8 +147,8 @@ $reply_result = mysqli_query($con, $query);
                                                 <div>
                                                     <hr>
                                                     <div class="text-right">
-    <a href="ticket.php" class="btn btn-secondary mb-3" style="position: absolute; top: 40px; right: 10px;">Go Back</a>
-</div>
+                                                        <a href="ticket.php" class="btn btn-secondary mb-3" style="position: absolute; top: 40px; right: 10px;">Go Back</a>
+                                                    </div>
                                                     <span class="number pull-right"><b>Ticket # <?php echo $ticket_data['ticket_id']; ?></b></span> <br>
                                                     <span class="number pull-right"><b>Status:
                                                             <?php
@@ -198,12 +198,12 @@ $reply_result = mysqli_query($con, $query);
                                                                         <!-- Add the ticket_id input field -->
                                                                         <input type="hidden" name="ticket_id" value="<?php echo $ticket_data['ticket_id']; ?>">
                                                                         <div class="modal-footer">
-                                            
+
                                                                             <!-- Move the submit button inside the form -->
                                                                             <button class="btn btn-primary float-end" type="submit" name="change_status">Save Changes</button>
                                                                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                                                         </div>
-                                        
+
                                                                     </form>
                                                                 </div>
                                                             </div>
@@ -216,7 +216,7 @@ $reply_result = mysqli_query($con, $query);
                                                 </div>
 
                                                 <p class="info">Requested by <a href="#"><?php echo $ticket_data['requestor']; ?></a> &nbsp; <?php echo date('M d, Y', strtotime($ticket_data['date_created'])); ?>
-                                                   
+
                                                 </p>
                                                 <hr>
                                                 <b><i class="fas fa-comments"></i> Concern:</b>
@@ -234,8 +234,8 @@ $reply_result = mysqli_query($con, $query);
                                                             </div>
                                                             <div class="modal-body">
                                                                 <form action="code.php" method="POST">
-                                                                    <input type="hidden" name="ticket_id" value="<?php echo $ticket_id; ?>">                                                                    <input type="hidden" name="userid" value="<?php echo $user_id; ?>">
-                                                                    <input type="text" name="sender" style="display: none;" value="<?php echo $fname. " ". $lname; ?>">
+                                                                    <input type="hidden" name="ticket_id" value="<?php echo $ticket_id; ?>"> <input type="hidden" name="userid" value="<?php echo $user_id; ?>">
+                                                                    <input type="text" name="sender" style="display: none;" value="<?php echo $fname . " " . $lname; ?>">
                                                                     <div class="mb-3">
                                                                         <label for="replyMessage" class="form-label">Reply</label>
                                                                         <textarea class="form-control" name="reply" id="replyMessage" rows="3"></textarea>
@@ -256,35 +256,36 @@ $reply_result = mysqli_query($con, $query);
                                     </li>
                                 </ul>
                                 <?php
-                            // Check if there's any result
-                            if ($reply_result->num_rows > 0) {
-                                // Output data of each row
-                                echo "<table>";
-                                while ($row = $reply_result->fetch_assoc()) {
-                            ?>
-                                    <div class="dialog-header">
-                                        <img src="img/usercheck.png" alt="Profile Icon" class="dialog-profile-icon">
-                                        <p class="mb-0"><?php echo "" . $row["Name"]; ?></p>
-                                    </div>
+                                // Check if there's any result
+                                if ($reply_result->num_rows > 0) {
+                                    // Output data of each row
+                                    echo "<table>";
+                                    while ($row = $reply_result->fetch_assoc()) {
+                                ?>
+                                        <div class="dialog-header">
+                                            <img src="img/usercheck.png" alt="Profile Icon" class="dialog-profile-icon">
+                                            <p class="mb-0"><?php echo $row["Name"]; ?></p>
+                                            <p class="mb-0"><?php echo $user_id; ?></p>
+                                        </div>
                                         <div class="dialog-body">
                                             <p class="mb-0"><?php echo "" . $row["reply"]; ?></p>
                                         </div>
-                                    </div>
-
-
-                            <?php
-                                }
-                                echo "</table>";
-                            }
-                            ?>
                             </div>
-                        </div>
-                        
 
+
+                    <?php
+                                    }
+                                    echo "</table>";
+                                }
+                    ?>
+                        </div>
                     </div>
+
+
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 

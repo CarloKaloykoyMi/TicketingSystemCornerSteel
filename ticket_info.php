@@ -232,7 +232,7 @@ $reply_result = mysqli_query($con, $query);
                                        <div class="dialog-header">
                                         <img src="img/usernocheck.png" alt="Profile Icon" class="dialog-profile-icon">
                                         <p class="mb-0"><?php echo "" . $row["Name"]; ?></p>
-                                        <p class="mb-0"><?php echo "" . $user_id; ?></p>
+                                        <p class="mb-0"><?php echo $user_id; ?></p>
                                     </div>
                                         <div class="dialog-body">
                                             <p class="mb-0"><?php echo "" . $row["reply"]; ?></p>
