@@ -2,7 +2,7 @@
 include('mysql_connect.php');
 
 if (isset($_POST['add_ticket'])) {
-    $userid = $_SESSION ['user_id'];
+    $userid = $_POST['userid'];
     $requestor = $_POST['requestor'];
     $subject = $_POST['subject'];
     $company = $_POST['company'];
