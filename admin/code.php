@@ -186,9 +186,10 @@ if (isset($_POST['add_company'])) {
     $branch = $_POST['branch'];
     $department = $_POST['department'];
     $email = $_POST['email'];
+    $password = $_POST['password'];
 
     $insert_user_query = mysqli_query($con, "INSERT INTO user (lastName, firstName, middleinitial, company, branch, department, email, contact, username, password, verification_status, role) 
-    VALUES('$lastName', '$firstName', '$middleinitial', '$company', '$branch', '$department', '$email', '$contact', '$username', '$password', '$verification_status', '1')");
+    VALUES('$lastName', '$firstName', '$middleinitial', '$company', '$branch', '$department', '$email', '$contact', '$username', '$password', '1', '1')");
 
     if ($insert_user_query) {
         echo '<script>alert("User added successfully.");</script>';
@@ -228,5 +229,7 @@ if (isset($_POST['add_company'])) {
 
     echo "<script> location.href='../admin/admin_profile.php'; </script>";
 }
+
+?>
 
 

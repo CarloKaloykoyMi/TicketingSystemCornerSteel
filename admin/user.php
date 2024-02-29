@@ -17,7 +17,6 @@ if (!isset($_SESSION['auth_user']['username'])) {
     $role = $_SESSION['auth_user']['role'];
     $lname = $_SESSION['auth_user']['lastname'];
     $fname = $_SESSION['auth_user']['firstname'];
-    
 }
 
 ?>
@@ -38,8 +37,6 @@ if (!isset($_SESSION['auth_user']['username'])) {
 
     <!-- icon css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
     <!-- datatable css -->
@@ -47,6 +44,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
     <script defer src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     <script defer src="js/table.js"></script>
+
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="user.css">
 </head>
@@ -57,23 +55,23 @@ if (!isset($_SESSION['auth_user']['username'])) {
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                    <div class="card-header">
-                        <h4>Users</h4>
-                        <button class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button>
+                        <div class="card-header">
+                            <h4>Users</h4>
+                            <button class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button>
 
-                        <!-- Filter dropdown -->
-                        <div class="dropdown float-end ms-2">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                Filter
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="filterDropdown">
-                                <li><a class="dropdown-item" href="#" id="filterEmployee">Employee</a></li>
-                                <li><a class="dropdown-item" href="#" id="filterAdmin">Admin</a></li>
-                                <!-- Add more filter options as needed -->
-                            </ul>
+                            <!-- Filter dropdown -->
+                            <div class="dropdown float-end ms-2">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Filter
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+                                    <li><a class="dropdown-item" href="#" id="filterEmployee">Employee</a></li>
+                                    <li><a class="dropdown-item" href="#" id="filterAdmin">Admin</a></li>
+                                    <!-- Add more filter options as needed -->
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                        <div class="card-body" id="category_table">
+                        <div class="card-body">
                             <table id="example" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
@@ -104,8 +102,8 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                                 <td><?= $item['role'] == 0 ? 'Admin' : 'Employee'; ?></td>
                                                 <td>
                                                     <div class="btn-group" role="group">
-                                                        <a href="#" class="btn btn-primary btn-sm" style="width: 80px;" data-bs-toggle="modal" data-bs-target="#editUserModal<?= $item['user_id']; ?>"><i class="fas fa-pencil"></i>&nbsp;Edit</a>
-                                                        <button type="button" class="btn btn-danger btn-sm delete_user_btn" style="width: 90px;" data-bs-toggle="modal" data-bs-target="#deleteUserModal<?= $item['user_id']; ?>"><i class="fas fa-trash"></i> &nbsp; Delete</button>
+                                                        <a href="#" class="btn btn-primary" style="width: 80px;" data-bs-toggle="modal" data-bs-target="#editUserModal<?= $item['user_id']; ?>"><i class="fas fa-pencil"></i>&nbsp;Edit</a>
+                                                        <button type="button" class="btn btn-sm btn-danger delete_category_btn" value="<?= $item['user_id']; ?>"><i class="fas fa-trash"></i> &nbsp; Delete</button>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -203,7 +201,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add U</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -225,38 +223,80 @@ if (!isset($_SESSION['auth_user']['username'])) {
                         </div>
 
                         <div class="col-md-12 mt-3">
-                            <label for="company"><i class="fas fa-building"></i> Company</label>
-                            <select name="company" class="form-control">
-                                <option value="company1" <?= ($item['company'] == 'company1') ? 'selected' : ''; ?>>Company 1</option>
-                                <option value="company2" <?= ($item['company'] == 'company2') ? 'selected' : ''; ?>>Company 2</option>
-                                <option value="company3" <?= ($item['company'] == 'company3') ? 'selected' : ''; ?>>Company 3</option>
-                                <!-- Add more options as needed -->
-                            </select>
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <i class="fa-solid fa-building input-group-text"></i>
+                                </span>
+                                <label for="company" class="sr-only">Company</label>
+                                <select class="form-control" id="company" name="company" required>
+                                    <option value="">Select Company:</option>
+                                    <?php
+                                    $company = getAll("company");
+                                    if (mysqli_num_rows($company) > 0) {
+                                        foreach ($company as $company) {
+                                    ?>
+                                            <option value="<?= $company['company_name']; ?>"><?= $company['company_name']; ?></option>
+                                    <?php
+                                        }
+                                    } else {
+                                        echo "<option value=''>No Company available</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12 mt-3">
+                            <div class="form-group" style="display: none;" id="branchGroup">
+                                <div class="input-group">
+                                    <i class="fa-solid fa-location-dot input-group-text"></i>
+                                    </span>
+                                    <label for="branch" class="sr-only">Branch:</label>
+                                    <select class="form-control" id="branch" name="branch" required>
+                                        <option value="">Select Branch:</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="col-md-12 mt-3">
-                            <label for="branch"><i class="fa-solid fa-location-dot"></i> Branch</label>
-                            <select name="branch" class="form-control">
-                                <option value="branch1" <?= ($item['branch'] == 'branch1') ? 'selected' : ''; ?>>Branch 1</option>
-                                <option value="branch2" <?= ($item['branch'] == 'branch2') ? 'selected' : ''; ?>>Branch 2</option>
-                                <option value="branch3" <?= ($item['branch'] == 'branch3') ? 'selected' : ''; ?>>Branch 3</option>
-                                <!-- Add more options as needed -->
-                            </select>
-                        </div>
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <i class="fa-solid fa-users input-group-text"></i>
 
-                        <div class="col-md-12 mt-3">
-                            <label for="department"><i class="fa-solid fa-users"></i> Department</label>
-                            <select name="department" class="form-control">
-                                <option value="department1" <?= ($item['department'] == 'department1') ? 'selected' : ''; ?>>Department 1</option>
-                                <option value="department2" <?= ($item['department'] == 'department2') ? 'selected' : ''; ?>>Department 2</option>
-                                <option value="department3" <?= ($item['department'] == 'department3') ? 'selected' : ''; ?>>Department 3</option>
-                                <!-- Add more options as needed -->
-                            </select>
+                                </span>
+                                <label for="department" class="sr-only">Department:</label>
+                                <select class="form-control" id="department" name="department" required>
+                                    <option value="">Select Department:</option>
+                                    <?php
+                                    $department = getAll("department");
+                                    if (mysqli_num_rows($department) > 0) {
+                                        foreach ($department as $department) {
+                                    ?>
+                                            <option value="<?= $department['department_name']; ?>"><?= $department['department_name']; ?></option>
+                                    <?php
+                                        }
+                                    } else {
+                                        echo "<option value=''>No Department available</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="col-md-12 mt-3">
                             <label for=""><i class="fas fa-envelope"></i> Email</label>
                             <input type="email" name="email" class="form-control">
+                        </div>
+
+
+                        <div class="col-md-12 mt-3">
+                            <label for="password" class="form-label"><i class="fas fa-lock"></i> Password</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password" required>
+                                <button class="btn btn-outline-secondary" type="button" id="togglePassword"><i class="fas fa-eye"></i></button>
+                            </div>
                         </div>
 
                         <hr>
@@ -271,28 +311,47 @@ if (!isset($_SESSION['auth_user']['username'])) {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="js/sidebar.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <script>
-    $(document).ready(function () {
-        // DataTable initialization
-        $('#example').DataTable();
+        $(document).ready(function() {
+            $('#company').change(function() {
+                var companyName = $(this).val();
 
-        // Filter dropdown item click events
-        $('#filterEmployee').on('click', function () {
-            applyFilter('Employee');
+                $.ajax({
+                    url: 'get_branch.php',
+                    type: 'POST',
+                    data: {
+                        company_name: companyName
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        $('#branch').html(response);
+                        $('#branchGroup').toggle(response.trim() !== '');
+                    },
+                    error: function() {
+                        alert('Error fetching branches.');
+                    }
+                });
+            });
         });
+    </script>
 
-        $('#filterAdmin').on('click', function () {
-            applyFilter('Admin');
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const togglePasswordButton = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+
+        togglePasswordButton.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            togglePasswordButton.querySelector('i').classList.toggle('fa-eye');
+            togglePasswordButton.querySelector('i').classList.toggle('fa-eye-slash');
         });
+    </script>
 
-        // Filter button click event
-        function applyFilter(filterType) {
-            // Display a modal or perform any other filter-related action
-            alert('Filtering by ' + filterType + '. Implement your filter logic here.');
-        }
-    });
-</script>
+
 
 </body>
 
