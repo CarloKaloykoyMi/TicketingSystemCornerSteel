@@ -64,7 +64,6 @@ while ($row = mysqli_fetch_array($result)) {
 <style>
     body h2 {
         font-family: "Arial", sans-serif;
-        font-style: italic;
     }
 
     .container {
@@ -116,6 +115,10 @@ while ($row = mysqli_fetch_array($result)) {
             max-width: 800px;
             margin: 0 auto;
         }
+        .nav-tabs-bordered .nav-link:hover {
+        background-color: #007bff; /* Replace with your preferred color */
+        color: #fff; /* Text color on hover */
+    }
 </style>
 </head>
 
@@ -170,7 +173,7 @@ while ($row = mysqli_fetch_array($result)) {
                                     <ul class="nav nav-tabs nav-tabs-bordered">
 
                                         <li class="nav-item">
-                                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
+                                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
                                         </li>
                                         <li class="nav-item">
                                             <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
@@ -183,34 +186,42 @@ while ($row = mysqli_fetch_array($result)) {
                                     <div class="tab-content pt-2">
 
                                         <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                                            <h5 class="card-title">About</h5>
-                                            <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
-
-                                            <h5 class="card-title">Profile Details</h5>
+                                           <br>
+                                            <h5 class="card-title"><b>Profile Details:</b></h5>
 
                                             <div class="row">
-                                                <div class="col-lg-3 col-md-4 label "><b>Full Name</b></div>
-                                                <div class="col-lg-9 col-md-8"><u><?php echo $name ?></u></div>
+                                                <div class="col-lg-4 col-md-5 label "><i class="fa-solid fa-user"></i> First Name:</div>
+                                                <div class="col-lg-3 col-md-5"><u><?php echo $fname ?></u></div>
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-lg-3 col-md-4 label"><b>Company</b></div>
-                                                <div class="col-lg-9 col-md-8"><u><?php echo $company ?></u></div>
+                                                <div class="col-lg-4 col-md-5 label "><i class="fa-solid fa-user"></i> Middle Initial:</div>
+                                                <div class="col-lg-3 col-md-5"><u><?php echo $ml ?></u></div>
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-lg-3 col-md-4 label">Branch</div>
-                                                <div class="col-lg-9 col-md-8"><u><?php echo $branch ?></u></div>
+                                                <div class="col-lg-4 col-md-5 label "><i class="fa-solid fa-user"></i> Last Name:</div>
+                                                <div class="col-lg-3 col-md-5"><u><?php echo $lname ?></u></div>
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-lg-3 col-md-4 label">Department</div>
-                                                <div class="col-lg-9 col-md-8"><u><?php echo $department ?></u></div>
+                                                <div class="col-lg-4 col-md-5 label"><i class="fa-solid fa-building"></i> Company:</div>
+                                                <div class="col-lg-3 col-md-5"><u><?php echo $company ?></u></div>
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-lg-3 col-md-4 label">Contact Number :</div>
-                                                <div class="col-lg-9 col-md-8"><u><?php echo $contact ?></u></div>
+                                                <div class="col-lg-4 col-md-5 label"><i class="fa-solid fa-location-dot"></i> Branch:</div>
+                                                <div class="col-lg-3 col-md-5"><u><?php echo $branch ?></u></div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-5 label"><i class="fa-solid fa-users"></i> Department:</div>
+                                                <div class="col-lg-3 col-md-5"><u><?php echo $department ?></u></div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-5 label"><i class="fa-solid fa-phone"></i> Contact Number :</div>
+                                                <div class="col-lg-4 col-md-5"><u><?php echo $contact ?></u></div>
                                             </div>
 
                                         </div>
@@ -220,8 +231,8 @@ while ($row = mysqli_fetch_array($result)) {
                                             <!-- Profile Edit Form -->
                                             <form method="POST" action="User_Profile.php">
                                                 <div class="row mb-3">
-                                                    <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
-                                                    <div class="col-md-8 col-lg-9">
+                                                    <label for="profileImage" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-id-badge"></i> Profile Image</label>
+                                                    <div class="col-md-8 col-lg-8">
                                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Change Profile Picture </button>
                                                         <div class="pt-2">
                                                         </div>
@@ -229,61 +240,61 @@ while ($row = mysqli_fetch_array($result)) {
                                                 </div>
 
                                                 <div class="row mb-3">
-                                                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">First Name</label>
-                                                    <div class="col-md-8 col-lg-9">
+                                                    <label for="fullName" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-user"></i> First Name</label>
+                                                    <div class="col-md-8 col-lg-8">
                                                         <input name="firstName" type="text" class="form-control" id="fullName" value="<?php echo $fn ?>">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
-                                                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Middle Initial</label>
-                                                    <div class="col-md-8 col-lg-9">
+                                                    <label for="fullName" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-user"></i> Middle Initial</label>
+                                                    <div class="col-md-8 col-lg-8">
                                                         <input name="lastName" type="text" class="form-control" id="fullName" value="<?php echo $ml ?>">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
-                                                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Last Name</label>
-                                                    <div class="col-md-8 col-lg-9">
+                                                    <label for="fullName" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-user"></i> Last Name</label>
+                                                    <div class="col-md-8 col-lg-8">
                                                         <input name="lastName" type="text" class="form-control" id="fullName" value="<?php echo $ln ?>">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
-                                                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Company</label>
-                                                    <div class="col-md-8 col-lg-9">
+                                                    <label for="fullName" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-building"></i> Company</label>
+                                                    <div class="col-md-8 col-lg-8">
                                                         <input name="lastName" type="text" class="form-control" id="fullName" value="<?php echo $company ?>">
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
-                                                    <label for="Job" class="col-md-4 col-lg-3 col-form-label">Branch</label>
-                                                    <div class="col-md-8 col-lg-9">
+                                                    <label for="Job" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-location-dot"></i> Branch</label>
+                                                    <div class="col-md-8 col-lg-8">
                                                         <input name="job" type="text" class="form-control" id="Job" value="<?php echo $branch ?>" disabled>
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
-                                                    <label for="Address" class="col-md-4 col-lg-3 col-form-label">Department</label>
-                                                    <div class="col-md-8 col-lg-9">
+                                                    <label for="Address" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-users"></i> Department</label>
+                                                    <div class="col-md-8 col-lg-8">
                                                         <input name="address" type="text" class="form-control" id="Address" value="<?php echo $department ?>">
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
-                                                    <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Contact Number</label>
-                                                    <div class="col-md-8 col-lg-9">
+                                                    <label for="Phone" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-phone"></i> Contact Number</label>
+                                                    <div class="col-md-8 col-lg-8">
                                                         <input name="phone" type="text" class="form-control" id="Phone" value="<?php echo $contact ?>">
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
-                                                    <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                                                    <div class="col-md-8 col-lg-9">
+                                                    <label for="Email" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-envelope"></i> Email</label>
+                                                    <div class="col-md-8 col-lg-8">
                                                         <input name="email" type="email" class="form-control" id="Email" value="<?php echo $email ?>">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
-                                                    <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
+                                                    
                                                     <div class="col-md-8 col-lg-9">
-                                                        <textarea name="about" class="form-control" id="about" style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
+                                        
                                                     </div>
                                                 </div>
 
@@ -341,22 +352,22 @@ while ($row = mysqli_fetch_array($result)) {
                                             <form>
 
                                                 <div class="row mb-3">
-                                                    <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
-                                                    <div class="col-md-8 col-lg-9">
+                                                    <label for="currentPassword" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-lock"></i> Current Password:</label>
+                                                    <div class="col-md-8 col-lg-8">
                                                         <input name="password" type="password" class="form-control" id="currentPassword">
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
-                                                    <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
-                                                    <div class="col-md-8 col-lg-9">
+                                                    <label for="newPassword" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-key"></i> New Password:</label>
+                                                    <div class="col-md-8 col-lg-8">
                                                         <input name="newpassword" type="password" class="form-control" id="newPassword">
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
-                                                    <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
-                                                    <div class="col-md-8 col-lg-9">
+                                                    <label for="renewPassword" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-unlock"></i> Re-enter New Password</label>
+                                                    <div class="col-md-8 col-lg-8">
                                                         <input name="renewpassword" type="password" class="form-control" id="renewPassword">
                                                     </div>
                                                 </div>
