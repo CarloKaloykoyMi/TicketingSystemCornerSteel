@@ -135,9 +135,9 @@ mysqli_close($con);
                         <h4>Dashboard</h4>
                     </div>
                     <br>
-                    <h2> <i class="fas fa-smile"></i> Welcome, <?php echo $fname . " ". $lname; ?>!</h2>
+                    <h2>&nbsp; Welcome, <?php echo $fname . " ". $lname; ?>!</h2>
 
-                    <p>&nbsp;This dashboard provides you with tools to manage tickets, users, and system settings efficiently.</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;This dashboard provides you with tools to manage tickets, users, and system settings efficiently.</p>
                     <div class="container">
     <div class="row">
         <div class="col-md-3">
