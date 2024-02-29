@@ -139,21 +139,9 @@
                     </div>
 
                     <div class="col-md-4 mt-2">
-                        <label for="branch" class="form-label"> <i class="fa-solid fa-location-dot"></i> Branch</label>
-                        <select id=branch name="branch" class="form-control" required>
-                            <option value="" disabled selected>Select your Branch</option>
-                            <?php
-                            $branch = getAll("branch");
-                            if (mysqli_num_rows($branch) > 0) {
-                                foreach ($branch as $branch) {
-                            ?>
-                                    <option value="<?= $branch['branch_name']; ?>"><?= $branch['branch_name']; ?></option>
-                            <?php
-                                }
-                            } else {
-                                echo "<option value=''>No Branch available</option>";
-                            }
-                            ?>
+                        <label for="branch" id="branchGroup" class="form-label"> <i class="fa-solid fa-location-dot"></i> Branch:</label>
+                        <select class="form-control" id="branch" name="branch" required>
+                            <option value="">Select Branch:</option>
                         </select>
                     </div>
 
@@ -325,6 +313,8 @@
 
     <!-- Bootstrap JS (optional) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
     <script>
         const togglePasswordButton = document.getElementById('togglePassword');
         const passwordInput = document.getElementById('password');
@@ -423,6 +413,30 @@
 
             input.value = numbersOnly;
         }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#company').change(function() {
+                var companyName = $(this).val();
+
+                $.ajax({
+                    url: 'get_branches.php',
+                    type: 'POST',
+                    data: {
+                        company_name: companyName
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        $('#branch').html(response);
+                        $('#branchGroup').toggle(response.trim() !== '');
+                    },
+                    error: function() {
+                        alert('Error fetching branches.');
+                    }
+                });
+            });
+        });
     </script>
 </body>
 
