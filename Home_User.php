@@ -151,7 +151,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                         </span>
                                         <input type="hidden" name="userid" value="<?php echo $userid; ?>">
                                         <label for="requestor" class="sr-only">Requestor</label>
-                                        <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor"  value="<?php echo $fname . ' ' . $lname; ?>" readonly required>
+                                        <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor"  value="<?php echo $fname . ' ' . $lname; ?>" disabled>
                                     </div>
                                 </div>
                                 <br>
@@ -276,7 +276,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                     <button type="submit" name="add_ticket" class="btn btn-success">Submit</button>
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                 </div>
-                            </form>
+                            </for    m>
                         </div>
                     </div>
                 </div>
