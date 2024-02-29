@@ -143,7 +143,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                         </div>
 
                         <div class="modal-body">
-                            <form action="crud.php" method="POST" id="ticketForm">
+                            <form action="crud.php" method="POST" id="ticketForm" >
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-prepend">
@@ -151,7 +151,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                         </span>
                                         <input type="hidden" name="userid" value="<?php echo $userid; ?>">
                                         <label for="requestor" class="sr-only">Requestor</label>
-                                        <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor"  value="<?php echo $fname . ' ' . $lname; ?>" disabled>
+                                        <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor"  value="<?php echo $fname . ' ' . $lname; ?>" readonly>
                                     </div>
                                 </div>
                                 <br>
@@ -233,7 +233,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
 
                                     </span>
                                     <label for="department" class="sr-only">Department:</label>
-                                    <select class="form-control" id="department" name="department" required>
+                                    <select class="form-control" id="department" name="todepartment" required>
                                         <option value="">Select Department:</option>
                                         <?php
                                         $department = getAll("department");
@@ -267,7 +267,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                             <i class="fa-solid fa-paperclip input-group-text"></i>
                                         </span>
                                         <label for="file" class="sr-only">Attach File:</label>
-                                        <input type="file" class="form-control-file" id="file" name="file">
+                                        <input type="file" class="form-control-file"  name="files[]" multiple>
                                     </div>
                                 </div>
 
@@ -276,7 +276,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                     <button type="submit" name="add_ticket" class="btn btn-success">Submit</button>
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                 </div>
-                            </for    m>
+                            </form>
                         </div>
                     </div>
                 </div>
