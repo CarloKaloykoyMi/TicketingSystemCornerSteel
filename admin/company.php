@@ -85,9 +85,32 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                                 <td><?= $item['email']; ?></td>
                                                 <td>
                                                     <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCompanyModal<?= $item['id']; ?>"><i class="fas fa-pencil"></i>&nbsp;Edit</a>
-                                                    <button type="button" class="btn btn-sm btn-danger delete_category_btn" value="<?= $item['id']; ?>"><i class="fas fa-trash"></i> &nbsp; Delete</button>
+                                                    <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#companyDepartmentModal<?= $item['id']; ?>">
+                                                        <i class="fas fa-trash"></i>&nbsp;Delete
+                                                    </a>
                                                 </td>
                                             </tr>
+
+                                            <div class="modal fade" id="companyDepartmentModal<?= $item['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Delete Department</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Are you sure you want to delete this Company?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <form action="code.php" method="POST">
+                                                                <input type="hidden" name="company_id" value="<?= $item['id']; ?>">
+                                                                <button type="submit" class="btn btn-danger" name="delete_company">Delete</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
                                             <!-- Edit Company Modal -->
                                             <div class="modal fade" id="editCompanyModal<?= $item['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

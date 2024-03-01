@@ -194,12 +194,12 @@ if (isset($_POST['add_company'])) {
     if ($insert_user_query) {
         echo '<script>alert("User added successfully.");</script>';
         echo '<script>window.location.href = "user.php";</script>';
-        exit(); 
+        exit();
     } else {
         // PHP code failed to execute
         echo '<script>alert("Error adding user. Please try again.");</script>';
     }
-}else if (isset($_POST['upload'])) {
+} else if (isset($_POST['upload'])) {
     $file = $_FILES['image'];
     $user_id = $_POST['userid'];
     $username = $_POST['username'];
@@ -228,8 +228,19 @@ if (isset($_POST['add_company'])) {
     }
 
     echo "<script> location.href='../admin/admin_profile.php'; </script>";
+} elseif (isset($_POST['delete_department'])) {
+    $id = $_POST['department_id'];
+    $sql = "DELETE FROM department WHERE id = '$id';";
+    $sqlRun =  mysqli_query($con, $sql);
+    echo "<script> location.href='../admin/department.php'; </script>";
+} elseif (isset($_POST['delete_company'])) {
+    $id = $_POST['company_id'];
+    $sql = "DELETE FROM company WHERE id = '$id';";
+    $sqlRun =  mysqli_query($con, $sql);
+    echo "<script> location.href='../admin/company.php'; </script>";
+} elseif (isset($_POST['delete_branch'])) {
+    $id = $_POST['branch_id'];
+    $sql = "DELETE FROM branch WHERE id = '$id';";
+    $sqlRun =  mysqli_query($con, $sql);
+    echo "<script> location.href='../admin/branch.php'; </script>";
 }
-
-?>
-
-
