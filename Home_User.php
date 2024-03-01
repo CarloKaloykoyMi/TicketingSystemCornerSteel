@@ -21,6 +21,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
 }
 
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,6 +104,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
 
                         if ($result && mysqli_num_rows($result) > 0) {
                             while ($item = mysqli_fetch_assoc($result)) {
+                                $date= date('Fj,Y', strtotime($item['date_created']));
                         ?>
                                 <tr>
                                     <td><u><a href="ticket_info.php?ticket_id=<?php echo $item['ticket_id']; ?>" class="text-body fw-bold">Ticket #<?php echo $item['ticket_id']; ?></a></u></td>
@@ -155,6 +157,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                             <i class="fas fa-user input-group-text"></i>
                                         </span>
                                         <input type="hidden" name="userid" value="<?php echo $userid; ?>">
+                                        <input type="hidden" name="date" value="<?= $date ?>">
                                         <label for="requestor" class="sr-only">Requestor</label>
                                         <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor" value="<?php echo $fname . ' ' . $lname; ?>" readonly>
                                     </div>
