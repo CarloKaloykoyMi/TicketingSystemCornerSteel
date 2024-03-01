@@ -17,7 +17,6 @@ if (!isset($_SESSION['auth_user']['username'])) {
     $role = $_SESSION['auth_user']['role'];
     $lname = $_SESSION['auth_user']['lastname'];
     $fname = $_SESSION['auth_user']['firstname'];
-    
 }
 ?>
 
@@ -25,7 +24,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
 <html lang="en">
 
 <head>
-<title>Department</title>
+    <title>Department </title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,6 +45,13 @@ if (!isset($_SESSION['auth_user']['username'])) {
     <script defer src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     <script defer src="js/table.js"></script>
     <link rel="stylesheet" href="css/sidebar.css">
+
+    <style>
+        .fa-trash {
+            font-family: FontAwesome;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -83,9 +89,32 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                                 <td><?= $item['location']; ?></td>
                                                 <td>
                                                     <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editDepartmentModal<?= $item['id']; ?>"><i class="fas fa-pencil"></i>&nbsp;Edit</a>
-                                                    <button type="button" class="btn btn-sm btn-danger delete_category_btn" value="<?= $item['id']; ?>"><i class="fas fa-trash"></i> &nbsp; Delete</button>
+                                                    <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteDepartmentModal<?= $item['id']; ?>">
+                                                        <i class="fas fa-trash"></i>&nbsp;Delete
+                                                    </a>
                                                 </td>
                                             </tr>
+
+                                            <div class="modal fade" id="deleteDepartmentModal<?= $item['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Delete Department</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Are you sure you want to delete this department?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <form action="code.php" method="POST">
+                                                                <input type="hidden" name="department_id" value="<?= $item['id']; ?>">
+                                                                <button type="submit" class="btn btn-danger" name="delete_department">Delete</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
                                             <!-- Edit Company Modal -->
                                             <div class="modal fade" id="editDepartmentModal<?= $item['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
