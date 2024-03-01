@@ -12,20 +12,50 @@ if (isset($_POST['add_ticket'])) {
     $concern = $_POST['concern'];
     $status = "Pending";
 
+    // Insert ticket information
     $insert_ticket_query = "INSERT INTO ticket (user_id, subject, company, branch, department, to_dept, requestor, concern, status) 
     VALUES ('$userid','$subject','$company','$branch','$department','$todepartment','$requestor','$concern','$status')";
     $insert_ticket_query_run = mysqli_query($con, $insert_ticket_query);
 
     if ($insert_ticket_query_run) {
+        $ticket_id = mysqli_insert_id($con); // Get the last inserted ticket_id
+
+        // Create folder for the ticket and user
+        $folder_path = "ticket_files/ticket_" . $ticket_id . "_user_" . $userid;
+
+        if (!file_exists($folder_path)) {
+            mkdir($folder_path, 0777, true);
+        }
+
+        // Handle file uploads
+        if (!empty($_FILES['files']['name'][0])) {
+            $file_names = $_FILES['files']['name'];
+            $file_tmps = $_FILES['files']['tmp_name'];
+
+            foreach ($file_names as $key => $file_name) {
+                $file_destination = $folder_path . "/" . $file_name; // Set your desired upload folder
+
+                // Move uploaded file to the destination
+                if (move_uploaded_file($file_tmps[$key], $file_destination)) {
+                    // Insert file information into file_attachment table
+                    $insert_file_query = "INSERT INTO file_attachment (user_id, ticket_id, file_name) 
+                    VALUES ('$userid', '$ticket_id', '$file_name')";
+                    $insert_file_query_run = mysqli_query($con, $insert_file_query);
+
+                    if (!$insert_file_query_run) {
+                        echo '<script>alert("Error inserting file information. Please try again.");</script>';
+                    }
+                } else {
+                    echo '<script>alert("Error uploading file. Please try again.");</script>';
+                }
+            }
+        }
         echo '<script>alert("Ticket Submitted.");</script>';
         echo '<script>window.location.href = "home_user.php";</script>';
         exit();
     } else {
-        // PHP code failed to execute
         echo '<script>alert("Error submitting ticket. Please try again.");</script>';
     }
-
-
 } else if (isset($_POST['add_reply'])) {
     $reply = $_POST['reply'];
     $ticket_id = $_POST['ticket_id'];

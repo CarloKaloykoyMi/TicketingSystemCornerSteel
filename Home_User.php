@@ -148,7 +148,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                         </div>
 
                         <div class="modal-body">
-                            <form action="crud.php" method="POST" id="ticketForm">
+                            <form action="crud.php" method="POST" id="ticketForm" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-prepend">
