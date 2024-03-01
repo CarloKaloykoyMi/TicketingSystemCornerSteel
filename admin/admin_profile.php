@@ -158,7 +158,7 @@ while ($row = mysqli_fetch_array($result)) {
                                 <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
                                     <div class="card" style="width: 15rem;">
-                                        <img src='<?php echo "../Images/". $user_id."-".$username. "/" . $img ?>' class="card-img-top " alt="Profile">
+                                    <img src='<?php echo "../Images/". $user_id."-".$username. "/" . $img ?>' class="card-img-top" alt="Profile" style="max-width: 100%; max-height: 220px;">
                                     </div>
                                     <h2><?php echo $name ?></h2>
                                 </div>
@@ -191,37 +191,37 @@ while ($row = mysqli_fetch_array($result)) {
 
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-5 label "><i class="fa-solid fa-user"></i> First Name:</div>
-                                                <div class="col-lg-3 col-md-5"><u><?php echo $fname ?></u></div>
+                                                <div class="col-lg-3 col-md-5"><?php echo $fname ?></div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-5 label "><i class="fa-solid fa-user"></i> Middle Initial:</div>
-                                                <div class="col-lg-3 col-md-5"><u><?php echo $ml ?></u></div>
+                                                <div class="col-lg-3 col-md-5"><?php echo $ml ?></div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-5 label "><i class="fa-solid fa-user"></i> Last Name:</div>
-                                                <div class="col-lg-3 col-md-5"><u><?php echo $lname ?></u></div>
+                                                <div class="col-lg-3 col-md-5"><?php echo $lname ?></div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-5 label"><i class="fa-solid fa-building"></i> Company:</div>
-                                                <div class="col-lg-3 col-md-5"><u><?php echo $company ?></u></div>
+                                                <div class="col-lg-3 col-md-5"><?php echo $company ?></div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-5 label"><i class="fa-solid fa-location-dot"></i> Branch:</div>
-                                                <div class="col-lg-3 col-md-5"><u><?php echo $branch ?></u></div>
+                                                <div class="col-lg-3 col-md-5"><?php echo $branch ?></div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-5 label"><i class="fa-solid fa-users"></i> Department:</div>
-                                                <div class="col-lg-3 col-md-5"><u><?php echo $department ?></u></div>
+                                                <div class="col-lg-3 col-md-5"><?php echo $department ?></div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-5 label"><i class="fa-solid fa-phone"></i> Contact Number :</div>
-                                                <div class="col-lg-4 col-md-5"><u><?php echo $contact ?></u></div>
+                                                <div class="col-lg-4 col-md-5"><?php echo $contact ?></div>
                                             </div>
 
                                         </div>
@@ -309,38 +309,7 @@ while ($row = mysqli_fetch_array($result)) {
 
                                             <!-- Settings Form -->
                                             <form>
-
-                                                <div class="row mb-3">
-                                                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email Notifications</label>
-                                                    <div class="col-md-8 col-lg-9">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" id="changesMade" checked>
-                                                            <label class="form-check-label" for="changesMade">
-                                                                Changes made to your account
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" id="newProducts" checked>
-                                                            <label class="form-check-label" for="newProducts">
-                                                                Information on new products and services
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" id="proOffers">
-                                                            <label class="form-check-label" for="proOffers">
-                                                                Marketing and promo offers
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" id="securityNotify" checked disabled>
-                                                            <label class="form-check-label" for="securityNotify">
-                                                                Security alerts
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="text-center">
+                                        <div class="text-center">
                                                     <button type="submit" class="btn btn-primary">Save Changes</button>
                                                 </div>
                                             </form><!-- End settings Form -->
@@ -366,7 +335,7 @@ while ($row = mysqli_fetch_array($result)) {
                                                 </div>
 
                                                 <div class="row mb-3">
-                                                    <label for="renewPassword" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-unlock"></i> Re-enter New Password</label>
+                                                    <label for="renewPassword" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-unlock"></i> Re-enter New Password:</label>
                                                     <div class="col-md-8 col-lg-8">
                                                         <input name="renewpassword" type="password" class="form-control" id="renewPassword">
                                                     </div>
