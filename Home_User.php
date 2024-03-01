@@ -30,7 +30,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="css/sidebar_navbar.css">
@@ -71,23 +71,33 @@ if (!isset($_SESSION['auth_user']['username'])) {
     }
 
     .sender {
-      color: black; /* Set text color */
-      padding: 5px; /* Add padding for better appearance */
-      margin: 10px;
-      border-radius: 5px; /* Add border-radius for rounded corners */
-      display: inline-block; /* Make it an inline block to fit content */
+        color: black;
+        /* Set text color */
+        padding: 5px;
+        /* Add padding for better appearance */
+        margin: 10px;
+        border-radius: 5px;
+        /* Add border-radius for rounded corners */
+        display: inline-block;
+        /* Make it an inline block to fit content */
     }
+
     .icon-container {
-      background-color: #6c757d; /* Set background color */
-      color: #fff; /* Set text color */
-      padding: 10px; /* Add padding for better appearance */
-      border-radius: 7px; /* Add border-radius for rounded corners */
-      margin-right: 3px; /* Add margin for spacing */
+        background-color: #6c757d;
+        /* Set background color */
+        color: #fff;
+        /* Set text color */
+        padding: 10px;
+        /* Add padding for better appearance */
+        border-radius: 7px;
+        /* Add border-radius for rounded corners */
+        margin-right: 3px;
+        /* Add margin for spacing */
     }
 
     /* Style for the file input */
     .file-input {
-      /* Add any additional styles for the file input if needed */
+        /* Add any additional styles for the file input if needed */
     }
 </style>
 
@@ -146,7 +156,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                             echo "No Records Found!";
                         }
 
-                        
+
                         ?>
                     </tbody>
 
@@ -161,36 +171,37 @@ if (!isset($_SESSION['auth_user']['username'])) {
                             <button type="button" class="btn-close" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="crud.php" method="POST" id="ticketForm" >
+                            <form action="crud.php" method="POST" id="ticketForm">
                                 <div class="form-group">
-                                <h5><div class="sender">
-                                    SENDER:
-                                    </div>
-                                    
-                                    <div class="input-group">
-                                    <span class="icon-container">
-                                            <i class="fas fa-user"></i>
-                                        </span>
-                                        <input type="hidden" name="userid" value="<?php echo $userid; ?>">
-                                        <input type="hidden" name="date" value="<?= $date ?>">
-                                        <label for="requestor" class="sr-only">Requestor</label>
-                                        <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor"  value="<?php echo $fname . ' ' . $lname; ?>" readonly>
-                                    </div>
+                                    <h5>
+                                        <div class="sender">
+                                            SENDER:
+                                        </div>
+
+                                        <div class="input-group">
+                                            <span class="icon-container">
+                                                <i class="fas fa-user"></i>
+                                            </span>
+                                            <input type="hidden" name="userid" value="<?php echo $userid; ?>">
+                                            <input type="hidden" name="date" value="<?= $date ?>">
+                                            <label for="requestor" class="sr-only">Requestor</label>
+                                            <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor" value="<?php echo $fname . ' ' . $lname; ?>" readonly>
+                                        </div>
                                 </div>
                                 <br>
                                 <div class="form-group">
                                     <div class="input-group">
-                                    <span class="icon-container">
+                                        <span class="icon-container">
                                             <i class="fa-solid fa-file"></i>
                                         </span>
                                         <label for="subject" class="sr-only">Subject</label>
                                         <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
                                     </div>
                                 </div>
-                            <br>
+                                <br>
 
                                 <div class="input-group">
-                                <span class="icon-container">
+                                    <span class="icon-container">
                                         <i class="fa-solid fa-building"></i>
                                     </span>
                                     <label for="company" class="sr-only">Company/Department</label>
@@ -212,73 +223,74 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                 </div>
 
                                 <br>
-                                <h5><div class="sender">
-                                    RECEIVER:
+                                <h5>
+                                    <div class="sender">
+                                        RECEIVER:
                                     </div>
-                                <div class="input-group">
-                                <span class="icon-container">
-                            <i class="fa-solid fa-building"></i>
-                        </span>
-                        <label for="company" class="sr-only">Company</label>
-                        <select class="form-control" id="company" name="company" required>
-                            <option value=""> To Company:</option>
-                            <?php
-                            $companies = getAll("company");
-                            if (mysqli_num_rows($companies) > 0) {
-                                foreach ($companies as $company) {
-                            ?>
-                                    <option value="<?= $company['company_name']; ?>"><?= $company['company_name']; ?></option>
-                            <?php
-                                }
-                            } else {
-                                echo "<option value=''>No Company available</option>";
-                            }
-                            ?>
-                        </select>
-                    </div> <br>
-                    <div class="input-group">
-                    <span class="icon-container">        
-                        <i class="fa-solid fa-building"></i>
-
-                        </span>
-                        <label for="departmen" class="sr-only">Department</label>
-                        <select class="form-control" id="department" name="department" required>              
-                                        <option value="" data-icon="fas fa-users">To Department:</option>
-                                        <?php
-                                        $departments = getAll("department"); // Assuming you have a function called getAll for departments
-                                        if (mysqli_num_rows($departments) > 0) {
-                                            foreach ($departments as $department) {
-                                        ?>
-                                                <option value="<?= $department['department_name']; ?>" data-icon="fas fa-users"><?= $department['department_name']; ?></option>
-                                        <?php
-                                            }
-                                        } else {
-                                            echo "<option value='' data-icon='fas fa-users'>No Department available</option>";
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                                <br>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                    <span class="icon-container">
-                                            <i class="fa-solid fa-comment-alt"></i>
-                                        </span>
-                                        <label for="concerns" class="sr-only">Concerns/Questions/Inquiries:</label>
-                                        <textarea class="form-control" id="concern" name="concern" rows="4" placeholder="Concerns" required></textarea>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="form-group">
                                     <div class="input-group">
                                         <span class="icon-container">
-                                        <i class="fa fa-chain">&nbsp;</i>
+                                            <i class="fa-solid fa-building"></i>
                                         </span>
+                                        <label for="company" class="sr-only">Company</label>
+                                        <select class="form-control" id="company" name="company" required>
+                                            <option value=""> To Company:</option>
+                                            <?php
+                                            $companies = getAll("company");
+                                            if (mysqli_num_rows($companies) > 0) {
+                                                foreach ($companies as $company) {
+                                            ?>
+                                                    <option value="<?= $company['company_name']; ?>"><?= $company['company_name']; ?></option>
+                                            <?php
+                                                }
+                                            } else {
+                                                echo "<option value=''>No Company available</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                    </div> <br>
+                                    <div class="input-group">
+                                        <span class="icon-container">
+                                            <i class="fa-solid fa-building"></i>
 
-                                        <!-- File input -->
-                                        <label for="file" class="sr-only">Attach File:</label>
-                                        <input type="file" class="form-control-file file-input" name="files[]" multiple>
+                                        </span>
+                                        <label for="departmen" class="sr-only">Department</label>
+                                        <select class="form-control" id="department" name="department" required>
+                                            <option value="" data-icon="fas fa-users">To Department:</option>
+                                            <?php
+                                            $departments = getAll("department");
+                                            if (mysqli_num_rows($departments) > 0) {
+                                                foreach ($departments as $department) {
+                                            ?>
+                                                    <option value="<?= $department['department_name']; ?>" data-icon="fas fa-users"><?= $department['department_name']; ?></option>
+                                            <?php
+                                                }
+                                            } else {
+                                                echo "<option value='' data-icon='fas fa-users'>No Department available</option>";
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="icon-container">
+                                                <i class="fa-solid fa-comment-alt"></i>
+                                            </span>
+                                            <label for="concerns" class="sr-only">Concerns/Questions/Inquiries:</label>
+                                            <textarea class="form-control" id="concern" name="concern" rows="4" placeholder="Concerns" required></textarea>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="icon-container">
+                                                <i class="fa fa-chain">&nbsp;</i>
+                                            </span>
+
+                                            <!-- File input -->
+                                            <label for="file" class="sr-only">Attach File:</label>
+                                            <input type="file" class="form-control-file file-input" name="files[]" multiple>
+                                        </div>
                                     </div>
                             </form>
                         </div>
