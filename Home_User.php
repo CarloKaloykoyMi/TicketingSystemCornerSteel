@@ -1,4 +1,5 @@
-<?php include('function/myfunction.php');
+<?php
+include('function/myfunction.php');
 include 'sidebar_navbar.php';
 include('crud.php');
 
@@ -19,8 +20,6 @@ if (!isset($_SESSION['auth_user']['username'])) {
     $lname = $_SESSION['auth_user']['lastname'];
     $fname = $_SESSION['auth_user']['firstname'];
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,21 +30,22 @@ if (!isset($_SESSION['auth_user']['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="css/sidebar_navbar.css">
-
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
-
     <!-- jQuery and DataTables JavaScript -->
     <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     <script defer src="script.js"></script>
-
     <title>Home</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <style>
     .btn-custom {
@@ -62,14 +62,32 @@ if (!isset($_SESSION['auth_user']['username'])) {
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
 </head>
 <style>
     .btn-custom:hover {
         background-color: gray;
         color: #fff;
         /* Set the desired text color for hover state */
+    }
+
+    .sender {
+      color: black; /* Set text color */
+      padding: 5px; /* Add padding for better appearance */
+      margin: 10px;
+      border-radius: 5px; /* Add border-radius for rounded corners */
+      display: inline-block; /* Make it an inline block to fit content */
+    }
+    .icon-container {
+      background-color: #6c757d; /* Set background color */
+      color: #fff; /* Set text color */
+      padding: 10px; /* Add padding for better appearance */
+      border-radius: 7px; /* Add border-radius for rounded corners */
+      margin-right: 3px; /* Add margin for spacing */
+    }
+
+    /* Style for the file input */
+    .file-input {
+      /* Add any additional styles for the file input if needed */
     }
 </style>
 
@@ -94,15 +112,12 @@ if (!isset($_SESSION['auth_user']['username'])) {
                             <th class="text-center">Date Created</th>
                         </tr>
                     </thead>
-
                     <tbody>
                         <?php
-                        // Assuming you have a valid database connection named $conn
-                        $query = "SELECT * FROM `ticket` WHERE `user_id` = $user_id ORDER BY `ticket_id` DESC, `date_created` ASC LIMIT 5";
-                        $result = mysqli_query($con, $query);
+                        $ticket = getAll("ticket");
 
-                        if ($result && mysqli_num_rows($result) > 0) {
-                            while ($item = mysqli_fetch_assoc($result)) {
+                        if (mysqli_num_rows($ticket) > 0) {
+                            foreach ($ticket as $item) {
                         ?>
                                 <tr>
                                     <td><u><a href="ticket_info.php?ticket_id=<?php echo $item['ticket_id']; ?>" class="text-body fw-bold">Ticket #<?php echo $item['ticket_id']; ?></a></u></td>
@@ -112,7 +127,6 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                     <td class="text-center">
                                         <?php
                                         $status = $item['status'];
-
                                         if ($status == 'Pending') {
                                             echo '<span class="badge text-bg-warning">' . $status . '</span>';
                                         } elseif ($status == 'Resolved') {
@@ -144,72 +158,48 @@ if (!isset($_SESSION['auth_user']['username'])) {
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title"><i class="fas fa-ticket"></i> Submit a Ticket</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <button type="button" class="btn-close" aria-label="Close"></button>
                         </div>
-
                         <div class="modal-body">
-                            <form action="crud.php" method="POST" id="ticketForm" enctype="multipart/form-data">
+                            <form action="crud.php" method="POST" id="ticketForm" >
                                 <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-prepend">
-                                            <i class="fas fa-user input-group-text"></i>
-                                        </span>
-                                        <input type="hidden" name="userid" value="<?php echo $userid; ?>">
-                                        <label for="requestor" class="sr-only">Requestor</label>
-                                        <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor" value="<?php echo $fname . ' ' . $lname; ?>" readonly>
+                                <h5><div class="sender">
+                                    SENDER:
                                     </div>
-                                </div>
-                                <br>
-
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
+                                    
+                                    <div class="input-group">
+                                    <span class="icon-container">
                                             <i class="fas fa-user"></i>
                                         </span>
+                                        <input type="hidden" name="userid" value="<?php echo $userid; ?>">
+                                        <input type="hidden" name="date" value="<?= $date ?>">
+                                        <label for="requestor" class="sr-only">Requestor</label>
+                                        <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor"  value="<?php echo $fname . ' ' . $lname; ?>" readonly>
                                     </div>
-                                    <label for="department" class="sr-only">To Department:</label>
-                                    <select class="form-control" id="department" name="department" required>
-                                        <option value="">To Department:</option>
-                                        <?php
-                                        $department = getAll("department");
-                                        if (mysqli_num_rows($department) > 0) {
-                                            foreach ($department as $department) {
-                                        ?>
-                                                <option value="<?= $department['department_name']; ?>"><?= $department['department_name']; ?></option>
-                                        <?php
-                                            }
-                                        } else {
-                                            echo "<option value=''>No Department available</option>";
-                                        }
-                                        ?>
-                                    </select>
                                 </div>
-
-
                                 <br>
-
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <span class="input-group-prepend">
-                                            <i class="fa-solid fa-file input-group-text"></i>
+                                    <span class="icon-container">
+                                            <i class="fa-solid fa-file"></i>
                                         </span>
-                                        <br><label for="subject" class="sr-only">Subject</label>
+                                        <label for="subject" class="sr-only">Subject</label>
                                         <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
                                     </div>
                                 </div>
-                                <br>
+                            <br>
 
                                 <div class="input-group">
-                                    <span class="input-group-prepend">
-                                        <i class="fa-solid fa-building input-group-text"></i>
+                                <span class="icon-container">
+                                        <i class="fa-solid fa-building"></i>
                                     </span>
-                                    <label for="company" class="sr-only">Company</label>
-                                    <select class="form-control" id="company" name="company" required>
-                                        <option value="">Select Company:</option>
+                                    <label for="company" class="sr-only">Company/Department</label>
+                                    <select class="form-control" id="company" name="company" required disabled>
+                                        <option value="">Company/Department:</option>
                                         <?php
-                                        $company = getAll("company");
-                                        if (mysqli_num_rows($company) > 0) {
-                                            foreach ($company as $company) {
+                                        $companies = getAll("company");
+                                        if (mysqli_num_rows($companies) > 0) {
+                                            foreach ($companies as $company) {
                                         ?>
                                                 <option value="<?= $company['company_name']; ?>"><?= $company['company_name']; ?></option>
                                         <?php
@@ -220,36 +210,50 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                         ?>
                                     </select>
                                 </div>
+
                                 <br>
-                                <div class="form-group" style="display: none;" id="branchGroup">
-                                    <div class="input-group">
-                                        <i class="fa-solid fa-location-dot input-group-text"></i>
-                                        </span>
-                                        <label for="branch" class="sr-only">Branch:</label>
-                                        <select class="form-control" id="branch" name="branch" required>
-                                            <option value="">Select Branch:</option>
-                                        </select>
+                                <h5><div class="sender">
+                                    RECEIVER:
                                     </div>
-                                </div>
-
                                 <div class="input-group">
-                                    <span class="input-group-prepend">
-                                        <i class="fa-solid fa-users input-group-text"></i>
+                                <span class="icon-container">
+                            <i class="fa-solid fa-building"></i>
+                        </span>
+                        <label for="company" class="sr-only">Company</label>
+                        <select class="form-control" id="company" name="company" required>
+                            <option value=""> To Company:</option>
+                            <?php
+                            $companies = getAll("company");
+                            if (mysqli_num_rows($companies) > 0) {
+                                foreach ($companies as $company) {
+                            ?>
+                                    <option value="<?= $company['company_name']; ?>"><?= $company['company_name']; ?></option>
+                            <?php
+                                }
+                            } else {
+                                echo "<option value=''>No Company available</option>";
+                            }
+                            ?>
+                        </select>
+                    </div> <br>
+                    <div class="input-group">
+                    <span class="icon-container">        
+                        <i class="fa-solid fa-building"></i>
 
-                                    </span>
-                                    <label for="department" class="sr-only">Department:</label>
-                                    <select class="form-control" id="department" name="todepartment" required>
-                                        <option value="">Select Department:</option>
+                        </span>
+                        <label for="departmen" class="sr-only">Department</label>
+                        <select class="form-control" id="department" name="department" required>              
+                                        <option value="" data-icon="fas fa-users">To Department:</option>
                                         <?php
-                                        $department = getAll("department");
-                                        if (mysqli_num_rows($department) > 0) {
-                                            foreach ($department as $department) {
+                                        $departments = getAll("department"); // Assuming you have a function called getAll for departments
+                                        if (mysqli_num_rows($departments) > 0) {
+                                            foreach ($departments as $department) {
                                         ?>
-                                                <option value="<?= $department['department_name']; ?>"><?= $department['department_name']; ?></option>
+                                                <option value="<?= $department['department_name']; ?>" data-icon="fas fa-users"><?= $department['department_name']; ?></option>
                                         <?php
                                             }
                                         } else {
-                                            echo "<option value=''>No Department available</option>";
+                                            echo "<option value='' data-icon='fas fa-users'>No Department available</option>";
                                         }
                                         ?>
                                     </select>
@@ -257,63 +261,55 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                 <br>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <span class="input-group-prepend">
-                                            <i class="fa-solid fa-comment-alt input-group-text"></i>
+                                    <span class="icon-container">
+                                            <i class="fa-solid fa-comment-alt"></i>
                                         </span>
                                         <label for="concerns" class="sr-only">Concerns/Questions/Inquiries:</label>
                                         <textarea class="form-control" id="concern" name="concern" rows="4" placeholder="Concerns" required></textarea>
                                     </div>
                                 </div>
                                 <br>
-
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <span class="input-group-prepend">
-                                            <i class="fa-solid fa-paperclip input-group-text"></i>
+                                        <span class="icon-container">
+                                        <i class="fa fa-chain">&nbsp;</i>
                                         </span>
+
+                                        <!-- File input -->
                                         <label for="file" class="sr-only">Attach File:</label>
-                                        <input type="file" class="form-control-file" name="files[]" multiple>
+                                        <input type="file" class="form-control-file file-input" name="files[]" multiple>
                                     </div>
-                                </div>
-
-
-                                <div class="modal-footer">
-                                    <button type="submit" name="add_ticket" class="btn btn-success">Submit</button>
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
+                                    </div>
                             </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" name="add_ticket" class="btn btn-success">Submit</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-</body>
-
-
-<script>
-    $(document).ready(function() {
-        $('#company').change(function() {
-            var companyName = $(this).val();
-
-            $.ajax({
-                url: 'get_branches.php',
-                type: 'POST',
-                data: {
-                    company_name: companyName
-                },
-                success: function(response) {
-                    console.log(response);
-                    $('#branch').html(response);
-                    $('#branchGroup').toggle(response.trim() !== '');
-                },
-                error: function() {
-                    alert('Error fetching branches.');
-                }
+    <script>
+        $(document).ready(function() {
+            $('#department').select2({
+                templateResult: formatState,
+                templateSelection: formatState,
             });
+
+            function formatState(state) {
+                if (!state.id) {
+                    return state.text;
+                }
+
+                var $state = $(
+                    '<span><i class="' + $(state.element).data('icon') + '"></i> ' + state.text + '</span>'
+                );
+                return $state;
+            }
         });
-    });
-</script>
+    </script>
+</body>
 
 </html>
