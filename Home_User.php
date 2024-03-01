@@ -172,6 +172,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                             <i class="fas fa-user"></i>
                                         </span>
                                         <input type="hidden" name="userid" value="<?php echo $userid; ?>">
+                                        <input type="hidden" name="date" value="<?= $date ?>">
                                         <label for="requestor" class="sr-only">Requestor</label>
                                         <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor"  value="<?php echo $fname . ' ' . $lname; ?>" readonly>
                                     </div>

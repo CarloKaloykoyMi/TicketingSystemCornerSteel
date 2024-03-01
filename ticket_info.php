@@ -11,7 +11,6 @@ if (!isset($_SESSION['auth_user']['username'])) {
     unset($_SESSION['auth_user']['firstname']);
     echo '<script>window.location.href = "emplogin.php";</script>';
 } else {
-    $username = $_SESSION['auth_user']['username'];
     $email = $_SESSION['auth_user']['email'];
     $role = $_SESSION['auth_user']['role'];
     $lname = $_SESSION['auth_user']['lastname'];
