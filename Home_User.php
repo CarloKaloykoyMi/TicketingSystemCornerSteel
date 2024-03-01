@@ -97,10 +97,12 @@ if (!isset($_SESSION['auth_user']['username'])) {
 
                     <tbody>
                         <?php
-                        $ticket = getAll("ticket");
+                        // Assuming you have a valid database connection named $conn
+                        $query = "SELECT * FROM `ticket` WHERE `user_id` = $user_id ORDER BY `ticket_id` DESC, `date_created` ASC LIMIT 5";
+                        $result = mysqli_query($con, $query);
 
-                        if (mysqli_num_rows($ticket) > 0) {
-                            foreach ($ticket as $item) {
+                        if ($result && mysqli_num_rows($result) > 0) {
+                            while ($item = mysqli_fetch_assoc($result)) {
                         ?>
                                 <tr>
                                     <td><u><a href="ticket_info.php?ticket_id=<?php echo $item['ticket_id']; ?>" class="text-body fw-bold">Ticket #<?php echo $item['ticket_id']; ?></a></u></td>
@@ -129,8 +131,11 @@ if (!isset($_SESSION['auth_user']['username'])) {
                         } else {
                             echo "No Records Found!";
                         }
+
+                        
                         ?>
                     </tbody>
+
                 </table>
             </div>
 
@@ -143,7 +148,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                         </div>
 
                         <div class="modal-body">
-                            <form action="crud.php" method="POST" id="ticketForm" >
+                            <form action="crud.php" method="POST" id="ticketForm">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-prepend">
@@ -151,7 +156,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                         </span>
                                         <input type="hidden" name="userid" value="<?php echo $userid; ?>">
                                         <label for="requestor" class="sr-only">Requestor</label>
-                                        <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor"  value="<?php echo $fname . ' ' . $lname; ?>" readonly>
+                                        <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor" value="<?php echo $fname . ' ' . $lname; ?>" readonly>
                                     </div>
                                 </div>
                                 <br>
@@ -192,7 +197,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                         <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
                                     </div>
                                 </div>
-                            <br>
+                                <br>
 
                                 <div class="input-group">
                                     <span class="input-group-prepend">
@@ -267,7 +272,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                             <i class="fa-solid fa-paperclip input-group-text"></i>
                                         </span>
                                         <label for="file" class="sr-only">Attach File:</label>
-                                        <input type="file" class="form-control-file"  name="files[]" multiple>
+                                        <input type="file" class="form-control-file" name="files[]" multiple>
                                     </div>
                                 </div>
 

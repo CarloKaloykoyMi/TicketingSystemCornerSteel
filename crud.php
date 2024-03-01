@@ -12,57 +12,20 @@ if (isset($_POST['add_ticket'])) {
     $concern = $_POST['concern'];
     $status = "Pending";
 
-    $insert_ticket_query = $con->prepare("INSERT INTO ticket (user_id, subject, company, branch, department, requestor, concern, status,to_dept) 
-    VALUES ('$userid','$subject','$company','$branch','$department','$requestor','$concern','$status','$todepartment')");
+    $insert_ticket_query = "INSERT INTO ticket (user_id, subject, company, branch, department, to_dept, requestor, concern, status) 
+    VALUES ('$userid','$subject','$company','$branch','$department','$todepartment','$requestor','$concern','$status')";
+    $insert_ticket_query_run = mysqli_query($con, $insert_ticket_query);
 
-    if (!$insert_ticket_query) {
-        die('Error in SQL Query: ' . $con->error);
-    }
-
-    $insert_ticket_query = $con->prepare("INSERT INTO ticket (user_id, subject, company, branch, department, requestor, concern, status,to_dept) VALUES (?,?,?,?,?,?,?,?,?)");
-    $insert_ticket_query->bind_param("issssssss", $userid, $subject, $company, $branch, $department, $requestor, $concern, $status, $todepartment);
-
-    if ($insert_ticket_query->execute()) {
-        $ticket_id = $insert_ticket_query->insert_id;
-
-        $sql ="SELECT * FROM ticket WHERE ticket_id='$ticket_id';";
-        $result = mysqli_query($con,$sql);
-
-        while ($row = mysqli_fetch_array($result)){
-            $useID = $row['user_id'];
-            $date = $row['date'];
-            $newDate = date('Fj,Y', strtotime($date));
-        }
-
-        $folder_path = "UPLOADS/$ticket_id-$useID-$newDate/";
-
-// Ensure the folder exists or create it
-if (!is_dir($folder_path)) {
-    mkdir($folder_path, 0755, true);}
-
-        foreach ($_FILES['files']['tmp_name'] as $key => $tmp_name) {
-            $image_name = $_FILES['files']['name'][$key];
-            $target = $folder_path . basename($image_name);
-        
-            // Update the image name in the database
-            $sql = "INSERT INTO file_attachment (user_id,ticket_id,file_name) VALUES('$useID','$ticket_id','$image_name')";
-            mysqli_query($con, $sql);
-        
-            if (move_uploaded_file($tmp_name, $target)) {
-                $msg .= "Image '$image_name' uploaded Successfully.<br>";
-            } else {
-                $msg .= "There was a problem uploading Image '$image_name'.<br>";
-            }
-        }
-
+    if ($insert_ticket_query_run) {
         echo '<script>alert("Ticket Submitted.");</script>';
-        //echo '<script>window.location.href = "home_user.php";</script>';
+        echo '<script>window.location.href = "home_user.php";</script>';
         exit();
     } else {
         // PHP code failed to execute
         echo '<script>alert("Error submitting ticket. Please try again.");</script>';
     }
-    $insert_ticket_query->close();
+
+
 } else if (isset($_POST['add_reply'])) {
     $reply = $_POST['reply'];
     $ticket_id = $_POST['ticket_id'];
