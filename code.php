@@ -50,7 +50,7 @@ if (isset($_POST['register'])) {
                 $mail->Username = 'odetocode04@gmail.com';
                 $mail->Password = 'mnugjcpwaslqthdn';
 
-                $mail->setFrom('odetocode04@gmail.com', 'OTP Verification');
+                $mail->setFrom('no-reply@gmail.com', 'no-reply');
                 $mail->addAddress($_POST["email"]);
 
                 $mail->isHTML(true);
