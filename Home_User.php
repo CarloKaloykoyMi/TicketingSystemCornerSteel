@@ -69,6 +69,26 @@ if (!isset($_SESSION['auth_user']['username'])) {
         color: #fff;
         /* Set the desired text color for hover state */
     }
+
+    .sender {
+      color: black; /* Set text color */
+      padding: 5px; /* Add padding for better appearance */
+      margin: 10px;
+      border-radius: 5px; /* Add border-radius for rounded corners */
+      display: inline-block; /* Make it an inline block to fit content */
+    }
+    .icon-container {
+      background-color: #6c757d; /* Set background color */
+      color: #fff; /* Set text color */
+      padding: 10px; /* Add padding for better appearance */
+      border-radius: 7px; /* Add border-radius for rounded corners */
+      margin-right: 3px; /* Add margin for spacing */
+    }
+
+    /* Style for the file input */
+    .file-input {
+      /* Add any additional styles for the file input if needed */
+    }
 </style>
 
 <body>
@@ -143,9 +163,13 @@ if (!isset($_SESSION['auth_user']['username'])) {
                         <div class="modal-body">
                             <form action="crud.php" method="POST" id="ticketForm" >
                                 <div class="form-group">
+                                <h5><div class="sender">
+                                    SENDER:
+                                    </div>
+                                    
                                     <div class="input-group">
-                                        <span class="input-group-prepend">
-                                            <i class="fas fa-user input-group-text"></i>
+                                    <span class="icon-container">
+                                            <i class="fas fa-user"></i>
                                         </span>
                                         <input type="hidden" name="userid" value="<?php echo $userid; ?>">
                                         <label for="requestor" class="sr-only">Requestor</label>
@@ -155,8 +179,8 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                 <br>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <span class="input-group-prepend">
-                                            <i class="fa-solid fa-file input-group-text"></i>
+                                    <span class="icon-container">
+                                            <i class="fa-solid fa-file"></i>
                                         </span>
                                         <label for="subject" class="sr-only">Subject</label>
                                         <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
@@ -165,8 +189,8 @@ if (!isset($_SESSION['auth_user']['username'])) {
                             <br>
 
                                 <div class="input-group">
-                                    <span class="input-group-prepend">
-                                        <i class="fa-solid fa-building input-group-text"></i>
+                                <span class="icon-container">
+                                        <i class="fa-solid fa-building"></i>
                                     </span>
                                     <label for="company" class="sr-only">Company/Department</label>
                                     <select class="form-control" id="company" name="company" required disabled>
@@ -185,35 +209,17 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                         ?>
                                     </select>
                                 </div>
+
                                 <br>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-prepend">
-                                            <i class="fa-solid fa-comment-alt input-group-text"></i>
-                                        </span>
-                                        <label for="concerns" class="sr-only">Concerns/Questions/Inquiries:</label>
-                                        <textarea class="form-control" id="concern" name="concern" rows="4" placeholder="Concerns" required></textarea>
+                                <h5><div class="sender">
+                                    RECEIVER:
                                     </div>
-                                </div>
-                                <br>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-prepend">
-                                            <i class="fa-solid fa-paperclip input-group-text"></i>
-                                        </span>
-                                        <label for="file" class="sr-only">Attach File:</label>
-                                        <input type="file" class="form-control-file" name="files[]" multiple>
-                                    </div>
-                                </div>
-                                
-                                <br>
-                                <h5>&nbsp; &nbsp;RECEIVER:</h5>
                                 <div class="input-group">
-                        <span class="input-group-prepend">
-                            <i class="fa-solid fa-building input-group-text"></i>
+                                <span class="icon-container">
+                            <i class="fa-solid fa-building"></i>
                         </span>
                         <label for="company" class="sr-only">Company</label>
-                        <select class="form-control" id="company" name="company" required disabled>
+                        <select class="form-control" id="company" name="company" required>
                             <option value=""> To Company:</option>
                             <?php
                             $companies = getAll("company");
@@ -230,12 +236,12 @@ if (!isset($_SESSION['auth_user']['username'])) {
                         </select>
                     </div> <br>
                     <div class="input-group">
-                        <span class="input-group-prepend">         
-                        <i class="fa-solid fa-building input-group-text"></i>
+                    <span class="icon-container">        
+                        <i class="fa-solid fa-building"></i>
 
                         </span>
                         <label for="departmen" class="sr-only">Department</label>
-                        <select class="form-control" id="department" name="departmen" required disabled>              
+                        <select class="form-control" id="department" name="department" required>              
                                         <option value="" data-icon="fas fa-users">To Department:</option>
                                         <?php
                                         $departments = getAll("department"); // Assuming you have a function called getAll for departments
@@ -251,6 +257,28 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                         ?>
                                     </select>
                                 </div>
+                                <br>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                    <span class="icon-container">
+                                            <i class="fa-solid fa-comment-alt"></i>
+                                        </span>
+                                        <label for="concerns" class="sr-only">Concerns/Questions/Inquiries:</label>
+                                        <textarea class="form-control" id="concern" name="concern" rows="4" placeholder="Concerns" required></textarea>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="icon-container">
+                                        <i class="fa fa-chain">&nbsp;</i>
+                                        </span>
+
+                                        <!-- File input -->
+                                        <label for="file" class="sr-only">Attach File:</label>
+                                        <input type="file" class="form-control-file file-input" name="files[]" multiple>
+                                    </div>
+                                    </div>
                             </form>
                         </div>
                         <div class="modal-footer">
