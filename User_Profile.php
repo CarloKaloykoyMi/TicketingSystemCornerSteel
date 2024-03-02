@@ -123,14 +123,14 @@ while ($row = mysqli_fetch_array($result)) {
     }
 
     .logs-container {
-            margin-top: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        margin-top: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
 </style>
 </head>
 
@@ -171,7 +171,7 @@ while ($row = mysqli_fetch_array($result)) {
                                 <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
                                     <div class="card" style="width: 18rem;">
-                                        <img src='<?="Images/". $userid."-".$username. "/" . $img ?>' class="card-img-top " alt="Profile">
+                                        <img src='<?= "Images/" . $userid . "-" . $username . "/" . $img ?>' class="card-img-top " alt="Profile">
                                     </div>
                                     <h2><?php echo $name ?></h2>
                                 </div>
@@ -234,7 +234,8 @@ while ($row = mysqli_fetch_array($result)) {
                                         <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                                             <!-- Profile Edit Form -->
-                                            <form method="POST" action="User_Profile.php">
+                                            <form method="POST" action="crud.php">
+                                                <input type="hidden" name="userid" value=<?= $userid ?>>
                                                 <div class="row mb-3">
                                                     <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                                                     <div class="col-md-8 col-lg-9">
@@ -253,7 +254,7 @@ while ($row = mysqli_fetch_array($result)) {
                                                 <div class="row mb-3">
                                                     <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Middle Initial</label>
                                                     <div class="col-md-8 col-lg-9">
-                                                        <input name="lastName" type="text" class="form-control" id="fullName" value="<?php echo $ml ?>">
+                                                        <input name="middleInitial" type="text" class="form-control" id="fullName" value="<?php echo $ml ?>">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
@@ -265,14 +266,14 @@ while ($row = mysqli_fetch_array($result)) {
                                                 <div class="row mb-3">
                                                     <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Company</label>
                                                     <div class="col-md-8 col-lg-9">
-                                                        <input name="lastName" type="text" class="form-control" id="fullName" value="<?php echo $company ?>">
+                                                        <input name="company" type="text" class="form-control" id="fullName" value="<?php echo $company ?>">
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
                                                     <label for="Job" class="col-md-4 col-lg-3 col-form-label">Branch</label>
                                                     <div class="col-md-8 col-lg-9">
-                                                        <input name="job" type="text" class="form-control" id="Job" value="<?php echo $branch ?>" disabled>
+                                                        <input name="job" type="text" class="form-control" id="Job" value="<?php echo $branch ?>">
                                                     </div>
                                                 </div>
 
@@ -312,43 +313,6 @@ while ($row = mysqli_fetch_array($result)) {
 
                                         <div class="tab-pane fade pt-3" id="profile-settings">
 
-                                            <!-- Settings Form -->
-                                            <form>
-
-                                                <div class="row mb-3">
-                                                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email Notifications</label>
-                                                    <div class="col-md-8 col-lg-9">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" id="changesMade" checked>
-                                                            <label class="form-check-label" for="changesMade">
-                                                                Changes made to your account
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" id="newProducts" checked>
-                                                            <label class="form-check-label" for="newProducts">
-                                                                Information on new products and services
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" id="proOffers">
-                                                            <label class="form-check-label" for="proOffers">
-                                                                Marketing and promo offers
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" id="securityNotify" checked disabled>
-                                                            <label class="form-check-label" for="securityNotify">
-                                                                Security alerts
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="text-center">
-                                                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                                                </div>
-                                            </form><!-- End settings Form -->
 
                                         </div>
 
