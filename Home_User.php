@@ -94,11 +94,6 @@ if (!isset($_SESSION['auth_user']['username'])) {
         margin-right: 3px;
         /* Add margin for spacing */
     }
-
-    /* Style for the file input */
-    .file-input {
-        /* Add any additional styles for the file input if needed */
-    }
 </style>
 
 <body>
