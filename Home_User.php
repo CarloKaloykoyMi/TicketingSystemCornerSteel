@@ -19,6 +19,9 @@ if (!isset($_SESSION['auth_user']['username'])) {
     $role = $_SESSION['auth_user']['role'];
     $lname = $_SESSION['auth_user']['lastname'];
     $fname = $_SESSION['auth_user']['firstname'];
+    $fromcompany = $_SESSION['auth_user']['company'];
+    $fromdept = $_SESSION['auth_user']['department'];
+
 }
 ?>
 <!DOCTYPE html>
@@ -119,10 +122,11 @@ if (!isset($_SESSION['auth_user']['username'])) {
                     </thead>
                     <tbody>
                         <?php
-                        $ticket = getAll("ticket");
+                        $query = "SELECT * FROM `ticket` WHERE `user_id` = $user_id ORDER BY `ticket_id` DESC, `date_created` ASC LIMIT 5";
+                        $result = mysqli_query($con, $query);
 
-                        if (mysqli_num_rows($ticket) > 0) {
-                            foreach ($ticket as $item) {
+                        if ($result && mysqli_num_rows($result) > 0) {
+                            while ($item = mysqli_fetch_assoc($result)) {
                         ?>
                                 <tr>
                                     <td><u><a href="ticket_info.php?ticket_id=<?php echo $item['ticket_id']; ?>" class="text-body fw-bold">Ticket #<?php echo $item['ticket_id']; ?></a></u></td>
@@ -132,6 +136,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                     <td class="text-center">
                                         <?php
                                         $status = $item['status'];
+
                                         if ($status == 'Pending') {
                                             echo '<span class="badge text-bg-warning">' . $status . '</span>';
                                         } elseif ($status == 'Resolved') {
@@ -150,10 +155,9 @@ if (!isset($_SESSION['auth_user']['username'])) {
                         } else {
                             echo "No Records Found!";
                         }
-
-
                         ?>
                     </tbody>
+
 
                 </table>
             </div>
@@ -163,24 +167,21 @@ if (!isset($_SESSION['auth_user']['username'])) {
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title"><i class="fas fa-ticket"></i> Submit a Ticket</h4>
-                            <button type="button" class="btn-close" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="crud.php" method="POST" id="ticketForm">
+                            <form action="crud.php" method="POST" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <h5>
                                         <div class="sender">
                                             SENDER:
                                         </div>
-
                                         <div class="input-group">
                                             <span class="icon-container">
                                                 <i class="fas fa-user"></i>
                                             </span>
                                             <input type="hidden" name="userid" value="<?php echo $userid; ?>">
-                                            <input type="hidden" name="date" value="<?= $date ?>">
                                             <label for="requestor" class="sr-only">Requestor</label>
-                                            <input type="text" class="form-control" id="requestor" name="requestor" placeholder="Requestor" value="<?php echo $fname . ' ' . $lname; ?>" readonly>
+                                            <input type="text" class="form-control" name="requestor" placeholder="Requestor" value="<?php echo $fname . ' ' . $lname; ?>" readonly>
                                         </div>
                                 </div>
                                 <br>
@@ -190,7 +191,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                             <i class="fa-solid fa-file"></i>
                                         </span>
                                         <label for="subject" class="sr-only">Subject</label>
-                                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+                                        <input type="text" class="form-control" name="subject" placeholder="Subject" required>
                                     </div>
                                 </div>
                                 <br>
@@ -199,22 +200,17 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                     <span class="icon-container">
                                         <i class="fa-solid fa-building"></i>
                                     </span>
-                                    <label for="company" class="sr-only">Company/Department</label>
-                                    <select class="form-control" id="company" name="company" required disabled>
-                                        <option value="">Company/Department:</option>
-                                        <?php
-                                        $companies = getAll("company");
-                                        if (mysqli_num_rows($companies) > 0) {
-                                            foreach ($companies as $company) {
-                                        ?>
-                                                <option value="<?= $company['company_name']; ?>"><?= $company['company_name']; ?></option>
-                                        <?php
-                                            }
-                                        } else {
-                                            echo "<option value=''>No Company available</option>";
-                                        }
-                                        ?>
-                                    </select>
+                                    <label for="company" class="sr-only">Company</label>
+                                    <input type="text" class="form-control" name="fromcompany" value="<?php echo $fromcompany; ?>" disabled required>
+                                </div>
+
+                                <br>
+                                <div class="input-group">
+                                    <span class="icon-container">
+                                        <i class="fa-solid fa-building"></i>
+                                    </span>
+                                    <label for="deparment" class="sr-only">Deparment</label>
+                                    <input type="text" class="form-control" name="fromDeparment" value="<?php echo $fromdept; ?>" disabled required>
                                 </div>
 
                                 <br>
@@ -227,7 +223,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                             <i class="fa-solid fa-building"></i>
                                         </span>
                                         <label for="company" class="sr-only">Company</label>
-                                        <select class="form-control" id="company" name="company" required>
+                                        <select class="form-control" name="company" required>
                                             <option value=""> To Company:</option>
                                             <?php
                                             $companies = getAll("company");
@@ -248,8 +244,8 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                             <i class="fa-solid fa-building"></i>
 
                                         </span>
-                                        <label for="departmen" class="sr-only">Department</label>
-                                        <select class="form-control" id="department" name="department" required>
+                                        <label for="department" class="sr-only">Department</label>
+                                        <select class="form-control" name="todepartment" required>
                                             <option value="" data-icon="fas fa-users">To Department:</option>
                                             <?php
                                             $departments = getAll("department");
@@ -272,7 +268,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                                 <i class="fa-solid fa-comment-alt"></i>
                                             </span>
                                             <label for="concerns" class="sr-only">Concerns/Questions/Inquiries:</label>
-                                            <textarea class="form-control" id="concern" name="concern" rows="4" placeholder="Concerns" required></textarea>
+                                            <textarea class="form-control" name="concern" rows="4" placeholder="Concerns" required></textarea>
                                         </div>
                                     </div>
                                     <br>
@@ -284,39 +280,62 @@ if (!isset($_SESSION['auth_user']['username'])) {
 
                                             <!-- File input -->
                                             <label for="file" class="sr-only">Attach File:</label>
-                                            <input type="file" class="form-control-file file-input" name="files[]" multiple>
+                                            <input type="file" id="example-fileinput" class="form-control" name="files[]" multiple>
+                                        </div>
+                                        <div id="image-preview">
+                                            <img id="preview-image" src="img/empty.png" height="200" alt="Image Preview">
                                         </div>
                                     </div>
-                            </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" name="add_ticket" class="btn btn-success">Submit</button>
+                            <button type="submit" name="add_ticket" class="btn btn-success" style="background-color: #6C757D;">Submit</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
+
     <script>
-        $(document).ready(function() {
-            $('#department').select2({
-                templateResult: formatState,
-                templateSelection: formatState,
-            });
+        const fileInput = document.getElementById('example-fileinput');
+        const imagePreview = document.getElementById('image-preview');
 
-            function formatState(state) {
-                if (!state.id) {
-                    return state.text;
+        fileInput.addEventListener('change', function() {
+            imagePreview.innerHTML = ''; // Clear previous previews
+
+            const files = this.files;
+
+            for (const file of files) {
+                const reader = new FileReader();
+
+                reader.addEventListener('load', function() {
+                    if (file.type === 'application/pdf' || file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || file.type === 'application/vnd.openxmlformats-officedocument.presentationml.presentation') {
+                        // If file is pdf, docx, or ppt, display only the filename
+                        const filenameElement = document.createElement('p');
+                        filenameElement.textContent = file.name;
+                        imagePreview.appendChild(filenameElement);
+                    } else if (file.type.startsWith('image/')) {
+                        // If file is an image, display the preview
+                        const imgElement = document.createElement('img');
+                        imgElement.src = reader.result;
+                        imgElement.height = 200;
+                        imgElement.alt = 'Image Preview';
+                        imagePreview.appendChild(imgElement);
+                    }
+                });
+
+                if (file.type === 'application/pdf' || file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || file.type === 'application/vnd.openxmlformats-officedocument.presentationml.presentation') {
+                    reader.readAsDataURL(new Blob([file.name]));
+                } else {
+                    reader.readAsDataURL(file);
                 }
-
-                var $state = $(
-                    '<span><i class="' + $(state.element).data('icon') + '"></i> ' + state.text + '</span>'
-                );
-                return $state;
             }
         });
     </script>
+
 </body>
 
 </html>

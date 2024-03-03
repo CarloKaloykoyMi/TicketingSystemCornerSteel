@@ -103,6 +103,8 @@ if (isset($_POST['register'])) {
                         'firstname' => $row['firstname'],
                         'lastname' => $row['lastname'],
                         'role' => $row['role'],
+                        'company' => $row['company'],
+                        'department' => $row['department'],
                     ];
                     $_SESSION['role'] = $role;
 
