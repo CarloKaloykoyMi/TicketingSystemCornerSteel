@@ -21,7 +21,6 @@ if (!isset($_SESSION['auth_user']['username'])) {
     $fname = $_SESSION['auth_user']['firstname'];
     $fromcompany = $_SESSION['auth_user']['company'];
     $fromdept = $_SESSION['auth_user']['department'];
-
 }
 ?>
 <!DOCTYPE html>
@@ -122,11 +121,10 @@ if (!isset($_SESSION['auth_user']['username'])) {
                     </thead>
                     <tbody>
                         <?php
-                        $query = "SELECT * FROM `ticket` WHERE `user_id` = $user_id ORDER BY `ticket_id` DESC, `date_created` ASC LIMIT 5";
-                        $result = mysqli_query($con, $query);
+                        $ticket = getTicket("ticket", $userid);
 
-                        if ($result && mysqli_num_rows($result) > 0) {
-                            while ($item = mysqli_fetch_assoc($result)) {
+                        if (mysqli_num_rows($ticket) > 0) {
+                            foreach ($ticket as $item) {
                         ?>
                                 <tr>
                                     <td><u><a href="ticket_info.php?ticket_id=<?php echo $item['ticket_id']; ?>" class="text-body fw-bold">Ticket #<?php echo $item['ticket_id']; ?></a></u></td>

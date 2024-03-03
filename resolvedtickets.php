@@ -10,7 +10,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
     echo '<script>window.location.href = "emplogin.php";</script>';
 } else {
     $username = $_SESSION['auth_user']['username'];
-    $user_id = $_SESSION['auth_user']['user_id'];
+    $userid = $_SESSION['userid'];
     $email = $_SESSION['auth_user']['email'];
     $role = $_SESSION['auth_user']['role'];
 }
@@ -91,27 +91,26 @@ if (!isset($_SESSION['auth_user']['username'])) {
                     </thead>
                     <tbody>
                         <?php
-                        $ticket = getAll("ticket");
+                        $ticket = getResolvedStatus($userid);
 
                         if (mysqli_num_rows($ticket) > 0) {
                             foreach ($ticket as $item) {
                                 $status = $item['status'];
 
                                 // Only display rows with status "Resolved"
-                                if ($status == 'Resolved') {
                         ?>
-                                    <tr>
-                                        <td><u><a href="ticket_info.php?ticket_id=<?= $item['ticket_id']; ?>" class="text-body fw-bold">Ticket #<?= $item['ticket_id']; ?></a></u></td>
-                                        <td><?= $item['requestor']; ?></td>
-                                        <td><?= $item['to_dept']; ?></td>
-                                        <td class="text-justify"><?= $item['subject']; ?></td>
-                                        <td class="text-center">
-                                            <span class="badge text-bg-success"><?= $status; ?></span>
-                                        </td>
-                                        <td class="text-center"><?= date('F j, Y h:i:s A', strtotime($item['date_created'])); ?></td>
-                                    </tr>
+                                <tr>
+                                    <td><u><a href="ticket_info.php?ticket_id=<?= $item['ticket_id']; ?>" class="text-body fw-bold">Ticket #<?= $item['ticket_id']; ?></a></u></td>
+                                    <td><?= $item['requestor']; ?></td>
+                                    <td><?= $item['to_dept']; ?></td>
+                                    <td class="text-justify"><?= $item['subject']; ?></td>
+                                    <td class="text-center">
+                                        <span class="badge text-bg-success"><?= $status; ?></span>
+                                    </td>
+                                    <td class="text-center"><?= date('F j, Y h:i:s A', strtotime($item['date_created'])); ?></td>
+                                </tr>
                         <?php
-                                }
+
                             }
                         } else {
                             echo "No Records Found!";

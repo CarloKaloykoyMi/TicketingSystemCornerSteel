@@ -9,7 +9,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
     echo '<script>window.location.href = "emplogin.php";</script>';
 } else {
     $username = $_SESSION['auth_user']['username'];
-    $user_id = $_SESSION['auth_user']['user_id'];
+    $userid = $_SESSION['userid'];
     $email = $_SESSION['auth_user']['email'];
     $role = $_SESSION['auth_user']['role'];
 }
@@ -87,14 +87,13 @@ if (!isset($_SESSION['auth_user']['username'])) {
                     </thead>
                     <tbody>
                         <?php
-                        $ticket = getAll("ticket");
+                        $ticket = getUnresolvedStatus($userid);
 
                         if (mysqli_num_rows($ticket) > 0) {
                             foreach ($ticket as $item) {
                                 $status = $item['status'];
 
-                                // Only display rows with status "Resolved"
-                                if ($status == 'Unresolved') {
+                                // Only display rows with status "Unresolved"
                         ?>
                                     <tr>
                                         <td><u><a href="ticket_info.php?ticket_id=<?= $item['ticket_id']; ?>" class="text-body fw-bold">Ticket #<?= $item['ticket_id']; ?></a></u></td>
@@ -107,7 +106,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                         <td class="text-center"><?= date('F j, Y h:i:s A', strtotime($item['date_created'])); ?></td>
                                     </tr>
                         <?php
-                                }
+                                
                             }
                         } else {
                             echo "No Records Found!";
