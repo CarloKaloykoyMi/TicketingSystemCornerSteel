@@ -15,6 +15,8 @@ include('mysql_connect.php'); // connection to MySQL
 
     <!-- Boxicons CSS -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -110,31 +112,33 @@ include('mysql_connect.php'); // connection to MySQL
                 </p>
             </div>
 
-
-        </div>
-        </section>
-        <span class="footer-line"></span>
-        <div class="social-media">
-            <a href="https://www.facebook.com/ComfacGlobalGroupRecruitment/">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-        </div>
-        </div>
-
-        <div class="followme-wrap">
-            <div class="followme">
-
-                <div class="social-media">
-                    <a href="https://www.instagram.com/cornersteelsystemscorp/">
-                        <i class="fa fa-instagram"></i>
-                    </a>
+            <div class="followme-wrap">
+                <div class="followme">
+                    <h3>Follow Us</h3>
+                    <span class="footer-line"></span>
+                    <div class="social-media">
+                        <a href="https://www.facebook.com/ComfacGlobalGroupRecruitment/">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="back-btn-wrap">
-                <a href="#" class="back-btn">
-                    <i class="fas fa-chevron-up"></i>
-                </a>
+                <div class="followme-wrap">
+                    <div class="followme">
+
+                        <div class="social-media">
+                            <a href="https://www.instagram.com/cornersteelsystemscorp/">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="back-btn-wrap">
+                        <a href="#" class="back-btn">
+                            <i class="fas fa-chevron-up"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>

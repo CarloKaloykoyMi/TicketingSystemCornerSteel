@@ -1,5 +1,5 @@
-<?php
-
+<?php session_start();
+include('mysql_connect.php'); // connection to MySQL
 ?>
 <!DOCTYPE html>
 <html lang="en">
