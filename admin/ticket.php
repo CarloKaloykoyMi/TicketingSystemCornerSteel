@@ -88,7 +88,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                             <tr>
                                                 <td><?= date('F j, Y h:i:s A', strtotime($item['date'])); ?></td>
                                                 <td><?= $item['subject']; ?></td>
-                                                <td><?= $item['department']; ?></td>
+                                                <td><?= $item['to_dept']; ?></td>
                                                 <td><?= $item['requestor']; ?></td>
                                                 <td>
                                                     <?php

@@ -68,7 +68,6 @@ if (!isset($_SESSION['auth_user']['username'])) {
                             <table id="example" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Department Name</th>
                                         <th>Department Head</th>
                                         <th>Location</th>
@@ -83,7 +82,6 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                         foreach ($department as $item) {
                                     ?>
                                             <tr>
-                                                <td><?= $item['id']; ?></td>
                                                 <td><?= $item['department_name']; ?></td>
                                                 <td><?= $item['department_head']; ?></td>
                                                 <td><?= $item['location']; ?></td>
