@@ -207,19 +207,74 @@ if (!isset($_SESSION['auth_user']['username'])) {
                 <div class="modal-body">
                     <form action="code.php" method="POST">
 
-                        <div class="col-md-12 mt-3">
-                            <label for=""><i class="fas fa-user"></i> Last Name</label>
-                            <input type="text" name="lastname" class="form-control">
+
+                    <div class="col-md-12 mt-3">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <i class="fas fa-user input-group-text"></i>
+                                </span> 
+                            <label for="" class="sr-only"> Username</label>
+                            <input type="text" name="username" placeholder="Enter Username" class="form-control" required>
+                        </div>
+
+                    <div class="col-md-12 mt-3">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <i class="fas fa-user input-group-text"></i>
+                                </span> 
+                            <label for="" class="sr-only"> Last Name</label>
+                            <input type="text" name="lastname" placeholder="Enter Last Name" class="form-control" required>
                         </div>
 
                         <div class="col-md-12 mt-3">
-                            <label for=""><i class="fas fa-user"></i> First Name</label>
-                            <input type="text" name="firstname" class="form-control">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <i class="fas fa-user input-group-text"></i>
+                                </span>
+                            <label for="" class="sr-only"> First Name</label>
+                            <input type="text" name="firstname" placeholder="Enter First Name" class="form-control" required>
                         </div>
 
                         <div class="col-md-12 mt-3">
-                            <label for=""><i class="fas fa-user"></i> Middle Initial</label>
-                            <input type="text" name="middleinitial" class="form-control">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <i class="fas fa-user input-group-text"></i>
+                                </span>
+                            <label for=""class="sr-only">Middle Initial</label>
+                            <input type="text" name="middleinitial" placeholder="Enter Middle Initial" class="form-control" required>
+                        </div>
+
+                        <div class="col-md-12 mt-3">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <i class="fas fa-user input-group-text"></i>
+                                </span>
+                            <label for=""class="sr-only">Contact Number</label>
+                            <input type="number" name="contact" placeholder="Enter Contact Number" class="form-control" required>
+                        </div>
+
+                        <div class="col-md-12 mt-3">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <i class="fas fa-user-friends input-group-text"></i>
+                                </span>
+                                <label for="company" class="sr-only">Role</label>
+                                <select class="form-control" id="company" name="company" required>
+                                    <option value="">Select Role:</option>
+                                    <?php
+                                    $company = getAll("company");
+                                    if (mysqli_num_rows($company) > 0) {
+                                        foreach ($company as $company) {
+                                    ?>
+                                            <option value="<?= $company['company_name']; ?>"><?= $company['company_name']; ?></option>
+                                    <?php
+                                        }
+                                    } else {
+                                        echo "<option value=''>No Company available</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="col-md-12 mt-3">
@@ -286,15 +341,22 @@ if (!isset($_SESSION['auth_user']['username'])) {
                         </div>
 
                         <div class="col-md-12 mt-3">
-                            <label for=""><i class="fas fa-envelope"></i> Email</label>
-                            <input type="email" name="email" class="form-control">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <i class="fas fa-user input-group-text"></i>
+                                </span>
+                            <label for="" class="sr-only"> Email</label>
+                            <input type="email" name="email" placeholder="Enter Email" class="form-control">
                         </div>
 
 
                         <div class="col-md-12 mt-3">
-                            <label for="password" class="form-label"><i class="fas fa-lock"></i> Password</label>
                             <div class="input-group">
-                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password" required>
+                                <span class="input-group-prepend">
+                                    <i class="fas fa-user input-group-text"></i>
+                                </span>
+                            <label for="password" class="sr-only"> Password</label>
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password" required>
                                 <button class="btn btn-outline-secondary" type="button" id="togglePassword"><i class="fas fa-eye"></i></button>
                             </div>
                         </div>

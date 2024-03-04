@@ -55,10 +55,12 @@ if (isset($_POST['register'])) {
 
                 $mail->isHTML(true);
                 $mail->Subject = "Your verify code";
-                $mail->Body = "<p>Dear user, </p> <h3>Your verified OTP code is $otp <br></h3>
+                $mail->Body = "<p>Dear user, </p> <br> <p>Good Day! </p> <h3>I would like to inform you that your verification OTP code is $otp <br></h3> 
+                    <p>Thank you.</p>
+                    
                     <br><br>
-                    <p>With regrads,</p>
-                    <b>E - Ticket </b>";
+                    <p>Best regrads,</p>
+                    <b>CGG E-Ticketing </b>";
 
                 // Send email
                 if (!$mail->send()) {
@@ -70,7 +72,7 @@ if (isset($_POST['register'])) {
                 } else {
                 ?>
                     <script>
-                        alert("<?php echo "Registration Successful!! YOUR OTP CODE IS SEND TO " . $email ?>");
+                        alert("<?php echo "Registration Successful! Your OTP Code is send to " . $email ?>");
                         window.location.replace('verification.php');
                     </script>
 <?php
