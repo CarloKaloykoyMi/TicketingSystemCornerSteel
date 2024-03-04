@@ -42,4 +42,11 @@ function getUnresolvedStatus($user_id)
     return $query_run = mysqli_query($con, $query);
 }
 
+function getRecent()
+{
+    global $con;
+    $query = "SELECT * FROM ticket ORDER BY date_created DESC LIMIT 5";
+    return $query_run = mysqli_query($con, $query);
+}
+
 ?>
