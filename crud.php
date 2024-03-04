@@ -55,22 +55,28 @@ if (isset($_POST['add_ticket'])) {
         echo '<script>alert("Error submitting ticket. Please try again.");</script>';
     }
 } else if (isset($_POST['add_reply'])) {
-    $reply = $_POST['reply'];
-    $ticket_id = $_POST['ticket_id'];
-    $userid = $_POST['userid'];
-    $name = $_POST['sender'];
-
-    $insert_reply = "INSERT INTO ticket_reply (reply, ticket_id,user_id,Name) 
-    VALUES ('$reply', '$ticket_id','$userid', '$name')";
-    $insert_reply_run = mysqli_query($con, $insert_reply);
-
-    if ($insert_reply_run) {
-        echo '<script>alert("Reply added.");</script>';
+    if(empty($_POST['reply'])){
+        $ticket_id = $_POST['ticket_id'];
+        echo '<script>alert("Empty Reply. Please try again.");</script>';
         echo '<script>window.location.href = "ticket_info.php?ticket_id=' . $ticket_id . '"</script>';
-        exit();
-    } else {
-        // PHP code failed to execute
-        echo '<script>alert("Error adding reply. Please try again.");</script>';
+    }else{
+        $reply = $_POST['reply'];
+        $ticket_id = $_POST['ticket_id'];
+        $userid = $_POST['userid'];
+        $name = $_POST['sender'];
+    
+        $insert_reply = "INSERT INTO ticket_reply (reply, ticket_id,user_id,Name) 
+        VALUES ('$reply', '$ticket_id','$userid', '$name')";
+        $insert_reply_run = mysqli_query($con, $insert_reply);
+    
+        if ($insert_reply_run) {
+            echo '<script>alert("Reply added.");</script>';
+            echo '<script>window.location.href = "ticket_info.php?ticket_id=' . $ticket_id . '"</script>';
+            exit();
+        } else {
+            // PHP code failed to execute
+            echo '<script>alert("Error adding reply. Please try again.");</script>';
+        }
     }
 } else if (isset($_POST['upload'])) {
     $file = $_FILES['image'];
