@@ -132,7 +132,7 @@ mysqli_close($con);
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Dashboard</h4>
+                        <h4>Dashboardd</h4>
                     </div>
                     <br>
                     <h2>&nbsp; Welcome, <?php echo $fname . " ". $lname; ?>!</h2>
