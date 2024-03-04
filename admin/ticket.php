@@ -74,7 +74,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                     <tr>
                                         <th>Dates</th>
                                         <th>Subject</th>
-                                        <th>Department</th>
+                                        <th>To Department</th>
                                         <th>Requestor</th>
                                         <th>Status</th>
                                         <th>Action</th>

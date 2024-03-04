@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2024 at 06:53 AM
+-- Generation Time: Mar 04, 2024 at 02:19 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -106,6 +106,40 @@ INSERT INTO `department` (`id`, `department_name`, `department_head`, `location`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `file_attachment`
+--
+
+CREATE TABLE `file_attachment` (
+  `file_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `ticket_id` int(11) NOT NULL,
+  `file_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `file_attachment`
+--
+
+INSERT INTO `file_attachment` (`file_id`, `user_id`, `ticket_id`, `file_name`) VALUES
+(1, 3, 9, 'IMG_20240229_100351.jpg'),
+(2, 3, 10, 'IMG_20240229_100400.jpg'),
+(3, 3, 10, 'IMG_20240229_100410.jpg'),
+(4, 3, 11, 'IMG_20240229_100342.jpg'),
+(5, 3, 11, 'IMG_20240229_100351.jpg'),
+(6, 3, 12, 'IMG_20240229_100342.jpg'),
+(7, 3, 12, 'IMG_20240229_100351.jpg'),
+(8, 3, 13, 'IMG_20240229_100342.jpg'),
+(9, 3, 13, 'IMG_20240229_100351.jpg'),
+(10, 3, 14, 'IMG_20240229_100400.jpg'),
+(11, 3, 14, 'IMG_20240229_100410.jpg'),
+(12, 3, 15, 'IMG_20240229_100351.jpg'),
+(13, 3, 15, 'IMG_20240229_100400.jpg'),
+(14, 3, 16, 'CamScanner 03-01-2024 17.13_3.jpg'),
+(15, 3, 16, 'CamScanner 03-01-2024 17.13_2 (1).jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `ticket`
 --
 
@@ -114,43 +148,36 @@ CREATE TABLE `ticket` (
   `user_id` int(11) NOT NULL,
   `date` timestamp(6) NOT NULL DEFAULT current_timestamp(6),
   `subject` varchar(30) NOT NULL,
-  `company` varchar(50) NOT NULL,
+  `to_company` varchar(50) NOT NULL,
   `branch` varchar(50) NOT NULL,
   `department` varchar(30) NOT NULL,
   `requestor` varchar(50) NOT NULL,
   `concern` text NOT NULL,
   `status` varchar(50) NOT NULL DEFAULT 'Pending',
-  `comment` text NOT NULL,
-  `date_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `date_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `to_dept` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `ticket`
 --
 
-INSERT INTO `ticket` (`ticket_id`, `user_id`, `date`, `subject`, `company`, `branch`, `department`, `requestor`, `concern`, `status`, `comment`, `date_created`) VALUES
-(7, 0, '2024-02-20 06:47:29.737215', 'change subject', 'Cornersteel Systems Corporation', '', 'Management Info', 'aaa', 'Hello', 'Resolved', 'oks naa', '2024-02-22 07:10:06'),
-(8, 0, '2024-02-21 02:56:51.396396', 'change document', 'Comfac Global Group', 'Makati daw nye', 'MIS-Department', 'Kyang', 'Hi please comply', 'Pending', 'I get to you', '2024-02-22 06:30:05'),
-(9, 0, '2024-02-21 03:05:13.355363', 'Acceptance Letter', 'Comfac Global Group', 'Makati daw nye', 'Management Info', 'Mharg', 'Please edit the document ', 'Resolved', 'I already fill it', '2024-02-23 00:58:21'),
-(10, 0, '2024-02-21 03:07:36.182944', 'fix bugs', 'Cornersteel Systems Corporation', '', 'System Installation', 'Kyandra', 'Do the document', 'Cancelled', 'aaa', '2024-02-22 07:10:42'),
-(11, 0, '2024-02-21 03:28:45.730754', 'concernnnn', 'Comfac Technology Options (CTO)', 'Makati', 'Accounting', 'Carlo', 'need updated', 'Unresolved', 'aaa', '2024-02-22 06:06:57'),
-(12, 0, '2024-02-21 03:30:59.497076', 'ello', 'Cornersteel Systems Corporation', '', 'Accounting', 'Darwin', 'aaaa', 'Unresolved', '', '2024-02-22 06:04:02'),
-(13, 0, '2024-02-22 01:37:08.971713', 'Kikyang', 'Comfac Global Group', 'Makati daw nye', 'MIS-Department', 'Kim', 'Happy Birthday Kyang!!!!!!!!!!!!!!!!!', 'Pending', '', '2024-02-22 01:37:08'),
-(14, 0, '2024-02-22 01:38:07.218465', 'Kikyang', 'Comfac Global Group', 'sadsadsadsad', 'MIS-Department', 'Ngarag Fam', 'Happy Birthday Kikyang!!!!!!!!!', 'Resolved', 'sardsfdf', '2024-02-22 06:37:14'),
-(15, 0, '2024-02-22 02:38:49.282823', 'Hiiii', 'Comfac Global Group', 'Makati daw nye', 'MIS-Department', 'Kim', 'Lorem ipsum dolor sit amet, consectetur adipiscing', 'Unresolved', '', '2024-02-23 05:22:07'),
-(16, 0, '2024-02-22 02:40:13.379268', 'Hiiii', 'Comfac Global Group', 'sadsadsadsad', 'MIS-Department', 'Kim', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin accumsan velit, et aliquam mi mollis vitae. Vivamus pellentesque placerat vehicula. Pellentesque vulputate diam nisi, bibendum pharetra lectus ultrices vel. Ut in ipsum tristique, iaculis velit id, convallis justo. Donec aliquam justo quis purus consequat rutrum. Sed sed velit at ante tincidunt dictum id eget ipsum. Proin a tellus felis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis sagittis urna nec lorem pharetra, quis commodo libero efficitur. Ut odio lectus, blandit nec dapibus nec, scelerisque a lectus. In hac habitasse platea dictumst.', 'Pending', '', '2024-02-22 08:44:01'),
-(17, 0, '2024-02-22 06:46:28.161534', 'Kikyang', 'Comfac Global Group', 'Makati daw nye', 'HR', 'Kyang', 'adsads', 'Cancelled', '', '2024-02-23 05:21:15'),
-(18, 0, '2024-02-22 06:47:36.916145', 'Follow up MOA', 'Comfac Global Group', 'Makati daw nye', 'MIS-Department', 'Kyang', 'please make it fasterrr!!!!', 'Pending', '', '2024-02-22 06:47:36'),
-(19, 0, '2024-02-27 02:04:08.551969', 'change subject', 'Comfac Technology Options (CTO)', 'Libertad Branch', 'MIS-Department', 'kim', 'abc', 'Pending', '', '2024-02-27 02:04:08'),
-(20, 0, '2024-02-28 00:44:18.238676', 'change subject', 'Comfac Global Group', 'Makati', 'MIS-Department', 'Kim', 'aaa', 'Pending', '', '2024-02-28 00:44:18'),
-(31, 0, '2024-02-28 01:29:58.498678', 'sdfsdfs', 'Comfac Global Group', 'Makati', 'Accounting', 's', 'ss', 'Pending', '', '2024-02-28 01:29:58'),
-(32, 0, '2024-02-28 02:49:46.278083', 'OO nga no', 'Comfac Global Group', 'Makati', 'MIS-Department', 'Try Natin rito', 'Reply Concerns', 'Pending', '', '2024-02-28 02:49:46'),
-(33, 0, '2024-02-28 03:51:15.894244', '1423564', 'Comfac Global Group', 'Makati', 'MIS-Department', 'Try Natin rito', '64586', 'Pending', '', '2024-02-28 03:51:15'),
-(34, 0, '2024-02-28 04:01:40.983215', 'change subject', 'Comfac Technology Options (CTO)', 'Makati', 'HR', 'Carlokaloykoy', 'Hello World', 'Pending', '', '2024-02-28 04:01:40'),
-(35, 0, '2024-02-28 04:23:03.887279', 'change subject', 'Comfac Global Group', 'Makati', 'MIS-Department', 'kim', 'aaaa', 'Pending', '', '2024-02-28 04:23:03'),
-(36, 0, '2024-02-28 04:24:48.220386', 'eyyy', 'Comfac Global Group', 'Makati', 'HR', 'kim', 'aaa', 'Pending', '', '2024-02-28 04:24:48'),
-(37, 0, '2024-02-28 05:39:49.048609', 'change subject', 'Comfac Global Group', 'Makati', 'HR', 'kim', 'Check DB', 'Pending', '', '2024-02-28 05:39:49'),
-(38, 2, '2024-02-28 05:43:31.175916', 'change subject', 'Comfac Technology Options (CTO)', 'Libertad Branch', 'Accounting', 'Try', 'Try DB3', 'Pending', '', '2024-02-28 05:43:31');
+INSERT INTO `ticket` (`ticket_id`, `user_id`, `date`, `subject`, `to_company`, `branch`, `department`, `requestor`, `concern`, `status`, `date_created`, `to_dept`) VALUES
+(1, 2, '2024-03-01 02:17:10.921935', 'Hello', 'Comfac Global Group', 'Makati', 'MIS-Department', 'Jio Arcaaaa', 'lorem ipsum', 'Unresolved', '2024-03-01 06:23:24', 'Management Info'),
+(2, 2, '2024-03-01 02:18:49.370088', 'Hello', 'Comfac Global Group', 'Makati', 'MIS-Department', 'Jio Arcaaaa', 'lolre', 'Pending', '2024-03-01 02:18:49', 'MIS-Department'),
+(4, 2, '2024-03-01 02:29:57.185172', 'Hello', 'Comfac Technology Options (CTO)', 'Libertad Branch', 'HR', 'Jio Arcaaaa', 'adsa', 'Pending', '2024-03-01 02:29:57', 'Building Management System(BMS)'),
+(5, 3, '2024-03-01 02:55:42.646548', 'Hello', 'Comfac Global Group', 'Example', 'MIS-Department', 'John Carlo Astoveza', 'exampleeee', 'Pending', '2024-03-01 02:55:42', 'Accounting'),
+(6, 3, '2024-03-01 05:29:04.393577', 'Hello', 'Comfac Global Group', 'Makati', 'MIS-Department', 'John Carlo Astoveza', 'aaaa', 'Pending', '2024-03-01 05:29:04', 'HR'),
+(7, 3, '2024-03-01 05:32:45.867007', 'Hello', 'Comfac Global Group', 'Makati', 'HR', 'John Carlo Astoveza', 'aasdsd', 'Resolved', '2024-03-01 06:23:32', 'Field Service'),
+(8, 3, '2024-03-01 05:34:12.254238', 'Hello', 'Comfac Global Group', 'Makati', 'MIS-Department', 'John Carlo Astoveza', 'aaa', 'Pending', '2024-03-01 05:34:12', 'System Installation'),
+(9, 3, '2024-03-01 05:34:51.219785', 'aasd', 'Comfac Technology Options (CTO)', 'Makati', 'HR', 'John Carlo Astoveza', 'dsads', 'Pending', '2024-03-01 05:34:51', 'Building Management System(BMS)'),
+(10, 3, '2024-03-01 05:35:26.039977', 'aasd', 'Comfac Technology Options (CTO)', 'Libertad Branch', 'MIS-Department', 'John Carlo Astoveza', 'adsad', 'Pending', '2024-03-01 05:35:26', 'MIS-Department'),
+(11, 3, '2024-03-01 05:48:35.315925', 'Hello', 'Comfac Technology Options (CTO)', 'Libertad Branch', 'Purchasing', 'John Carlo Astoveza', 'sds', 'Pending', '2024-03-01 05:48:35', 'Systems Mechanical'),
+(12, 3, '2024-03-01 05:56:45.213309', 'Hello', 'Comfac Technology Options (CTO)', 'Makati', 'MIS-Department', 'John Carlo Astoveza', 'asdsad', 'Pending', '2024-03-01 05:56:45', 'Systems Mechanical'),
+(13, 3, '2024-03-01 05:56:45.278284', 'Hello', 'Comfac Technology Options (CTO)', 'Makati', 'MIS-Department', 'John Carlo Astoveza', 'asdsad', 'Pending', '2024-03-01 05:56:45', 'Systems Mechanical'),
+(14, 3, '2024-03-01 06:08:59.715734', 'Hello', 'Comfac Technology Options (CTO)', 'Libertad Branch', 'Management Info', 'John Carlo Astoveza', 'adsa', 'Pending', '2024-03-01 06:08:59', 'HR'),
+(15, 3, '2024-03-01 06:12:26.975759', 'cxc', 'Comfac Technology Options (CTO)', 'Libertad Branch', 'HR', 'John Carlo Astoveza', 'fdfd', 'Pending', '2024-03-01 06:12:26', 'Field Service'),
+(16, 3, '2024-03-04 00:51:54.603265', 'qaaaa', 'Comfac Global Group', '', '', 'John Carlo Astoveza', 'aaa', 'Pending', '2024-03-04 00:51:54', 'System Installation');
 
 -- --------------------------------------------------------
 
@@ -206,17 +233,20 @@ CREATE TABLE `user` (
   `password` varchar(191) NOT NULL,
   `verification_status` tinyint(50) NOT NULL,
   `role` int(50) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `image` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `lastname`, `firstname`, `middleinitial`, `company`, `branch`, `department`, `email`, `contact`, `username`, `password`, `verification_status`, `role`, `created_at`) VALUES
-(1, 'Antonio', 'Dello', 'Z', 'comfac', 'Mandaluyong', 'IT- MIS', 'rogaka9738@rohoza.com', '09234234233', 'aaa', '@Dar1234', 1, 0, '2024-02-08 09:05:22'),
-(2, 'Arcaaaa', 'Jio', 'B', 'Example', 'Makati', 'IT- MIS', 'john@gmail.com', '09255542125', 'john.john', '123456', 1, 1, '2024-02-14 07:09:24'),
-(3, 'Astoveza', 'John Carlo', 'L', 'Comfac Global Group', 'Libertad Branch', 'MIS-Department', 'laguinlinastovezajocar@gmail.com', '09773555302', 'Carlokaloykoy', 'Qwerty123', 1, 1, '2024-02-28 04:00:16');
+INSERT INTO `user` (`user_id`, `lastname`, `firstname`, `middleinitial`, `company`, `branch`, `department`, `email`, `contact`, `username`, `password`, `verification_status`, `role`, `created_at`, `image`) VALUES
+(1, 'Antonio', 'Dello', 'Z', 'comfac', 'Mandaluyong', 'IT- MIS', 'rogaka9738@rohoza.com', '09234234233', 'aaa', '@Dar1234', 1, 0, '2024-02-08 09:05:22', 'aaa.jpg'),
+(2, 'Arcaaaa', 'Jio', 'B', 'Example', 'Makati', 'IT- MIS', 'john@gmail.com', '09255542125', 'john.john', '123456', 1, 1, '2024-02-14 07:09:24', NULL),
+(3, 'Astoveza', 'John Carlo', 'L', 'Comfac Global Group', 'Libertad Branch', 'MIS-Department', 'laguinlinastovezajocar@gmail.com', '09773555302', 'Carlokaloykoy', 'Qwerty123', 1, 1, '2024-02-28 04:00:16', 'CamScanner 02-27-2024 16.45 (2)_1.jpg'),
+(10, 'wew', 'heheh', 'ah', 'Comfac Technology Options (CTO)', 'Libertad Branch', 'MIS-Department', 'darwin.puzo@my.jru.edu', '09123456789', 'HEHEHHe', '@Dar12345', 1, 1, '2024-03-01 06:59:54', NULL),
+(11, 'Kim', 'Sunoo', '', 'Comfac Global Group', 'Makati', 'Systems Mechanical', 'sunoo@gmail.om', '', 'root', 'sunoo@eyy123', 1, 1, '2024-03-04 01:01:50', NULL);
 
 --
 -- Indexes for dumped tables
@@ -239,6 +269,12 @@ ALTER TABLE `company`
 --
 ALTER TABLE `department`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `file_attachment`
+--
+ALTER TABLE `file_attachment`
+  ADD PRIMARY KEY (`file_id`);
 
 --
 -- Indexes for table `ticket`
@@ -272,19 +308,25 @@ ALTER TABLE `branch`
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `file_attachment`
+--
+ALTER TABLE `file_attachment`
+  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `ticket_reply`
@@ -296,7 +338,7 @@ ALTER TABLE `ticket_reply`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
