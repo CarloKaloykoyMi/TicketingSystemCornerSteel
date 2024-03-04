@@ -78,28 +78,61 @@
 </html>
 <?php
 include('mysql_connect.php'); // connection to MySQL
+session_start();
+
 if (isset($_POST["verify"])) {
     $otp = $_SESSION['otp'];
     $email = $_SESSION['mail'];
     $otp_code = $_POST['otp_code'];
 
     if ($otp != $otp_code) {
-?>
+        ?>
         <script>
             alert("Invalid OTP code");
         </script>
-    <?php
+        <?php
     } else {
-        mysqli_query($con, "UPDATE user SET verification_status = 1 WHERE email = '$email'");
-    ?>
+        // Fetch the user_id and username for the current user
+        $user_query = mysqli_prepare($con, "SELECT user_id, username FROM user WHERE email = ?");
+        mysqli_stmt_bind_param($user_query, "s", $email);
+        mysqli_stmt_execute($user_query);
+        mysqli_stmt_bind_result($user_query, $user_id, $username);
+        mysqli_stmt_fetch($user_query);
+        mysqli_stmt_close($user_query);
+
+        // Construct the path to the default picture
+        $default_picture_path = "img/user2.png";
+
+        // Construct the path to the new folder
+        $new_folder_path =  "Images/$user_id-$username/";
+
+        // Create the new folder if it doesn't exist
+        if (!file_exists($new_folder_path)) {
+            mkdir($new_folder_path, 0777, true);
+        }
+
+        // Copy the default picture to the new folder
+        $new_picture_path = $new_folder_path . "user2.png";
+        if (file_exists($default_picture_path)) {
+            copy($default_picture_path, $new_picture_path);
+        }
+
+        $picture = "user2.png";
+
+        // Update the user's verification status and profile picture
+        $update_query = mysqli_prepare($con, "UPDATE user SET verification_status = 1, image = ? WHERE email = ?");
+        mysqli_stmt_bind_param($update_query, "ss", $picture, $email);
+        mysqli_stmt_execute($update_query);
+        mysqli_stmt_close($update_query);
+
+        ?>
         <script>
-            alert("Verfiy account done, you may sign in now");
+            alert("Verify account done, you may sign in now");
             window.location.replace("emplogin.php");
         </script>
-<?php
+        <?php
     }
 }
-
 ?>
 
 <script src="main.js"></script>
