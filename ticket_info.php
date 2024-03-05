@@ -175,11 +175,54 @@ $reply_result = mysqli_query($con, $query);
                                                                                                         <p><?php echo $ticket_data['concern']; ?></p>
                                                                                                     </figcaption>
                                                                                                 </figure>
+                                                                                                <hr>
+
+                                                                                                <?php
+
+                                                                                                $sql = "SELECT ticket_id, user_id,COUNT(*) as number_file FROM `file_attachment` WHERE ticket_id='$ticket_id' AND user_id = '$userid1';";
+                                                                                                $result = mysqli_query($con, $sql);
+                                                                                                while ($row = mysqli_fetch_array($result)) {
+                                                                                                    $count_file = $row['number_file'];
+                                                                                                }
+
+                                                                                                $sql1 = "SELECT file_name FROM `file_attachment`WHERE ticket_id='$ticket_id' AND user_id = '$userid1' ORDER BY file_name DESC;";
+                                                                                                $result = mysqli_query($con, $sql1);
+                                                                                                while ($row = mysqli_fetch_array($result)) {
+                                                                                                    $file = $row['file_name'];
+                                                                                                }
+                                                                                                ?>
+                                                                                                <span class="number pull-right"><strong>Attachment: <?php echo $count_file; ?></strong></span> <br>
+
+                                                                                                <?php
+                                                                                                if (mysqli_num_rows($result) > 0) {
+                                                                                                    foreach ($result as $item) {
+                                                                                                        echo '<div style="float:left; width:33.33%; padding: 10px;">';
+
+                                                                                                        // Check if the file name is an image
+                                                                                                        if (preg_match('/\.(jpg|jpeg|png|gif)$/i', $item['file_name'])) {
+                                                                                                            echo '<img src="ticket_files/ticket_' . $ticket_id . '_' . $ticket_data['requestor'] . '_' . date("F j, Y") . '/' . $item['file_name'] . '" alt="Image Attachment" style="width:100%; height:250">';
+                                                                                                        } else {
+                                                                                                            // Check if the file name is a document
+                                                                                                            if (preg_match('/\.(doc|docx|pdf)$/i', $item['file_name'])) {
+                                                                                                                echo '<a href="ticket_files/' . $item['file_name'] . '" download="' . $item['file_name'] . '">Document Attachment: ' . $item['file_name'] . '</a>';
+                                                                                                            } else {
+                                                                                                                // If neither image nor document, just display the file name
+                                                                                                                echo 'Attachment: ' . $item['file_name'] . ' goes here';
+                                                                                                            }
+                                                                                                        }
+                                                                                                        
+                                                                                                        echo '</div>';
+                                                                                                    }
+                                                                                                    
+                                                                                                    
+                                                                                            }
+                                                                                                ?>
+
+                                                                                                
+
                                                                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#replyModal" style="position: absolute; top: 200px; right: 10px;">
                                                                                                     Reply
                                                                                                 </button>
-
-
 
                                                                                                 <!-- Modal -->
                                                                                                 <div class="modal fade" id="replyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -159,7 +159,7 @@ while ($row = mysqli_fetch_array($result)) {
                                 <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
                                     <div class="card" style="width: 15rem;">
-                                    <img src='<?php echo "../Images/". $user_id."-".$username. "/" . $img ?>' class="card-img-top" alt="Profile" style="max-width: 100%; max-height: 220px;">
+                                    <img src='<?php echo "Images/". $user_id."-".$username. "/" . $img ?>' class="card-img-top" alt="Profile" style="max-width: 100%; max-height: 220px;">
                                     </div>
                                     <h2><?php echo $name ?></h2>
                                 </div>
