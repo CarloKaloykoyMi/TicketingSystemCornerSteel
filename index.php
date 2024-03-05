@@ -7,10 +7,10 @@
     <title>E Ticketing</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/des5.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
-    <link rel="shortcut icon" href="assets/images/logo3.ico">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
     <style>
         .grid-item {
             width: 48%;
@@ -265,7 +265,7 @@
                         $message = $_POST['message'];
 
                         // Prepare and execute the SQL query
-                        $stmt = $conn->prepare("INSERT INTO contacts (first_name, last_name, phone, email, message) VALUES (?, ?, ?, ?, ?)");
+                        $stmt = $con->prepare("INSERT INTO contact_us (first_name, last_name, phone, email, message) VALUES (?, ?, ?, ?, ?)");
                         $stmt->bind_param("sssss", $first_name, $last_name, $phone, $email, $message);
                         $stmt->execute();
 
@@ -353,7 +353,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./js/isotope.pkgd.min.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="./js/app.js"></script>
 
 </body>

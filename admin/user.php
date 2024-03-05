@@ -33,6 +33,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
 
     <!-- datatable css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
 
     <!-- icon css -->
@@ -43,7 +44,9 @@ if (!isset($_SESSION['auth_user']['username'])) {
     <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script defer src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src='https://kit.fontawesome.com/ddada6a128.js' crossorigin='anonymous'></script>
     <script defer src="js/table.js"></script>
+    
 
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="user.css">
@@ -247,7 +250,8 @@ if (!isset($_SESSION['auth_user']['username'])) {
                         <div class="col-md-12 mt-3">
                             <div class="input-group">
                                 <span class="input-group-prepend">
-                                    <i class="fas fa-user input-group-text"></i>
+                
+                                    <i class="fa fa-phone input-group-text"></i>
                                 </span>
                             <label for=""class="sr-only">Contact Number</label>
                             <input type="number" name="contact" placeholder="Enter Contact Number" class="form-control" required>
@@ -318,7 +322,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                         <div class="col-md-12 mt-3">
                             <div class="input-group">
                                 <span class="input-group-prepend">
-                                    <i class="fa-solid fa-users input-group-text"></i>
+                                <i class="fa-solid fa-building input-group-text"></i>
 
                                 </span>
                                 <label for="department" class="sr-only">Department:</label>
@@ -343,7 +347,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                         <div class="col-md-12 mt-3">
                             <div class="input-group">
                                 <span class="input-group-prepend">
-                                    <i class="fas fa-user input-group-text"></i>
+                                    <i class="fa fa-envelope input-group-text"></i>
                                 </span>
                             <label for="" class="sr-only"> Email</label>
                             <input type="email" name="email" placeholder="Enter Email" class="form-control">
@@ -353,13 +357,14 @@ if (!isset($_SESSION['auth_user']['username'])) {
                         <div class="col-md-12 mt-3">
                             <div class="input-group">
                                 <span class="input-group-prepend">
-                                    <i class="fas fa-user input-group-text"></i>
+                                    <i class="fa fa-lock input-group-text"></i>
                                 </span>
                             <label for="password" class="sr-only"> Password</label>
                                 <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password" required>
                                 <button class="btn btn-outline-secondary" type="button" id="togglePassword"><i class="fas fa-eye"></i></button>
                             </div>
                         </div>
+
 
                         <hr>
                         <div class="form-group pull-right">
