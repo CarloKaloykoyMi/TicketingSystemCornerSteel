@@ -135,6 +135,9 @@ if (isset($_POST['add_ticket'])) {
         $msg = "There was a problem uploading Image";
     }
 
+    $action ='Profile Picture Changed';
+    $sql="INSERT INTO audit_trail (user_id,action) VALUES('$user_id','$action');";
+    $atrun= mysqli_query($con,$sql);
     echo "<script> location.href='User_Profile.php'; </script>";
 }elseif (isset($_POST['saveChanges'])){
     $userid = $_POST['userid'];

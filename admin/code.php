@@ -230,7 +230,10 @@ if (isset($_POST['add_company'])) {
         $msg = "There was a problem uploading Image";
     }
 
-    echo "<script> location.href='../admin/admin_profile.php'; </script>";
+    $action ='Profile Picture Changed';
+    $sql="INSERT INTO audit_trail (user_id,action) VALUES('$user_id','$action');";
+    $atrun= mysqli_query($con,$sql);
+     echo "<script> location.href='admin_profile.php'; </script>";
 } elseif (isset($_POST['delete_department'])) {
     $id = $_POST['department_id'];
     $sql = "DELETE FROM department WHERE id = '$id';";

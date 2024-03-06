@@ -135,7 +135,7 @@ $atresult= mysqli_query($con, $atsql);
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="code.php" enctype="multipart/form-data">
+                    <form method="POST" action="crud.php" enctype="multipart/form-data">
                     <input type="hidden" name="size" value="1000000">
                         <input type="hidden" name="userid" value=<?= $user_id ?>>
                         <input type="hidden" name="username" value=<?= $username ?>>
