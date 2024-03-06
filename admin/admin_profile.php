@@ -32,6 +32,8 @@ while ($row = mysqli_fetch_array($result)) {
     $department= $row['department'];
     $contact= $row['contact'];
 }
+$atsql = "SELECT * FROM audit_trail WHERE user_id = '$user_id' ORDER BY `Date` desc";
+$atresult= mysqli_query($con, $atsql);
 ?>
 
 <!DOCTYPE html>
@@ -229,9 +231,9 @@ while ($row = mysqli_fetch_array($result)) {
                                         <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                                             <!-- Profile Edit Form -->
-                                            <form method="POST" action="User_Profile.php">
+                                            <form method="POST" action="code.php">
                                                 <div class="row mb-3">
-                                                    <label for="profileImage" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-id-badge"></i> Profile Image</label>
+                                                    <label for="profileImage" class="col-md-4 col-lg-4 col-form-label"><i class="fas fa-id-badge"></i> Profile Image</label>
                                                     <div class="col-md-8 col-lg-8">
                                                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Change Profile Picture </button>
                                                         <div class="pt-2">
@@ -240,53 +242,54 @@ while ($row = mysqli_fetch_array($result)) {
                                                 </div>
 
                                                 <div class="row mb-3">
-                                                    <label for="fullName" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-user"></i> First Name</label>
+                                                    <label for="fullName" class="col-md-4 col-lg-4 col-form-label"><i class="fas fa-user"></i> First Name</label>
                                                     <div class="col-md-8 col-lg-8">
                                                         <input name="firstName" type="text" class="form-control" id="fullName" value="<?php echo $fn ?>">
+                                                        <input type="hidden" name="userid" value="<?=$user_id ?>">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
-                                                    <label for="fullName" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-user"></i> Middle Initial</label>
+                                                    <label for="fullName" class="col-md-4 col-lg-4 col-form-label"><i class="fas fa-user"></i> Middle Initial</label>
                                                     <div class="col-md-8 col-lg-8">
-                                                        <input name="lastName" type="text" class="form-control" id="fullName" value="<?php echo $ml ?>">
+                                                        <input name="middleInitial" type="text" class="form-control" id="fullName" value="<?php echo $ml ?>">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
-                                                    <label for="fullName" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-user"></i> Last Name</label>
+                                                    <label for="fullName" class="col-md-4 col-lg-4 col-form-label"><i class="fas fa-user"></i> Last Name</label>
                                                     <div class="col-md-8 col-lg-8">
                                                         <input name="lastName" type="text" class="form-control" id="fullName" value="<?php echo $ln ?>">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
-                                                    <label for="fullName" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-building"></i> Company</label>
+                                                    <label for="fullName" class="col-md-4 col-lg-4 col-form-label"><i class="fas fa-building"></i> Company</label>
                                                     <div class="col-md-8 col-lg-8">
-                                                        <input name="lastName" type="text" class="form-control" id="fullName" value="<?php echo $company ?>">
+                                                        <input name="company" type="text" class="form-control" id="fullName" value="<?php echo $company ?>">
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
-                                                    <label for="Job" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-location-dot"></i> Branch</label>
+                                                    <label for="Job" class="col-md-4 col-lg-4 col-form-label"><i class="fas fa-location-dot"></i> Branch</label>
                                                     <div class="col-md-8 col-lg-8">
-                                                        <input name="job" type="text" class="form-control" id="Job" value="<?php echo $branch ?>" disabled>
+                                                        <input name="job" type="text" class="form-control" id="Job" value="<?php echo $branch ?>" readonly>
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
-                                                    <label for="Address" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-users"></i> Department</label>
+                                                    <label for="Address" class="col-md-4 col-lg-4 col-form-label"><i class="fas fa-users"></i> Department</label>
                                                     <div class="col-md-8 col-lg-8">
                                                         <input name="address" type="text" class="form-control" id="Address" value="<?php echo $department ?>">
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
-                                                    <label for="Phone" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-phone"></i> Contact Number</label>
+                                                    <label for="Phone" class="col-md-4 col-lg-4 col-form-label"><i class="fas fa-phone"></i> Contact Number</label>
                                                     <div class="col-md-8 col-lg-8">
                                                         <input name="phone" type="text" class="form-control" id="Phone" value="<?php echo $contact ?>">
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
-                                                    <label for="Email" class="col-md-4 col-lg-4 col-form-label"><i class="fa-solid fa-envelope"></i> Email</label>
+                                                    <label for="Email" class="col-md-4 col-lg-4 col-form-label"><i class="fas fa-envelope"></i> Email</label>
                                                     <div class="col-md-8 col-lg-8">
                                                         <input name="email" type="email" class="form-control" id="Email" value="<?php echo $email ?>">
                                                     </div>
@@ -302,7 +305,6 @@ while ($row = mysqli_fetch_array($result)) {
                                                     <button type="submit" name="saveChanges" class="btn btn-primary">Save Changes</button>
                                                 </div>
                                             </form><!-- End Profile Edit Form -->
-
                                         </div>
 
                                         <div class="tab-pane fade pt-3" id="profile-settings">
@@ -364,22 +366,30 @@ while ($row = mysqli_fetch_array($result)) {
 
 </body>
 
-<!-- Admin Logs Section -->
 <div class="logs-container mt-4" style="padding: 10px;">
-    <h3>Admin Action Logs</h3>
+    <h3>User Action Logs</h3>
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>User Level</th>
                 <th>Action</th>
                 <th>Date</th>
             </tr>
         </thead>
-        <tbody id="adminLogs">
-            <!-- Logs will be added dynamically here -->
-        </tbody>
+        <tbody id="userLogs">
+            <?php
+        while ($atrow = mysqli_fetch_array($atresult)) {
+    $action = $atrow['Action'];
+    $date = $atrow['Date'];
+
+    echo "<tr>
+            <td>$action</td>
+            <td>$date</td>
+          </tr>";
+}
+
+echo '    </tbody>
     </table>
-</div>
+</div>';?>
 
 <script>
     function addLog(userLevel, action, date) {

@@ -103,10 +103,14 @@ if (isset($_POST['register'])) {
                     'lastname' => $row['lastname'],
                 ];
                 $_SESSION['role'] = $role;
+                $user_id = $row['user_id'];
 
                 if (
                     $role == 0
                 ) {
+                    $action ='Logged In';
+                    $sql="INSERT INTO audit_trail (user_id,action) VALUES('$user_id','$action');";
+                    $atrun= mysqli_query($con,$sql);
                     header("Location: admin/dashboard.php");
                     exit();
                 } elseif ($role == 1) {
@@ -119,6 +123,7 @@ if (isset($_POST['register'])) {
                     header("Location: adminlogin.php");
                     exit();
                 }
+
             } else {
                 $_SESSION['status'] = "PLEASE VERIFY YOUR EMAIL!";
                 header("Location: adminlogin.php");
