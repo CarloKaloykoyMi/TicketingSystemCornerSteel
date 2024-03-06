@@ -6,7 +6,7 @@ include('crud.php');
 if (!isset($_SESSION['auth_user']['username'])) {
     session_destroy();
     unset($_SESSION['auth_user']['username']);
-    unset($_SESSION['auth_user']['user_id']);
+    unset($_SESSION['userid']);
     unset($_SESSION['auth_user']['email']);
     unset($_SESSION['auth_user']['role']);
     unset($_SESSION['auth_user']['lastname']);
@@ -106,7 +106,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
             <div class="container1">
                 <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#myModal" style="position: absolute; top: 70px; right: 10px;">Create Ticket</button>
                 <h3>
-                    <center>Overall Ticket List</center>
+                    <center>Overall Ticket List </center>
                 </h3>
                 <table id="example" class="table table-responsive hover table-bordered">
                     <thead class="table-light">

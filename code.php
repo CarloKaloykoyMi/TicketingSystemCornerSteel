@@ -80,7 +80,7 @@ if (isset($_POST['register'])) {
             }
         }
     }
-} else if (isset($_POST['emp_login_btn'])) { 
+} else if (isset($_POST['emp_login_btn'])) {
     // Employee login
     if (!empty(trim($_POST['email'])) && !empty(trim($_POST['password']))) {
         $email = mysqli_real_escape_string($con, $_POST['email']);
@@ -108,11 +108,15 @@ if (isset($_POST['register'])) {
                         'company' => $row['company'],
                         'department' => $row['department'],
                     ];
+                    $user_id = $row['user_id'];
                     $_SESSION['role'] = $role;
 
                     if ($role == 1) {
                         // Regular user
                         header("Location: home_user.php");
+                        $action ='Logged In';
+                        $sql="INSERT INTO audit_trail (user_id,action) VALUES('$user_id','$action');";
+                        $atrun= mysqli_query($con,$sql);
                         exit();
                     } else {
                         // Handle other roles here
@@ -120,6 +124,7 @@ if (isset($_POST['register'])) {
                         header("Location: emplogin.php");
                         exit();
                     }
+
                 } else {
                     // Admin user, deny login
                     $_SESSION['verification_status'] = "Admins cannot log in via this form!";

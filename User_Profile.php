@@ -34,12 +34,14 @@ while ($row = mysqli_fetch_array($result)) {
     $img = $row['image'];
 }
 
+$atsql = "SELECT * FROM audit_trail WHERE user_id = '$userid' ORDER BY `Date` desc";
+$atresult= mysqli_query($con, $atsql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<title>Edit Profile</title>
+<title>Edit Profile </title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -188,7 +190,7 @@ while ($row = mysqli_fetch_array($result)) {
 
                                         <div class="tab-pane fade show active profile-overview" id="profile-overview">
                                            <br>
-                                            <h5 class="card-title"><b>Profile Details:</b></h5>
+                                            <h5 class="card-title"><b>Profile Details: ></b></h5>
 
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-5 label "><i class="fas fa-user"></i> First Name:</div>
@@ -371,42 +373,25 @@ while ($row = mysqli_fetch_array($result)) {
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>User Level</th>
                 <th>Action</th>
                 <th>Date</th>
             </tr>
         </thead>
         <tbody id="userLogs">
-            <!-- Logs will be added dynamically here -->
-        </tbody>
+            <?php
+        while ($atrow = mysqli_fetch_array($atresult)) {
+    $action = $atrow['Action'];
+    $date = $atrow['Date'];
+
+    echo "<tr>
+            <td>$action</td>
+            <td>$date</td>
+          </tr>";
+}
+
+echo '    </tbody>
     </table>
-</div>
-
-<script>
-    function addLog(userLevel, action, date) {
-        var logsContainer = document.getElementById("userLogs");
-        var logRow = document.createElement("tr");
-        
-        var userLevelCell = document.createElement("td");
-        userLevelCell.appendChild(document.createTextNode(userLevel));
-        logRow.appendChild(userLevelCell);
-
-        var actionCell = document.createElement("td");
-        actionCell.appendChild(document.createTextNode(action));
-        logRow.appendChild(actionCell);
-
-        var dateCell = document.createElement("td");
-        dateCell.appendChild(document.createTextNode(date));
-        logRow.appendChild(dateCell);
-
-        logsContainer.appendChild(logRow);
-    }
-
-    // Example log
-    addLog("User", "edited profile", "2024-02-20 15:30:00");
-</script>
-
-
+</div>';?>
 
     <!-- Bootstrap and custom scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
