@@ -1,3 +1,4 @@
+
 <?php
 include('function/myfunction.php');
 include 'sidebar_navbar.php';
@@ -178,6 +179,8 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                                 <i class="fas fa-user"></i>
                                             </span>
                                             <input type="hidden" name="userid" value="<?php echo $userid; ?>">
+                                            <input type="hidden" name="email" value="<?php echo $email; ?>">
+
                                             <label for="requestor" class="sr-only">Requestor</label>
                                             <input type="text" class="form-control" name="requestor" placeholder="Requestor" value="<?php echo $fname . ' ' . $lname; ?>" readonly>
                                         </div>
@@ -284,7 +287,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
                                             <img id="preview-image" src="img/empty.png" height="200" alt="Image Preview">
                                         </div>
                                     </div>
-                        </div>
+                        
                         <div class="modal-footer">
                             <button type="submit" name="add_ticket" class="btn btn-success" style="background-color: #6C757D;">Submit</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
