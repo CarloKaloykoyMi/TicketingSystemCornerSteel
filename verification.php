@@ -1,6 +1,3 @@
-<?php session_start()
-?>
-
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -86,11 +83,11 @@ if (isset($_POST["verify"])) {
     $otp_code = $_POST['otp_code'];
 
     if ($otp != $otp_code) {
-        ?>
+?>
         <script>
             alert("Invalid OTP code");
         </script>
-        <?php
+    <?php
     } else {
         // Fetch the user_id and username for the current user
         $user_query = mysqli_prepare($con, "SELECT user_id, username FROM user WHERE email = ?");
@@ -125,12 +122,12 @@ if (isset($_POST["verify"])) {
         mysqli_stmt_execute($update_query);
         mysqli_stmt_close($update_query);
 
-        ?>
+    ?>
         <script>
             alert("Verify account done, you may sign in now");
             window.location.replace("emplogin.php");
         </script>
-        <?php
+<?php
     }
 }
 ?>

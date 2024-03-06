@@ -4,6 +4,7 @@ include('mysql_connect.php');
 if (isset($_POST['add_ticket'])) {
     $userid = $_POST['userid'];
     $requestor = $_POST['requestor'];
+    $email = $_POST['email'];
     $subject = $_POST['subject'];
     $company = $_POST['company'];
     $todepartment = $_POST['todepartment'];
@@ -48,12 +49,40 @@ if (isset($_POST['add_ticket'])) {
                 }
             }
         }
-        echo '<script>alert("Ticket Submitted.");</script>';
-        echo '<script>window.location.href = "home_user.php";</script>';
-        exit();
+
+        // Send email notification
+        require "phpmailer/PHPMailerAutoload.php";
+        $mail = new PHPMailer;
+
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->Port = 587;
+        $mail->SMTPAuth = true;
+        $mail->SMTPSecure = 'tls';
+
+        $mail->Username = 'odetocode04@gmail.com'; // Update with your email
+        $mail->Password = 'mnugjcpwaslqthdn'; // Update with your email password
+
+        $mail->setFrom('no-reply@gmail.com', 'no-reply');
+        $mail->addAddress($email); // Send email to the requestor
+
+        $mail->isHTML(true);
+        $mail->Subject = "Ticket Created Successfully";
+        $mail->Body = "Dear $requestor,<br><br>Your ticket with subject '$subject' has been successfully created.<br><br>Thank you for using our system.<br><br>Best regards,<br>CGG E-Ticketing";
+
+        // Send email
+        if (!$mail->send()) {
+            echo '<script>alert("Error sending email notification. Please try again.");</script>';
+        } else {
+            echo '<script>alert("Ticket Submitted. Email notification sent.");</script>';
+            echo '<script>window.location.href = "home_user.php";</script>';
+            exit();
+        }
     } else {
         echo '<script>alert("Error submitting ticket. Please try again.");</script>';
     }
+
+    
 } else if (isset($_POST['add_reply'])) {
     if(empty($_POST['reply'])){
         $ticket_id = $_POST['ticket_id'];
