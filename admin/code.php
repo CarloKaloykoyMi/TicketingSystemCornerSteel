@@ -187,9 +187,12 @@ if (isset($_POST['add_company'])) {
     $department = $_POST['department'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $contact = $_POST['contact'];
+    $username = $_POST['username'];
+    $role = $_POST['role'];
 
     $insert_user_query = mysqli_query($con, "INSERT INTO user (lastName, firstName, middleinitial, company, branch, department, email, contact, username, password, verification_status, role) 
-    VALUES('$lastName', '$firstName', '$middleinitial', '$company', '$branch', '$department', '$email', '$contact', '$username', '$password', '1', '1')");
+    VALUES('$lastName', '$firstName', '$middleinitial', '$company', '$branch', '$department', '$email', '$contact', '$username', '$password', '1', $role)");
 
     if ($insert_user_query) {
         echo '<script>alert("User added successfully.");</script>';

@@ -46,7 +46,7 @@ if (!isset($_SESSION['auth_user']['username'])) {
     <script defer src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     <script src='https://kit.fontawesome.com/ddada6a128.js' crossorigin='anonymous'></script>
     <script defer src="js/table.js"></script>
-    
+
 
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="user.css">
@@ -211,165 +211,155 @@ if (!isset($_SESSION['auth_user']['username'])) {
                     <form action="code.php" method="POST">
 
 
-                    <div class="col-md-12 mt-3">
-                            <div class="input-group">
-                                <span class="input-group-prepend">
-                                    <i class="fas fa-user input-group-text"></i>
-                                </span> 
-                            <label for="" class="sr-only"> Username</label>
-                            <input type="text" name="username" placeholder="Enter Username" class="form-control" required>
-                        </div>
-
-                    <div class="col-md-12 mt-3">
-                            <div class="input-group">
-                                <span class="input-group-prepend">
-                                    <i class="fas fa-user input-group-text"></i>
-                                </span> 
-                            <label for="" class="sr-only"> Last Name</label>
-                            <input type="text" name="lastname" placeholder="Enter Last Name" class="form-control" required>
-                        </div>
-
                         <div class="col-md-12 mt-3">
                             <div class="input-group">
                                 <span class="input-group-prepend">
                                     <i class="fas fa-user input-group-text"></i>
                                 </span>
-                            <label for="" class="sr-only"> First Name</label>
-                            <input type="text" name="firstname" placeholder="Enter First Name" class="form-control" required>
-                        </div>
-
-                        <div class="col-md-12 mt-3">
-                            <div class="input-group">
-                                <span class="input-group-prepend">
-                                    <i class="fas fa-user input-group-text"></i>
-                                </span>
-                            <label for=""class="sr-only">Middle Initial</label>
-                            <input type="text" name="middleinitial" placeholder="Enter Middle Initial" class="form-control" required>
-                        </div>
-
-                        <div class="col-md-12 mt-3">
-                            <div class="input-group">
-                                <span class="input-group-prepend">
-                
-                                    <i class="fa fa-phone input-group-text"></i>
-                                </span>
-                            <label for=""class="sr-only">Contact Number</label>
-                            <input type="number" name="contact" placeholder="Enter Contact Number" class="form-control" required>
-                        </div>
-
-                        <div class="col-md-12 mt-3">
-                            <div class="input-group">
-                                <span class="input-group-prepend">
-                                    <i class="fas fa-user-friends input-group-text"></i>
-                                </span>
-                                <label for="company" class="sr-only">Role</label>
-                                <select class="form-control" id="company" name="company" required>
-                                    <option value="">Select Role:</option>
-                                    <?php
-                                    $company = getAll("company");
-                                    if (mysqli_num_rows($company) > 0) {
-                                        foreach ($company as $company) {
-                                    ?>
-                                            <option value="<?= $company['company_name']; ?>"><?= $company['company_name']; ?></option>
-                                    <?php
-                                        }
-                                    } else {
-                                        echo "<option value=''>No Company available</option>";
-                                    }
-                                    ?>
-                                </select>
+                                <label for="" class="sr-only"> Username</label>
+                                <input type="text" name="username" placeholder="Enter Username" class="form-control" required>
                             </div>
-                        </div>
 
-                        <div class="col-md-12 mt-3">
-                            <div class="input-group">
-                                <span class="input-group-prepend">
-                                    <i class="fa-solid fa-building input-group-text"></i>
-                                </span>
-                                <label for="company" class="sr-only">Company</label>
-                                <select class="form-control" id="company" name="company" required>
-                                    <option value="">Select Company:</option>
-                                    <?php
-                                    $company = getAll("company");
-                                    if (mysqli_num_rows($company) > 0) {
-                                        foreach ($company as $company) {
-                                    ?>
-                                            <option value="<?= $company['company_name']; ?>"><?= $company['company_name']; ?></option>
-                                    <?php
-                                        }
-                                    } else {
-                                        echo "<option value=''>No Company available</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-12 mt-3">
-                            <div class="form-group" style="display: none;" id="branchGroup">
+                            <div class="col-md-12 mt-3">
                                 <div class="input-group">
-                                    <i class="fa-solid fa-location-dot input-group-text"></i>
+                                    <span class="input-group-prepend">
+                                        <i class="fas fa-user input-group-text"></i>
                                     </span>
-                                    <label for="branch" class="sr-only">Branch:</label>
-                                    <select class="form-control" id="branch" name="branch" required>
-                                        <option value="">Select Branch:</option>
-                                    </select>
+                                    <label for="" class="sr-only"> Last Name</label>
+                                    <input type="text" name="lastname" placeholder="Enter Last Name" class="form-control" required>
                                 </div>
-                            </div>
-                        </div>
 
-                        <div class="col-md-12 mt-3">
-                            <div class="input-group">
-                                <span class="input-group-prepend">
-                                <i class="fa-solid fa-building input-group-text"></i>
+                                <div class="col-md-12 mt-3">
+                                    <div class="input-group">
+                                        <span class="input-group-prepend">
+                                            <i class="fas fa-user input-group-text"></i>
+                                        </span>
+                                        <label for="" class="sr-only"> First Name</label>
+                                        <input type="text" name="firstname" placeholder="Enter First Name" class="form-control" required>
+                                    </div>
 
-                                </span>
-                                <label for="department" class="sr-only">Department:</label>
-                                <select class="form-control" id="department" name="department" required>
-                                    <option value="">Select Department:</option>
-                                    <?php
-                                    $department = getAll("department");
-                                    if (mysqli_num_rows($department) > 0) {
-                                        foreach ($department as $department) {
-                                    ?>
-                                            <option value="<?= $department['department_name']; ?>"><?= $department['department_name']; ?></option>
-                                    <?php
-                                        }
-                                    } else {
-                                        echo "<option value=''>No Department available</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
+                                    <div class="col-md-12 mt-3">
+                                        <div class="input-group">
+                                            <span class="input-group-prepend">
+                                                <i class="fas fa-user input-group-text"></i>
+                                            </span>
+                                            <label for="" class="sr-only">Middle Initial</label>
+                                            <input type="text" name="middleinitial" placeholder="Enter Middle Initial" class="form-control" required>
+                                        </div>
 
-                        <div class="col-md-12 mt-3">
-                            <div class="input-group">
-                                <span class="input-group-prepend">
-                                    <i class="fa fa-envelope input-group-text"></i>
-                                </span>
-                            <label for="" class="sr-only"> Email</label>
-                            <input type="email" name="email" placeholder="Enter Email" class="form-control">
-                        </div>
+                                        <div class="col-md-12 mt-3">
+                                            <div class="input-group">
+                                                <span class="input-group-prepend">
+
+                                                    <i class="fa fa-phone input-group-text"></i>
+                                                </span>
+                                                <label for="" class="sr-only">Contact Number</label>
+                                                <input type="number" name="contact" placeholder="Enter Contact Number" class="form-control" required>
+                                            </div>
+
+                                            <div class="col-md-12 mt-3">
+                                                <div class="input-group">
+                                                    <span class="input-group-prepend">
+                                                        <i class="fas fa-user-friends input-group-text"></i>
+                                                    </span>
+                                                    <label for="role" class="sr-only">Role</label>
+                                                    <select class="form-control" id="role" name="role" required>
+                                                        <option value="">Select Role:</option>
+                                                        <option value="0">Admin</option>
+                                                        <option value="1">Employee</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12 mt-3">
+                                                <div class="input-group">
+                                                    <span class="input-group-prepend">
+                                                        <i class="fa-solid fa-building input-group-text"></i>
+                                                    </span>
+                                                    <label for="company" class="sr-only">Company</label>
+                                                    <select class="form-control" id="company" name="company" required>
+                                                        <option value="">Select Company:</option>
+                                                        <?php
+                                                        $company = getAll("company");
+                                                        if (mysqli_num_rows($company) > 0) {
+                                                            foreach ($company as $company) {
+                                                        ?>
+                                                                <option value="<?= $company['company_name']; ?>"><?= $company['company_name']; ?></option>
+                                                        <?php
+                                                            }
+                                                        } else {
+                                                            echo "<option value=''>No Company available</option>";
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
 
 
-                        <div class="col-md-12 mt-3">
-                            <div class="input-group">
-                                <span class="input-group-prepend">
-                                    <i class="fa fa-lock input-group-text"></i>
-                                </span>
-                            <label for="password" class="sr-only"> Password</label>
-                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password" required>
-                                <button class="btn btn-outline-secondary" type="button" id="togglePassword"><i class="fas fa-eye"></i></button>
-                            </div>
-                        </div>
+                                            <div class="col-md-12 mt-3">
+                                                <div class="form-group" style="display: none;" id="branchGroup">
+                                                    <div class="input-group">
+                                                        <i class="fa-solid fa-location-dot input-group-text"></i>
+                                                        </span>
+                                                        <label for="branch" class="sr-only">Branch:</label>
+                                                        <select class="form-control" id="branch" name="branch" required>
+                                                            <option value="">Select Branch:</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12 mt-3">
+                                                <div class="input-group">
+                                                    <span class="input-group-prepend">
+                                                        <i class="fa-solid fa-building input-group-text"></i>
+
+                                                    </span>
+                                                    <label for="department" class="sr-only">Department:</label>
+                                                    <select class="form-control" id="department" name="department" required>
+                                                        <option value="">Select Department:</option>
+                                                        <?php
+                                                        $department = getAll("department");
+                                                        if (mysqli_num_rows($department) > 0) {
+                                                            foreach ($department as $department) {
+                                                        ?>
+                                                                <option value="<?= $department['department_name']; ?>"><?= $department['department_name']; ?></option>
+                                                        <?php
+                                                            }
+                                                        } else {
+                                                            echo "<option value=''>No Department available</option>";
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12 mt-3">
+                                                <div class="input-group">
+                                                    <span class="input-group-prepend">
+                                                        <i class="fa fa-envelope input-group-text"></i>
+                                                    </span>
+                                                    <label for="" class="sr-only"> Email</label>
+                                                    <input type="email" name="email" placeholder="Enter Email" class="form-control">
+                                                </div>
 
 
-                        <hr>
-                        <div class="form-group pull-right">
-                            <button class="btn btn-primary float-end" type="submit" name="add_user">Submit</button>
-                        </div>
+                                                <div class="col-md-12 mt-3">
+                                                    <div class="input-group">
+                                                        <span class="input-group-prepend">
+                                                            <i class="fa fa-lock input-group-text"></i>
+                                                        </span>
+                                                        <label for="password" class="sr-only"> Password</label>
+                                                        <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password" required>
+                                                        <button class="btn btn-outline-secondary" type="button" id="togglePassword"><i class="fas fa-eye"></i></button>
+                                                    </div>
+                                                </div>
+
+
+                                                <hr>
+                                                <div class="form-group pull-right">
+                                                    <button class="btn btn-primary float-end" type="submit" name="add_user">Submit</button>
+                                                </div>
                     </form>
                 </div>
             </div>
