@@ -232,7 +232,7 @@ $atresult= mysqli_query($con, $atsql);
                                         <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                                             <!-- Profile Edit Form -->
-                                            <form method="POST" action="User_Profile.php">
+                                            <form method="POST" action="crud.php">
                                                 <div class="row mb-3">
                                                     <label for="profileImage" class="col-md-4 col-lg-4 col-form-label"><i class="fas fa-id-badge"></i> Profile Image</label>
                                                     <div class="col-md-8 col-lg-8">
@@ -246,12 +246,13 @@ $atresult= mysqli_query($con, $atsql);
                                                     <label for="fullName" class="col-md-4 col-lg-4 col-form-label"><i class="fas fa-user"></i> First Name</label>
                                                     <div class="col-md-8 col-lg-8">
                                                         <input name="firstName" type="text" class="form-control" id="fullName" value="<?php echo $fn ?>">
+                                                        <input type="hidden" name="userid" value="<?=$userid ?>">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
                                                     <label for="fullName" class="col-md-4 col-lg-4 col-form-label"><i class="fas fa-user"></i> Middle Initial</label>
                                                     <div class="col-md-8 col-lg-8">
-                                                        <input name="lastName" type="text" class="form-control" id="fullName" value="<?php echo $ml ?>">
+                                                        <input name="middleInitial" type="text" class="form-control" id="fullName" value="<?php echo $ml ?>">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
@@ -263,14 +264,14 @@ $atresult= mysqli_query($con, $atsql);
                                                 <div class="row mb-3">
                                                     <label for="fullName" class="col-md-4 col-lg-4 col-form-label"><i class="fas fa-building"></i> Company</label>
                                                     <div class="col-md-8 col-lg-8">
-                                                        <input name="lastName" type="text" class="form-control" id="fullName" value="<?php echo $company ?>">
+                                                        <input name="company" type="text" class="form-control" id="fullName" value="<?php echo $company ?>">
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
                                                     <label for="Job" class="col-md-4 col-lg-4 col-form-label"><i class="fas fa-location-dot"></i> Branch</label>
                                                     <div class="col-md-8 col-lg-8">
-                                                        <input name="job" type="text" class="form-control" id="Job" value="<?php echo $branch ?>" disabled>
+                                                        <input name="job" type="text" class="form-control" id="Job" value="<?php echo $branch ?>" readonly>
                                                     </div>
                                                 </div>
 

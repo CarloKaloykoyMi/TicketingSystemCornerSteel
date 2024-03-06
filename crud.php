@@ -152,6 +152,12 @@ if (isset($_POST['add_ticket'])) {
     `branch`='$job',`department`='$address',`email`='$email',`contact`='$phone' WHERE `user_id` = '$userid'; ";
     $run =  mysqli_query($con, $sql);
 
+    $action ='Profile Detail Edited';
+    $atsql="INSERT INTO audit_trail (user_id,action) VALUES('$userid','$action');";
+    $atrun= mysqli_query($con,$atsql);
+
+
+
     if ($run) {
         echo '<script>alert("Changes Saved.");</script>';
         echo '<script>window.location.href = "User_Profile.php"</script>';
